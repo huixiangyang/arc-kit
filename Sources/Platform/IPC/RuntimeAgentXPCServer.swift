@@ -75,8 +75,9 @@ public final class RuntimeAgentXPCServer<Request: RuntimeAgentRequestProtocol, R
             guard let data = try? RuntimeAgentIPCCodec.encode(response) else { return }
             for peer in self.peers.values {
                 let event = xpc_dictionary_create(nil, nil, 0)
+                // 编码器已拒绝空载荷；XPC 的 C 接口要求显式传入非空数据指针。
                 data.withUnsafeBytes { bytes in
-                    xpc_dictionary_set_data(event, RuntimeAgentIPCCodec.replyKey, bytes.baseAddress, bytes.count)
+                    xpc_dictionary_set_data(event, RuntimeAgentIPCCodec.replyKey, bytes.baseAddress!, bytes.count)
                 }
                 xpc_connection_send_message(peer.object, event)
             }
@@ -169,11 +170,12 @@ public final class RuntimeAgentXPCServer<Request: RuntimeAgentRequestProtocol, R
         guard let reply = xpc_dictionary_create_reply(message.object) else { return }
         do {
             let encoded = try RuntimeAgentIPCCodec.encode(response)
+            // 编码器已拒绝空载荷；XPC 的 C 接口要求显式传入非空数据指针。
             encoded.withUnsafeBytes { bytes in
                 xpc_dictionary_set_data(
                     reply,
                     RuntimeAgentIPCCodec.replyKey,
-                    bytes.baseAddress,
+                    bytes.baseAddress!,
                     bytes.count
                 )
             }

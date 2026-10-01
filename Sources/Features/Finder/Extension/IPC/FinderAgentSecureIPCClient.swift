@@ -87,11 +87,12 @@ final class FinderAgentSecureIPCClient: @unchecked Sendable {
             operation.rawValue
         )
         if let payload {
+            // 编码器已拒绝空载荷；XPC 的 C 接口要求显式传入非空数据指针。
             payload.withUnsafeBytes { bytes in
                 xpc_dictionary_set_data(
                     message,
                     FinderAgentSecureIPCCodec.payloadKey,
-                    bytes.baseAddress,
+                    bytes.baseAddress!,
                     bytes.count
                 )
             }

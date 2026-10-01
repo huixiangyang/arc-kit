@@ -62,11 +62,12 @@ public final class RuntimeAgentXPCClient<Request: RuntimeAgentRequestProtocol, R
         timeoutBox.schedule(on: replyQueue, after: timeout)
 
         let message = xpc_dictionary_create(nil, nil, 0)
+        // 编码器已拒绝空载荷；XPC 的 C 接口要求显式传入非空数据指针。
         payload.withUnsafeBytes { bytes in
             xpc_dictionary_set_data(
                 message,
                 RuntimeAgentIPCCodec.payloadKey,
-                bytes.baseAddress,
+                bytes.baseAddress!,
                 bytes.count
             )
         }

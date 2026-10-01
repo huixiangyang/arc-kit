@@ -240,11 +240,12 @@ public final class FinderAgentSecureIPCServer: @unchecked Sendable {
         }
         do {
             let data = try FinderAgentSecureIPCCodec.encodeReply(response)
+            // 编码器已拒绝空载荷；XPC 的 C 接口要求显式传入非空数据指针。
             data.withUnsafeBytes { bytes in
                 xpc_dictionary_set_data(
                     reply,
                     FinderAgentSecureIPCCodec.replyKey,
-                    bytes.baseAddress,
+                    bytes.baseAddress!,
                     bytes.count
                 )
             }
