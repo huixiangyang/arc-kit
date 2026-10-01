@@ -342,7 +342,7 @@ struct WallpaperTests {
         desktop.unconfirmed = [right.id]
         model.apply(b, request: WallpaperDesktopRequest(displayIDs: [right.id], scaling: .fill))
         try await settle(model)
-        #expect(!model.hasError && model.feedback?.kind == .notice && model.feedback?.message.contains("仍待确认") == true)
+        #expect(!model.hasError && model.feedback?.kind == .notice && model.feedback?.message == L10n.string(.WallpaperPlayback.applySystemUnconfirmed(model.displayTitle(right))))
         #expect(model.catalog.assignments[right.id]?.itemID == b.id)
         #expect(!model.appliedDisplayIDs.contains(right.id) && desktop.rolledBack == 0)
         desktop.unconfirmed = []
@@ -551,7 +551,7 @@ struct WallpaperTests {
         do { _ = try await partial.apply(failed.newURL, options: [:]); Issue.record("应报告系统写入失败") }
         catch { #expect(error.localizedDescription.contains("27G2G4")) }
         do { try await partial.rollback(); Issue.record("不可恢复的原文件必须报告具体原因") }
-        catch { #expect(error.localizedDescription.contains("原壁纸文件已不存在或不可读")) }
+        catch { #expect(error.localizedDescription.contains(L10n.string(.WallpaperPlayback.applyOriginalUnavailable("27G2G4")))) }
         #expect(failed.writes.map(\.0) == ["left", "right", "left"])
         #expect(failed.reported["left"] == failed.original["left"])
         #expect(!failed.writes.contains { $0.1 == failed.original["right"] })
@@ -573,7 +573,7 @@ struct WallpaperTests {
         disconnected.disconnectWhileWaiting = true
         let interrupted = disconnected.transaction()
         do { _ = try await interrupted.apply(disconnected.newURL, options: [:]); Issue.record("断屏应终止确认") }
-        catch { #expect(error.localizedDescription.contains("屏幕已断开")) }
+        catch { #expect(error.localizedDescription == L10n.string(.WallpaperPlayback.applyTargetsDisconnected("27G2G4"))) }
         do { try await interrupted.rollback(); Issue.record("断开目标无法确认恢复") } catch {}
         #expect(disconnected.writes.filter { $0.0 == "right" }.count == 1)
     }

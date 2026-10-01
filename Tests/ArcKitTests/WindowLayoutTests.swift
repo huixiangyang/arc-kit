@@ -70,7 +70,7 @@ struct WindowLayoutTests {
         #expect(!panel.canPerformWindowActions)
         client.captureError = .unsupportedWindow(.nonWindow)
         let rejected = try await runtime.captureWindowTarget()
-        #expect(rejected == .unavailable("当前没有普通窗口，请先点选要调整的窗口"))
+        #expect(rejected == .unavailable(WindowManagementExecutionError.unsupportedWindow(.nonWindow).localizedDescription))
         let rejectedCapture = panel.windowTarget.begin()
         let acceptedOld = panel.windowTarget.complete(.ready(UUID()), for: firstCapture)
         #expect(!acceptedOld)

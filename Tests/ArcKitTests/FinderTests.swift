@@ -1,6 +1,7 @@
 @testable import ArcKitFinder
 @testable import ArcKitFinderSync
 @testable import ArcKitFinderRuntime
+import ArcKitPlatform
 import AppKit
 import Foundation
 import Testing
@@ -141,8 +142,8 @@ struct FinderTests {
             #expect(target.currentDirectoryPath == value.expectedDirectory)
             #expect(!target.needsHostTargetResolution)
             let menu = try #require(FinderMenuRenderer.buildMenu(state: state, icons: icons, context: context, actionTarget: target))
-            #expect(menu.items.contains { $0.title == "常用目录" })
-            let copyItem = menu.items.first { $0.title == "复制路径" }
+            #expect(menu.items.contains { $0.title == FinderMenuModuleID.favoriteDirectories.defaultTitle })
+            let copyItem = menu.items.first { $0.title == FinderMenuModuleID.copyPath.defaultTitle }
             if value.selection.isEmpty && value.directory == nil {
                 #expect(copyItem == nil, "拿不到目标时不能展示文件操作或沿用上次工具栏目标")
                 #expect(!context.canUseCurrentDirectoryTarget)
@@ -574,7 +575,7 @@ extension FinderTests {
             try denied.execute(directory: directory, terminal: .terminal, mode: .window)
             Issue.record("拒绝自动化不能报告成功")
         } catch {
-            #expect(error.localizedDescription.contains("自动化"))
+            #expect(error.localizedDescription == FinderCommandExecutionError.commandFailed(L10n.string(.FinderActions.terminalAuthorizationDenied("Terminal"))).localizedDescription)
             #expect(error.localizedDescription.contains("Terminal"))
         }
         #expect(executions == 1)

@@ -144,7 +144,7 @@ struct MouseScrollPipelineTests {
         defer { unavailable.runtime.stop() }
         let fallback = try #require(unavailable.send(try makeScrollWheelEvent(verticalDelta: 1)))
         #expect(NSEvent(cgEvent: fallback)?.scrollingDeltaY == -91)
-        #expect(unavailable.runtime.lastRuntimeWarning?.contains("降级") == true)
+        #expect(unavailable.runtime.lastRuntimeWarning == L10n.string(.MouseRuntime.sessionDirectScrollFallback))
         unavailable.driver.available = true
         #expect(unavailable.send(try makeScrollWheelEvent(verticalDelta: 1)) == nil)
         // 驱动启动尚不等于已恢复；必须产生并提交平滑帧，旧故障才清除。
@@ -171,7 +171,7 @@ struct MouseScrollPipelineTests {
         #expect(safe.outputs.read { $0.isEmpty })
         #expect(safe.runtime.scrollDiagnostics.output.directFallbacks == 1)
         #expect(!safe.runtime.scrollDiagnostics.targetWindowAvailable)
-        #expect(safe.runtime.lastRuntimeWarning?.contains("窗口标注") == true)
+        #expect(safe.runtime.lastRuntimeWarning == L10n.string(.MouseRuntime.sessionScrollInputLacksTargetProcess))
     }
 
     @Test("真实显示刷新器首次创建或启动失败后可恢复，不靠重启 Host", arguments: [false, true])
