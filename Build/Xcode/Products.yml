@@ -1,0 +1,186 @@
+targets:
+  ArcKitRuntimeHost:
+    type: application
+    platform: macOS
+    sources:
+      - Targets/ArcKitRuntimeHost/Sources
+      - path: Targets/ArcKitRuntimeHost/Resources/Localization
+        buildPhase: resources
+      - path: Sources/Platform/Resources/Localization/Common.xcstrings
+        buildPhase: resources
+      - path: Targets/ArcKitApp/Resources/Localization/InfoPlist.xcstrings
+        buildPhase: resources
+    dependencies:
+      - target: ArcKitPersistence
+        embed: true
+      - target: ArcKitPlatform
+        embed: true
+      - target: ArcKitFinder
+        embed: true
+      - target: ArcKitFinderRuntime
+        embed: true
+      - target: ArcKitWindow
+        embed: true
+      - target: ArcKitWindowRuntime
+        embed: true
+      - target: ArcKitMouse
+        embed: true
+      - target: ArcKitMouseRuntime
+        embed: true
+    settings:
+      base:
+        PRODUCT_NAME: ArcKitRuntimeHost
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit.runtime-host
+        INFOPLIST_FILE: $(ARCKIT_SOURCE_ROOT)/Targets/ArcKitRuntimeHost/Configuration/Info.plist
+        CODE_SIGN_ENTITLEMENTS: $(ARCKIT_SOURCE_ROOT)/Targets/ArcKitRuntimeHost/Configuration/Signing/ArcKitRuntimeHost.entitlements
+      configs:
+        Debug:
+          CODE_SIGNING_REQUIRED: "NO"
+          CODE_SIGN_IDENTITY: ""
+    info:
+      path: Targets/ArcKitRuntimeHost/Configuration/Info.plist
+      properties:
+        CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
+        CFBundleLocalizations: [en, zh-Hans]
+        CFBundleDisplayName: Arc Kit Runtime Host
+        CFBundleExecutable: $(EXECUTABLE_NAME)
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleInfoDictionaryVersion: "6.0"
+        CFBundleName: Arc Kit Runtime Host
+        NSAppleEventsUsageDescription: Arc Kit controls other apps only when you create terminal windows or tabs, or run a script you choose.
+        CFBundlePackageType: APPL
+        CFBundleShortVersionString: 0.1.0
+        CFBundleVersion: "56"
+        LSMinimumSystemVersion: "13.0"
+        LSUIElement: true
+  ArcKit:
+    type: application
+    platform: macOS
+    sources:
+      - Targets/ArcKitApp/Sources
+      - path: Sources/Platform/Resources/Localization/Common.xcstrings
+        buildPhase: resources
+      - path: Targets/ArcKitApp/Resources/Localization
+        buildPhase: resources
+      - path: Targets/ArcKitApp/Resources/Assets.xcassets
+        buildPhase: resources
+      # 整目录复制，并显式建立父组，让工程移入 .build 后仍按源码根解析路径。
+      - path: Licenses
+        buildPhase: resources
+        type: file
+        group: Resources
+    dependencies:
+      # 二进制 Swift Package 由 Xcode 自动嵌入；显式 embed 会生成不存在的 Sparkle 路径。
+      - package: Sparkle
+        product: Sparkle
+      - target: ArcKitPersistence
+        embed: true
+      - target: ArcKitApplication
+        embed: true
+      - target: ArcKitFinder
+        embed: true
+      - target: ArcKitWindow
+        embed: true
+      - target: ArcKitMouse
+        embed: true
+      - target: ArcKitPlatform
+        embed: true
+      - target: ArcKitFinderExtension
+        embed: true
+      - target: ArcKitRuntimeHost
+        embed: false
+    settings:
+      base:
+        PRODUCT_NAME: Arc Kit
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit
+        INFOPLIST_FILE: $(ARCKIT_SOURCE_ROOT)/Targets/ArcKitApp/Configuration/Info.plist
+        CODE_SIGN_ENTITLEMENTS: $(ARCKIT_SOURCE_ROOT)/Targets/ArcKitApp/Configuration/Signing/ArcKitApp.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      configs:
+        Debug:
+          CODE_SIGNING_REQUIRED: "NO"
+          CODE_SIGN_IDENTITY: ""
+    info:
+      path: Targets/ArcKitApp/Configuration/Info.plist
+      properties:
+        CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
+        CFBundleLocalizations: [en, zh-Hans]
+        CFBundleDisplayName: Arc Kit
+        CFBundleExecutable: $(EXECUTABLE_NAME)
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleInfoDictionaryVersion: "6.0"
+        CFBundleIconName: AppIcon
+        CFBundleName: Arc Kit
+        NSAppleEventsUsageDescription: Arc Kit controls other apps only when you create terminal windows or tabs, or run a script you choose.
+        CFBundlePackageType: APPL
+        CFBundleShortVersionString: 0.1.0
+        CFBundleVersion: "56"
+        LSMinimumSystemVersion: "13.0"
+        NSPrincipalClass: NSApplication
+        SUPublicEDKey: fOn/EhaCQV6kXWk6EP6jYaWugtSLxtPQ8NCPM7em7AY=
+        SUFeedURL: https://arc-kit.com/updates/appcast.xml
+        SUEnableAutomaticChecks: true
+        SUAutomaticallyUpdate: false
+        SUAllowsAutomaticUpdates: true
+        SUEnableSystemProfiling: false
+        SUVerifyUpdateBeforeExtraction: true
+        SURequireSignedFeed: true
+    postBuildScripts:
+      - name: Embed Runtime Host
+        # Host 内的 Framework 和语言资源也可能单独更新，不能只按 Info.plist 判断是否复制。
+        basedOnDependencyAnalysis: false
+        inputFiles:
+          - $(BUILT_PRODUCTS_DIR)/ArcKitRuntimeHost.app/Contents/Info.plist
+          - $(ARCKIT_SOURCE_ROOT)/Targets/ArcKitApp/Resources/LaunchAgents/com.archalo.arckit.runtime-host.plist
+        outputFiles:
+          - $(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Library/LoginItems/ArcKitRuntimeHost.app/Contents/Info.plist
+          - $(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Library/LaunchAgents/com.archalo.arckit.runtime-host.plist
+        script: |
+          set -euo pipefail
+          LIBRARY="$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Library"
+          # 构建产物不保留旧后台入口，增量构建也只有一个 Host。
+          rm -rf "$LIBRARY/LoginItems" "$LIBRARY/LaunchAgents"
+          mkdir -p "$LIBRARY/LoginItems" "$LIBRARY/LaunchAgents"
+          cp -R "$BUILT_PRODUCTS_DIR/ArcKitRuntimeHost.app" "$LIBRARY/LoginItems/"
+          cp "$ARCKIT_SOURCE_ROOT/Targets/ArcKitApp/Resources/LaunchAgents/com.archalo.arckit.runtime-host.plist" "$LIBRARY/LaunchAgents/"
+  ArcKitFinderExtension:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: Sources/Features/Finder/Extension
+        excludes: [Resources]
+      - path: Sources/Features/Finder/Extension/Resources/Localization
+        buildPhase: resources
+      - path: Sources/Platform/Resources/Localization/Common.xcstrings
+        buildPhase: resources
+    dependencies:
+      - target: ArcKitFinder
+        embed: true
+      - target: ArcKitPlatform
+        embed: true
+    settings:
+      base:
+        PRODUCT_NAME: ArcKitFinderExtension
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit.finder-extension
+        INFOPLIST_FILE: $(ARCKIT_SOURCE_ROOT)/Targets/ArcKitFinderExtension/Configuration/Info.plist
+        CODE_SIGN_ENTITLEMENTS: $(ARCKIT_SOURCE_ROOT)/Targets/ArcKitFinderExtension/Configuration/Signing/ArcKitFinderExtension.entitlements
+      configs:
+        Debug:
+          CODE_SIGNING_REQUIRED: "NO"
+          CODE_SIGN_IDENTITY: ""
+    info:
+      path: Targets/ArcKitFinderExtension/Configuration/Info.plist
+      properties:
+        CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
+        CFBundleLocalizations: [en, zh-Hans]
+        CFBundleDisplayName: Arc Kit Finder Extension
+        CFBundleExecutable: $(EXECUTABLE_NAME)
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleInfoDictionaryVersion: "6.0"
+        CFBundleName: Arc Kit Finder Extension
+        CFBundlePackageType: XPC!
+        CFBundleShortVersionString: 0.1.0
+        CFBundleVersion: "56"
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.FinderSync
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).FinderSync

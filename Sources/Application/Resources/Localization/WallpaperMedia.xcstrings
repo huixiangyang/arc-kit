@@ -1,0 +1,978 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "download.asset.empty.exceeds.mb": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperMediaDownload. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The asset is empty or exceeds %1$@ MB."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "素材为空或超过 %1$@ MB。"
+          }
+        }
+      }
+    },
+    "download.download.exceeds.mb.limit.choose": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperMediaDownload. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download exceeds the %1$@ MB limit. Choose a smaller asset."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载超过 %1$@ MB 限制，请选择较小的素材。"
+          }
+        }
+      }
+    },
+    "download.download.source.returned.http.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperMediaDownload. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download failed. The source returned HTTP %1$@."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载失败，来源返回 HTTP %1$@。"
+          }
+        }
+      }
+    },
+    "download.online.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperMediaDownload.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Online Wallpaper"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在线壁纸"
+          }
+        }
+      }
+    },
+    "download.unsupportedMedia": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperMediaDownload. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The source did not return a supported %1$@ file. Nothing was imported."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源未返回支持的%1$@文件，未导入。"
+          }
+        }
+      }
+    },
+    "download.wallpaper.assets.use.https.urls": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperMediaDownload.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wallpaper assets must use HTTPS URLs."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "壁纸素材必须使用 HTTPS 地址。"
+          }
+        }
+      }
+    },
+    "gallery.close.details": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperGalleryUI.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close details"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭详情"
+          }
+        }
+      }
+    },
+    "gallery.local.library": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperGalleryUI.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In local library"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已在本地图库"
+          }
+        }
+      }
+    },
+    "gallery.qualityUnknownHint": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperGalleryUI.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quality information not provided by the source"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源尚未提供清晰度信息"
+          }
+        }
+      }
+    },
+    "gallery.view.source": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperGalleryUI.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View Source"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看来源"
+          }
+        }
+      }
+    },
+    "library.connecting.source": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connecting to source…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在连接素材来源…"
+          }
+        }
+      }
+    },
+    "library.downloaded": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloaded %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已下载 %1$@"
+          }
+        }
+      }
+    },
+    "library.downloading": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloading %1$@%% · %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载 %1$@%% · %2$@"
+          }
+        }
+      }
+    },
+    "library.exporting.loop.segment": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exporting loop segment…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在导出循环片段…"
+          }
+        }
+      }
+    },
+    "library.live.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live Wallpaper"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "动态壁纸"
+          }
+        }
+      }
+    },
+    "library.verifying.asset.generating.thumbnail": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verifying asset and generating thumbnail…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在验证素材并生成缩略图…"
+          }
+        }
+      }
+    },
+    "library.video.playable.video.track.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibrary.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The video has no playable video track"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频没有可播放的画面轨道"
+          }
+        }
+      }
+    },
+    "loop.adjusting.click.preview.loop.check": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After adjusting, click Preview Loop to check the transition. Exports a silent MP4 and preserves the original. Adjust the segment manually to minimize jumps at the loop boundary."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调整后点“预览循环”检查衔接。导出静音 MP4，保留原视频；画面首尾的跳变需自行选择片段调整。"
+          }
+        }
+      }
+    },
+    "loop.edit.loop": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit Loop"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编辑循环"
+          }
+        }
+      }
+    },
+    "loop.end": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "End"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "终点"
+          }
+        }
+      }
+    },
+    "loop.exportUnavailable": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot create a video export task."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法创建视频导出任务。"
+          }
+        }
+      }
+    },
+    "loop.invalidSegment": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a valid segment from 0.3 to 300 seconds and a speed from 0.25× to 2×."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请选择 0.3–300 秒的有效片段，速度范围为 0.25–2 倍。"
+          }
+        }
+      }
+    },
+    "loop.loop.end": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loop end"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "循环终点"
+          }
+        }
+      }
+    },
+    "loop.loop.export.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loop export failed."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "循环片段导出失败。"
+          }
+        }
+      }
+    },
+    "loop.loop.mp4": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loop-%1$@.mp4"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "循环-%1$@.mp4"
+          }
+        }
+      }
+    },
+    "loop.loop.start": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loop start"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "循环起点"
+          }
+        }
+      }
+    },
+    "loop.outputDuration": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor. Arguments: 1 (Double).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Output: %.1lf seconds"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输出 %.1lf 秒"
+          }
+        }
+      }
+    },
+    "loop.preview.loop": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview Loop"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预览循环"
+          }
+        }
+      }
+    },
+    "loop.reading.video": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reading video…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "读取视频…"
+          }
+        }
+      }
+    },
+    "loop.save.new.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save as New Wallpaper"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存为新壁纸"
+          }
+        }
+      }
+    },
+    "loop.segmentRange": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Segment must be 0.3–300 seconds"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "片段需为 0.3–300 秒"
+          }
+        }
+      }
+    },
+    "loop.speed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Speed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "速度"
+          }
+        }
+      }
+    },
+    "loop.start": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "起点"
+          }
+        }
+      }
+    },
+    "loop.trackCreationFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot create a video track."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法创建视频轨道。"
+          }
+        }
+      }
+    },
+    "loop.video.too.short": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The video is too short or its duration cannot be read."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频过短或时长无法读取。"
+          }
+        }
+      }
+    },
+    "loop.video.video.track.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLoopEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The video has no video track."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频没有画面轨道。"
+          }
+        }
+      }
+    },
+    "media.bing.daily.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bing Daily Wallpaper"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bing 每日壁纸"
+          }
+        }
+      }
+    },
+    "media.choose.display.wallpaper.first": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a display for the wallpaper first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先选择要设置壁纸的屏幕。"
+          }
+        }
+      }
+    },
+    "media.daily": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daily"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每天"
+          }
+        }
+      }
+    },
+    "media.fill.screen": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fill Screen"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "填满屏幕"
+          }
+        }
+      }
+    },
+    "media.fit.screen": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fit to Screen"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "适应屏幕"
+          }
+        }
+      }
+    },
+    "media.invalid.wallpaper.library.format.preserve.file": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid wallpaper library format. Preserve the file and reload."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "壁纸资料库格式无效，请保留文件并重新加载。"
+          }
+        }
+      }
+    },
+    "media.selected.display.disconnected.select.again.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The selected display disconnected. Select again. No other displays were used."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所选屏幕已断开，请重新选择。未改为其他屏幕或全部屏幕。"
+          }
+        }
+      }
+    },
+    "media.stretch": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stretch"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拉伸"
+          }
+        }
+      }
+    },
+    "preview.preparing.preview": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperVideoPreview.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing preview…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在准备预览…"
+          }
+        }
+      }
+    },
+    "preview.preview.video.provided.source.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperVideoPreview.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No preview video provided by this source"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此来源未提供预览视频"
+          }
+        }
+      }
+    },
+    "preview.unavailableHint": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperVideoPreview.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview unavailable. Select the item again to retry."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预览暂时不可用，可重选作品后再试。"
+          }
+        }
+      }
+    },
+    "quality.label": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperGalleryUI. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quality: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清晰度：%1$@"
+          }
+        }
+      }
+    },
+    "quality.unspecified": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperQuality.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not specified"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未标注"
+          }
+        }
+      }
+    },
+    "remote.redirectRejected": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteAccess.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The source redirected to an unsupported URL."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源重定向到了不支持的地址。"
+          }
+        }
+      }
+    },
+    "remote.source.catalog.exceeds.limit": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteAccess. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The source catalog exceeds the %1$@ limit."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源目录超过 %1$@ 限制。"
+          }
+        }
+      }
+    },
+    "remote.source.response.exceeds.size.limit": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteAccess.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The source response exceeds the size limit."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源响应超过大小限制。"
+          }
+        }
+      }
+    },
+    "remote.source.returned.http.retry.disable": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteAccess. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The source returned HTTP %1$@. Retry or disable it in source management."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源返回 HTTP %1$@，可重试或在渠道管理中停用此渠道"
+          }
+        }
+      }
+    },
+    "remote.too.many.requests.retry.later": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteAccess.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many requests. Try again later."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请求过于频繁，请稍后再试"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,4 @@
+{
+  "swift.autoGenerateLaunchConfigurations": false,
+  "swift.sourcekit-lsp.backgroundIndexing": "off"
+}

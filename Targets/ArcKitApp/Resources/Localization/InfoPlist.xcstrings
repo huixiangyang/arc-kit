@@ -1,0 +1,24 @@
+{
+  "sourceLanguage": "en",
+  "version": "1.0",
+  "strings": {
+    "NSAppleEventsUsageDescription": {
+      "comment": "macOS automation permission shown when Arc Kit creates terminal windows or runs a user-selected script.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit controls other apps only when you create terminal windows or tabs, or run a script you choose."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit 仅在你新建终端窗口或标签、运行自选脚本时控制相应应用。"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3420 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "admission.action.already.accepted": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandAdmissionStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This action was already accepted and its result may be unknown. Check your files first; it will not run again automatically."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此动作已经接收，执行结果可能未知；请先核对文件，不会自动重复执行"
+          }
+        }
+      }
+    },
+    "admission.too.many.finder.operations.retry.later": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandAdmissionStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many Finder operations. Try again later."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 操作过于频繁，请稍后再试"
+          }
+        }
+      }
+    },
+    "agent.finder.action.already.running.try": {
+      "extractionState": "manual",
+      "comment": "Used in FinderAgentController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Finder action is already running. Try again later."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已有 Finder 动作正在执行，请稍后重试"
+          }
+        }
+      }
+    },
+    "agent.invalid.finder.command.data": {
+      "extractionState": "manual",
+      "comment": "Used in FinderAgentController. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid Finder command data: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 命令数据无效：%1$@"
+          }
+        }
+      }
+    },
+    "agent.too.many.menu.requests.retry.later": {
+      "extractionState": "manual",
+      "comment": "Used in FinderAgentController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many menu requests. Try again later."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "菜单请求过多，请稍后重试"
+          }
+        }
+      }
+    },
+    "archive.cleanupFailed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderArchiveCommandExecutor. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot clean temporary archive copies: %1$@; %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法清理压缩临时副本：%1$@；%2$@"
+          }
+        }
+      }
+    },
+    "clipboard.clipboard.executor.received.unexpected.command": {
+      "extractionState": "manual",
+      "comment": "Used in FinderClipboardCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clipboard executor received an unexpected command: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剪贴板执行器收到错误命令：%1$@"
+          }
+        }
+      }
+    },
+    "clipboard.modified": {
+      "extractionState": "manual",
+      "comment": "Used in FinderClipboardCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modified: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修改时间：%1$@"
+          }
+        }
+      }
+    },
+    "clipboard.name": {
+      "extractionState": "manual",
+      "comment": "Used in FinderClipboardCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "名称：%1$@"
+          }
+        }
+      }
+    },
+    "clipboard.path": {
+      "extractionState": "manual",
+      "comment": "Used in FinderClipboardCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Path: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "路径：%1$@"
+          }
+        }
+      }
+    },
+    "clipboard.size.bytes": {
+      "extractionState": "manual",
+      "comment": "Used in FinderClipboardCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Size: %1$@ bytes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大小：%1$@ bytes"
+          }
+        }
+      }
+    },
+    "clipboard.type": {
+      "extractionState": "manual",
+      "comment": "Used in FinderClipboardCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "类型：%1$@"
+          }
+        }
+      }
+    },
+    "command.batch.rename": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batch Rename"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "批量重命名"
+          }
+        }
+      }
+    },
+    "command.batch.rename.undone": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batch rename undone"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已撤销批量重命名"
+          }
+        }
+      }
+    },
+    "command.checksum.copied": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checksum copied"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "哈希已复制"
+          }
+        }
+      }
+    },
+    "command.clipboardFailed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not write to the system clipboard"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "写入系统剪贴板失败"
+          }
+        }
+      }
+    },
+    "command.color.value.copied": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Color value copied"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "颜色值已复制"
+          }
+        }
+      }
+    },
+    "command.compress.files": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compress Files"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "压缩文件"
+          }
+        }
+      }
+    },
+    "command.content.copied": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Content copied"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "内容已复制"
+          }
+        }
+      }
+    },
+    "command.convert.image": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Convert Image"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "转换图片"
+          }
+        }
+      }
+    },
+    "command.copied": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ copied"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 已复制"
+          }
+        }
+      }
+    },
+    "command.copy.checksum": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy Checksum"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制哈希"
+          }
+        }
+      }
+    },
+    "command.copy.file.info": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy File Info"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制文件信息"
+          }
+        }
+      }
+    },
+    "command.copy.folder": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy to Folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制到目录"
+          }
+        }
+      }
+    },
+    "command.copy.path": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy Path"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制路径"
+          }
+        }
+      }
+    },
+    "command.destination.selection.cancelled.user": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destination selection cancelled by user"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用户取消选择目标目录"
+          }
+        }
+      }
+    },
+    "command.extension.local.information": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extension Local Information"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "扩展本地信息"
+          }
+        }
+      }
+    },
+    "command.extract.icon": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extract Icon"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提取图标"
+          }
+        }
+      }
+    },
+    "command.file.information.copied": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File information copied"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件信息已复制"
+          }
+        }
+      }
+    },
+    "command.filename.copied": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filename copied"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件名已复制"
+          }
+        }
+      }
+    },
+    "command.finder.action.failed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder action failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 动作失败"
+          }
+        }
+      }
+    },
+    "command.flatten.folder": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Flatten Folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解除文件夹"
+          }
+        }
+      }
+    },
+    "command.groupInFolder": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move into Folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移入文件夹"
+          }
+        }
+      }
+    },
+    "command.hide.other.files": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide Other Files"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏其他文件"
+          }
+        }
+      }
+    },
+    "command.hide.unhide.files": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide / Unhide Files"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏/取消隐藏文件"
+          }
+        }
+      }
+    },
+    "command.lock.unlock.files": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lock / Unlock Files"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "锁定/解锁文件"
+          }
+        }
+      }
+    },
+    "command.moveToFolder": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move to Folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移动到目录"
+          }
+        }
+      }
+    },
+    "command.open.app": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open With App"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用 App 打开"
+          }
+        }
+      }
+    },
+    "command.open.path": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Path"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开路径"
+          }
+        }
+      }
+    },
+    "command.open.terminal": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Terminal"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开终端"
+          }
+        }
+      }
+    },
+    "command.path.copied": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Path copied"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "路径已复制"
+          }
+        }
+      }
+    },
+    "command.permanently.delete.files": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permanently Delete Files"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "彻底删除文件"
+          }
+        }
+      }
+    },
+    "command.pick.color": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pick Color"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拾取颜色"
+          }
+        }
+      }
+    },
+    "command.restore.folder.icon": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Folder Icon"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还原文件夹图标"
+          }
+        }
+      }
+    },
+    "command.run.script": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Run Script"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "执行脚本"
+          }
+        }
+      }
+    },
+    "command.set.folder.icon": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set Folder Icon"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置文件夹图标"
+          }
+        }
+      }
+    },
+    "command.undoRenameFailed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot undo batch rename"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法撤销批量重命名"
+          }
+        }
+      }
+    },
+    "command.written.system.clipboard.ready": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Written to the system clipboard and ready to paste"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已写入系统剪贴板，可以直接粘贴使用"
+          }
+        }
+      }
+    },
+    "dispatch.favorite.folder.target.expired.reopen.context": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandDispatcher.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorite folder target expired. Reopen the context menu."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常用目录目标已失效，请重新打开右键菜单"
+          }
+        }
+      }
+    },
+    "dispatch.finder.context.menu.enhancement.off": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandDispatcher.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder context menu enhancement is off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 右键增强已关闭"
+          }
+        }
+      }
+    },
+    "dispatch.high.risk.actions.off.reopen": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandDispatcher.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "High-risk actions are off. Reopen the context menu."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "高风险操作已关闭，请重新打开右键菜单"
+          }
+        }
+      }
+    },
+    "dispatch.off.reopen.context.menu": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandDispatcher. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ is off. Reopen the context menu."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@已关闭，请重新打开右键菜单"
+          }
+        }
+      }
+    },
+    "dispatch.selected.entry.disabled.changed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandDispatcher.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The selected entry was disabled or changed. Reopen the context menu."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所选条目已停用或变更，请重新打开右键菜单"
+          }
+        }
+      }
+    },
+    "execution.actionable.finder.selection.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No actionable Finder selection."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有可操作的 Finder 选中项。"
+          }
+        }
+      }
+    },
+    "execution.app.missing.install.retry": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App not found: %1$@. Install it and retry, or remove this entry in Arc Kit settings."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未找到应用：%1$@。请安装后重试，或在 Arc Kit 设置中移除此项。"
+          }
+        }
+      }
+    },
+    "execution.command.failed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Command failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "命令执行失败：%1$@"
+          }
+        }
+      }
+    },
+    "execution.currentFolderMissing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not resolve Finder's current folder: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解析 Finder 当前目录失败：%1$@"
+          }
+        }
+      }
+    },
+    "execution.favorite.app.configuration.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorite app configuration not found: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未找到常用 App 配置：%1$@"
+          }
+        }
+      }
+    },
+    "execution.imageReadFailed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read image: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取图片：%1$@"
+          }
+        }
+      }
+    },
+    "execution.interrupted.completed.items.preserved": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution. Arguments: 1 (String), 2 (String), 3 (String), 4 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ interrupted: %2$@. Completed items (%3$@) are preserved at: %4$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@中断：%2$@。已完成的 %3$@ 项保留在：%4$@"
+          }
+        }
+      }
+    },
+    "execution.output.file.missing.empty": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Output file is missing or empty: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输出文件未生成或为空：%1$@"
+          }
+        }
+      }
+    },
+    "execution.required.parameter.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Required parameter missing: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缺少必要参数：%1$@"
+          }
+        }
+      }
+    },
+    "execution.targetMissing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot determine the target folder for %1$@. Close the menu and right-click an empty area in the target folder or a single item."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法获取%1$@的目标目录。请关闭菜单，在目标文件夹空白处或单个项目上重新右键。"
+          }
+        }
+      }
+    },
+    "execution.unconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Operation did not take effect: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "操作未生效：%1$@"
+          }
+        }
+      }
+    },
+    "execution.unsupportedImage": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unsupported image format: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不支持的图片格式：%1$@"
+          }
+        }
+      }
+    },
+    "execution.user.confirmation.missing.execution.denied": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandExecution. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "User confirmation missing. Execution denied: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缺少用户确认，已拒绝执行：%1$@"
+          }
+        }
+      }
+    },
+    "feedback.renamed.items.undo.now": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandHUDPresenter. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Renamed %1$@ items. You can undo now to restore original names."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已重命名 %1$@ 项。可以立即撤销并恢复原名称。"
+          }
+        }
+      }
+    },
+    "feedback.run.batch.rename.again.undo.immediately": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandHUDPresenter.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Run batch rename again, then undo immediately"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请重新执行批量重命名后立即撤销"
+          }
+        }
+      }
+    },
+    "feedback.undo.expired": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandHUDPresenter.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo expired"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤销已过期"
+          }
+        }
+      }
+    },
+    "feedback.undo.now.restore.original.names": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandHUDPresenter.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo now to restore the original names if needed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如结果不符合预期，可立即恢复原名称"
+          }
+        }
+      }
+    },
+    "feedback.undo.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandHUDPresenter.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo unavailable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法提供撤销"
+          }
+        }
+      }
+    },
+    "feedback.undoControlFailed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandHUDPresenter.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not initialize undo control"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤销控件初始化失败"
+          }
+        }
+      }
+    },
+    "file.batch.rename.cancelled": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileCommandExecutor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batch rename cancelled"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已取消批量重命名"
+          }
+        }
+      }
+    },
+    "file.completed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileCommandExecutor. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ completed: %2$@ items"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已%1$@ %2$@ 项"
+          }
+        }
+      }
+    },
+    "file.completedWithDestination": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileCommandExecutor. Arguments: 1 (String), 2 (String), 3 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ completed: %2$@ items to %3$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已%1$@ %2$@ 项到 %3$@"
+          }
+        }
+      }
+    },
+    "file.destination": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destination: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标位置：%1$@"
+          }
+        }
+      }
+    },
+    "file.destination.folder.selected.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No destination folder selected for %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@命令尚未选择目标目录"
+          }
+        }
+      }
+    },
+    "file.file.executor.received.unexpected.command": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File executor received an unexpected command: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件操作执行器收到错误命令：%1$@"
+          }
+        }
+      }
+    },
+    "file.files.compressed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileCommandExecutor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files compressed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已压缩文件"
+          }
+        }
+      }
+    },
+    "file.flagUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File flag did not take effect: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件标记未生效：%1$@"
+          }
+        }
+      }
+    },
+    "file.folder.flattened": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileCommandExecutor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder flattened"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已解除文件夹"
+          }
+        }
+      }
+    },
+    "file.moved.folder": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileCommandExecutor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moved into folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已移入文件夹"
+          }
+        }
+      }
+    },
+    "file.source.item.still.exists": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileCommandExecutor. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source item still exists after %1$@: %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@后源项目仍存在：%2$@"
+          }
+        }
+      }
+    },
+    "folderIcon.choose.image.folder.icon": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFolderIconPrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose an Image for the Folder Icon"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择要用作文件夹图标的图片"
+          }
+        }
+      }
+    },
+    "folderIcon.set.icon": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFolderIconPrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set as Icon"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置为图标"
+          }
+        }
+      }
+    },
+    "image.folder.icon.change.cancelled": {
+      "extractionState": "manual",
+      "comment": "Used in FinderImageCommandExecutor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder icon change cancelled"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已取消设置文件夹图标"
+          }
+        }
+      }
+    },
+    "image.folder.icons.require.real.folders": {
+      "extractionState": "manual",
+      "comment": "Used in FinderImageCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder icons require real folders: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件夹图标只支持真实文件夹：%1$@"
+          }
+        }
+      }
+    },
+    "image.icon.extracted": {
+      "extractionState": "manual",
+      "comment": "Used in FinderImageCommandExecutor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Icon extracted"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已提取图标"
+          }
+        }
+      }
+    },
+    "image.iconReadbackFailed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderImageCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read back folder icon state: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法回读文件夹图标状态：%1$@"
+          }
+        }
+      }
+    },
+    "image.image.conversion": {
+      "extractionState": "manual",
+      "comment": "Used in FinderImageCommandExecutor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Image Conversion"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图片转换"
+          }
+        }
+      }
+    },
+    "image.image.icon.executor.received.unexpected": {
+      "extractionState": "manual",
+      "comment": "Used in FinderImageCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Image and icon executor received an unexpected command: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图片与图标执行器收到错误命令：%1$@"
+          }
+        }
+      }
+    },
+    "image.unconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderImageCommandExecutor. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ did not take effect: %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@未生效：%2$@"
+          }
+        }
+      }
+    },
+    "images.convertedCount": {
+      "extractionState": "manual",
+      "comment": "Used in FinderImageCommandExecutor. Arguments: 1 (Int).",
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Converted %lld image"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Converted %lld images"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已转换 %lld 张图片"
+          }
+        }
+      }
+    },
+    "menu.copy.filename": {
+      "extractionState": "manual",
+      "comment": "Used in FinderMenuEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy filename"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制文件名"
+          }
+        }
+      }
+    },
+    "menu.delete.permanently": {
+      "extractionState": "manual",
+      "comment": "Used in FinderMenuTreeBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete Permanently"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "彻底删除"
+          }
+        }
+      }
+    },
+    "newFile.destinationNotWritable": {
+      "extractionState": "manual",
+      "comment": "Used in NewFileCreationService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit cannot write to this folder: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit 没有权限写入该目录：%1$@"
+          }
+        }
+      }
+    },
+    "newFile.invalidDestination": {
+      "extractionState": "manual",
+      "comment": "Used in NewFileCreationService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destination is not a folder: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标位置不是文件夹：%1$@"
+          }
+        }
+      }
+    },
+    "newFile.newFile.executor.received.unexpected.command": {
+      "extractionState": "manual",
+      "comment": "Used in FinderNewFileCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New file executor received an unexpected command: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新建文件执行器收到错误命令：%1$@"
+          }
+        }
+      }
+    },
+    "newFile.newFile.template.missing": {
+      "extractionState": "manual",
+      "comment": "Used in NewFileCreationService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New file template not found: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未找到新建文件模板：%1$@"
+          }
+        }
+      }
+    },
+    "newFile.protectedDestination": {
+      "extractionState": "manual",
+      "comment": "Used in NewFileCreationService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creating .%1$@ files is not supported. Arc Kit will not create invalid placeholder files."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂不支持创建 .%1$@ 文件。Arc Kit 不会创建打不开的假文件。"
+          }
+        }
+      }
+    },
+    "newFile.template.source.missing.unreadable.choose": {
+      "extractionState": "manual",
+      "comment": "Used in NewFileCreationService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Template source is missing or unreadable: %1$@. Choose the template file again in Arc Kit settings."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模板源文件缺失或不可读：%1$@。请在 Arc Kit 设置中重新选择模板文件。"
+          }
+        }
+      }
+    },
+    "open.open.executor.received.unexpected.command": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOpenCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open executor received an unexpected command: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开执行器收到错误命令：%1$@"
+          }
+        }
+      }
+    },
+    "open.select.one.terminal.folder.file": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOpenCommandExecutor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select one terminal folder or file"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请选择单个终端目录或文件"
+          }
+        }
+      }
+    },
+    "organize.folderCreationFailed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileOrganizationExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot create folder; the name may be taken: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法新建文件夹，名称可能已被占用：%1$@"
+          }
+        }
+      }
+    },
+    "organize.invalid.target.folder.name": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileOrganizationExecutor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid target folder name"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标文件夹名称无效"
+          }
+        }
+      }
+    },
+    "organize.regularFolderRequired": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileOrganizationExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only regular folders can be flattened, not apps, document packages or symlinks: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只能解除普通文件夹，不能解除应用、文档包或符号链接：%1$@"
+          }
+        }
+      }
+    },
+    "organize.target.folder.preserved.inspection": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileOrganizationExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target folder preserved for inspection: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标目录保留待检查：%1$@"
+          }
+        }
+      }
+    },
+    "output.available.output.names.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderGeneratedFileWriter. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No available output names: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输出名称已耗尽：%1$@"
+          }
+        }
+      }
+    },
+    "page.newFile": {
+      "extractionState": "manual",
+      "comment": "Used in FinderSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New File"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新建文件"
+          }
+        }
+      }
+    },
+    "rename.add.prefix": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRename.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Prefix"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加前缀"
+          }
+        }
+      }
+    },
+    "rename.add.suffix": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRename.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Suffix"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加后缀"
+          }
+        }
+      }
+    },
+    "rename.completedCount": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileCommandExecutor. Arguments: 1 (Int).",
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Renamed %lld item"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Renamed %lld items"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已重命名 %lld 项"
+          }
+        }
+      }
+    },
+    "rename.execution.file.identity.verification.undo.failed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenameExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File identity verification failed after undo: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤销后文件身份校验失败：%1$@"
+          }
+        }
+      }
+    },
+    "rename.execution.identityReadFailed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenameExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read file identity: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取文件身份：%1$@"
+          }
+        }
+      }
+    },
+    "rename.execution.nameVerificationFailed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenameExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot verify destination name %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法验证目标名称 %1$@"
+          }
+        }
+      }
+    },
+    "rename.execution.temporaryNameFailed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenameExecutor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot create a safe temporary name"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法创建安全的临时名称"
+          }
+        }
+      }
+    },
+    "rename.prompt.base.name": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Base name"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "基础名称"
+          }
+        }
+      }
+    },
+    "rename.prompt.example.archive": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For example: -Archive"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "例如：-归档"
+          }
+        }
+      }
+    },
+    "rename.prompt.example.photo": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For example: Photo"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "例如：照片"
+          }
+        }
+      }
+    },
+    "rename.prompt.example.project": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For example: Project-"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "例如：项目-"
+          }
+        }
+      }
+    },
+    "rename.prompt.find": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查找"
+          }
+        }
+      }
+    },
+    "rename.prompt.invalid.rename.rule": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid rename rule"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重命名规则无效"
+          }
+        }
+      }
+    },
+    "rename.prompt.items.rename.naturally.sorted.current": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Items to rename: %1$@, naturally sorted by current name"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将修改 %1$@ 项；按当前名称自然排序"
+          }
+        }
+      }
+    },
+    "rename.prompt.leave.empty.remove": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leave empty to remove"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可留空以删除"
+          }
+        }
+      }
+    },
+    "rename.prompt.number.width": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Number width"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编号位数"
+          }
+        }
+      }
+    },
+    "rename.prompt.plus.more": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\n…plus %1$@ more"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\n…另外 %1$@ 项"
+          }
+        }
+      }
+    },
+    "rename.prompt.preserve.file.extensions": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preserve file extensions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保留文件扩展名"
+          }
+        }
+      }
+    },
+    "rename.prompt.primary.text": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primary text"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主要文字"
+          }
+        }
+      }
+    },
+    "rename.prompt.rename": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rename"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重命名"
+          }
+        }
+      }
+    },
+    "rename.prompt.rename.method": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rename method"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重命名方式"
+          }
+        }
+      }
+    },
+    "rename.prompt.rename.preview": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rename Preview"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重命名预览"
+          }
+        }
+      }
+    },
+    "rename.prompt.replace": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Replace with"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "替换为"
+          }
+        }
+      }
+    },
+    "rename.prompt.replacement.text.starting.number": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Replacement text or starting number"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "替换文字或起始编号"
+          }
+        }
+      }
+    },
+    "rename.prompt.review.preview.below.arcKit.preserves": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review the preview below. Arc Kit preserves extensions, rejects name conflicts and restores original names if execution fails."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "先确认下方预览。Arc Kit 会保留扩展名、拒绝重名，并在执行失败时恢复原名称。"
+          }
+        }
+      }
+    },
+    "rename.prompt.starting.number": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starting number"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "起始编号"
+          }
+        }
+      }
+    },
+    "rename.prompt.text.replace": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text to replace"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要替换的文字"
+          }
+        }
+      }
+    },
+    "rename.restoredCount": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandProcessor. Arguments: 1 (Int).",
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Restored %lld original name"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Restored %lld original names"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已恢复 %lld 项原名称"
+          }
+        }
+      }
+    },
+    "rename.selectionCount": {
+      "extractionState": "manual",
+      "comment": "Used in FinderBatchRenamePrompt. Arguments: 1 (Int).",
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Rename %lld Item"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Rename %lld Items"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "批量重命名 %lld 项"
+          }
+        }
+      }
+    },
+    "script.execution.script.execution.failed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderScriptCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Script execution failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "脚本执行失败：%1$@"
+          }
+        }
+      }
+    },
+    "script.execution.unexpectedCommand": {
+      "extractionState": "manual",
+      "comment": "Used in FinderScriptCommandExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Script executor received an unexpected command: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "脚本执行器收到错误命令：%1$@"
+          }
+        }
+      }
+    },
+    "selection.all.selected.items": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileSelection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All selected items must be in the same folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此操作只允许同一目录内的选中项"
+          }
+        }
+      }
+    },
+    "server.finder.extension.identity.verification.failed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderAgentSecureIPCServer.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder extension identity verification failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 扩展身份验证失败"
+          }
+        }
+      }
+    },
+    "server.finder.request.expired": {
+      "extractionState": "manual",
+      "comment": "Used in FinderAgentSecureIPCServer.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder request expired"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 请求已过期"
+          }
+        }
+      }
+    },
+    "server.invalid.finder.extension.runtime.data": {
+      "extractionState": "manual",
+      "comment": "Used in FinderAgentSecureIPCServer. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid Finder extension runtime data: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 扩展运行态数据无效：%1$@"
+          }
+        }
+      }
+    },
+    "server.too.many.finder.requests.retry.later": {
+      "extractionState": "manual",
+      "comment": "Used in FinderAgentSecureIPCServer.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many Finder requests. Try again later."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 请求过多，请稍后重试"
+          }
+        }
+      }
+    },
+    "system.items.open.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderSystemCommands.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No items to open"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有可打开的项目"
+          }
+        }
+      }
+    },
+    "system.resultUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderSystemCommands. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: macOS has not confirmed the result. Check the target app first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@：系统尚未确认打开结果，请先检查目标应用"
+          }
+        }
+      }
+    },
+    "system.system.returned.target.app.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderSystemCommands.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The system returned no target app"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统没有返回目标应用"
+          }
+        }
+      }
+    },
+    "target.action.supports.one.item": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandTargets.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This action supports one item only"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此操作只支持一个项目"
+          }
+        }
+      }
+    },
+    "target.notDirectory": {
+      "extractionState": "manual",
+      "comment": "Used in FinderCommandTargets. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resolved location is not a folder: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解析到的位置不是文件夹：%1$@"
+          }
+        }
+      }
+    },
+    "terminal.authorizationDenied": {
+      "extractionState": "manual",
+      "comment": "Used in FinderTerminalLauncher. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not authorized to control %1$@. In System Settings → Privacy & Security → Automation, allow Arc Kit / Arc Kit Runtime Host to control this terminal, then retry. Opening a folder normally does not need this permission."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未获准控制 %1$@。请在系统设置「隐私与安全性 → 自动化」允许 Arc Kit / Arc Kit Runtime Host 控制该终端，再重试此操作。普通打开目录不需要此授权。"
+          }
+        }
+      }
+    },
+    "terminal.scriptCreationFailed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderTerminalLauncher.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot create terminal script"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法创建终端脚本"
+          }
+        }
+      }
+    },
+    "terminal.terminal.automation.failed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderTerminalLauncher.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terminal automation failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "终端自动化执行失败"
+          }
+        }
+      }
+    },
+    "terminal.unsupportedAction": {
+      "extractionState": "manual",
+      "comment": "Used in FinderTerminalLauncher.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This terminal does not support this creation mode. Reopen the menu and choose New Window."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "该终端不支持此新建方式，请重新打开菜单选择新建窗口"
+          }
+        }
+      }
+    },
+    "transfer.duplicate.selected.item": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransfer. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duplicate selected item: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选中项重复：%1$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.copyRollbackUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy rollback did not take effect: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制回滚未生效：%1$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.destination.occupied": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destination is occupied: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标位置已被占用：%1$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.destinationMissing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destination item was not created: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标项目未生成：%1$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.folder.backup": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String), 2 (String), 3 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@; folder backup: %3$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@：%2$@；目录备份：%3$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.move.rollback.location.changed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move rollback location changed: %1$@ ← %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移动回滚位置已变化：%1$@ ← %2$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.moveRollbackUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move rollback did not take effect: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移动回滚未生效：%1$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.new.items.appeared.folder.flattening": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New items appeared in the folder. Flattening stopped: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目录出现新项目，停止解除：%1$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.original.folder.location.occupied": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original folder location is occupied: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原文件夹位置已被占用：%1$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.source.folder.still.exists": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source folder still exists: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "源文件夹仍存在：%1$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.source.item.missing.copying": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source item missing after copying: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制后源项目丢失：%1$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.source.item.still.exists.moving": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source item still exists after moving: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移动后源项目仍存在：%1$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.sourceDeletionRejected": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A copy operation cannot delete the source folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制操作不能删除源文件夹"
+          }
+        }
+      }
+    },
+    "transfer.execution.sourceMissing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source item is missing. Destination copy preserved: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "源项目已丢失，保留目标副本：%1$@"
+          }
+        }
+      }
+    },
+    "transfer.execution.step.s.result.uncertain.failed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderFileTransferExecutor. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The failed step's result is uncertain. Check: %1$@ → %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "失败步骤结果不确定，请检查：%1$@ → %2$@"
+          }
+        }
+      }
+    },
+    "transfer.prompt.choose.destination.folder": {
+      "extractionState": "manual",
+      "comment": "Used in FinderDirectoryTransferPrompt. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose the destination folder for %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择所选项目的%1$@目标文件夹"
+          }
+        }
+      }
+    },
+    "transfer.prompt.choose.location": {
+      "extractionState": "manual",
+      "comment": "Used in FinderDirectoryTransferPrompt. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose %1$@ Location"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择%1$@位置"
+          }
+        }
+      }
+    },
+    "worker.connection.encodeFailed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerClient. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot encode request: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法编码请求：%1$@"
+          }
+        }
+      }
+    },
+    "worker.connection.error.output.provided.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No error output provided"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未提供错误输出"
+          }
+        }
+      }
+    },
+    "worker.input.rejected": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerEntrypoint.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker rejected oversized or unreadable input.\n"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker 拒绝超出上限或不可读的输入。\n"
+          }
+        }
+      }
+    },
+    "worker.protocol.another.finder.operation.running.wait": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another Finder operation is running. Wait for it to finish."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在执行另一个 Finder 操作，请完成后重试"
+          }
+        }
+      }
+    },
+    "worker.protocol.finder.action.timeout.isolated.worker": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder action timed out. The isolated Worker was terminated."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 动作执行超时，已终止独立 Worker"
+          }
+        }
+      }
+    },
+    "worker.protocol.finder.worker.executable.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker executable not found"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker 可执行文件不存在"
+          }
+        }
+      }
+    },
+    "worker.protocol.finder.worker.exited.unexpectedly": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker exited unexpectedly (%1$@): %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker 异常退出（%1$@）：%2$@"
+          }
+        }
+      }
+    },
+    "worker.protocol.finder.worker.request.exceeds.size.limit": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker request exceeds the size limit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker 请求超过大小上限"
+          }
+        }
+      }
+    },
+    "worker.protocol.finder.worker.request.expired": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker request expired"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker 请求已过期"
+          }
+        }
+      }
+    },
+    "worker.protocol.finder.worker.returned.damaged.response": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker returned a damaged response"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker 返回了损坏的响应"
+          }
+        }
+      }
+    },
+    "worker.protocol.finder.worker.start.failed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker failed to start: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker 启动失败：%1$@"
+          }
+        }
+      }
+    },
+    "worker.protocol.operationRejected": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker rejected a disallowed operation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker 拒绝了不允许的操作"
+          }
+        }
+      }
+    },
+    "worker.protocol.pipeNotClosed": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker output pipe did not close. Stopped waiting; check subprocesses launched by the script."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker 输出管道未关闭，已停止等待；请检查脚本启动的子进程"
+          }
+        }
+      }
+    },
+    "worker.protocol.responseMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker response does not match the current request"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker 响应与当前请求不匹配"
+          }
+        }
+      }
+    },
+    "worker.protocol.responseTooLarge": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker response exceeds the size limit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker 响应超过大小上限"
+          }
+        }
+      }
+    },
+    "worker.protocol.versionMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in FinderOperationWorkerIPC. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker protocol mismatch: expected %1$@, actual %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Worker 协议不一致：期望 %1$@，实际 %2$@"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

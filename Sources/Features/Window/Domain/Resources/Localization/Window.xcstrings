@@ -1,0 +1,672 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "appRules.bundleIDRequired": {
+      "extractionState": "manual",
+      "comment": "Used in WindowApplicationRules.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot add an excluded app without an app name and Bundle ID"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法添加排除 App：应用名称或 Bundle ID 为空"
+          }
+        }
+      }
+    },
+    "appRules.emptyBundleID": {
+      "extractionState": "manual",
+      "comment": "Used in WindowApplicationRules.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluded window app bundleIdentifier cannot be empty or have leading or trailing whitespace"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口排除 App bundleIdentifier 不能为空或包含首尾空白"
+          }
+        }
+      }
+    },
+    "appRules.emptyName": {
+      "extractionState": "manual",
+      "comment": "Used in WindowApplicationRules.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluded window app name cannot be empty or have leading or trailing whitespace"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口排除 App 名称不能为空或包含首尾空白"
+          }
+        }
+      }
+    },
+    "appRules.selfExclusionRejected": {
+      "extractionState": "manual",
+      "comment": "Used in WindowApplicationRules.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit cannot be added to its own window exclusion list"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不能把 Arc Kit 自己加入窗口管理排除列表"
+          }
+        }
+      }
+    },
+    "layout.available.display.detected.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No available display detected"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未检测到可用显示器"
+          }
+        }
+      }
+    },
+    "layout.bottom.half": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bottom Half"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下半屏"
+          }
+        }
+      }
+    },
+    "layout.bottom.left": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bottom Left"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左下角"
+          }
+        }
+      }
+    },
+    "layout.bottom.right": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bottom Right"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右下角"
+          }
+        }
+      }
+    },
+    "layout.center": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Center"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "居中"
+          }
+        }
+      }
+    },
+    "layout.connect.second.display": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect a second display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要连接第二台显示器"
+          }
+        }
+      }
+    },
+    "layout.display.position": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "By Display Position"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按屏幕位置"
+          }
+        }
+      }
+    },
+    "layout.fullScreen.display": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full-screen display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全屏显示"
+          }
+        }
+      }
+    },
+    "layout.left.half": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left Half"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左半屏"
+          }
+        }
+      }
+    },
+    "layout.left.third": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left Third"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左三分之一"
+          }
+        }
+      }
+    },
+    "layout.left.two.thirds": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left Two Thirds"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左三分之二"
+          }
+        }
+      }
+    },
+    "layout.maximize": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maximize"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "铺满"
+          }
+        }
+      }
+    },
+    "layout.middle.third": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Middle Third"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中三分之一"
+          }
+        }
+      }
+    },
+    "layout.move.next.display": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move to Next Display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移到下一显示器"
+          }
+        }
+      }
+    },
+    "layout.move.previous.display": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move to Previous Display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移到上一显示器"
+          }
+        }
+      }
+    },
+    "layout.restore.previous.position": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Previous Position"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复上次位置"
+          }
+        }
+      }
+    },
+    "layout.right.half": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Right Half"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右半屏"
+          }
+        }
+      }
+    },
+    "layout.right.third": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Right Third"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右三分之一"
+          }
+        }
+      }
+    },
+    "layout.right.two.thirds": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Right Two Thirds"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右三分之二"
+          }
+        }
+      }
+    },
+    "layout.stageManager": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stage Manager"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "台前调度"
+          }
+        }
+      }
+    },
+    "layout.system.order": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "By System Order"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按系统顺序"
+          }
+        }
+      }
+    },
+    "layout.top.half": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Top Half"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上半屏"
+          }
+        }
+      }
+    },
+    "layout.top.left": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Top Left"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左上角"
+          }
+        }
+      }
+    },
+    "layout.top.right": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Top Right"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右上角"
+          }
+        }
+      }
+    },
+    "shortcut.window.shortcut.display.value.one": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKey.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window shortcut display value must be one printable key or an explicit special key name"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口快捷键显示值必须是单个可显示按键或明确的特殊键名"
+          }
+        }
+      }
+    },
+    "shortcut.window.shortcut.keycode.outside.supported": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKey.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window shortcut keyCode is outside the supported macOS virtual key range"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口快捷键 keyCode 超出当前支持的 macOS 虚拟键码范围"
+          }
+        }
+      }
+    },
+    "shortcut.window.shortcut.modifier.contains.unknown.bits": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKey.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window shortcut modifier contains unknown bits"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口快捷键修饰键包含未知位"
+          }
+        }
+      }
+    },
+    "validation.each.window.action.one": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each window action can have only one shortcut"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每个窗口动作只能配置一个快捷键"
+          }
+        }
+      }
+    },
+    "validation.excluded.window.app.bundleIDs": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluded window app bundle identifiers must be unique"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口排除 App bundleIdentifier 不能重复"
+          }
+        }
+      }
+    },
+    "validation.excluded.window.app.names.bundleIDs": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluded window app names and bundle identifiers cannot have leading or trailing whitespace"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口排除 App 名称和 bundleIdentifier 不得包含首尾空白"
+          }
+        }
+      }
+    },
+    "validation.excluded.window.apps.require.nonempty.name": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluded window apps require a nonempty name and bundleIdentifier"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口排除 App 必须包含非空名称和 bundleIdentifier"
+          }
+        }
+      }
+    },
+    "validation.selfExclusionRejected": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit cannot be excluded from its own window management"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口排除 App 不允许包含 Arc Kit 自身"
+          }
+        }
+      }
+    },
+    "validation.window.spacing.outside.current.schema": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window spacing is outside the current schema's range"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口间距超出当前 schema 允许范围"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

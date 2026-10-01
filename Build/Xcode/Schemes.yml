@@ -1,0 +1,25 @@
+schemes:
+  ArcKit:
+    build:
+      targets:
+        ArcKit: all
+        ArcKitApplication: all
+        ArcKitFinderRuntime: all
+        ArcKitWindowRuntime: all
+        ArcKitMouseRuntime: all
+        ArcKitRuntimeHost: all
+        ArcKitPlatform: all
+        ArcKitFinderExtension: all
+    run:
+      config: Debug
+      executable: ArcKit
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - name: ArcKitTests
+    archive:
+      config: Release

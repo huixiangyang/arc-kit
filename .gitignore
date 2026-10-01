@@ -1,0 +1,52 @@
+# Swift Package Manager
+.build/
+.build-*/
+Packages/
+*.swiftmodule
+*.swiftdoc
+*.swiftsourceinfo
+# 编辑器索引异常退出时可能遗留的根目录编译副产物，不忽略源码。
+/GeneratedStringSymbols_*.d
+/GeneratedStringSymbols_*.dia
+/GeneratedStringSymbols_*.swiftdeps
+/resource_bundle_accessor*.d
+/resource_bundle_accessor*.dia
+/resource_bundle_accessor*.swiftdeps
+
+# Xcode
+*.xcworkspace/
+*.xcodeproj/
+*.xcuserdata/
+DerivedData/
+
+# macOS
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Testing
+.swiftpm/
+
+# Generated artifacts
+dist/
+tmp/
+__pycache__/
+*.py[cod]
+default.profraw
+
+# 本地配置、用户数据和签名材料
+.env
+.env.*
+!.env.example
+/.arc-kit/
+*.sqlite
+*.sqlite-*
+*.arckitbackup
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+*.pem
+id_rsa
+id_ed25519

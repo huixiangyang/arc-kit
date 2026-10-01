@@ -1,0 +1,1104 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "connection.background.jobs.remain.shutdown.incomplete": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background jobs remain; shutdown is incomplete"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台作业仍存在，尚未完成退出"
+          }
+        }
+      }
+    },
+    "connection.background.session.notReady": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background session not ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台会话尚未就绪"
+          }
+        }
+      }
+    },
+    "connection.background.session.notReady.retry.later": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background session not ready. Try again later."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台会话尚未就绪，请稍后重试"
+          }
+        }
+      }
+    },
+    "connection.background.stopping": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background stopping"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台正在停止"
+          }
+        }
+      }
+    },
+    "connection.disconnected": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background disconnected. Check background permission and installation status first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台尚未连接，请先重新检测后台许可与安装状态"
+          }
+        }
+      }
+    },
+    "connection.interrupted": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background connection interrupted; waiting to reconnect"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台连接已中断，正在等待重新连接"
+          }
+        }
+      }
+    },
+    "connection.invalidPermissionResponse": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background returned an invalid permission response"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台返回了无效的授权回包"
+          }
+        }
+      }
+    },
+    "connection.open.installed.arcKit.applications": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the installed Arc Kit from Applications, then check again"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请从“应用程序”打开已安装的 Arc Kit 后再检查"
+          }
+        }
+      }
+    },
+    "connection.retryLimit": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repeated background connection failures. Automatic reconnection stopped. Check again on Home and view technical details."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台连续连接失败，已停止自动重连；请在首页重新检测并查看技术详情"
+          }
+        }
+      }
+    },
+    "connection.runtime.session.changed.stopped.check": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The runtime session changed or stopped. Check again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "运行会话已变更或停止，请重新检查"
+          }
+        }
+      }
+    },
+    "connection.sessionMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background returned a mismatched runtime session"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台返回了不匹配的运行会话"
+          }
+        }
+      }
+    },
+    "connection.stopping": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background has not stopped yet"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台尚未停止"
+          }
+        }
+      }
+    },
+    "connection.uninstall.preparation.recovery.failed": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uninstall preparation failed: %1$@; recovery also failed: %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载准备失败：%1$@；恢复也失败：%2$@"
+          }
+        }
+      }
+    },
+    "connection.unregisterUnavailable": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot uninstall the background service right now"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前无法卸载后台服务"
+          }
+        }
+      }
+    },
+    "host.allow.arcKit.background.item": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostSystem.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow the Arc Kit background item in Login Items settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请在系统登录项中允许 Arc Kit 后台项目"
+          }
+        }
+      }
+    },
+    "host.background.registration.recovery.incomplete": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostSystem.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background registration recovery incomplete"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台注册恢复未完成"
+          }
+        }
+      }
+    },
+    "host.executionDenied": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostSystem.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background execution is not allowed by macOS yet"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台尚未获得系统许可"
+          }
+        }
+      }
+    },
+    "host.installed.arcKit.manage": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostSystem.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only the installed Arc Kit can manage the background service"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台只能由已安装的 Arc Kit 管理"
+          }
+        }
+      }
+    },
+    "host.launch.login.recovery.incomplete": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostSystem.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Launch at login recovery incomplete"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录启动恢复未完成"
+          }
+        }
+      }
+    },
+    "host.old.background.components.remain.upgrade.using": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostSystem. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Old background components remain. Upgrade using the new installation process: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旧后台尚未清理，请通过新版安装流程升级：%1$@"
+          }
+        }
+      }
+    },
+    "permissions": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已开启"
+          }
+        }
+      }
+    },
+    "permissions.allow.arcKit.background.item": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow the Arc Kit background item in Login Items settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在系统登录项中允许 Arc Kit 后台项目"
+          }
+        }
+      }
+    },
+    "permissions.allow.arcKit.host.system": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow Arc Kit Runtime Host in System Settings. The request will not be repeated while waiting."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请在系统设置中允许 Arc Kit Runtime Host；本次等待不重复申请"
+          }
+        }
+      }
+    },
+    "permissions.allow.inputMonitoring.arcKit": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow Input Monitoring for Arc Kit to identify the target window before a menu bar click"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请允许 Arc Kit 输入监听，以锁定点击菜单栏前的目标窗口"
+          }
+        }
+      }
+    },
+    "permissions.allowed": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allowed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已允许"
+          }
+        }
+      }
+    },
+    "permissions.allows.arcKit.provide.finder.menus": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allows Arc Kit to provide Finder menus. The switch alone does not confirm a working menu connection."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许 Arc Kit 提供 Finder 菜单；开关不代表菜单链路正常"
+          }
+        }
+      }
+    },
+    "permissions.arcKit.host.see.feature.status": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit Runtime Host; see Feature Status for actual availability"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit Runtime Host；实际功能可用性见功能状态"
+          }
+        }
+      }
+    },
+    "permissions.backgroundDenied": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background execution not allowed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台未获准运行"
+          }
+        }
+      }
+    },
+    "permissions.check.again.restore.background.registration": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check again to restore background registration. This does not mean privacy permission was denied."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新检测以恢复后台注册；这不代表隐私权限被拒绝"
+          }
+        }
+      }
+    },
+    "permissions.component.missing": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Component missing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "组件缺失"
+          }
+        }
+      }
+    },
+    "permissions.debugAccessibilityHint": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debug windows do not check or request system permissions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调试窗口不检测或申请系统授权"
+          }
+        }
+      }
+    },
+    "permissions.debugExtensionHint": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debug windows do not check system extensions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调试窗口不检测系统扩展"
+          }
+        }
+      }
+    },
+    "permissions.debugHostHint": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debug windows do not query installed background permission"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调试窗口不查询安装版后台许可"
+          }
+        }
+      }
+    },
+    "permissions.debugInputHint": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debug windows do not check or request Input Monitoring"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调试窗口不检测或申请输入监听"
+          }
+        }
+      }
+    },
+    "permissions.denied": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not allowed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未允许"
+          }
+        }
+      }
+    },
+    "permissions.extension.switch.result.installation.missing": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No extension switch result for this installation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚无当前安装包的扩展开关检测结果"
+          }
+        }
+      }
+    },
+    "permissions.finder.off.system.extension.switch": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder is off. The system extension switch is preserved separately."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 功能已关闭，系统扩展开关独立保留"
+          }
+        }
+      }
+    },
+    "permissions.finder.windows.mouse.all.off": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder, Windows and Mouse are all off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder、窗口和鼠标均已关闭"
+          }
+        }
+      }
+    },
+    "permissions.grant.access.arcKit.reads.mouse": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grant access to Arc Kit. Reads mouse clicks only to identify the target window before menu bar actions; does not record keyboard or page content."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "授权对象：Arc Kit；只读鼠标点击以锁定菜单栏操作前的窗口，不记录键盘或页面内容"
+          }
+        }
+      }
+    },
+    "permissions.granted": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Granted"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已授权"
+          }
+        }
+      }
+    },
+    "permissions.hostMissing": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The installation lacks a background component. Reinstall Arc Kit."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装包缺少后台组件，请重新安装"
+          }
+        }
+      }
+    },
+    "permissions.inputMonitoring.check.result.missing": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Input Monitoring check result for the main app"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚无主应用输入监听检测结果"
+          }
+        }
+      }
+    },
+    "permissions.menuBar.layouts.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menu bar layouts unavailable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "菜单栏布局不可用"
+          }
+        }
+      }
+    },
+    "permissions.menuBarClickNotRequired": {
+      "extractionState": "manual",
+      "comment": "Menu bar click monitoring is unnecessary when its icon is hidden or window management is disabled.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menu bar window layouts are disabled; click monitoring is not required."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "菜单栏窗口布局未启用，无需监听菜单栏点击。"
+          }
+        }
+      }
+    },
+    "permissions.monitoring.allowed": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monitoring allowed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可监听"
+          }
+        }
+      }
+    },
+    "permissions.notGranted": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not granted"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未授权"
+          }
+        }
+      }
+    },
+    "permissions.notRequired": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not currently needed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂不需要"
+          }
+        }
+      }
+    },
+    "permissions.off": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未开启"
+          }
+        }
+      }
+    },
+    "permissions.registrationUnknown": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The system returned an unrecognized registration state"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统未返回可识别的注册状态"
+          }
+        }
+      }
+    },
+    "permissions.request.incomplete": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Request incomplete"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "申请未完成"
+          }
+        }
+      }
+    },
+    "permissions.requested.arcKit.host": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Requested by Arc Kit Runtime Host"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "申请由 Arc Kit Runtime Host 发起"
+          }
+        }
+      }
+    },
+    "permissions.requesting": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Requesting"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在申请"
+          }
+        }
+      }
+    },
+    "permissions.unconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unconfirmed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未确认"
+          }
+        }
+      }
+    },
+    "permissions.unregistered.yet": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not registered yet"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未注册"
+          }
+        }
+      }
+    },
+    "permissions.used.finder.windows.mouse.configured": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Used by Finder, Windows and Mouse; configured separately from launching Arc Kit at login"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "供 Finder、窗口和鼠标使用；与登录时启动 Arc Kit 分开设置"
+          }
+        }
+      }
+    },
+    "permissions.used.window.control.scrolling.gestures": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Used for window control, scrolling and gestures. Grant access to Arc Kit Runtime Host."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用于窗口控制、滚动和手势；授权对象为 Arc Kit Runtime Host"
+          }
+        }
+      }
+    },
+    "permissions.valid.background.registration.result.missing": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No valid background registration result"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚无有效的后台注册结果"
+          }
+        }
+      }
+    },
+    "permissions.valid.permission.response.current.missing": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No valid permission response from the current background process"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚无当前后台进程的有效权限回包"
+          }
+        }
+      }
+    },
+    "permissions.waiting.system.permission": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting for system permission"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待系统授权"
+          }
+        }
+      }
+    },
+    "permissions.windows.mouse.off.existing.system": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationPermissions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Windows and Mouse are off. Existing system permissions are preserved."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口和鼠标均已关闭；不会撤销已有系统授权"
+          }
+        }
+      }
+    },
+    "settings.notLoaded": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings have not finished loading. Try again later."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置尚未加载完成，请稍后重试"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

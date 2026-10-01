@@ -1,0 +1,438 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "asset.asset.record.contains.invalid.path": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitAssetStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asset record contains an invalid path"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "资源记录包含无效路径"
+          }
+        }
+      }
+    },
+    "asset.existing.asset.verification.reuse.refused.failed": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitAssetStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Existing asset failed verification; reuse refused"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已有资源校验失败，拒绝复用"
+          }
+        }
+      }
+    },
+    "asset.invalid.asset.extension": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitAssetStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid asset extension"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "资源扩展名无效"
+          }
+        }
+      }
+    },
+    "asset.invalid.asset.size.file.type": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitAssetStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid asset size or file type"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "资源体积或文件类型无效"
+          }
+        }
+      }
+    },
+    "database.another.app.using.data.folder": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another app is using this data folder. A second configuration writer is not allowed."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已有应用正在使用该数据目录，拒绝启动第二个配置写入者"
+          }
+        }
+      }
+    },
+    "database.app.still.using.data": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app is still using the data. Quit it first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用仍在使用数据，请先退出"
+          }
+        }
+      }
+    },
+    "database.app.still.using.database": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app is still using the database. Quit before restoring."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用仍在使用数据库，请退出后恢复"
+          }
+        }
+      }
+    },
+    "database.backup.destination.already.exists": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup destination already exists"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份目标已存在"
+          }
+        }
+      }
+    },
+    "database.backup.integrity.check.failed": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup integrity check failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份完整性校验失败"
+          }
+        }
+      }
+    },
+    "database.backup.version.integrity.mismatch": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup version or integrity mismatch"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份版本或完整性不匹配"
+          }
+        }
+      }
+    },
+    "database.configuration.database.notReady": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configuration database not ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置数据库尚未准备完成"
+          }
+        }
+      }
+    },
+    "database.data.created.newer.version": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data was created by a newer version. Overwrite refused."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此数据由较新版本创建，拒绝覆盖"
+          }
+        }
+      }
+    },
+    "database.database.metadata.missing": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Database metadata missing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "数据库元信息缺失"
+          }
+        }
+      }
+    },
+    "database.invalid.configuration.revision": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid configuration revision"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置代次无效"
+          }
+        }
+      }
+    },
+    "database.readOnly": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background services cannot modify configuration"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台不能修改配置"
+          }
+        }
+      }
+    },
+    "database.readOnlyRestoreFailed": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot restore a read-only database"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只读数据库无法恢复"
+          }
+        }
+      }
+    },
+    "database.readOnlyRestoreRejected": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A read-only connection cannot restore the database"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只读连接不能恢复数据库"
+          }
+        }
+      }
+    },
+    "database.schemaMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitDatabase.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Database version mismatch. Complete migration and restart the background service."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "数据库版本不匹配，请完成迁移后重启后台"
+          }
+        }
+      }
+    },
+    "record.configuration.field.type.mismatch": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRecord. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configuration field type mismatch: %1$@.%2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置字段类型不匹配：%1$@.%2$@"
+          }
+        }
+      }
+    },
+    "record.duplicateSingleton": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRecord.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Singleton configuration contains duplicate records"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "单例配置包含重复记录"
+          }
+        }
+      }
+    },
+    "record.field.declare.complex.value.type": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRecord. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Field %1$@ must declare its complex value type"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "字段 %1$@ 必须声明复杂参数类型"
+          }
+        }
+      }
+    },
+    "record.invalid.collection.format": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRecord. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid collection format: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "集合格式错误：%1$@"
+          }
+        }
+      }
+    },
+    "record.invalid.configuration.field.type.manifest": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRecord.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid configuration field type manifest"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置字段类型清单无效"
+          }
+        }
+      }
+    },
+    "record.record.object": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRecord.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record must be an object"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "记录必须是对象"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,193 @@
+targets:
+  ArcKitPersistence:
+    type: framework
+    platform: macOS
+    sources:
+      - path: Sources/Platform/Persistence
+        excludes: [Resources]
+      - path: Sources/Platform/Persistence/Resources/Localization
+        buildPhase: resources
+      - path: Sources/Platform/Resources/Localization/Common.xcstrings
+        buildPhase: resources
+    dependencies:
+      - target: ArcKitPlatform
+      - package: GRDB
+        product: GRDB
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit.persistence
+        GENERATE_INFOPLIST_FILE: YES
+  ArcKitPlatform:
+    type: framework
+    platform: macOS
+    sources:
+      - path: Sources/Platform
+        excludes: [Resources, Persistence]
+      - path: Sources/Platform/Resources/Localization
+        buildPhase: resources
+      - path: Sources/Platform/Resources/Lucide
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit.platform
+        GENERATE_INFOPLIST_FILE: YES
+  ArcKitFinder:
+    type: framework
+    platform: macOS
+    sources:
+      - path: Sources/Features/Finder/Domain
+        excludes: [Resources]
+      - path: Sources/Features/Finder/Domain/Resources/NewFileTemplates
+        buildPhase: resources
+        # 用父组相对引用整体复制；folder 类型会错误地相对生成工程解析。
+        type: file
+      - path: Sources/Features/Finder/Domain/Resources/Localization
+        buildPhase: resources
+      - path: Sources/Platform/Resources/Localization/Common.xcstrings
+        buildPhase: resources
+    dependencies:
+      - target: ArcKitPlatform
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit.finder
+        GENERATE_INFOPLIST_FILE: YES
+  ArcKitWindow:
+    type: framework
+    platform: macOS
+    sources:
+      - path: Sources/Features/Window/Domain
+        excludes: [Resources]
+      - path: Sources/Features/Window/Domain/Resources/Localization
+        buildPhase: resources
+      - path: Sources/Platform/Resources/Localization/Common.xcstrings
+        buildPhase: resources
+    dependencies:
+      - target: ArcKitPlatform
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit.window
+        GENERATE_INFOPLIST_FILE: YES
+  ArcKitMouse:
+    type: framework
+    platform: macOS
+    sources:
+      - path: Sources/Features/Mouse/Domain
+        excludes: [Resources]
+      - path: Sources/Features/Mouse/Domain/Resources/Localization
+        buildPhase: resources
+      - path: Sources/Platform/Resources/Localization/Common.xcstrings
+        buildPhase: resources
+    dependencies:
+      - target: ArcKitPlatform
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit.mouse
+        GENERATE_INFOPLIST_FILE: YES
+  ArcKitApplication:
+    type: framework
+    platform: macOS
+    sources:
+      - path: Sources/Application
+        excludes: [Resources]
+      - path: Sources/UI
+      - path: Sources/Features/Finder/Settings
+      - path: Sources/Features/Finder/Client
+      - path: Sources/Features/Window/Settings
+      - path: Sources/Features/Window/Client
+      - path: Sources/Features/Mouse/Settings
+      - path: Sources/Features/Mouse/Client
+      - path: Sources/Features/Wallpaper
+      - path: Sources/Features/Appearance
+      - path: Sources/Features/SystemTools
+      - path: Sources/Application/Resources/Brand
+        buildPhase: resources
+        # 保留父组路径，支持工程生成到 .build/xcode。
+        type: file
+      - path: Sources/Application/Resources/Aura
+        buildPhase: resources
+        type: file
+      - path: Sources/Application/Resources/Localization
+        buildPhase: resources
+      - path: Sources/Platform/Resources/Localization/Common.xcstrings
+        buildPhase: resources
+    dependencies:
+      - target: ArcKitPersistence
+      - sdk: AVKit.framework
+      - package: Sparkle
+        product: Sparkle
+      - target: ArcKitPlatform
+      - target: ArcKitFinder
+      - target: ArcKitWindow
+      - target: ArcKitMouse
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit.application
+        GENERATE_INFOPLIST_FILE: YES
+  ArcKitWindowRuntime:
+    type: framework
+    platform: macOS
+    sources:
+      - path: Sources/Features/Window/Runtime
+        excludes: [Resources]
+      - path: Sources/Features/Window/Runtime/Resources/Localization
+        buildPhase: resources
+      - path: Sources/Platform/Resources/Localization/Common.xcstrings
+        buildPhase: resources
+    dependencies:
+      - target: ArcKitPlatform
+      - target: ArcKitWindow
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit.window-runtime
+        GENERATE_INFOPLIST_FILE: YES
+  ArcKitMouseRuntime:
+    type: framework
+    platform: macOS
+    sources:
+      - path: Sources/Features/Mouse/Runtime
+        excludes: [Resources]
+      - path: Sources/Features/Mouse/Runtime/Resources/Localization
+        buildPhase: resources
+      - path: Sources/Platform/Resources/Localization/Common.xcstrings
+        buildPhase: resources
+    dependencies:
+      - target: ArcKitPlatform
+      - target: ArcKitMouse
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit.mouse-runtime
+        GENERATE_INFOPLIST_FILE: YES
+  ArcKitFinderRuntime:
+    type: framework
+    platform: macOS
+    sources:
+      - path: Sources/Features/Finder/Runtime
+        excludes: [Resources]
+      - path: Sources/Features/Finder/Runtime/Resources/Localization
+        buildPhase: resources
+      - path: Sources/Platform/Resources/Localization/Common.xcstrings
+        buildPhase: resources
+    dependencies:
+      - target: ArcKitPlatform
+      - target: ArcKitFinder
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit.finder-runtime
+        GENERATE_INFOPLIST_FILE: YES
+  ArcKitFinderSync:
+    type: framework
+    platform: macOS
+    sources:
+      - path: Sources/Features/Finder/Extension
+        excludes: [Resources]
+      - path: Sources/Features/Finder/Extension/Resources/Localization
+        buildPhase: resources
+      - path: Sources/Platform/Resources/Localization/Common.xcstrings
+        buildPhase: resources
+    dependencies:
+      - target: ArcKitPlatform
+      - target: ArcKitFinder
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.archalo.arckit.finder-sync
+        GENERATE_INFOPLIST_FILE: YES

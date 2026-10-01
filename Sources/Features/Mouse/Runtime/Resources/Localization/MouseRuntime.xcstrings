@@ -1,0 +1,420 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "gesture.action.assigned.direction.missing": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGesturePresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No action assigned to this direction"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "该方向未绑定动作"
+          }
+        }
+      }
+    },
+    "gesture.action.assigned.px.missing": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGesturePresentation. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No action assigned · %1$@ px"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未绑定动作 · %1$@ px"
+          }
+        }
+      }
+    },
+    "gesture.belowThreshold": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGesturePresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trigger distance not reached"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未达到触发距离"
+          }
+        }
+      }
+    },
+    "gesture.drag.beyond.px.perform.action": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGesturePresentation. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag beyond %1$@ px to perform an action"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖动超过 %1$@ px 后执行动作"
+          }
+        }
+      }
+    },
+    "gesture.gesture.failed": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGesturePresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gesture failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手势执行失败"
+          }
+        }
+      }
+    },
+    "gesture.gesture.target.app.changed.action.cancelled": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGesturePresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gesture target app changed. Action cancelled."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手势目标应用已改变，本次动作已取消"
+          }
+        }
+      }
+    },
+    "gesture.keep.dragging": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGesturePresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep dragging"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "继续拖动"
+          }
+        }
+      }
+    },
+    "gesture.mouse.gestures": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGesturePresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse Gestures"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标手势"
+          }
+        }
+      }
+    },
+    "gesture.normal.right.click": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGesturePresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Normal Right-Click"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "普通右键"
+          }
+        }
+      }
+    },
+    "gesture.run": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGesturePresentation. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Run: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "执行：%1$@"
+          }
+        }
+      }
+    },
+    "gesture.shortcutEventFailed": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGesturePresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot create system shortcut event"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法创建系统快捷键事件"
+          }
+        }
+      }
+    },
+    "monitor.expiredRecoveryHint": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse monitoring expired. Turn mouse enhancement off and on."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标监听已失效，请关闭后重新开启鼠标增强"
+          }
+        }
+      }
+    },
+    "monitor.failedRecoveryHint": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse monitoring recovery failed. Turn mouse enhancement off and on."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标监听恢复失败，请关闭后重新开启鼠标增强"
+          }
+        }
+      }
+    },
+    "monitor.gesture.execution.expired.retry": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gesture execution expired. Retry."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手势执行已过期，请重试"
+          }
+        }
+      }
+    },
+    "monitor.gesture.processing.overloaded.batch.cancelled": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gesture processing overloaded. This batch was cancelled; retry."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手势处理过载，本批动作已取消，请重试"
+          }
+        }
+      }
+    },
+    "monitor.macos.disabled.mouse.monitoring.arcKit": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS disabled mouse monitoring. Arc Kit will try to recover automatically; if this persists, turn mouse enhancement off and on."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标监听被系统停用，Arc Kit 会尝试自动恢复；若持续出现，请关闭后重新开启鼠标增强"
+          }
+        }
+      }
+    },
+    "monitor.macos.disabled.mouse.monitoring.timeout": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS disabled mouse monitoring after a timeout. It recovered automatically."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标监听曾因处理超时被系统停用，已自动恢复"
+          }
+        }
+      }
+    },
+    "monitor.mouse.monitor.created.disabled": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse monitor was created but not enabled. Check background and monitoring status again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标监听创建后未启用；请重新检测后台和监听状态"
+          }
+        }
+      }
+    },
+    "monitor.readbackFailed": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse monitor enablement failed readback validation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标监听启用事件未通过状态回读"
+          }
+        }
+      }
+    },
+    "monitor.recovered": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS disabled mouse monitoring. It recovered automatically."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标监听曾被系统停用，已自动恢复"
+          }
+        }
+      }
+    },
+    "session.directScrollFallback": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollSession.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smooth refresh driver unavailable. Using direct scrolling."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "平滑刷新器不可用，当前已降级为直接滚动"
+          }
+        }
+      }
+    },
+    "session.eventCreationFailed": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollSession.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot create a smooth scroll event. This sequence was cancelled."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法创建平滑滚轮事件，本次轨迹已取消"
+          }
+        }
+      }
+    },
+    "session.scroll.input.lacks.target.process": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollSession.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scroll input lacks a target process or window. Using synchronous scrolling."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "滚轮缺少目标进程或窗口标注，已改为同步滚动"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

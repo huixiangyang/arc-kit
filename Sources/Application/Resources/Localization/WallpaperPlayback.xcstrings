@@ -1,0 +1,1512 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "apply.disconnectedDuringWrite": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperImageTransaction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Display disconnected"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "屏幕已断开"
+          }
+        }
+      }
+    },
+    "apply.display.disconnected": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperImageTransaction. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ (display disconnected)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@（屏幕已断开）"
+          }
+        }
+      }
+    },
+    "apply.originalUnavailable": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperImageTransaction. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ (original wallpaper missing or unreadable; restoration not attempted)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@（原壁纸文件已不存在或不可读，未尝试写回）"
+          }
+        }
+      }
+    },
+    "apply.restoration.request.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperImageTransaction. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ (restoration request failed: %2$@)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@（恢复请求失败：%2$@）"
+          }
+        }
+      }
+    },
+    "apply.restoration.requested.awaiting.system.confirmation": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperImageTransaction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restoration requested; awaiting system confirmation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已请求恢复，系统尚未确认"
+          }
+        }
+      }
+    },
+    "apply.restoreUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperImageTransaction. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original wallpaper restoration unconfirmed: %1$@. Check macOS wallpaper settings."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原壁纸恢复未完成确认：%1$@。请检查系统壁纸设置。"
+          }
+        }
+      }
+    },
+    "apply.succeeded": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel. Arguments: 1 (String), 2 (String), 3 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set “%1$@” as the %3$@ for %2$@."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已将“%1$@”设为 %2$@ 的%3$@。"
+          }
+        }
+      }
+    },
+    "apply.systemUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS accepted the wallpaper setting. Still unconfirmed: %1$@. Configuration saved; refresh Displays & Playback to check."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统已接受壁纸设置；仍待确认：%1$@。已保存配置，请在“屏幕与播放”刷新检查。"
+          }
+        }
+      }
+    },
+    "apply.targetsDisconnected": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperImageTransaction. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target displays disconnected: %1$@. No other displays were used."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标屏幕已断开：%1$@。未改为其他屏幕。"
+          }
+        }
+      }
+    },
+    "apply.unavailable.set.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperImageTransaction. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not set wallpaper for %1$@: %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 的壁纸写入失败：%2$@"
+          }
+        }
+      }
+    },
+    "desktop.debugScope": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDesktop.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debug windows do not change the desktop. Apply wallpapers in the installed app."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调试窗口不修改桌面，请在安装版中应用壁纸。"
+          }
+        }
+      }
+    },
+    "desktop.playbackFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDesktop.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot play the live wallpaper."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "动态壁纸无法播放。"
+          }
+        }
+      }
+    },
+    "desktop.target.display.disconnected": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDesktop.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The target display is disconnected."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标屏幕已断开。"
+          }
+        }
+      }
+    },
+    "desktop.unreadableFile": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDesktop.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The wallpaper file cannot be read. Import it again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "壁纸文件不可读取，请重新导入。"
+          }
+        }
+      }
+    },
+    "desktop.video.loading.timeout.original.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDesktop.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video loading timed out. The original wallpaper is unchanged."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频加载超时，原壁纸未改变。"
+          }
+        }
+      }
+    },
+    "desktop.video.playback.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDesktop.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video playback failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频播放失败"
+          }
+        }
+      }
+    },
+    "display.applies.selected.displays.mirrored.displays": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applies only to selected displays. Mirrored displays follow the desktops provided by macOS."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只应用到本次勾选的屏幕，其他屏幕保持原状。镜像模式按系统提供的桌面处理。"
+          }
+        }
+      }
+    },
+    "display.apply.display": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply to This Display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用到此屏幕"
+          }
+        }
+      }
+    },
+    "display.apply.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply Wallpaper"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用壁纸"
+          }
+        }
+      }
+    },
+    "display.applying.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applying wallpaper…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在应用壁纸…"
+          }
+        }
+      }
+    },
+    "display.available.displays.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No available displays"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有可设置的屏幕"
+          }
+        }
+      }
+    },
+    "display.cancel.operation": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel Operation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消操作"
+          }
+        }
+      }
+    },
+    "display.change": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更换…"
+          }
+        }
+      }
+    },
+    "display.choose.displays": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Displays"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择屏幕"
+          }
+        }
+      }
+    },
+    "display.choose.wallpaper.display": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Wallpaper for Display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "为屏幕选择壁纸"
+          }
+        }
+      }
+    },
+    "display.clear": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清空"
+          }
+        }
+      }
+    },
+    "display.disconnected.display": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disconnected display %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未连接的屏幕 %1$@"
+          }
+        }
+      }
+    },
+    "display.disconnected.displays": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disconnected displays"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未连接的屏幕"
+          }
+        }
+      }
+    },
+    "display.display": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews. Arguments: 1 (String), 2 (String), 3 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Display %1$@, %2$@%3$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "屏幕 %1$@，%2$@%3$@"
+          }
+        }
+      }
+    },
+    "display.display.automatic.rotation.enabled.applying": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This display has automatic rotation enabled. Applying manually does not turn rotation off."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此屏幕正在自动轮换，手动应用不会关闭轮换。"
+          }
+        }
+      }
+    },
+    "display.display.disconnected.reconnect": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This display is disconnected. Reconnect it before applying."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这块屏幕已断开，重新连接后才能应用。"
+          }
+        }
+      }
+    },
+    "display.displays.wallpapers": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Displays and Wallpapers"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "屏幕与壁纸"
+          }
+        }
+      }
+    },
+    "display.each.display.different.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each display can have a different wallpaper. Click the arrangement or Change to configure one display."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "各屏幕可使用不同壁纸。点击排列图或“更换”单独设置。"
+          }
+        }
+      }
+    },
+    "display.import.files.my.wallpapers.download": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import files in My Wallpapers or download them from the online gallery."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先到“我的壁纸”导入文件，或从在线图库下载。"
+          }
+        }
+      }
+    },
+    "display.keeps.configuration.restore.video.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keeps the configuration to restore video wallpaper when reconnected. Removing it does not delete library assets."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保留配置以便重连后恢复视频壁纸；移除配置不删除图库素材。"
+          }
+        }
+      }
+    },
+    "display.main.display": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": ", main display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "，主屏幕"
+          }
+        }
+      }
+    },
+    "display.matching.wallpapers.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No matching wallpapers"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有匹配的壁纸"
+          }
+        }
+      }
+    },
+    "display.noneAvailable": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No available displays detected. Connect a display and try again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未检测到可设置的屏幕，请连接显示器后重试。"
+          }
+        }
+      }
+    },
+    "display.remove.configuration": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove Configuration"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除配置"
+          }
+        }
+      }
+    },
+    "display.removedAssignment": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removed the disconnected display's wallpaper configuration. Library files are preserved."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已移除断开屏幕的壁纸配置，图库文件保留。"
+          }
+        }
+      }
+    },
+    "display.rotation.still.enabled.selected": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rotation is still enabled for the selected displays and will change the wallpaper again on schedule."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所选范围仍有自动轮换，下一次轮换会继续更换壁纸。"
+          }
+        }
+      }
+    },
+    "display.scaling": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scaling"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示方式"
+          }
+        }
+      }
+    },
+    "display.scaling.display": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scaling for this display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此屏幕显示方式"
+          }
+        }
+      }
+    },
+    "display.search.my.wallpapers": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search my wallpapers"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索我的壁纸"
+          }
+        }
+      }
+    },
+    "display.select.least.one.display": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select at least one display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请选择至少一块屏幕"
+          }
+        }
+      }
+    },
+    "display.selected.display.disconnected.deselect.continue": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selected display disconnected · Deselect it to continue"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所选屏幕已断开 · 取消勾选后可继续"
+          }
+        }
+      }
+    },
+    "display.set.desktop.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set Desktop Wallpaper"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置桌面壁纸"
+          }
+        }
+      }
+    },
+    "display.unconfirmedAssignment": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configured; not confirmed active"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已配置，未确认生效"
+          }
+        }
+      }
+    },
+    "display.use": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In use"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在使用"
+          }
+        }
+      }
+    },
+    "display.using.system.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Using system wallpaper"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用系统壁纸"
+          }
+        }
+      }
+    },
+    "display.wallpaper.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wallpaper unavailable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "壁纸不可用"
+          }
+        }
+      }
+    },
+    "display.wallpapers.yet.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No wallpapers yet"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没有壁纸"
+          }
+        }
+      }
+    },
+    "displays.selectedCount": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperDisplayViews. Arguments: 1 (Int).",
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld display selected"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld displays selected"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已选择 %lld 块屏幕"
+          }
+        }
+      }
+    },
+    "interval.fifteenMinutes": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15 minutes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15 分钟"
+          }
+        }
+      }
+    },
+    "interval.fiveMinutes": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 minutes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 分钟"
+          }
+        }
+      }
+    },
+    "interval.hour": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 hour"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 小时"
+          }
+        }
+      }
+    },
+    "interval.thirtyMinutes": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 minutes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 分钟"
+          }
+        }
+      }
+    },
+    "library.choose.one.more.displays.setting": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose one or more displays when setting desktop wallpaper. Configure each display separately in Displays & Playback."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设为桌面壁纸时可选择一块或多块屏幕，各屏幕也可在“屏幕与播放”中单独设置。"
+          }
+        }
+      }
+    },
+    "library.display.reconnected.change.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The display reconnected. Change its wallpaper in that display's settings."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "屏幕已重新连接，请在该屏幕的设置中更换壁纸。"
+          }
+        }
+      }
+    },
+    "library.invalid.display.assignment.format": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibrary.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid display assignment format"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "屏幕分配格式错误"
+          }
+        }
+      }
+    },
+    "library.live.wallpaper.playback.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live wallpaper playback failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "动态壁纸播放失败：%1$@"
+          }
+        }
+      }
+    },
+    "library.live.wallpapers.rotation.stopped.original": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live wallpapers and rotation stopped. The original system desktop is visible."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "动态壁纸与轮换已停止，显示系统原有桌面。"
+          }
+        }
+      }
+    },
+    "library.main.display": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " · Main display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " · 主屏幕"
+          }
+        }
+      }
+    },
+    "library.rollbackFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not save wallpaper state. The original desktop was restored: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存壁纸状态失败，已恢复原桌面：%1$@"
+          }
+        }
+      }
+    },
+    "library.saveFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not save wallpaper state: %1$@; %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存壁纸状态失败：%1$@；%2$@"
+          }
+        }
+      }
+    },
+    "playback.all.displays": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All displays"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部显示器"
+          }
+        }
+      }
+    },
+    "playback.automatic.rotation": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic Rotation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动轮换"
+          }
+        }
+      }
+    },
+    "playback.change.now": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change Now"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "立即换一张"
+          }
+        }
+      }
+    },
+    "playback.change.wallpaper.schedule": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change wallpaper on a schedule"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定时更换壁纸"
+          }
+        }
+      }
+    },
+    "playback.debugScope": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This debug session does not apply wallpapers or start rotation."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此调试会话不会应用壁纸或启动自动轮换。"
+          }
+        }
+      }
+    },
+    "playback.disconnected.displays": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disconnected displays"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已断开的显示器"
+          }
+        }
+      }
+    },
+    "playback.favorites": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites only"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只轮换收藏"
+          }
+        }
+      }
+    },
+    "playback.interval": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interval"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "间隔"
+          }
+        }
+      }
+    },
+    "playback.live.wallpaper.set.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No live wallpaper set"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未设置动态壁纸"
+          }
+        }
+      }
+    },
+    "playback.pause": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂停播放"
+          }
+        }
+      }
+    },
+    "playback.resume": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resume"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "继续播放"
+          }
+        }
+      }
+    },
+    "playback.rotation.affects.selected.scope.all": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rotation affects only the selected scope. All displays switch to the same wallpaper together. Manually choosing displays does not change rotation scope. Rotation continues when the window closes and stops when Arc Kit quits."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "轮换只影响所选范围；全部屏幕会同步切换同一张壁纸。手动选屏不改变轮换范围。关闭管理窗口继续轮换，退出 Arc Kit 后停止。"
+          }
+        }
+      }
+    },
+    "playback.rotation.displays": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rotation displays"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "轮换屏幕"
+          }
+        }
+      }
+    },
+    "playback.rotation.scaling": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rotation scaling"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "轮换显示方式"
+          }
+        }
+      }
+    },
+    "playback.shuffle": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shuffle"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "随机顺序"
+          }
+        }
+      }
+    },
+    "playback.supports.mp4.mov.m4v.silent": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supports MP4, MOV and M4V with silent looping. Pauses during sleep or an inactive user session. Stopping reveals the system wallpaper; quitting closes the video."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持 MP4、MOV、M4V，静音循环播放；休眠或用户会话停用时暂停。停止后显露系统原有壁纸，退出后视频关闭。"
+          }
+        }
+      }
+    },
+    "playback.video.playback.all.displays": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video Playback · All Displays"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频播放 · 全部屏幕"
+          }
+        }
+      }
+    },
+    "playback.video.wallpaper.configured": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperPlaybackView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video wallpaper configured"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已配置视频壁纸"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

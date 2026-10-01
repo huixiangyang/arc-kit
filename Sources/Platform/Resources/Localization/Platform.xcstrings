@@ -1,0 +1,636 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "file.file.exceeds": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitBoundedFileReader. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File exceeds %1$@ "
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件超过 %1$@ "
+          }
+        }
+      }
+    },
+    "file.limit": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitBoundedFileReader. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "limit: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上限：%1$@"
+          }
+        }
+      }
+    },
+    "identity.component.identity.mismatch": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitXPCPeerIdentityVerifier. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Component identity mismatch: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "组件身份不匹配：%1$@"
+          }
+        }
+      }
+    },
+    "identity.expected.actual": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitXPCPeerIdentityVerifier. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expected %1$@, actual %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "期望 %1$@，实际 %2$@"
+          }
+        }
+      }
+    },
+    "identity.installationMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitXPCPeerIdentityVerifier.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Running component is not from this installation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "运行组件不属于当前安装包"
+          }
+        }
+      }
+    },
+    "identity.installed.component.missing.unreadable": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitXPCPeerIdentityVerifier. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installed component missing or unreadable: %1$@ (%2$@)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前安装组件不存在或无法读取：%1$@（%2$@）"
+          }
+        }
+      }
+    },
+    "identity.invalid.component.code.signature": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitXPCPeerIdentityVerifier.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid component code signature"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "组件代码签名无效"
+          }
+        }
+      }
+    },
+    "identity.invalid.xpc.message.format": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitXPCPeerIdentityVerifier.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid XPC message format"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "XPC 消息格式无效"
+          }
+        }
+      }
+    },
+    "identity.mainAppVerificationFailed": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitXPCPeerIdentityVerifier.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot verify the main app process"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法验证主应用进程"
+          }
+        }
+      }
+    },
+    "identity.pathMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitXPCPeerIdentityVerifier. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Running path does not match the current installation: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "运行路径不是当前安装路径：%1$@"
+          }
+        }
+      }
+    },
+    "identity.senderSignatureUnreadable": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitXPCPeerIdentityVerifier. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read sender code signature (%1$@)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取消息发送者代码签名（%1$@）"
+          }
+        }
+      }
+    },
+    "identity.signatureInfoUnreadable": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitXPCPeerIdentityVerifier. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read code signature information (%1$@)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取代码签名信息（%1$@）"
+          }
+        }
+      }
+    },
+    "identity.signatureUnreadable": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitXPCPeerIdentityVerifier. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read running component's static signature (%1$@)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取运行组件静态签名（%1$@）"
+          }
+        }
+      }
+    },
+    "identity.verificationFailed": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitXPCPeerIdentityVerifier. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot verify component identity: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法验证组件身份：%1$@"
+          }
+        }
+      }
+    },
+    "ipc.agent.connection.failed": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeIPC. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent connection failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent 连接失败：%1$@"
+          }
+        }
+      }
+    },
+    "ipc.agent.protocol.mismatch.expected.actual": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeIPC. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent protocol mismatch: expected %1$@, actual %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent 协议版本不一致：期望 %1$@，实际 %2$@"
+          }
+        }
+      }
+    },
+    "ipc.agent.received.damaged.request": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent received a damaged request"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent 收到了损坏的请求"
+          }
+        }
+      }
+    },
+    "ipc.agent.rejected.operation.outside.responsibility": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent rejected an operation outside its responsibility"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent 拒绝了不属于自身故障域的操作"
+          }
+        }
+      }
+    },
+    "ipc.agent.request.expired": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent request expired"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent 请求已过期"
+          }
+        }
+      }
+    },
+    "ipc.agent.request.includes.data.disallowed": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent request includes data disallowed for this operation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent 请求夹带了当前操作不允许的数据"
+          }
+        }
+      }
+    },
+    "ipc.agent.request.lacks.required.data": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent request lacks required data"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent 请求缺少必要数据"
+          }
+        }
+      }
+    },
+    "ipc.agent.request.response.exceeds.size": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent request or response exceeds the size limit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent 请求或响应超过大小上限"
+          }
+        }
+      }
+    },
+    "ipc.agent.returned.damaged.response": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeIPC.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent returned a damaged response"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent 返回了损坏的响应"
+          }
+        }
+      }
+    },
+    "ipc.request.timeout": {
+      "extractionState": "manual",
+      "comment": "Used in FinderAgentSecureIPCClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Request timed out"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请求超时"
+          }
+        }
+      }
+    },
+    "ipc.unknown.xpc.error": {
+      "extractionState": "manual",
+      "comment": "Used in FinderAgentSecureIPCClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown XPC error"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未知 XPC 错误"
+          }
+        }
+      }
+    },
+    "monitor.creationFailed": {
+      "extractionState": "manual",
+      "comment": "Used in EventTap.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot create input monitoring. Check background status again. Monitoring failure alone does not imply permission denial."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法创建输入事件监听；请重新检测后台状态。监听失败本身不代表权限被拒绝"
+          }
+        }
+      }
+    },
+    "request.request.queue.full.retry.later": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeAgentRequestChannel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Request queue full. Try again later."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请求队列已满，请稍后重试"
+          }
+        }
+      }
+    },
+    "request.runtime.session.ended.configuration.changed": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeAgentRequestChannel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime session ended or configuration changed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "运行会话已结束或配置已变化"
+          }
+        }
+      }
+    },
+    "server.agent.internal.response.violates.protocol": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeAgentXPCServer. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent internal response violates protocol: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent 内部响应不符合协议：%1$@"
+          }
+        }
+      }
+    },
+    "server.request.already.accepted.too.many.requests": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeAgentXPCServer.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Request already accepted or too many requests. It will not run twice."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请求已接收或请求过多，不会重复执行"
+          }
+        }
+      }
+    },
+    "server.too.many.background.requests.retry.later": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeAgentXPCServer.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many background requests. Try again later."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台请求过多，请稍后重试"
+          }
+        }
+      }
+    },
+    "session.identityUnavailable": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostSession.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot determine main app process identity"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法确定主应用进程身份"
+          }
+        }
+      }
+    },
+    "session.main.app.runtime.session.ended": {
+      "extractionState": "manual",
+      "comment": "Used in RuntimeHostSession.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Main app runtime session ended"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主应用运行会话已经结束"
+          }
+        }
+      }
+    },
+    "storage.data.path.local": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitStoragePaths.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The data path must be local and owned by the current user. Cloud drives, network volumes, symlinks and hard links are not allowed."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "数据路径必须由当前用户拥有且位于本地，不能使用云盘、网络卷、符号链接或硬链接。"
+          }
+        }
+      }
+    },
+    "storage.path": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitStoragePaths.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " Path: "
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " 路径："
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,204 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "export.arcKit.diagnostics.json": {
+      "extractionState": "manual",
+      "comment": "Used in SupportDiagnosticsCoordinator. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc-Kit-Diagnostics-%1$@.json"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc-Kit-诊断-%1$@.json"
+          }
+        }
+      }
+    },
+    "export.diagnostic.report.moved": {
+      "extractionState": "manual",
+      "comment": "Used in SupportDiagnosticsService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The diagnostic report has moved or been deleted. Export it again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断报告已不在原位置，请重新导出后再试。"
+          }
+        }
+      }
+    },
+    "export.export.arcKit.diagnostic.report": {
+      "extractionState": "manual",
+      "comment": "Used in SupportDiagnosticsCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export Arc Kit Diagnostic Report"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导出 Arc Kit 诊断报告"
+          }
+        }
+      }
+    },
+    "export.failed": {
+      "extractionState": "manual",
+      "comment": "Used in SupportDiagnosticsService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not export the diagnostic report: %1$@. Choose a writable folder and try again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断报告导出失败：%1$@。请重新选择可写目录后重试。"
+          }
+        }
+      }
+    },
+    "package.contents": {
+      "extractionState": "manual",
+      "comment": "Used in SupportDiagnosticPackage.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Includes version, permissions, runtime status, configuration counts and redacted logs. May contain app names and error messages. No database or user file contents are included. Nothing is uploaded automatically."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "包含版本、权限、运行状态、配置数量及脱敏运行日志。可能含应用名称与错误信息；不包含数据库或用户文件内容，不会自动上传。"
+          }
+        }
+      }
+    },
+    "package.finder.extension.writes": {
+      "extractionState": "manual",
+      "comment": "Used in SupportDiagnosticPackage.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Finder extension writes only to the macOS system log, which is not included in this package."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 扩展仅写入 macOS 系统日志；本包未采集系统日志。"
+          }
+        }
+      }
+    },
+    "package.logs.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in SupportDiagnosticPackage.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " logs unavailable."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " 日志未取得。"
+          }
+        }
+      }
+    },
+    "package.recentLogLimit": {
+      "extractionState": "manual",
+      "comment": "Used in SupportDiagnosticPackage.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exports up to the most recent 1 MiB per component. Archived logs are excluded."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每组件最多导出最近 1 MiB，历史分卷不包含在内。"
+          }
+        }
+      }
+    },
+    "report.diagnostic.report.verification.writing.failed": {
+      "extractionState": "manual",
+      "comment": "Used in SupportDiagnosticReport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostic report verification failed after writing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断报告写入后校验失败"
+          }
+        }
+      }
+    },
+    "report.includes.version.permissions.runtime.status": {
+      "extractionState": "manual",
+      "comment": "Used in SupportDiagnosticReport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Includes only version, permissions, runtime status and configuration counts. No filenames, user directories, full settings or command output are included. Nothing is uploaded automatically."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅包含版本、权限、运行状态和配置数量；不包含文件名、用户目录、完整设置或命令输出，也不会自动上传。"
+          }
+        }
+      }
+    },
+    "runtime.runtime.schema.mismatch.expected.actual": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeState. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime schema mismatch: expected=%1$@, actual=%2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "运行态 schema 不匹配：expected=%1$@ actual=%2$@"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,954 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "browse.recently.added": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperBrowsing.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recently Added"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近添加"
+          }
+        }
+      }
+    },
+    "browse.resolution": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperBrowsing.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resolution"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "分辨率"
+          }
+        }
+      }
+    },
+    "import.directImageTitle": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direct image link"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图片直链"
+          }
+        }
+      }
+    },
+    "import.fileLimit": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibrary.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import up to 100 files at a time. The library holds up to 2,000 items."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每次最多导入 100 个文件，资料库最多收录 2000 项。"
+          }
+        }
+      }
+    },
+    "import.invalidImage": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibrary.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The image cannot be decoded or exceeds 150 million pixels"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图片无法解码或超过 1.5 亿像素"
+          }
+        }
+      }
+    },
+    "library.add.first.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Your First Wallpaper"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加你的第一张壁纸"
+          }
+        }
+      }
+    },
+    "library.add.least.one.wallpaper.favorites": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add at least one wallpaper to Favorites first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先收藏至少一张壁纸。"
+          }
+        }
+      }
+    },
+    "library.browse.online.gallery": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Browse Online Gallery"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "浏览在线图库"
+          }
+        }
+      }
+    },
+    "library.capacityLimit": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibrary.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The library holds up to 2,000 items"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图库最多收录 2000 项"
+          }
+        }
+      }
+    },
+    "library.choose.local.image.video.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibrary.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a local image or video no larger than 2 GB"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请选择不超过 2 GB 的本地图片或视频文件"
+          }
+        }
+      }
+    },
+    "library.count": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView. Arguments: 1 (Int).",
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld wallpaper"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld wallpapers"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 项壁纸"
+          }
+        }
+      }
+    },
+    "library.debugScope": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debug previews do not change your desktop."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调试预览不会更改真实桌面。"
+          }
+        }
+      }
+    },
+    "library.detailsAction": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View Details"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看详情"
+          }
+        }
+      }
+    },
+    "library.directImageAction": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direct Image Link…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图片直链…"
+          }
+        }
+      }
+    },
+    "library.edit.loop": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit Loop…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编辑循环…"
+          }
+        }
+      }
+    },
+    "library.edit.loop.segment": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit Loop Segment…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编辑循环片段…"
+          }
+        }
+      }
+    },
+    "library.filter": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filter"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "筛选"
+          }
+        }
+      }
+    },
+    "library.import.direct.image.link": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import from Direct Image Link"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从图片直链导入"
+          }
+        }
+      }
+    },
+    "library.import.download.wallpaper.first": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import or download a wallpaper first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先导入或下载壁纸。"
+          }
+        }
+      }
+    },
+    "library.import.files": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import Files"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导入文件"
+          }
+        }
+      }
+    },
+    "library.import.images.videos.choose": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import images or videos, or choose from the online gallery."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导入图片或视频，也可以从在线图库挑选。"
+          }
+        }
+      }
+    },
+    "library.imported.duplicate.files.skipped": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imported: %1$@ · Duplicate files skipped: %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已导入 %1$@ 项，跳过 %2$@ 项重复文件"
+          }
+        }
+      }
+    },
+    "library.invalid.image.url": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid image URL."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图片地址无效。"
+          }
+        }
+      }
+    },
+    "library.library.actions": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Library actions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图库操作"
+          }
+        }
+      }
+    },
+    "library.loadFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not load the wallpaper library"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "壁纸资料库未能加载"
+          }
+        }
+      }
+    },
+    "library.loading.wallpaper.library": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading wallpaper library"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在读取壁纸资料库"
+          }
+        }
+      }
+    },
+    "library.missing.copies.repaired": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " · Missing copies repaired: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "，修复 %1$@ 项缺失副本"
+          }
+        }
+      }
+    },
+    "library.more.wallpaper.actions": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More wallpaper actions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更多壁纸操作"
+          }
+        }
+      }
+    },
+    "library.my.wallpapers.available.offline": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%1$@” is in My Wallpapers and available offline."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%1$@”已在我的壁纸中，可离线使用。"
+          }
+        }
+      }
+    },
+    "library.open.wallpaper.folder": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Wallpaper Folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开壁纸目录"
+          }
+        }
+      }
+    },
+    "library.operation.cancelled": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Operation cancelled."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "操作已取消。"
+          }
+        }
+      }
+    },
+    "library.original.files.copied.media.preserved": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original files and copied media are preserved to avoid affecting other desktop spaces. Replace wallpapers currently in use first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原文件和已复制的媒体会保留，以免影响其他桌面空间。正在使用的壁纸需先更换。"
+          }
+        }
+      }
+    },
+    "library.remove.favorites": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove from Favorites"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消收藏"
+          }
+        }
+      }
+    },
+    "library.remove.library": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove from Library…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从图库移除…"
+          }
+        }
+      }
+    },
+    "library.removeAction": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove from library?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从图库移除？"
+          }
+        }
+      }
+    },
+    "library.removed.library.media.copies": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removed from the library. Media copies are preserved for other desktop spaces."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已从图库移除；保留媒体副本，避免影响其他桌面空间引用。"
+          }
+        }
+      }
+    },
+    "library.sort": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sort"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排序"
+          }
+        }
+      }
+    },
+    "library.supports.https.urls.return.images.browse": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supports HTTPS URLs that return images. Browse popular image sources in the online gallery."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持返回图片的 HTTPS 地址。在线图库可直接浏览常用图片源。"
+          }
+        }
+      }
+    },
+    "library.supports.jpg.png.heic.webp.tiff.bmp": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibrary.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supports JPG, PNG, HEIC, WebP, TIFF, BMP, MP4, MOV and M4V"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持 JPG、PNG、HEIC、WebP、TIFF、BMP 和 MP4、MOV、M4V"
+          }
+        }
+      }
+    },
+    "library.try.another.keyword.change.filter": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try another keyword or change the filter."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "试试其他关键词，或切换筛选条件。"
+          }
+        }
+      }
+    },
+    "library.unavailable.add.asset": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not add the asset to the library."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "素材未能加入图库。"
+          }
+        }
+      }
+    },
+    "library.view.details": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibraryView. Arguments: 1 (String), 2 (String), 3 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@, %3$@, view details"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@，%2$@，%3$@，查看详情"
+          }
+        }
+      }
+    },
+    "library.wallpaper.configuration.record.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibrary.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wallpaper configuration record is missing."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "壁纸配置记录缺失。"
+          }
+        }
+      }
+    },
+    "library.wallpaper.library.changed.elsewhere.reload": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperLibrary.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The wallpaper library changed elsewhere. Reload it."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "壁纸资料库已被其他操作修改，请重新加载。"
+          }
+        }
+      }
+    },
+    "library.wallpaper.longer.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This wallpaper is no longer in the library. Choose another."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这项壁纸已不在图库中，请重新选择。"
+          }
+        }
+      }
+    },
+    "library.wallpaper.still.assigned": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This wallpaper is still assigned to a display. Replace it or stop the live wallpaper first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这项壁纸仍分配给显示器，请先更换壁纸或停止动态壁纸。"
+          }
+        }
+      }
+    },
+    "page.processing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Processing…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在处理…"
+          }
+        }
+      }
+    },
+    "page.wallpaper.page": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wallpaper page"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "壁纸页面"
+          }
+        }
+      }
+    },
+    "tabs.library": {
+      "comment": "Compact wallpaper workspace tab. Full descriptions appear in the page content.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Library"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我的壁纸"
+          }
+        }
+      }
+    },
+    "tabs.live": {
+      "comment": "Compact wallpaper workspace tab. Full descriptions appear in the page content.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "动态图库"
+          }
+        }
+      }
+    },
+    "tabs.online": {
+      "comment": "Compact wallpaper workspace tab. Full descriptions appear in the page content.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Online"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在线图库"
+          }
+        }
+      }
+    },
+    "tabs.playback": {
+      "comment": "Compact wallpaper workspace tab. Full descriptions appear in the page content.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Playback"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "屏幕与播放"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

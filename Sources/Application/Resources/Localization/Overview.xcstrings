@@ -1,0 +1,1302 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "action.re.registers.arcKit.extension": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthActionButton.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Re-registers the Arc Kit extension and restarts Finder. Active Finder operations may be interrupted."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "会重新注册 Arc Kit 扩展并重启 Finder。正在进行的 Finder 操作可能中断。"
+          }
+        }
+      }
+    },
+    "action.repair.finder.extension.registration": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthActionButton.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repair Finder extension registration?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修复 Finder 扩展注册？"
+          }
+        }
+      }
+    },
+    "action.repair.restart.finder": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthActionButton.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repair and Restart Finder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修复并重启 Finder"
+          }
+        }
+      }
+    },
+    "health.accessibility.required": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accessibility permission required"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要辅助功能权限"
+          }
+        }
+      }
+    },
+    "health.allow.monitoring": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow Monitoring"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许监听"
+          }
+        }
+      }
+    },
+    "health.background.instance.issue": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background instance issue"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台实例异常"
+          }
+        }
+      }
+    },
+    "health.background.registration.notReady": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background registration not ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台注册未就绪"
+          }
+        }
+      }
+    },
+    "health.background.service.disconnected": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background service disconnected"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台未连接"
+          }
+        }
+      }
+    },
+    "health.check.again.required": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check again required"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要重新检测"
+          }
+        }
+      }
+    },
+    "health.check.again.retry.registration.if": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check again to retry registration. If it keeps failing, view technical details."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新检测以重试后台注册；持续失败时查看技术详情"
+          }
+        }
+      }
+    },
+    "health.check.background.permission.macos.login.items": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check background permission in macOS Login Items"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检查 macOS 登录项中的后台许可"
+          }
+        }
+      }
+    },
+    "health.check.unregistered.items.conflicts": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check unregistered items or conflicts on the Shortcuts page"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在快捷键页查看未注册项目或冲突"
+          }
+        }
+      }
+    },
+    "health.checking": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检测中"
+          }
+        }
+      }
+    },
+    "health.connection.ready": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connection ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "连接就绪"
+          }
+        }
+      }
+    },
+    "health.current.valid.result.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No current valid result"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚无当前有效的检测结果"
+          }
+        }
+      }
+    },
+    "health.debugDisconnected": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debug window is not connected to the background service"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调试窗口未连接后台"
+          }
+        }
+      }
+    },
+    "health.duplicateInstallationHint": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duplicate processes or another installation detected. Check paths in diagnostics."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "存在重复进程或其他安装副本；在诊断中核对路径"
+          }
+        }
+      }
+    },
+    "health.eligible.apps.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No eligible apps"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有生效应用"
+          }
+        }
+      }
+    },
+    "health.enable.arcKit.macos.extension.settings": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable Arc Kit in macOS extension settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 macOS 扩展设置中开启 Arc Kit"
+          }
+        }
+      }
+    },
+    "health.enabled.demand": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enabled on demand"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按需启用"
+          }
+        }
+      }
+    },
+    "health.enabled.menu.configuration.detected.yet.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No enabled menu configuration detected yet"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未检测到已启用的菜单配置"
+          }
+        }
+      }
+    },
+    "health.extension.off": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extension is off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "扩展未开启"
+          }
+        }
+      }
+    },
+    "health.extension.registration.issue": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extension registration issue"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "扩展注册异常"
+          }
+        }
+      }
+    },
+    "health.extension.responded.background.starts.demand": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extension responded; background starts on demand"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "扩展已回应，后台按需启动"
+          }
+        }
+      }
+    },
+    "health.extension.responded.verify.actual.menus.actions": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extension responded. Verify actual menus and actions in Finder."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "扩展已回应；实际菜单与操作需在 Finder 中确认"
+          }
+        }
+      }
+    },
+    "health.extension.settings": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extension Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "扩展设置"
+          }
+        }
+      }
+    },
+    "health.finder.diagnostic.results.yet.missing": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Finder diagnostic results yet"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未取得 Finder 检测结果"
+          }
+        }
+      }
+    },
+    "health.grant.access.arcKit.host": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grant access to: Arc Kit Runtime Host"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "授权对象：Arc Kit Runtime Host"
+          }
+        }
+      }
+    },
+    "health.incomplete.installation": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incomplete installation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装不完整"
+          }
+        }
+      }
+    },
+    "health.last.check.expired": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The last check has expired"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上次检测结果已过期"
+          }
+        }
+      }
+    },
+    "health.menu.configuration.notReady": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menu configuration not ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "菜单配置未就绪"
+          }
+        }
+      }
+    },
+    "health.monitoring": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monitoring"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "监听中"
+          }
+        }
+      }
+    },
+    "health.monitoring.started.confirm.scrolling.behavior.use": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monitoring started. Confirm scrolling behavior in use."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "监听已启动；滚动效果需实际确认"
+          }
+        }
+      }
+    },
+    "health.mouse.service.error": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse service error"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标运行异常"
+          }
+        }
+      }
+    },
+    "health.open.included.folder.check.again": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open an included folder, then check again. No response does not imply missing permission."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开生效目录后重新检测；未回应不等于未授权"
+          }
+        }
+      }
+    },
+    "health.permission.granted.window.interface.check": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permission granted, but the window interface check failed. Check again first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已获授权，但窗口接口检测未通过；先重新检测"
+          }
+        }
+      }
+    },
+    "health.permissionsUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to read background status; permissions unconfirmed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取后台状态，权限尚未确认"
+          }
+        }
+      }
+    },
+    "health.registration.path.missing.points": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registration path is missing or points to another installation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "注册路径缺失或指向其他安装副本"
+          }
+        }
+      }
+    },
+    "health.repair.registration": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repair Registration…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修复注册…"
+          }
+        }
+      }
+    },
+    "health.request.access": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Request Access"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "申请授权"
+          }
+        }
+      }
+    },
+    "health.runtime.components.missing.damaged.reinstall": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime components are missing or damaged. Reinstall Arc Kit."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缺少或损坏运行组件，需要重新安装"
+          }
+        }
+      }
+    },
+    "health.scope.limited.selected.apps": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scope is limited to selected apps, but no app rules are enabled"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前仅对指定应用生效，但尚未启用任何应用规则"
+          }
+        }
+      }
+    },
+    "health.service.notReady": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Service not ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "服务未就绪"
+          }
+        }
+      }
+    },
+    "health.service.ready": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Service ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "服务就绪"
+          }
+        }
+      }
+    },
+    "health.serviceUnavailable": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permission granted, but the service is not running yet"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "权限已授权，服务尚未进入运行状态"
+          }
+        }
+      }
+    },
+    "health.snapping.notReady": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag snapping not ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附未就绪"
+          }
+        }
+      }
+    },
+    "health.some.shortcuts.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some shortcuts unavailable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快捷键部分不可用"
+          }
+        }
+      }
+    },
+    "health.starting": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starting"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在启动"
+          }
+        }
+      }
+    },
+    "health.view.settings": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看设置"
+          }
+        }
+      }
+    },
+    "health.waiting.background.response": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting for background response"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待后台回应"
+          }
+        }
+      }
+    },
+    "health.waiting.finder": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting for Finder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待 Finder 回应"
+          }
+        }
+      }
+    },
+    "health.window.interface.available.drag.monitoring": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window interface is available, but drag monitoring has not started"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口接口可用，拖拽监听尚未启动"
+          }
+        }
+      }
+    },
+    "health.window.interface.enabled.monitors.passed.checks": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window interface and enabled monitors passed checks"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口接口及已启用的监听检查通过"
+          }
+        }
+      }
+    },
+    "health.window.interface.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in FeatureHealthAssessment.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window interface unavailable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口接口不可用"
+          }
+        }
+      }
+    },
+    "page.accessibility": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accessibility"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助功能"
+          }
+        }
+      }
+    },
+    "page.background.execution": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background execution"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台运行"
+          }
+        }
+      }
+    },
+    "page.checked": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checked at %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检测于 %1$@"
+          }
+        }
+      }
+    },
+    "page.checking": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检测中…"
+          }
+        }
+      }
+    },
+    "page.creating.terminal.tabs.windows.running": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creating terminal tabs or windows and running chosen scripts request access when needed. File access failures are handled per folder; Full Disk Access is not required by default."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "终端新建标签或窗口、自选脚本按实际操作触发授权。文件访问失败按具体目录处理，不要求统一开启完全磁盘访问。"
+          }
+        }
+      }
+    },
+    "page.debugScope": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debug: settings only, not connected to installed services"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debug：仅编辑设置，未连接安装版服务"
+          }
+        }
+      }
+    },
+    "page.determined.macos.accessing.protected.locations": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Determined by macOS when accessing protected locations"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "访问受保护位置时由系统决定"
+          }
+        }
+      }
+    },
+    "page.feature.status": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feature Status"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "功能状态"
+          }
+        }
+      }
+    },
+    "page.files.folders": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files and folders"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件与文件夹"
+          }
+        }
+      }
+    },
+    "page.finder.extension": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder extension"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 扩展"
+          }
+        }
+      }
+    },
+    "page.inputSamplesUnavailable": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background disconnected; no input samples available"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未连接后台，暂无输入采样"
+          }
+        }
+      }
+    },
+    "page.manage.access": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manage Access"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "管理授权"
+          }
+        }
+      }
+    },
+    "page.permissions": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permissions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "权限"
+          }
+        }
+      }
+    },
+    "page.requested.per.action": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Requested per action"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按操作申请"
+          }
+        }
+      }
+    },
+    "page.requested.per.target.app": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Requested per target app"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按目标应用申请"
+          }
+        }
+      }
+    },
+    "page.settings": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置"
+          }
+        }
+      }
+    },
+    "page.system.permissions": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System Permissions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统授权"
+          }
+        }
+      }
+    },
+    "page.terminal.automation": {
+      "extractionState": "manual",
+      "comment": "Used in OverviewSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terminal automation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "终端自动化"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

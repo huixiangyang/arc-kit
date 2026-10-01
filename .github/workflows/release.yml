@@ -1,0 +1,114 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 已推送的版本 Tag，例如 v0.1.0
+        required: true
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref_name }}
+          persist-credentials: false
+      - name: Validate release inputs
+        id: version
+        env:
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, plistlib, re, subprocess
+          tag = os.environ['RELEASE_TAG']
+          assert re.fullmatch(r'v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)', tag), 'Expected vMAJOR.MINOR.PATCH'
+          assert os.environ['SPARKLE_PRIVATE_KEY'], 'Missing SPARKLE_PRIVATE_KEY'
+          versions = set()
+          for name in ('ArcKitApp', 'ArcKitRuntimeHost', 'ArcKitFinderExtension'):
+              info = plistlib.loads(pathlib.Path(f'Targets/{name}/Configuration/Info.plist').read_bytes())
+              versions.add((info['CFBundleShortVersionString'], info['CFBundleVersion']))
+          assert len(versions) == 1 and tag == 'v' + next(iter(versions))[0], 'Product versions do not match tag'
+          assert pathlib.Path('LICENSE').is_file(), 'Project license required'
+          # 已公开版本的 build 必须递增，否则 Sparkle 不会把它识别为更新。
+          previous = subprocess.run(['git', 'ls-remote', '--exit-code', '--heads', 'origin', 'updates'], capture_output=True)
+          assert previous.returncode in (0, 2), 'Cannot inspect previous release'
+          if previous.returncode == 0:
+              subprocess.run(['git', 'fetch', '--depth=1', 'origin', 'updates'], check=True)
+              published = json.loads(subprocess.check_output(['git', 'show', 'FETCH_HEAD:release.json']))
+              assert int(next(iter(versions))[1]) > published['build'], 'Release build must increase'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as stream:
+              stream.write(f'tag={tag}\n')
+          PY
+
+  build:
+    needs: prepare
+    uses: ./.github/workflows/quality.yml
+    with:
+      ref: ${{ needs.prepare.outputs.tag }}
+    # 编译与 PR 不接收更新签名密钥；Release 直接发布同一份 CI 产物。
+
+  release:
+    needs: [prepare, build]
+    runs-on: macos-15
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: ${{ needs.prepare.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.tag }}
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build.outputs.artifact-name }}
+          path: .build/release-input
+      - name: Generate and verify signed update feed
+        env:
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          mkdir -p .build/sparkle-tools
+          gh release download 2.10.0 --repo sparkle-project/Sparkle --pattern Sparkle-2.10.0.tar.xz --dir .build/sparkle-tools
+          tar -xf .build/sparkle-tools/Sparkle-2.10.0.tar.xz -C .build/sparkle-tools
+          export GITHUB_SHA="$(git rev-parse HEAD)"
+          python3 Build/Scripts/prepare-release.py --input .build/release-input --output dist/release \
+            --tag "$RELEASE_TAG" --repository "$GITHUB_REPOSITORY" --sparkle-bin .build/sparkle-tools/bin
+      - name: Publish GitHub Release
+        run: |
+          set -euo pipefail
+          gh release create "$RELEASE_TAG" dist/release/* --verify-tag --draft \
+            --title "Arc Kit $RELEASE_TAG" --notes-file "Documentation/Releases/${RELEASE_TAG#v}.md"
+          gh release edit "$RELEASE_TAG" --draft=false --latest
+      - name: Publish website version data and update feed
+        run: |
+          set -euo pipefail
+          gh auth setup-git
+          git init --initial-branch=updates .build/updates
+          git -C .build/updates remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          if git -C .build/updates ls-remote --exit-code --heads origin updates > /dev/null; then
+            git -C .build/updates fetch --depth=1 origin updates
+            git -C .build/updates switch -C updates FETCH_HEAD
+          fi
+          cp dist/release/appcast.xml dist/release/release.json .build/updates/
+          git -C .build/updates config user.name github-actions[bot]
+          git -C .build/updates config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git -C .build/updates add appcast.xml release.json
+          git -C .build/updates commit -m "Publish $RELEASE_TAG update metadata"
+          git -C .build/updates push origin HEAD:updates

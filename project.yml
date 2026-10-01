@@ -1,0 +1,40 @@
+name: ArcKit
+options:
+  bundleIdPrefix: com.archalo
+  developmentLanguage: en
+  knownRegions: [en, zh-Hans]
+configs:
+  Debug: debug
+  Release: release
+settings:
+  base:
+    # 工程固定生成到 .build/xcode，显式区分源码根与工程目录。
+    ARCKIT_SOURCE_ROOT: $(PROJECT_DIR)/../..
+    SWIFT_VERSION: 6.0
+    MACOSX_DEPLOYMENT_TARGET: 13.0
+    ENABLE_APP_INTENTS_DEPLOYMENT_AWARE_PROCESSING: NO
+    SWIFT_EMIT_CONST_VALUE_PROTOCOLS: ""
+    STRING_CATALOG_GENERATE_SYMBOLS: YES
+  configs:
+    Debug:
+      CODE_SIGN_STYLE: Automatic
+      DEVELOPMENT_TEAM: ""
+    Release:
+      ENABLE_HARDENED_RUNTIME: YES
+include:
+  - path: Build/Xcode/Modules.yml
+    relativePaths: false
+  - path: Build/Xcode/Products.yml
+    relativePaths: false
+  - path: Build/Xcode/Tests.yml
+    relativePaths: false
+  - path: Build/Xcode/Schemes.yml
+    relativePaths: false
+
+packages:
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    exactVersion: 2.10.0
+  GRDB:
+    url: https://github.com/groue/GRDB.swift.git
+    exactVersion: 7.11.1

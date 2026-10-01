@@ -1,0 +1,240 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "extension.finder.off": {
+      "extractionState": "manual",
+      "comment": "Used in FinderSync.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder is off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 功能已关闭"
+          }
+        }
+      }
+    },
+    "host.arcKit.stopped.finder.off": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeHost.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit stopped or Finder is off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit 已停止或 Finder 功能未开启"
+          }
+        }
+      }
+    },
+    "host.background.service.ended": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeHost.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background service ended"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台已结束"
+          }
+        }
+      }
+    },
+    "host.committed.configuration.incomplete": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeHost.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Committed configuration is incomplete"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已提交配置不完整"
+          }
+        }
+      }
+    },
+    "host.configuration.updated.retry": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeHost.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configuration updated. Try again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置已更新，请重试"
+          }
+        }
+      }
+    },
+    "host.finder.off": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeHost.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder is off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 功能未开启"
+          }
+        }
+      }
+    },
+    "host.invalid.language.configuration": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeHost.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid language configuration"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "语言配置无效"
+          }
+        }
+      }
+    },
+    "host.main.app.runtime.session.mismatch": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeHost.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Main app runtime session mismatch"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主应用运行会话不匹配"
+          }
+        }
+      }
+    },
+    "host.mouse.off": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeHost.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse is off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标功能已关闭"
+          }
+        }
+      }
+    },
+    "host.mouse.off.runtime.session": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeHost.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse is off or the runtime session ended"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标功能未开启或运行会话已结束"
+          }
+        }
+      }
+    },
+    "host.windows.mouse.off.accessibility": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeHost.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Windows and Mouse are off. Accessibility permission is not currently needed."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口和鼠标均已关闭，暂不需要辅助功能权限"
+          }
+        }
+      }
+    },
+    "host.windows.off": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeHost.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Windows is off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口功能已关闭"
+          }
+        }
+      }
+    },
+    "host.windows.off.runtime.session": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitRuntimeHost.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Windows is off or the runtime session ended"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口功能未开启或运行会话已结束"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

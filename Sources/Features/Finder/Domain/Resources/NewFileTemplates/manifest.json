@@ -1,0 +1,15 @@
+[
+  {"id": "text", "displayName": "Text", "fileExtension": "txt", "resourceName": "text.txt", "sortOrder": 0, "preferredBundleIDs": ["com.apple.TextEdit"]},
+  {"id": "richText", "displayName": "Rich", "fileExtension": "rtf", "resourceName": "richText.rtf", "sortOrder": 1, "preferredBundleIDs": ["com.apple.TextEdit"]},
+  {"id": "json", "displayName": "Json", "fileExtension": "json", "resourceName": "json.json", "sortOrder": 2, "preferredBundleIDs": []},
+  {"id": "word", "displayName": "Word", "fileExtension": "docx", "resourceName": "word.docx", "sortOrder": 3, "preferredBundleIDs": ["com.microsoft.Word"]},
+  {"id": "excel", "displayName": "Excel", "fileExtension": "xlsx", "resourceName": "excel.xlsx", "sortOrder": 4, "preferredBundleIDs": ["com.microsoft.Excel"]},
+  {"id": "powerPoint", "displayName": "PowerPoint", "fileExtension": "pptx", "resourceName": "powerPoint.pptx", "sortOrder": 5, "preferredBundleIDs": ["com.microsoft.Powerpoint", "com.microsoft.PowerPoint"]},
+  {"id": "markdown", "displayName": "Markdown", "fileExtension": "md", "resourceName": "markdown.md", "sortOrder": 6, "preferredBundleIDs": []},
+  {"id": "html", "displayName": "HTML", "fileExtension": "html", "resourceName": "html.html", "sortOrder": 7, "preferredBundleIDs": []},
+  {"id": "xml", "displayName": "XML", "fileExtension": "xml", "resourceName": "xml.xml", "sortOrder": 8, "preferredBundleIDs": []},
+  {"id": "css", "displayName": "CSS", "fileExtension": "css", "resourceName": "css.css", "sortOrder": 9, "preferredBundleIDs": []},
+  {"id": "javascript", "displayName": "JavaScript", "fileExtension": "js", "resourceName": "javascript.js", "sortOrder": 10, "preferredBundleIDs": []},
+  {"id": "python", "displayName": "Python", "fileExtension": "py", "resourceName": "python.py", "sortOrder": 11, "preferredBundleIDs": []},
+  {"id": "shell", "displayName": "Shell", "fileExtension": "sh", "resourceName": "shell.sh", "sortOrder": 12, "preferredBundleIDs": []}
+]

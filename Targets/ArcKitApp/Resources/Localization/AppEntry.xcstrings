@@ -1,0 +1,150 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "launch.dataOpenFailed": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitApp.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot open Arc Kit data"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法打开 Arc Kit 数据"
+          }
+        }
+      }
+    },
+    "launch.migration.complete.legacy.data.preserved": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitApp.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Migration complete. Legacy data preserved."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "迁移完成，旧数据已保留"
+          }
+        }
+      }
+    },
+    "launch.migration.failed": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitApp. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Migration failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "迁移失败：%1$@"
+          }
+        }
+      }
+    },
+    "launch.quit": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitApp.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "退出"
+          }
+        }
+      }
+    },
+    "launch.restore.complete.original.database.preserved": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitApp.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore complete. The original database is preserved in diagnostics."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复完成，原数据库已保留在 diagnostics"
+          }
+        }
+      }
+    },
+    "launch.restore.failed": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitApp. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复失败：%1$@"
+          }
+        }
+      }
+    },
+    "launch.restoreUsage": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitApp.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usage: ArcKitApp --restore-storage <backup package folder> <data folder>"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用法：ArcKitApp --restore-storage <备份包目录> <数据目录>"
+          }
+        }
+      }
+    },
+    "launch.usage.arckitapp.import.legacy.storage.legacy.arc": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitApp.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usage: ArcKitApp --import-legacy-storage <legacy Arc Kit data folder> <new data folder>"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用法：ArcKitApp --import-legacy-storage <旧 Arc Kit 数据目录> <新数据目录>"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

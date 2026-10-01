@@ -1,0 +1,276 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "about.check.updates": {
+      "extractionState": "manual",
+      "comment": "Used in AboutSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check for Updates"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检查更新"
+          }
+        }
+      }
+    },
+    "about.privacy": {
+      "extractionState": "manual",
+      "comment": "Used in AboutSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐私"
+          }
+        }
+      }
+    },
+    "about.privacyDetails": {
+      "extractionState": "manual",
+      "comment": "Used in AboutSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit has no analytics or remote configuration. Settings and file operations run locally. Automatic update checks connect to the official website and GitHub; you can turn them off in About. Online wallpapers and subscriptions connect to their providers. These services receive standard connection information."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit 不含分析统计或远程配置，设置与文件操作在本机完成。自动更新检查会连接官网和 GitHub，可在关于页关闭；在线壁纸与订阅会访问对应素材服务。服务方会收到常规网络连接信息。"
+          }
+        }
+      }
+    },
+    "about.release.notes": {
+      "extractionState": "manual",
+      "comment": "Used in AboutSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Release Notes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新说明"
+          }
+        }
+      }
+    },
+    "about.runtime.components": {
+      "extractionState": "manual",
+      "comment": "Used in AboutSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime components"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "运行组件"
+          }
+        }
+      }
+    },
+    "about.runtime.environment": {
+      "extractionState": "manual",
+      "comment": "Used in AboutSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime environment"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "运行环境"
+          }
+        }
+      }
+    },
+    "about.software.update": {
+      "extractionState": "manual",
+      "comment": "Used in AboutSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Software Update"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "软件更新"
+          }
+        }
+      }
+    },
+    "about.version": {
+      "extractionState": "manual",
+      "comment": "Used in AboutSection. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "版本 %1$@"
+          }
+        }
+      }
+    },
+    "about.website": {
+      "extractionState": "manual",
+      "comment": "Used in AboutSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Website"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "官网"
+          }
+        }
+      }
+    },
+    "about.sparkleUpdates": {
+      "extractionState": "manual",
+      "comment": "About settings: Sparkle software updates.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatically checks for new releases. Downloads are verified before you choose to install and restart."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动检查新版本，下载后校验更新包，由你选择安装并重新启动。"
+          }
+        }
+      }
+    },
+    "about.updatesUnavailable": {
+      "extractionState": "manual",
+      "comment": "About settings: Sparkle software updates.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Software updates are available in the installed app."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "软件更新仅在完整应用中可用。"
+          }
+        }
+      }
+    },
+    "about.automaticUpdates": {
+      "extractionState": "manual",
+      "comment": "About settings: Sparkle software updates.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatically check for updates"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动检查更新"
+          }
+        }
+      }
+    },
+    "about.lastUpdateCheck": {
+      "extractionState": "manual",
+      "comment": "About settings: Sparkle software updates.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last checked"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上次检查"
+          }
+        }
+      }
+    },
+    "about.unsignedDistribution": {
+      "extractionState": "manual",
+      "comment": "About settings: Sparkle software updates.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This build is produced by GitHub Actions without Apple Developer ID signing or notarization. Update archives are verified with Ed25519 signatures."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本版本由 GitHub Actions 构建，未使用 Apple Developer ID 签名或公证；更新包通过 Ed25519 签名校验。"
+          }
+        }
+      }
+    },
+    "about.automaticDownloads": {
+      "extractionState": "manual",
+      "comment": "Optional Sparkle automatic download and install-on-quit setting.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatically download and install updates on quit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动下载并在退出时安装更新"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

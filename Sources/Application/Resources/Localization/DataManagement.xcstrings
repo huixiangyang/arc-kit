@@ -1,0 +1,2346 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "backup.another.settings.backup.restore": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another settings backup or restore is in progress. Wait for it to finish."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "另一项设置备份或恢复操作仍在进行，请完成后再试"
+          }
+        }
+      }
+    },
+    "backup.appVersionRequired": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App version cannot be empty"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用版本不能为空"
+          }
+        }
+      }
+    },
+    "backup.backup.damaged.modified": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The backup is damaged or modified: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份文件已损坏或被修改：%1$@"
+          }
+        }
+      }
+    },
+    "backup.byte.byte.verification.writing.failed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Byte-for-byte verification failed after writing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "写入后逐字节校验不一致"
+          }
+        }
+      }
+    },
+    "backup.concurrentChange": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings changed during this operation. Replacement cancelled to preserve your changes; retry the operation."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "操作期间设置已发生变化，本次替换已取消；请重新执行，避免覆盖刚才的修改"
+          }
+        }
+      }
+    },
+    "backup.custom.template.file.contents.missing": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom template %1$@ has no file contents"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义模板 %1$@ 缺少文件内容"
+          }
+        }
+      }
+    },
+    "backup.custom.template.file.entries.exceed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom template file entries exceed %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义模板文件条目超过 %1$@ 个"
+          }
+        }
+      }
+    },
+    "backup.duplicate.custom.template.ids": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duplicate custom template IDs"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义模板 ID 重复"
+          }
+        }
+      }
+    },
+    "backup.emptyTemplatePath": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Directory templates cannot contain empty relative paths"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目录模板不能包含空相对路径"
+          }
+        }
+      }
+    },
+    "backup.file.templates.contain.exactly.one.root": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File templates must contain exactly one root file"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件模板必须且只能包含一个根文件"
+          }
+        }
+      }
+    },
+    "backup.formatMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unsupported backup format (requires %1$@, file is %2$@)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份格式不兼容（需要版本 %1$@，文件为 %2$@）"
+          }
+        }
+      }
+    },
+    "backup.full.validation.writing.failed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full validation failed after writing: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "写入后完整校验失败：%1$@"
+          }
+        }
+      }
+    },
+    "backup.invalid": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@无效"
+          }
+        }
+      }
+    },
+    "backup.invalid.json": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid JSON"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不是有效 JSON"
+          }
+        }
+      }
+    },
+    "backup.invalid.template.directory.entry.format": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid template directory entry format"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模板目录条目格式无效"
+          }
+        }
+      }
+    },
+    "backup.invalid.template.relative.path": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid template relative path"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模板相对路径无效"
+          }
+        }
+      }
+    },
+    "backup.invalidPackage": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The selected file is not an Arc Kit settings backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所选文件不是 Arc Kit 设置备份"
+          }
+        }
+      }
+    },
+    "backup.readFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read settings backup: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取设置备份：%1$@"
+          }
+        }
+      }
+    },
+    "backup.readbackFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read back after writing: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "写入后无法回读：%1$@"
+          }
+        }
+      }
+    },
+    "backup.recent.automatic.backup.restore.missing": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No recent automatic backup to restore"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有可恢复的最近自动备份"
+          }
+        }
+      }
+    },
+    "backup.rollbackFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings restore failed: %1$@; restoring the original automatic backup also failed: %2$@. Current settings were not replaced. Check the latest automatic backup again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置恢复失败：%1$@；同时无法还原原自动备份：%2$@。当前设置未被替换，请重新检测最近自动备份"
+          }
+        }
+      }
+    },
+    "backup.root.object": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Root must be an object"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "根节点必须是对象"
+          }
+        }
+      }
+    },
+    "backup.schemaMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fields or settings do not match the current format"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "字段集合或设置内容不符合当前格式"
+          }
+        }
+      }
+    },
+    "backup.settingsVersionMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unsupported settings version in backup (requires %1$@, file is %2$@)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份中的设置版本不兼容（需要 %1$@，文件为 %2$@）"
+          }
+        }
+      }
+    },
+    "backup.sizeLimit": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup contents exceed %1$@. Remove oversized custom templates and retry."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份内容超过 %1$@；请移除过大的自定义模板后重试"
+          }
+        }
+      }
+    },
+    "backup.template.contains.duplicate.file.paths": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Template %1$@ contains duplicate file paths"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模板 %1$@ 包含重复文件路径"
+          }
+        }
+      }
+    },
+    "backup.template.file.contents.missing": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Template %1$@ has no file contents"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模板 %1$@ 没有文件内容"
+          }
+        }
+      }
+    },
+    "backup.template.file.entry.contents.missing": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Template file entry has no contents"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模板文件条目缺少内容"
+          }
+        }
+      }
+    },
+    "backup.template.filename": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Template filename"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模板文件名"
+          }
+        }
+      }
+    },
+    "backup.template.id": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Template ID"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模板 ID"
+          }
+        }
+      }
+    },
+    "backup.template.relative.path": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Template relative path"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模板相对路径"
+          }
+        }
+      }
+    },
+    "backup.template.relative.path.out.bounds": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Template relative path is out of bounds"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模板相对路径越界"
+          }
+        }
+      }
+    },
+    "backup.template.root.file.contents.missing": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Template root file has no contents"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模板根文件缺少内容"
+          }
+        }
+      }
+    },
+    "backup.templateMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom template configuration does not match file contents"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义模板配置与文件内容不一致"
+          }
+        }
+      }
+    },
+    "backup.templateReadFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read custom template; settings not backed up: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义模板不可读取，设置未备份：%1$@"
+          }
+        }
+      }
+    },
+    "backup.unsupportedTemplateFile": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom template contains unsupported symlinks or special files: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义模板包含不支持的符号链接或特殊文件：%1$@"
+          }
+        }
+      }
+    },
+    "backup.writeFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsBackupService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot write settings backup: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法写入设置备份：%1$@"
+          }
+        }
+      }
+    },
+    "data.all.data.includes.settings.templates.wallpapers": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All data includes settings, templates, wallpapers and app backgrounds. Settings and templates only is for migrating feature configuration."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部数据包含设置、模板、壁纸和应用背景；仅设置与模板用于迁移功能配置。"
+          }
+        }
+      }
+    },
+    "data.back.up.current.settings.restore": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back Up Current Settings and Restore"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保留当前设置并恢复"
+          }
+        }
+      }
+    },
+    "data.back.up.restore.defaults": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back Up and Restore Defaults"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份并恢复默认"
+          }
+        }
+      }
+    },
+    "data.backup.contents": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup contents"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份内容"
+          }
+        }
+      }
+    },
+    "data.backup.restore": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup and Restore"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份与恢复"
+          }
+        }
+      }
+    },
+    "data.check.again": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check Again"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新检查"
+          }
+        }
+      }
+    },
+    "data.checking": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在检查…"
+          }
+        }
+      }
+    },
+    "data.clear": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清理"
+          }
+        }
+      }
+    },
+    "data.clears.rebuildable.caches.assets.configuration": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clears only rebuildable caches. Assets, configuration and backups are preserved."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只清理可重建的缓存，保留素材、配置和备份。"
+          }
+        }
+      }
+    },
+    "data.created.automatically.importing.settings.restoring": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Created automatically before importing settings or restoring defaults. Includes general, Finder, window and mouse settings, plus templates."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导入设置或恢复默认前自动创建，只包含通用、Finder、窗口、鼠标设置与模板。"
+          }
+        }
+      }
+    },
+    "data.current.settings.become.new.restore.point": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current settings become the new restore point before settings and templates are restored. Wallpapers and app backgrounds are preserved."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前设置会先成为新的恢复点，再恢复备份中的设置与模板。壁纸和应用背景保留。"
+          }
+        }
+      }
+    },
+    "data.data.folder": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "数据目录"
+          }
+        }
+      }
+    },
+    "data.diagnostic.report": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostic Report"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断报告"
+          }
+        }
+      }
+    },
+    "data.export.backup": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export Backup…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导出备份…"
+          }
+        }
+      }
+    },
+    "data.export.diagnostics": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export Diagnostics…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导出诊断…"
+          }
+        }
+      }
+    },
+    "data.exported": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exported %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已导出 %1$@"
+          }
+        }
+      }
+    },
+    "data.exporting": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exporting…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在导出…"
+          }
+        }
+      }
+    },
+    "data.latest.settings.restore.point": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Latest settings restore point"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近设置恢复点"
+          }
+        }
+      }
+    },
+    "data.refresh.storage.usage": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh storage usage"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刷新空间占用"
+          }
+        }
+      }
+    },
+    "data.reset.uninstall": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset and Uninstall"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置与卸载"
+          }
+        }
+      }
+    },
+    "data.resets.general.finder.window.mouse.settings": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resets general, Finder, window and mouse settings. Wallpapers, app backgrounds and assets are preserved. A settings and templates restore point is saved first; reset stops if backup fails."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置通用、Finder、窗口和鼠标设置，保留壁纸、应用背景和素材。先保存当前设置与模板恢复点；备份失败时不会重置。"
+          }
+        }
+      }
+    },
+    "data.restore": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复…"
+          }
+        }
+      }
+    },
+    "data.restore.backup": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Backup…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复备份…"
+          }
+        }
+      }
+    },
+    "data.restore.default.settings": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore default settings?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复默认设置？"
+          }
+        }
+      }
+    },
+    "data.restore.defaults": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Defaults…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复默认…"
+          }
+        }
+      }
+    },
+    "data.restore.latest.settings.restore.point": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore the latest settings restore point?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复最近设置恢复点？"
+          }
+        }
+      }
+    },
+    "data.restore.point.yet.missing": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No restore point yet"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚无恢复点"
+          }
+        }
+      }
+    },
+    "data.saves.status.summary.recent.redacted": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saves a status summary and recent redacted logs. No database or user file contents are included. Nothing is uploaded automatically."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存状态摘要与最近脱敏日志，不包含数据库或用户文件内容，不会自动上传。"
+          }
+        }
+      }
+    },
+    "data.show.finder": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show in Finder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 Finder 中显示"
+          }
+        }
+      }
+    },
+    "data.storage": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Storage"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "存储空间"
+          }
+        }
+      }
+    },
+    "data.uninstall": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uninstall…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载…"
+          }
+        }
+      }
+    },
+    "data.uninstall.arcKit": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uninstall Arc Kit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载 Arc Kit"
+          }
+        }
+      }
+    },
+    "data.uninstall.keep.data": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uninstall and Keep Data"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载并保留数据"
+          }
+        }
+      }
+    },
+    "data.uninstall.remove.data": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uninstall and Remove Data"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载并移除数据"
+          }
+        }
+      }
+    },
+    "data.uninstallConfirmation": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uninstall Arc Kit?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载 Arc Kit？"
+          }
+        }
+      }
+    },
+    "data.unregisters.login.items.background.services": {
+      "extractionState": "manual",
+      "comment": "Used in DataManagementView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unregisters login items, background services and the Finder extension, then moves the app to Trash. Removing data also moves the data folder to Trash."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "注销登录项、后台和 Finder 扩展，将应用移到废纸篓。选择移除数据时，也将数据目录移到废纸篓。"
+          }
+        }
+      }
+    },
+    "legacyImport.catalogMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Legacy wallpaper and catalog records are inconsistent or undecodable. Migration stopped."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旧壁纸与目录记录不一致或无法解码，已停止迁移"
+          }
+        }
+      }
+    },
+    "legacyImport.invalid.legacy.background.identifier": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid legacy background identifier"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旧背景标识无效"
+          }
+        }
+      }
+    },
+    "legacyImport.invalid.legacy.video.path": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid legacy video path"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旧视频路径无效"
+          }
+        }
+      }
+    },
+    "legacyImport.invalidSettings": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Legacy %1$@ configuration and recovery copies are invalid. Migration stopped."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旧 %1$@ 配置及恢复副本均无效，迁移已停止"
+          }
+        }
+      }
+    },
+    "legacyImport.legacy.data.unfinished.transaction.complete": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Legacy data has an unfinished transaction. Complete recovery in the old version, then quit."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旧版存在未完成事务，请先由旧版完成恢复后退出"
+          }
+        }
+      }
+    },
+    "legacyImport.lockCheckFailed": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot check legacy storage lock"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法检查旧存储锁"
+          }
+        }
+      }
+    },
+    "legacyImport.migrated.database.validation.failed": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Migrated database validation failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "迁移数据库校验失败"
+          }
+        }
+      }
+    },
+    "legacyImport.migration.requires.existing.legacy.folder": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Migration requires an existing legacy folder and a new, separate destination folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "迁移需要存在的旧目录和全新的独立目标目录"
+          }
+        }
+      }
+    },
+    "legacyImport.old.app.background.service": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The old app or background service is still using the data. Quit both before migrating."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旧版或后台仍在使用数据，请完全退出后再迁移"
+          }
+        }
+      }
+    },
+    "legacyImport.preservedData": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport. Arguments: 1 (String), 2 (String), 3 (String), 4 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Legacy data preserved: %1$@\nSettings, %2$@ wallpapers, %3$@ display assignments and %4$@ feeds verified by readback.\nFiles referenced by the old desktop were not deleted.\n"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旧数据保留：%1$@\n设置、%2$@ 项壁纸、%3$@ 个屏幕分配、%4$@ 个订阅已回读验证。\n旧桌面引用文件未删除。\n"
+          }
+        }
+      }
+    },
+    "legacyImport.quit.old.arcKit.first.data": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quit the old Arc Kit first. Data being written cannot be imported live."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先退出旧版 Arc Kit；不能在线导入正在写入的数据"
+          }
+        }
+      }
+    },
+    "legacyImport.readbackMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Migration readback mismatch. New folder not activated."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "迁移回读不一致，未启用新目录"
+          }
+        }
+      }
+    },
+    "legacyImport.settingsMissing": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Legacy %1$@ settings are missing. Migration cannot substitute defaults."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旧 %1$@ 设置缺失，不能用默认值代替迁移"
+          }
+        }
+      }
+    },
+    "legacyImport.template.reference.outside.legacy": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A template reference is outside the legacy managed folder. Migration stopped."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模板引用不属于旧受管目录，迁移已停止"
+          }
+        }
+      }
+    },
+    "legacyImport.videoUnplayable": {
+      "extractionState": "manual",
+      "comment": "Used in LegacyStorageImport.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Legacy background video is not playable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旧背景视频不可播放"
+          }
+        }
+      }
+    },
+    "storage.all.data.exported": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All data exported"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已导出全部数据"
+          }
+        }
+      }
+    },
+    "storage.assets": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assets"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "素材"
+          }
+        }
+      }
+    },
+    "storage.background.tasks.still.use.data.wait": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background tasks still use the data. Wait for them to exit before restoring."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台任务仍在使用数据，请等待退出后恢复"
+          }
+        }
+      }
+    },
+    "storage.backup.asset.missing.verification.failed": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup asset missing or verification failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份资源丢失或校验失败：%1$@"
+          }
+        }
+      }
+    },
+    "storage.backup.contains.out.bounds.path": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup contains an out-of-bounds path"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份含越界路径"
+          }
+        }
+      }
+    },
+    "storage.backup.database.version.integrity.invalid": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup database version or integrity is invalid"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份数据库版本或完整性无效"
+          }
+        }
+      }
+    },
+    "storage.backup.destination.already.exists.choose.new": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup destination already exists. Choose a new name."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份目标已存在，请选择新名称"
+          }
+        }
+      }
+    },
+    "storage.backup.lacks.background.video": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup lacks the background video"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份缺少背景视频"
+          }
+        }
+      }
+    },
+    "storage.backup.lacks.custom.templates": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup lacks custom templates"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份缺少用户模板"
+          }
+        }
+      }
+    },
+    "storage.backup.lacks.feature.records": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup lacks feature records"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份缺少功能记录"
+          }
+        }
+      }
+    },
+    "storage.backup.manifest.contains.duplicate.assets": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup manifest contains duplicate assets"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份清单存在重复资源"
+          }
+        }
+      }
+    },
+    "storage.backups": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backups"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份"
+          }
+        }
+      }
+    },
+    "storage.cache": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缓存"
+          }
+        }
+      }
+    },
+    "storage.cache.cleared": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache cleared"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缓存已清理"
+          }
+        }
+      }
+    },
+    "storage.clearing.cache": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clearing cache…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在清理缓存…"
+          }
+        }
+      }
+    },
+    "storage.custom.template.path.outside.managed": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom template path is outside the managed directory"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用户模板路径不在受管目录内"
+          }
+        }
+      }
+    },
+    "storage.data.restored": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data restored"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "数据已恢复"
+          }
+        }
+      }
+    },
+    "storage.database": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Database"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "数据库"
+          }
+        }
+      }
+    },
+    "storage.database.asset.reference.missing": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Database asset reference is missing or does not match the manifest: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "数据库引用的素材缺失或清单不匹配：%1$@"
+          }
+        }
+      }
+    },
+    "storage.diagnostics": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostics"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断"
+          }
+        }
+      }
+    },
+    "storage.exporting.all.data": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exporting all data…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在导出全部数据…"
+          }
+        }
+      }
+    },
+    "storage.invalid.asset.index.field.types.backup": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid asset index field types in backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份素材索引字段类型无效"
+          }
+        }
+      }
+    },
+    "storage.invalid.backup.format": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid backup format"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份格式无效"
+          }
+        }
+      }
+    },
+    "storage.legacy.data.detected.quit.old.version": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationStorage.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Legacy data detected. Quit the old version and use --import-legacy-storage for offline import. Existing data is unchanged."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检测到旧版数据，请先退出旧版并使用 --import-legacy-storage 完成离线导入。旧数据未修改。"
+          }
+        }
+      }
+    },
+    "storage.local.asset.conflicts.backup.original.file": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local asset conflicts with backup. Original file preserved."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本地资源与备份冲突，已保留原文件"
+          }
+        }
+      }
+    },
+    "storage.logs": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Logs"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日志"
+          }
+        }
+      }
+    },
+    "storage.quit.arcKit.using.directory": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quit Arc Kit using this directory before restoring the backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先退出使用该目录的 Arc Kit，再恢复备份"
+          }
+        }
+      }
+    },
+    "storage.validating.restoring.backup": {
+      "extractionState": "manual",
+      "comment": "Used in StorageMaintenance.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Validating and restoring backup…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在检查并恢复备份…"
+          }
+        }
+      }
+    },
+    "transfer.all.data": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All Data"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部数据"
+          }
+        }
+      }
+    },
+    "transfer.backup.export.failed": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup export failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份导出失败"
+          }
+        }
+      }
+    },
+    "transfer.backup.restore.failed": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup restore failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份恢复失败"
+          }
+        }
+      }
+    },
+    "transfer.backup.time.current.settings.templates": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup time: %1$@\n\nCurrent settings and templates are backed up first, then general, Finder, window and mouse settings are replaced. Wallpapers and app backgrounds are preserved."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份时间：%1$@\n\n当前设置与模板会先自动备份，再替换通用、Finder、窗口和鼠标设置；壁纸与应用背景保留。"
+          }
+        }
+      }
+    },
+    "transfer.choose.arckitbackup.package.json.settings": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose an .arckitbackup package or .json settings backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请选择 .arckitbackup 数据包或 .json 设置备份"
+          }
+        }
+      }
+    },
+    "transfer.choose.backup": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择备份"
+          }
+        }
+      }
+    },
+    "transfer.export": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导出%1$@"
+          }
+        }
+      }
+    },
+    "transfer.got": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Got It"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "知道了"
+          }
+        }
+      }
+    },
+    "transfer.restore.all.data": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore all data?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复全部数据？"
+          }
+        }
+      }
+    },
+    "transfer.restore.arcKit.backup": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Arc Kit Backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复 Arc Kit 备份"
+          }
+        }
+      }
+    },
+    "transfer.restore.settings.templates": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore settings and templates?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复设置与模板？"
+          }
+        }
+      }
+    },
+    "transfer.restorePickerHint": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose an .arckitbackup package or .json settings backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择 .arckitbackup 数据包或 .json 设置备份"
+          }
+        }
+      }
+    },
+    "transfer.restoreScope": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Replaces settings, library, background and asset indexes. Background services stop and a database restore point is saved first. Failed validation prevents database replacement."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将替换设置、图库、背景和素材索引。恢复前停止后台并保留当前数据库恢复点；备份校验失败时不会替换数据库。"
+          }
+        }
+      }
+    },
+    "transfer.settings.templates": {
+      "extractionState": "manual",
+      "comment": "Used in DataTransferCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings and Templates Only"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅设置与模板"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

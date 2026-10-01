@@ -1,0 +1,1662 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "apps.accelerated.scrolling": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accelerated scrolling"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加速滚动"
+          }
+        }
+      }
+    },
+    "apps.add": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加 %1$@"
+          }
+        }
+      }
+    },
+    "apps.add.mouse.settings": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add mouse settings for %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加 %1$@ 鼠标配置"
+          }
+        }
+      }
+    },
+    "apps.add.recent.app": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRulesEditor when no recently used app is available.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Recent App"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加最近使用的 App"
+          }
+        }
+      }
+    },
+    "apps.addApplication": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add App"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加应用"
+          }
+        }
+      },
+      "comment": "Button opening the application picker to add an individual scrolling rule."
+    },
+    "apps.adjust.app.scrolling.feel": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adjust app scrolling feel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调整 App 鼠标手感"
+          }
+        }
+      }
+    },
+    "apps.already.listed.settings.unchanged": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%1$@” is already listed. Its settings are unchanged."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%1$@”已经在列表中，原配置保持不变。"
+          }
+        }
+      }
+    },
+    "apps.change.app.scrolling.mode": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change app scrolling mode"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置应用滚动方式"
+          }
+        }
+      }
+    },
+    "apps.change.scroll.enhancement.scope": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change scroll enhancement scope"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置滚动作用范围"
+          }
+        }
+      }
+    },
+    "apps.choose.app": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose App"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择 App"
+          }
+        }
+      }
+    },
+    "apps.copy.global.values": {
+      "extractionState": "manual",
+      "comment": "Copy the default scrolling and advanced tuning into this app-specific rule.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy Default Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制默认参数"
+          }
+        }
+      }
+    },
+    "apps.disable.smoothing": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disable smoothing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "禁用平滑"
+          }
+        }
+      }
+    },
+    "apps.enable.smooth.scrolling.app": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable smooth scrolling for this app to adjust its duration and the key that disables it."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 App 开启平滑滚动后，才能调整平滑时长和禁用平滑按键。"
+          }
+        }
+      }
+    },
+    "apps.individualSettings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Individual App Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用单独设置"
+          }
+        }
+      },
+      "comment": "Section heading for app-specific mouse scrolling rules, which take priority over the fallback."
+    },
+    "apps.modeForApplication": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrolling for %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 的滚动处理"
+          }
+        }
+      },
+      "comment": "Accessible label for the inline scrolling mode picker; placeholder is an app display name."
+    },
+    "apps.noEnhancedApplications": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scroll enhancement is off for all apps"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前没有应用启用滚动增强"
+          }
+        }
+      },
+      "comment": "Status shown when the master feature is enabled but neither fallback nor app rules enable scrolling enhancement."
+    },
+    "apps.noIndividualSettings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No individual app settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没有单独设置的应用"
+          }
+        }
+      },
+      "comment": "Empty state when no individual scrolling rules have been added."
+    },
+    "apps.overrides.app.without.changing.global.settings": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overrides this app without changing global settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只覆盖此 App，不影响全局"
+          }
+        }
+      }
+    },
+    "apps.overrides.scrolling.feel.app": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overrides scrolling feel for this app only"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只覆盖此 App 的滚轮手感"
+          }
+        }
+      }
+    },
+    "apps.remove.app.mouse.settings": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove app mouse settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除鼠标 App 配置"
+          }
+        }
+      }
+    },
+    "apps.removeApplicationRule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove settings for %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除 %1$@ 的单独设置"
+          }
+        }
+      },
+      "comment": "Accessible label for the remove rule button; placeholder is an app display name."
+    },
+    "apps.removeDisablesEnhancement": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove this rule and stop enhancing scrolling in this app"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除后，此应用不再启用滚动增强"
+          }
+        }
+      },
+      "comment": "Remove-button tooltip when apps without a rule bypass Arc Kit scrolling enhancement."
+    },
+    "apps.removeUsesDefaults": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove this rule and use default settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除后使用默认参数"
+          }
+        }
+      },
+      "comment": "Remove-button tooltip when apps without a rule receive default scrolling tuning."
+    },
+    "apps.restore.app.scrolling.feel": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore app scrolling feel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复 App 鼠标手感"
+          }
+        }
+      }
+    },
+    "apps.reverse.vertical.scrolling": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reverse vertical scrolling"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "反转垂直滚轮"
+          }
+        }
+      }
+    },
+    "apps.scroll.step": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scroll step"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "滚动步长"
+          }
+        }
+      }
+    },
+    "apps.scrolling.mode": {
+      "extractionState": "manual",
+      "comment": "Label for scrolling processing of apps without an individual rule.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrolling"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "滚动处理"
+          }
+        }
+      }
+    },
+    "apps.set.app.modifier": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set app modifier for %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置 App %1$@修饰键"
+          }
+        }
+      }
+    },
+    "apps.toggle.app.scroll.direction": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle app scroll direction"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换 App 滚轮方向"
+          }
+        }
+      }
+    },
+    "apps.toggle.app.smooth.scrolling": {
+      "extractionState": "manual",
+      "comment": "Used in MouseApplicationsEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle app smooth scrolling"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换 App 平滑滚动"
+          }
+        }
+      }
+    },
+    "apps.unlistedApplications": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apps Without Individual Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未单独设置的应用"
+          }
+        }
+      },
+      "comment": "Section heading for the fallback behavior of apps that have no individual mouse scrolling rule."
+    },
+    "gestures.adjust.gesture.distance": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adjust gesture distance"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调整手势距离"
+          }
+        }
+      }
+    },
+    "gestures.change.gesture.trigger": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change gesture trigger"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更改手势触发方式"
+          }
+        }
+      }
+    },
+    "gestures.enable.mouse.gestures": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable mouse gestures"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用鼠标手势"
+          }
+        }
+      }
+    },
+    "gestures.mouse.gesture.settings.missing.reload.settings": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse gesture settings are missing. Reload settings to rebuild defaults."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标手势配置缺失：请重载设置以重建默认配置"
+          }
+        }
+      }
+    },
+    "gestures.normal.right.click.triggers.release": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A normal right-click triggers on release. Drag beyond the threshold to perform a gesture."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启后普通右键会在松开时触发；拖动超过阈值则执行手势动作"
+          }
+        }
+      }
+    },
+    "gestures.restore.recommended.gestures": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Recommended Gestures"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复推荐手势"
+          }
+        }
+      }
+    },
+    "gestures.restore.recommended.mouse.gestures": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore recommended mouse gestures"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复推荐鼠标手势"
+          }
+        }
+      }
+    },
+    "gestures.restoreConfirmation": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore recommended mouse gestures?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复推荐鼠标手势？"
+          }
+        }
+      }
+    },
+    "gestures.restores.gesture.enablement.distance.hints.all": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restores gesture enablement, distance, hints and all four direction actions. Scrolling feel and per-app settings are unchanged."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手势开关、触发距离、提示和四个方向动作会恢复推荐值；滚动手感和按 App 设置不受影响。"
+          }
+        }
+      }
+    },
+    "gestures.set.gesture.action": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set %1$@ gesture action"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置%1$@手势动作"
+          }
+        }
+      }
+    },
+    "gestures.show.gesture.hints": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show gesture hints"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示手势提示"
+          }
+        }
+      }
+    },
+    "gestures.shows.direction.distance.pending.action": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shows direction, distance and the pending action while dragging with the right button. Hides on release."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右键拖动时显示方向、距离和即将执行的动作，松手后自动收起"
+          }
+        }
+      }
+    },
+    "gestures.toggle.gesture.hints": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle gesture hints"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换手势提示"
+          }
+        }
+      }
+    },
+    "gestures.toggle.mouse.gestures": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle mouse gestures"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换鼠标手势"
+          }
+        }
+      }
+    },
+    "gestures.trigger": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trigger"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "触发方式"
+          }
+        }
+      }
+    },
+    "gestures.trigger.distance": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trigger distance"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "触发距离"
+          }
+        }
+      }
+    },
+    "modifier.now.controls.previous.set": {
+      "extractionState": "manual",
+      "comment": "Used in MouseEditorControls. Arguments: 1 (String), 2 (String), 3 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ now controls “%2$@”. The previous %3$@ is set to “None” to prevent one key from triggering multiple actions."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 已改用于“%2$@”；原 %3$@ 已设为“无”，避免一个按键同时触发多项操作。"
+          }
+        }
+      }
+    },
+    "page.advanced": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Advanced"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "高级"
+          }
+        }
+      }
+    },
+    "page.app.rules": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Rules"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用规则"
+          }
+        }
+      }
+    },
+    "page.deliveryCountHint": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Submission counts do not prove the app received events. Confirm by watching the actual page move."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提交计数不代表应用已接收，仍需结合实际页面移动确认。"
+          }
+        }
+      }
+    },
+    "page.enable.mouse.enhancement": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable Mouse Enhancement"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用鼠标增强"
+          }
+        }
+      }
+    },
+    "page.mouse.enhancement": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse enhancement: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标增强：%1$@"
+          }
+        }
+      }
+    },
+    "page.mouse.settings": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标设置"
+          }
+        }
+      }
+    },
+    "page.notDetected": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not detected"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未识别"
+          }
+        }
+      }
+    },
+    "page.refresh.scroll.diagnostics": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh Scroll Diagnostics"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刷新滚轮诊断"
+          }
+        }
+      }
+    },
+    "page.right.click.gestures": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Right-Click Gestures"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右键手势"
+          }
+        }
+      }
+    },
+    "page.scroll.diagnostics": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scroll Diagnostics"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "滚轮诊断"
+          }
+        }
+      }
+    },
+    "page.system.target.window.identified": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System target window identified"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统已标注目标窗口"
+          }
+        }
+      }
+    },
+    "page.system.target.window.identified.yet.missing": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No system target window identified yet"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未取得目标窗口标注"
+          }
+        }
+      }
+    },
+    "page.target.pid": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target: %1$@ · PID %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标：%1$@ · PID %2$@"
+          }
+        }
+      }
+    },
+    "page.valid.events.smooth.frames.fallbacks": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection. Arguments: 1 (String), 2 (String), 3 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valid events: %1$@ · Smooth frames: %2$@ · Fallbacks: %3$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有效事件 %1$@，平滑帧 %2$@，降级 %3$@"
+          }
+        }
+      }
+    },
+    "page.wheel.input.native.gestures.passed.through": {
+      "extractionState": "manual",
+      "comment": "Used in MouseSection. Arguments: 1 (String), 2 (String), 3 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wheel input: %1$@ · Native gestures: %2$@ · Passed through by rules: %3$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "滚轮输入 %1$@，原生手势 %2$@，按规则放行 %3$@"
+          }
+        }
+      }
+    },
+    "scroll.acceleration.multiplier": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acceleration multiplier"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加速倍率"
+          }
+        }
+      }
+    },
+    "scroll.adjust.scrolling.feel": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adjust scrolling feel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调整鼠标手感"
+          }
+        }
+      }
+    },
+    "scroll.base.distance.standard.notched.wheel": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Base distance for a standard notched wheel. High-resolution input uses its original distance. Usually, adjusting scroll speed above is enough."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "普通刻度滚轮的基础距离；高分辨率输入按原始距离处理。通常只需调整上方滚动速度。"
+          }
+        }
+      }
+    },
+    "scroll.enable.smooth.scrolling.adjust.duration": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable smooth scrolling to adjust its duration."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启“平滑滚动”后才能调整平滑时长。"
+          }
+        }
+      }
+    },
+    "scroll.longer.durations.make.scrolling.slow.down.more": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Longer durations make scrolling slow down more gradually"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "时长越长，滚动结束得越缓慢"
+          }
+        }
+      }
+    },
+    "scroll.modifier.keys.fine.tuning": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modifier Keys and Fine Tuning"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修饰键与精细参数"
+          }
+        }
+      }
+    },
+    "scroll.restore.default.scrolling.feel": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore default scrolling feel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复默认滚动手感"
+          }
+        }
+      }
+    },
+    "scroll.restore.scrolling.feel": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore scrolling feel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复鼠标手感"
+          }
+        }
+      }
+    },
+    "scroll.restoreConfirmation": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore default scrolling feel?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复默认滚动手感？"
+          }
+        }
+      }
+    },
+    "scroll.restoreHint": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restores smoothing, direction, step, speed, acceleration and all three modifier keys. Per-app settings and mouse gestures are unchanged."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "平滑、方向、步长、速度、加速倍率和三个修饰键会恢复推荐值；按 App 单独设置和鼠标手势不受影响。"
+          }
+        }
+      }
+    },
+    "scroll.reverse.scroll.direction": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reverse scroll direction"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "反转滚动方向"
+          }
+        }
+      }
+    },
+    "scroll.scroll.speed": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scroll speed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "滚动速度"
+          }
+        }
+      }
+    },
+    "scroll.scrolling": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrolling"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "滚动"
+          }
+        }
+      }
+    },
+    "scroll.set.modifier": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set modifier for %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置%1$@修饰键"
+          }
+        }
+      }
+    },
+    "scroll.smooth.scrolling": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smooth scrolling"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "平滑滚动"
+          }
+        }
+      }
+    },
+    "scroll.smoothing.duration": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smoothing duration"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "平滑时长"
+          }
+        }
+      }
+    },
+    "scroll.toggle.scroll.direction": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle scroll direction"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换滚轮方向"
+          }
+        }
+      }
+    },
+    "scroll.toggle.smooth.scrolling": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle smooth scrolling"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换平滑滚动"
+          }
+        }
+      }
+    },
+    "scroll.wheel.step": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollingEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wheel step"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刻度步长"
+          }
+        }
+      }
+    },
+    "test.frameStatistics": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTestArea. Arguments: 1 (Int), 2 (Int), 3 (Double).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Received %1$lld frames, including %2$lld enhanced frames; total vertical movement: %3$.0lf px"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本区域收到 %1$lld 帧，其中增强帧 %2$lld；累计纵向移动 %3$.0lf px"
+          }
+        }
+      }
+    },
+    "test.scroll.over.scale.compare.received": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTestArea.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scroll over the scale to compare received events and movement. This tests Arc Kit only; test other apps separately."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将鼠标移到刻度区域滚动，核对实际接收与移动。这里只验证 Arc Kit，其他应用需分别实测。"
+          }
+        }
+      }
+    },
+    "test.scroll.test.area": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTestArea.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scroll Test Area"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "滚动测试区"
+          }
+        }
+      }
+    },
+    "tuning.horizontal.scrolling": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTuning.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horizontal scrolling"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "横向滚动"
+          }
+        }
+      }
+    },
+    "tuning.temporarily.disable.smoothing": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTuning.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temporarily disable smoothing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "临时禁用平滑"
+          }
+        }
+      }
+    },
+    "tuning.temporary.acceleration": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTuning.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temporary acceleration"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "临时加速"
+          }
+        }
+      }
+    },
+    "apps.note": {
+      "extractionState": "manual",
+      "comment": "Label for an editable mouse application rule note.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "说明"
+          }
+        }
+      }
+    },
+    "apps.noteOptional": {
+      "extractionState": "manual",
+      "comment": "Placeholder for an optional mouse application rule note.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optional: what this rule is for"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可选，记录这条规则的用途"
+          }
+        }
+      }
+    },
+    "apps.noteForApplication": {
+      "extractionState": "manual",
+      "comment": "Accessibility label for an application rule note. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rule note for %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 的规则说明"
+          }
+        }
+      }
+    },
+    "apps.changeNote": {
+      "extractionState": "manual",
+      "comment": "Undo action name for editing an application rule note.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit rule note"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修改规则说明"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,1986 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "aura.addColor": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Color"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加颜色"
+          }
+        }
+      }
+    },
+    "aura.advanced": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Customize Theme"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义主题"
+          }
+        }
+      }
+    },
+    "aura.amber": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amber"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "琥珀"
+          }
+        }
+      }
+    },
+    "aura.appearance": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Follow Appearance"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跟随深浅外观"
+          }
+        }
+      }
+    },
+    "aura.aurora": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aurora"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "极光"
+          }
+        }
+      }
+    },
+    "aura.automation": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Theme Schedule"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主题切换"
+          }
+        }
+      }
+    },
+    "aura.color": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Theme Color"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主题颜色"
+          }
+        }
+      }
+    },
+    "aura.colors": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Palette"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配色"
+          }
+        }
+      }
+    },
+    "aura.dark": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dark"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "深色"
+          }
+        }
+      }
+    },
+    "aura.day": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Day Theme"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日间主题"
+          }
+        }
+      }
+    },
+    "aura.dayStart": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Day Starts"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日间开始"
+          }
+        }
+      }
+    },
+    "aura.delete": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete Theme"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除主题"
+          }
+        }
+      }
+    },
+    "aura.deleteConfirm": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete this personal theme?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除这个个人主题？"
+          }
+        }
+      }
+    },
+    "aura.deleteHint": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scheduled references will use Amber instead."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用此主题的时段会改用琥珀。"
+          }
+        }
+      }
+    },
+    "aura.duplicate": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duplicate"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制"
+          }
+        }
+      }
+    },
+    "aura.dusk": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dusk"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暮色"
+          }
+        }
+      }
+    },
+    "aura.export": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export Theme…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导出主题…"
+          }
+        }
+      }
+    },
+    "aura.extract": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extract Colors from Image…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从图片提取配色…"
+          }
+        }
+      }
+    },
+    "aura.favorite": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorite Theme"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收藏主题"
+          }
+        }
+      }
+    },
+    "aura.fileInvalid": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a valid Arc Kit theme file (up to 64 KB)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请选择有效的 Arc Kit 主题文件（最大 64 KB）。"
+          }
+        }
+      }
+    },
+    "aura.fog": {
+      "extractionState": "manual",
+      "comment": "Soft glow composition, distinct from the Forest Mist theme name.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mist"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "薄雾"
+          }
+        }
+      }
+    },
+    "aura.form": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Composition"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "构图"
+          }
+        }
+      }
+    },
+    "aura.glacier": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glacier"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "冰川"
+          }
+        }
+      }
+    },
+    "aura.glow": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glow"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "光晕"
+          }
+        }
+      }
+    },
+    "aura.grain": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fine Grain"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "细颗粒"
+          }
+        }
+      }
+    },
+    "aura.hint": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Themes fill the entire window. Motion pauses when the window is inactive or energy saving is needed."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主题贯穿整个窗口；窗口不活动或需要节能时暂停动效。"
+          }
+        }
+      }
+    },
+    "aura.horizontal": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horizontal Position"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "水平位置"
+          }
+        }
+      }
+    },
+    "aura.imageInvalid": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to extract colors from this image."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法从这张图片提取配色。"
+          }
+        }
+      }
+    },
+    "aura.import": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import Theme…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导入主题…"
+          }
+        }
+      }
+    },
+    "aura.ink": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ink & Gold"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "墨金"
+          }
+        }
+      }
+    },
+    "aura.intensity": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Color Intensity"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "色彩浓度"
+          }
+        }
+      }
+    },
+    "aura.invalid": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This theme contains invalid colors or settings."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主题包含无效配色或参数。"
+          }
+        }
+      }
+    },
+    "aura.light": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Light"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "浅色"
+          }
+        }
+      }
+    },
+    "aura.limit": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can save up to 60 personal themes."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最多可保存 60 个个人主题。"
+          }
+        }
+      }
+    },
+    "aura.manual": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manual"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手动"
+          }
+        }
+      }
+    },
+    "aura.mist": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forest Mist"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "松雾"
+          }
+        }
+      }
+    },
+    "aura.modified": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Customized"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已调整"
+          }
+        }
+      }
+    },
+    "aura.motion": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Movement"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "运动速度"
+          }
+        }
+      }
+    },
+    "aura.name": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Theme Name"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主题名称"
+          }
+        }
+      }
+    },
+    "aura.newName": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My Soft Glow"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我的柔光"
+          }
+        }
+      }
+    },
+    "aura.night": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Night Theme"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间主题"
+          }
+        }
+      }
+    },
+    "aura.nightStart": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Night Starts"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间开始"
+          }
+        }
+      }
+    },
+    "aura.overlay": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reading Overlay"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阅读遮罩"
+          }
+        }
+      }
+    },
+    "aura.override": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manual theme is active until automatic switching resumes."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已临时使用手动主题，恢复自动切换后继续按规则选择。"
+          }
+        }
+      }
+    },
+    "aura.parallax": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subtle Pointer Parallax"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "轻微指针视差"
+          }
+        }
+      }
+    },
+    "aura.particles": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Particles"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "粒子"
+          }
+        }
+      }
+    },
+    "aura.personal": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My Themes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我的主题"
+          }
+        }
+      }
+    },
+    "aura.preview": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview Appearance"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预览外观"
+          }
+        }
+      }
+    },
+    "aura.removeColor": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove Last Color"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除末尾颜色"
+          }
+        }
+      }
+    },
+    "aura.restore": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Theme"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复当前主题"
+          }
+        }
+      }
+    },
+    "aura.resume": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resume Automatic Theme"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复自动切换"
+          }
+        }
+      }
+    },
+    "aura.ribbon": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ribbon"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "光带"
+          }
+        }
+      }
+    },
+    "aura.save": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save as Theme…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存为主题…"
+          }
+        }
+      }
+    },
+    "aura.schedule": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "By Time"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按时段"
+          }
+        }
+      }
+    },
+    "aura.scheduleHint": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manual selection temporarily overrides the schedule until you resume it."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手动选择会临时覆盖自动规则，点击恢复自动切换即可继续。"
+          }
+        }
+      }
+    },
+    "aura.shuffle": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New Composition"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "换个构图"
+          }
+        }
+      }
+    },
+    "aura.slow": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slow"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缓慢"
+          }
+        }
+      }
+    },
+    "aura.spread": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Light Spread"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "光线范围"
+          }
+        }
+      }
+    },
+    "aura.standard": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "标准"
+          }
+        }
+      }
+    },
+    "aura.status": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved automatically"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动保存"
+          }
+        }
+      }
+    },
+    "aura.still": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Still"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静止"
+          }
+        }
+      }
+    },
+    "aura.themes": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soft Glow Themes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "柔光主题"
+          }
+        }
+      }
+    },
+    "aura.undo": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo Adjustment"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤销调整"
+          }
+        }
+      }
+    },
+    "aura.unfavorite": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove Favorite"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消收藏"
+          }
+        }
+      }
+    },
+    "aura.vertical": {
+      "extractionState": "manual",
+      "comment": "Soft glow theme editor, renderer or validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vertical Position"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "垂直位置"
+          }
+        }
+      }
+    },
+    "background.accessibilityLabel": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App background: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用背景：%1$@"
+          }
+        }
+      }
+    },
+    "background.app.background": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Background"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用背景"
+          }
+        }
+      }
+    },
+    "background.app.background.preview": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Background Preview"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用背景预览"
+          }
+        }
+      }
+    },
+    "background.app.background.saved": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App background saved"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用背景已保存"
+          }
+        }
+      }
+    },
+    "background.appearance.adjustments": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appearance Adjustments"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "画面调节"
+          }
+        }
+      }
+    },
+    "background.background.file.actions": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background file actions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景文件操作"
+          }
+        }
+      }
+    },
+    "background.background.operation.failed": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background operation failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景操作失败"
+          }
+        }
+      }
+    },
+    "background.background.style": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background style"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景样式"
+          }
+        }
+      }
+    },
+    "background.blur": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blur"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模糊程度"
+          }
+        }
+      }
+    },
+    "background.browse.wallpapers": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Browse Wallpapers"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "浏览壁纸图库"
+          }
+        }
+      }
+    },
+    "background.changes.save.automatically": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Changes save automatically"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更改自动保存"
+          }
+        }
+      }
+    },
+    "background.choose.file": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose File…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择文件…"
+          }
+        }
+      }
+    },
+    "background.clear.background.file": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear Background File"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清除背景文件"
+          }
+        }
+      }
+    },
+    "background.dismiss.background.message": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dismiss background message"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭背景提示"
+          }
+        }
+      }
+    },
+    "background.follow.system.appearance": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Follow System Appearance"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跟随系统外观"
+          }
+        }
+      }
+    },
+    "background.interface.overlay": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interface overlay"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "界面遮罩"
+          }
+        }
+      }
+    },
+    "background.loading.background": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading background…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在读取背景…"
+          }
+        }
+      }
+    },
+    "background.opacity": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opacity"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不透明度"
+          }
+        }
+      }
+    },
+    "background.reduce.transparency.enabled.macos.so": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reduce Transparency is enabled in macOS, so a solid background is shown. Your background selection is preserved."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统已开启“减少透明度”，当前使用纯色界面；背景选择会保留。"
+          }
+        }
+      }
+    },
+    "background.replace.file": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Replace File…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更换文件…"
+          }
+        }
+      }
+    },
+    "background.reset.background": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset Background"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置背景"
+          }
+        }
+      }
+    },
+    "background.restore.clarity": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Clarity"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复清晰"
+          }
+        }
+      }
+    },
+    "background.restoreHint": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep the background file and restore 75% opacity, no blur and a 20% overlay"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保留背景文件，恢复 75% 不透明度、无模糊和 20% 遮罩"
+          }
+        }
+      }
+    },
+    "background.saving": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在保存…"
+          }
+        }
+      }
+    },
+    "background.saving.app.background": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving app background…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在保存应用背景…"
+          }
+        }
+      }
+    },
+    "background.storage.background.video.missing.choose": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The background video is missing. Choose it again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景视频已丢失，请重新选择。"
+          }
+        }
+      }
+    },
+    "background.storage.choose.mp4.mov.m4v.video": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose an MP4, MOV or M4V video no larger than 2 GB."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请选择不超过 2 GB 的 MP4、MOV 或 M4V 视频。"
+          }
+        }
+      }
+    },
+    "background.storage.concurrentChange": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background settings changed elsewhere. Reload them."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景设置已被其他操作修改，请重新加载。"
+          }
+        }
+      }
+    },
+    "background.storage.image": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Image"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图片"
+          }
+        }
+      }
+    },
+    "background.storage.imageMissing": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The background image is missing. Choose another image or clear it."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景图片已丢失，请重新选图或清除图片。"
+          }
+        }
+      }
+    },
+    "background.storage.imageUnreadable": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read the background image. Choose another image or clear it."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景图片无法读取，请重新选图或清除图片。"
+          }
+        }
+      }
+    },
+    "background.storage.invalidAssetIndex": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background asset index is missing or invalid."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景素材索引缺失或无效。"
+          }
+        }
+      }
+    },
+    "background.storage.invalidImage": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a decodable local image no larger than 100 MB or 150 million pixels."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请选择可解码且不超过 100 MB、1.5 亿像素的本地图片。"
+          }
+        }
+      }
+    },
+    "background.storage.invalidSettings": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid app background settings. Reload or reset the background."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用背景设置无效，请重新加载或重置背景。"
+          }
+        }
+      }
+    },
+    "background.storage.recordMissing": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background configuration record is missing."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景配置记录缺失。"
+          }
+        }
+      }
+    },
+    "background.storage.soft.glow": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soft Glow"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "柔光"
+          }
+        }
+      }
+    },
+    "background.storage.system": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统"
+          }
+        }
+      }
+    },
+    "background.storage.video": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频"
+          }
+        }
+      }
+    },
+    "background.storage.video.playable.video.track.missing": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The video has no playable video track."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频没有可播放的画面轨道。"
+          }
+        }
+      }
+    },
+    "background.storage.videoUnreadable": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundStore.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read the background video. Choose it again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景视频无法读取，请重新选择。"
+          }
+        }
+      }
+    },
+    "background.unsavedChanges": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background changes not saved"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景更改尚未保存"
+          }
+        }
+      }
+    },
+    "background.used.arcKit.windows.images": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Used only in Arc Kit windows. Images and videos are stored as independent copies, so clearing the wallpaper library does not affect them."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅用于 Arc Kit 窗口。图片与视频保存独立副本，清理图库不影响背景。"
+          }
+        }
+      }
+    },
+    "background.videos.loop.silently.videos.effects.pause": {
+      "extractionState": "manual",
+      "comment": "Used in AppBackgroundEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Videos loop silently. Videos and effects pause when the window is inactive or Reduce Motion is enabled."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频静音循环。窗口不活动或开启“减少动态效果”时暂停视频与动效。"
+          }
+        }
+      }
+    },
+    "library.asset.library": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The asset is in your library, but another background change is in progress. Try again later."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "素材已在图库，应用背景正在处理其他更改，请稍后重试。"
+          }
+        }
+      }
+    },
+    "library.now.arcKit.background": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%1$@” is now the Arc Kit background."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已将“%1$@”设为 Arc Kit 背景。"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

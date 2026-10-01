@@ -1,0 +1,2136 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "connection.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window Agent temporarily unavailable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口 Agent 暂时不可用"
+          }
+        }
+      }
+    },
+    "connection.unavailableReason": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRuntimeClient. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window Agent temporarily unavailable: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口 Agent 暂时不可用：%1$@"
+          }
+        }
+      }
+    },
+    "connection.window.action.s.session.ended": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRuntimeClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The window action's session has ended"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口操作所属会话已结束"
+          }
+        }
+      }
+    },
+    "connection.window.management.off": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRuntimeClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window management is off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口管理已关闭"
+          }
+        }
+      }
+    },
+    "connection.window.service.notReady.reopen.menu": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRuntimeClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window service not ready. Reopen the menu."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口服务未就绪，请重新打开菜单"
+          }
+        }
+      }
+    },
+    "layout.fullScreen": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutPresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full Screen"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全屏"
+          }
+        }
+      }
+    },
+    "layout.fullScreen.display": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full-screen display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全屏显示"
+          }
+        }
+      }
+    },
+    "layout.left.third": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutPresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left Third"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左 1/3"
+          }
+        }
+      }
+    },
+    "layout.left.two.thirds": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutPresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left Two Thirds"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左 2/3"
+          }
+        }
+      }
+    },
+    "layout.maximize": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maximize"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "铺满"
+          }
+        }
+      }
+    },
+    "layout.middle.third": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutPresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Middle Third"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中 1/3"
+          }
+        }
+      }
+    },
+    "layout.next.display": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutPresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next Display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一屏幕"
+          }
+        }
+      }
+    },
+    "layout.previous.display": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutPresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous Display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上一屏幕"
+          }
+        }
+      }
+    },
+    "layout.right.third": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutPresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Right Third"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右 1/3"
+          }
+        }
+      }
+    },
+    "layout.right.two.thirds": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutPresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Right Two Thirds"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右 2/3"
+          }
+        }
+      }
+    },
+    "layout.stageManager": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutAction.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stage Manager"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "台前调度"
+          }
+        }
+      }
+    },
+    "page.actionIncomplete": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The last window action did not complete"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上次窗口操作未完成"
+          }
+        }
+      }
+    },
+    "page.adjust.window.spacing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adjust window spacing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调整窗口间距"
+          }
+        }
+      }
+    },
+    "page.apps.displays": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apps & Displays"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用与屏幕"
+          }
+        }
+      }
+    },
+    "page.drag.screen.edges.resize.windows": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag to screen edges to resize windows"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖到屏幕边缘调整窗口"
+          }
+        }
+      }
+    },
+    "page.enable.window.management": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable Window Management"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用窗口管理"
+          }
+        }
+      }
+    },
+    "page.retry.regular.window": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try again with a regular window."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请换一个普通窗口后重试。"
+          }
+        }
+      }
+    },
+    "page.shortcuts": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shortcuts"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快捷键"
+          }
+        }
+      }
+    },
+    "page.show.target.position.preview": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show target position preview"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示目标位置预览"
+          }
+        }
+      }
+    },
+    "page.snapping": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag Snapping"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附"
+          }
+        }
+      }
+    },
+    "page.toggle.snapping": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle drag snapping"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换拖拽吸附"
+          }
+        }
+      }
+    },
+    "page.toggle.snapping.preview": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle snapping preview"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换吸附预览"
+          }
+        }
+      }
+    },
+    "page.window.management": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window management: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口管理：%1$@"
+          }
+        }
+      }
+    },
+    "page.window.settings": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口设置"
+          }
+        }
+      }
+    },
+    "page.window.spacing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window spacing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口间距"
+          }
+        }
+      }
+    },
+    "recorder.click.record": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyRecorder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click to Record"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击录制"
+          }
+        }
+      }
+    },
+    "recorder.disabled": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyRecorder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not enabled"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未启用"
+          }
+        }
+      }
+    },
+    "recorder.press.shortcut": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyRecorder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Press a shortcut…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按下快捷键…"
+          }
+        }
+      }
+    },
+    "recorder.requires": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyRecorder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Requires ⌘ / ⌃ / ⌥"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要 ⌘ / ⌃ / ⌥"
+          }
+        }
+      }
+    },
+    "recorder.unsupported.key": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyRecorder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unsupported key"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不支持此按键"
+          }
+        }
+      }
+    },
+    "rules.already.excluded.existing.entry": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRulesEditor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%1$@” is already excluded. The existing entry is unchanged."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%1$@”已经在排除列表中；原项目保持不变。"
+          }
+        }
+      }
+    },
+    "rules.app.exceptions.multiple.displays": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRulesEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Exceptions and Multiple Displays"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用例外与多显示器"
+          }
+        }
+      }
+    },
+    "rules.change.display.switching.order": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRulesEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change display switching order"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换多显示器顺序"
+          }
+        }
+      }
+    },
+    "rules.display.switching": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRulesEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Display switching"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "多显示器切换"
+          }
+        }
+      }
+    },
+    "rules.exclude.window.management": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRulesEditor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exclude %1$@ from window management"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排除 %1$@ 的窗口管理"
+          }
+        }
+      }
+    },
+    "rules.excluded": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRulesEditor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ excluded"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 已排除"
+          }
+        }
+      }
+    },
+    "rules.excluded.apps": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRulesEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluded Apps"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排除 App"
+          }
+        }
+      }
+    },
+    "rules.excluded.apps.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRulesEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No excluded apps"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂无排除项"
+          }
+        }
+      }
+    },
+    "rules.external.app.available.add.switch.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRulesEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No external app available to add. Switch to the app you want to exclude, then return to Arc Kit and click Add."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有可添加的外部 App。请先切换到要排除的 App，再回到 Arc Kit 点击添加。"
+          }
+        }
+      }
+    },
+    "rules.remove.excluded.window.app": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRulesEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove excluded window app"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除窗口排除 App"
+          }
+        }
+      }
+    },
+    "shortcuts.change.window.shortcut": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change window shortcut"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修改窗口快捷键"
+          }
+        }
+      }
+    },
+    "shortcuts.duplicate": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duplicate"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重复"
+          }
+        }
+      }
+    },
+    "shortcuts.duplicate.shortcuts": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duplicate shortcuts:"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以下快捷键重复："
+          }
+        }
+      }
+    },
+    "shortcuts.enable.shortcut": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable shortcut for %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用%1$@快捷键"
+          }
+        }
+      }
+    },
+    "shortcuts.enable.shortcuts": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable global shortcuts"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用全局快捷键"
+          }
+        }
+      }
+    },
+    "shortcuts.enable.shortcuts.enabling.recording": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable global shortcuts before enabling or recording individual shortcuts."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启全局快捷键后，才能启用或录制各项快捷键。"
+          }
+        }
+      }
+    },
+    "shortcuts.failedCount": {
+      "extractionState": "manual",
+      "comment": "Used in GlobalHotKeyService. Arguments: 1 (Int).",
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld global shortcut failed to register"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld global shortcuts failed to register"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 个全局快捷键注册失败"
+          }
+        }
+      }
+    },
+    "shortcuts.handlerFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not install event handler"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "事件处理器安装失败"
+          }
+        }
+      }
+    },
+    "shortcuts.menuBar.actions.snapping.remain": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menu bar actions and drag snapping remain available when off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭后仍可使用菜单栏和拖拽吸附"
+          }
+        }
+      }
+    },
+    "shortcuts.primary.modifier.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primary modifier missing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缺少主修饰键"
+          }
+        }
+      }
+    },
+    "shortcuts.registered.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registered: %1$@ · Failed: %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 个成功，%2$@ 个异常"
+          }
+        }
+      }
+    },
+    "shortcuts.registeredCount": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor. Arguments: 1 (Int).",
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld shortcut registered"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld shortcuts registered"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 个已注册"
+          }
+        }
+      }
+    },
+    "shortcuts.registration.status": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registration status"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "注册状态"
+          }
+        }
+      }
+    },
+    "shortcuts.reserved.system": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reserved by system"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统占用"
+          }
+        }
+      }
+    },
+    "shortcuts.restore.default.shortcuts": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Default Shortcuts"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复默认快捷键"
+          }
+        }
+      }
+    },
+    "shortcuts.restore.default.window.shortcuts": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore default window shortcuts?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复默认窗口快捷键？"
+          }
+        }
+      }
+    },
+    "shortcuts.restore.window.shortcuts": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore window shortcuts"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复窗口快捷键"
+          }
+        }
+      }
+    },
+    "shortcuts.restoreHint": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Replaces custom shortcuts with Magnet-style defaults. Other window settings are unchanged."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前自定义快捷键会被 Magnet 风格默认组合替换。其他窗口设置不受影响。"
+          }
+        }
+      }
+    },
+    "shortcuts.runtime.error": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime error"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "运行时异常"
+          }
+        }
+      }
+    },
+    "shortcuts.shortcuts.need.primary.modifier": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These shortcuts need a primary modifier:"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以下快捷键缺少主修饰键："
+          }
+        }
+      }
+    },
+    "shortcuts.toggle.shortcuts": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle global shortcuts"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换全局快捷键"
+          }
+        }
+      }
+    },
+    "shortcuts.unregistered": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not registered"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未注册"
+          }
+        }
+      }
+    },
+    "shortcuts.unregistered.shortcuts": {
+      "extractionState": "manual",
+      "comment": "Used in WindowHotKeyEditor.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unregistered shortcuts:"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以下快捷键未注册："
+          }
+        }
+      }
+    },
+    "smokeTest.accessibility": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- Accessibility permission: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- 辅助功能权限：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.accessibility.interface": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- Accessibility interface: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- 辅助功能接口：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.actionNotRecorded": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resident Runtime Host did not record a complete successful shortcut chain, pid=%1$@, action=%2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常驻 Runtime Host 未记录完整快捷键成功链路 pid=%1$@ action=%2$@"
+          }
+        }
+      }
+    },
+    "smokeTest.actions": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "## Actions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "## 动作"
+          }
+        }
+      }
+    },
+    "smokeTest.activationFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot activate isolated TextEdit as the shortcut target, expectedPID=%1$@ "
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法激活隔离 TextEdit 作为快捷键目标 expectedPID=%1$@ "
+          }
+        }
+      }
+    },
+    "smokeTest.arcKit.host.smoke.test.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit Runtime Host smoke test failed: %1$@\n"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit Runtime Host 烟测失败：%1$@\n"
+          }
+        }
+      }
+    },
+    "smokeTest.arcKit.host.smoke.test.passed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit Runtime Host smoke test passed: %1$@ actions, %2$@ live entry points"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit Runtime Host 烟测通过：%1$@ 个动作，%2$@ 条真实入口"
+          }
+        }
+      }
+    },
+    "smokeTest.arcKit.window.management.live.smoke.test": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit Window Management Live Smoke Test\n"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit 窗口管理真实烟测\n"
+          }
+        }
+      }
+    },
+    "smokeTest.arcKit.window.management.smoke.test.report": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "# Arc Kit Window Management Smoke Test Report"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "# Arc Kit 窗口管理烟测报告"
+          }
+        }
+      }
+    },
+    "smokeTest.arcKit.window.smoke.test.skipped": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit window smoke test skipped: %1$@\n"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit 窗口烟测未执行：%1$@\n"
+          }
+        }
+      }
+    },
+    "smokeTest.arcKit.window.smoke.test.skipped.runtime": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit window smoke test skipped: Runtime Host lacks Accessibility permission or the AX interface is unavailable.\n"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit 窗口烟测未执行：Runtime Host 辅助功能未授权或 AX 接口不可用。\n"
+          }
+        }
+      }
+    },
+    "smokeTest.available": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Available"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可用"
+          }
+        }
+      }
+    },
+    "smokeTest.desktop.locked.unlock.mac": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The desktop is locked. Unlock your Mac before running the live window smoke test."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前桌面已锁定，无法创建并验证真实窗口；请解锁 Mac 后重新运行烟测"
+          }
+        }
+      }
+    },
+    "smokeTest.desktop.state": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- Desktop state: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- 桌面状态：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.display.count": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- Display count: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- 显示器数量：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.enable.window.management.main.app": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable window management in the main app first. Smoke tests do not override committed configuration."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先在主应用开启窗口管理；烟测不再绕过已提交配置改变后台状态"
+          }
+        }
+      }
+    },
+    "smokeTest.fullScreenEnterFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host did not enter AXFullScreen"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host 未进入 AXFullScreen"
+          }
+        }
+      }
+    },
+    "smokeTest.fullScreenExitFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host did not exit AXFullScreen"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host 未退出 AXFullScreen"
+          }
+        }
+      }
+    },
+    "smokeTest.host.lacks.accessibility": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host lacks Accessibility permission or the AX interface is unavailable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host 辅助功能未授权或 AX 接口不可用"
+          }
+        }
+      }
+    },
+    "smokeTest.host.request.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host request failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host 请求失败：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.host.returned.action.result.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host returned no action result: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host 未返回动作结果：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.host.returned.runtime.state.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host returned no runtime state"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host 未返回运行态"
+          }
+        }
+      }
+    },
+    "smokeTest.host.shortcut.action.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host shortcut action failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host 快捷键动作失败：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.hostLaunchFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not start Arc Kit Runtime Host smoke test: %1$@\n"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit Runtime Host 烟测启动失败：%1$@\n"
+          }
+        }
+      }
+    },
+    "smokeTest.keyEventFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot create keyboard event, keyCode=%1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法创建键盘事件 keyCode=%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.live.entry.points": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "## Live Entry Points"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "## 真实入口"
+          }
+        }
+      }
+    },
+    "smokeTest.locked": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Locked"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已锁定"
+          }
+        }
+      }
+    },
+    "smokeTest.notRun": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- Not run"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- 未执行"
+          }
+        }
+      }
+    },
+    "smokeTest.processMissing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NSWorkspace returned no isolated TextEdit process"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NSWorkspace 未返回隔离 TextEdit 进程"
+          }
+        }
+      }
+    },
+    "smokeTest.resident.host.shortcut.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resident Runtime Host shortcut failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常驻 Runtime Host 快捷键执行失败：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.resident.host.shortcuts.notReady.pid": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resident Runtime Host shortcuts not ready, pid=%1$@ "
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常驻 Runtime Host 快捷键未就绪 pid=%1$@ "
+          }
+        }
+      }
+    },
+    "smokeTest.response.host.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No response from Runtime Host: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host 未返回响应：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.shortcutDidNotConverge": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host shortcut result did not converge, pid=%1$@, action=%2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime Host 快捷键结果未收敛 pid=%1$@ action=%2$@"
+          }
+        }
+      }
+    },
+    "smokeTest.shortcutEventFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot create a global shortcut event"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法创建全局快捷键事件"
+          }
+        }
+      }
+    },
+    "smokeTest.skipped.actions": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- Skipped actions: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- 未执行动作：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.skipped.missing.accessibility.prerequisites": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- Skipped: missing Accessibility permission or prerequisites"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- 未执行：缺少辅助功能权限或前置条件"
+          }
+        }
+      }
+    },
+    "smokeTest.smoke.test.settings.lack.executable.top.left": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smoke test settings lack executable top-left or restore shortcuts"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "烟测设置缺少可执行的左上角或恢复快捷键"
+          }
+        }
+      }
+    },
+    "smokeTest.target.app": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- Target app: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- 目标 App：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.target.pid": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- Target PID: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- 目标 PID：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.textEditLaunchFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not launch an isolated TextEdit smoke test instance: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法启动隔离 TextEdit 窗口烟测实例：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.textEditMissing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TextEdit is missing; cannot create a real external window for the smoke test"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统缺少 TextEdit，无法创建真实外部窗口烟测目标"
+          }
+        }
+      }
+    },
+    "smokeTest.time": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- Time: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "- 时间：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.timeout.launching.isolated.textedit.window": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timed out launching an isolated TextEdit window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启动隔离 TextEdit 窗口超时"
+          }
+        }
+      }
+    },
+    "smokeTest.timeout.waiting.host": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timed out waiting for Runtime Host: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待 Runtime Host 响应超时：%1$@"
+          }
+        }
+      }
+    },
+    "smokeTest.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unavailable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不可用"
+          }
+        }
+      }
+    },
+    "smokeTest.unlocked": {
+      "extractionState": "manual",
+      "comment": "Used in WindowManagementSmokeTestService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlocked"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已解锁"
+          }
+        }
+      }
+    },
+    "snapping.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in WindowDragSnapService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag snapping unavailable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附不可用"
+          }
+        }
+      }
+    },
+    "target.reading.target.window.retry": {
+      "extractionState": "manual",
+      "comment": "Used in WindowTargetSession.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reading the target window. Try again shortly."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在读取目标窗口，请稍后重试"
+          }
+        }
+      }
+    },
+    "target.select.target.window.opening": {
+      "extractionState": "manual",
+      "comment": "Used in WindowTargetSession.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select the target window before opening the panel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先选中目标窗口，再打开面板"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

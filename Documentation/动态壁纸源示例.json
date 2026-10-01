@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "name": "NASA 视频目录示例",
+  "items": [
+    {
+      "id": "jsc2022m000270_Orion_First_Imagery_Timelapse_and_Original_221117",
+      "title": "First Imagery of Earth From Orion Spacecraft Nov. 16, 2022",
+      "pageURL": "https://images.nasa.gov/details/jsc2022m000270_Orion_First_Imagery_Timelapse_and_Original_221117",
+      "author": "NASA / JSC",
+      "license": "NASA 媒体使用指南；第三方标注以原页为准",
+      "thumbnail": "https://images-assets.nasa.gov/video/jsc2022m000270_Orion_First_Imagery_Timelapse_and_Original_221117/jsc2022m000270_Orion_First_Imagery_Timelapse_and_Original_221117~small.jpg",
+      "preview": "https://images-assets.nasa.gov/video/jsc2022m000270_Orion_First_Imagery_Timelapse_and_Original_221117/jsc2022m000270_Orion_First_Imagery_Timelapse_and_Original_221117~preview.mp4",
+      "variants": [
+        {
+          "title": "标准",
+          "url": "https://images-assets.nasa.gov/video/jsc2022m000270_Orion_First_Imagery_Timelapse_and_Original_221117/jsc2022m000270_Orion_First_Imagery_Timelapse_and_Original_221117~medium.mp4"
+        },
+        {
+          "title": "流畅",
+          "url": "https://images-assets.nasa.gov/video/jsc2022m000270_Orion_First_Imagery_Timelapse_and_Original_221117/jsc2022m000270_Orion_First_Imagery_Timelapse_and_Original_221117~small.mp4"
+        }
+      ]
+    }
+  ]
+}

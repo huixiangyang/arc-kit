@@ -1,0 +1,690 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "appProfile.uuRemote": {
+      "extractionState": "manual",
+      "comment": "Name of the editable default UU Remote scrolling rule.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UU Remote"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UU 远程"
+          }
+        }
+      }
+    },
+    "appProfile.bundleIDRequired": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAppScrollProfile.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot add an app profile without an app name and Bundle ID"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法添加 App Profile：应用名称或 Bundle ID 为空"
+          }
+        }
+      }
+    },
+    "appProfile.custom.settings": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAppScrollProfile.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "单独设置"
+          }
+        }
+      }
+    },
+    "appProfile.follow.global": {
+      "extractionState": "manual",
+      "comment": "Use the default tuning from the scrolling and advanced tabs, even when enhancement is off for apps without a rule.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use Default Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用默认参数"
+          }
+        }
+      }
+    },
+    "appProfile.invalidBundleID": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAppScrollProfile.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse profile bundleIdentifier cannot be empty or have leading or trailing whitespace"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标 Profile bundleIdentifier 不能为空或包含首尾空白"
+          }
+        }
+      }
+    },
+    "appProfile.invalidName": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAppScrollProfile.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse profile name cannot be empty or have leading or trailing whitespace"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标 Profile 名称不能为空或包含首尾空白"
+          }
+        }
+      }
+    },
+    "appProfile.selfProfileRejected": {
+      "extractionState": "manual",
+      "comment": "Used in MouseAppScrollProfile.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit cannot be added to its own mouse enhancement profiles"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不能把 Arc Kit 自己加入鼠标增强 App Profile"
+          }
+        }
+      }
+    },
+    "appProfile.use.system.scrolling": {
+      "extractionState": "manual",
+      "comment": "Pass the app scrolling events through unchanged, without Arc Kit smoothing, reversal, acceleration or modifier conversion.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Enhancement"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不启用增强"
+          }
+        }
+      }
+    },
+    "gesture.action.missing": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Action"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无动作"
+          }
+        }
+      }
+    },
+    "gesture.app.windows": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Windows"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用窗口"
+          }
+        }
+      }
+    },
+    "gesture.back": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "返回"
+          }
+        }
+      }
+    },
+    "gesture.down": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Down"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向下"
+          }
+        }
+      }
+    },
+    "gesture.forward": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forward"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前进"
+          }
+        }
+      }
+    },
+    "gesture.hold.right.button.drag": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold Right Button and Drag"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右键按住拖动"
+          }
+        }
+      }
+    },
+    "gesture.left": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向左"
+          }
+        }
+      }
+    },
+    "gesture.mission.control": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mission Control"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调度中心"
+          }
+        }
+      }
+    },
+    "gesture.mouse.gesture.bindings.cover.every.direction": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse gesture bindings must cover every direction exactly once"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标手势绑定必须完整且每个方向只能出现一次"
+          }
+        }
+      }
+    },
+    "gesture.mouse.gesture.distance.outside.current": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse gesture distance is outside the current schema's range"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标手势触发距离超出当前 schema 允许范围"
+          }
+        }
+      }
+    },
+    "gesture.right": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Right"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向右"
+          }
+        }
+      }
+    },
+    "gesture.show.desktop": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show Desktop"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示桌面"
+          }
+        }
+      }
+    },
+    "gesture.up": {
+      "extractionState": "manual",
+      "comment": "Used in MouseGestureEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向上"
+          }
+        }
+      }
+    },
+    "scroll.mouse.scroll.modifier.contains.unknown.bits": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollEngine.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse scroll modifier contains unknown bits"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标滚动修饰键包含未知位"
+          }
+        }
+      }
+    },
+    "tuning.duplicateModifier": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTuning.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse scrolling actions cannot share the same modifier key"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标滚动动作不能重复使用同一个修饰键"
+          }
+        }
+      }
+    },
+    "tuning.horizontal.scrolling": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTuning.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horizontal scrolling"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "横向滚动"
+          }
+        }
+      }
+    },
+    "tuning.mouse.acceleration.multiplier": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTuning.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse acceleration multiplier"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标加速倍率"
+          }
+        }
+      }
+    },
+    "tuning.mouse.inertia.response.time.outside": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTuning.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse inertia response time is outside the current schema's range"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标惯性响应时间超出当前 schema 允许范围"
+          }
+        }
+      }
+    },
+    "tuning.mouse.scroll.step": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTuning.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse scroll step"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标滚动步长"
+          }
+        }
+      }
+    },
+    "tuning.mouse.speed.gain": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTuning.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse speed gain"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标速度增益"
+          }
+        }
+      }
+    },
+    "tuning.outside.current.schema.s.range": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTuning. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ is outside the current schema's range"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@超出当前 schema 允许范围"
+          }
+        }
+      }
+    },
+    "tuning.temporarily.disable.smoothing": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTuning.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temporarily disable smoothing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "临时禁用平滑"
+          }
+        }
+      }
+    },
+    "tuning.temporary.acceleration": {
+      "extractionState": "manual",
+      "comment": "Used in MouseScrollTuning.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temporary acceleration"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "临时加速"
+          }
+        }
+      }
+    },
+    "validation.all.apps": {
+      "extractionState": "manual",
+      "comment": "Used in MouseEnhancementSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All Apps"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所有应用"
+          }
+        }
+      }
+    },
+    "validation.appBundleIDRequired": {
+      "extractionState": "manual",
+      "comment": "Used in MouseEnhancementSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse app profiles require an explicit bundleIdentifier"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标 App Profile 必须绑定明确 bundleIdentifier"
+          }
+        }
+      }
+    },
+    "validation.listed.apps": {
+      "extractionState": "manual",
+      "comment": "Used in MouseEnhancementSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listed Apps Only"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅列表中的应用"
+          }
+        }
+      }
+    },
+    "validation.mouse.app.profile.bundleIDs": {
+      "extractionState": "manual",
+      "comment": "Used in MouseEnhancementSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse app profile bundle identifiers must be unique"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标 App Profile bundleIdentifier 不能重复"
+          }
+        }
+      }
+    },
+    "validation.mouse.app.profile.ids.unique": {
+      "extractionState": "manual",
+      "comment": "Used in MouseEnhancementSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse app profile IDs must be unique"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标 App Profile id 不能重复"
+          }
+        }
+      }
+    },
+    "validation.selfProfileRejected": {
+      "extractionState": "manual",
+      "comment": "Used in MouseEnhancementSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse app profiles cannot include Arc Kit itself"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标 App Profile 不允许包含 Arc Kit 自身"
+          }
+        }
+      }
+    },
+    "appProfile.uuRemoteNote": {
+      "extractionState": "manual",
+      "comment": "Editable note explaining the default UU Remote scrolling rule.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UU Remote already reverses scrolling. Avoid reversing it twice."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UU 远程自带滚动翻转，避免重复翻转。"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

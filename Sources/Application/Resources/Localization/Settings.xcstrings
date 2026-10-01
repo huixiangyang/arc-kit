@@ -1,0 +1,1446 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "configuration.enabled": {
+      "extractionState": "manual",
+      "comment": "Used in AppSettings. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enabled: %1$@/%2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已启用 %1$@/%2$@ 项"
+          }
+        }
+      }
+    },
+    "configuration.schemaMismatch": {
+      "extractionState": "manual",
+      "comment": "Used in AppSettings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configuration format mismatch; refusing to reset to defaults"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置格式不匹配，拒绝重置为默认值"
+          }
+        }
+      }
+    },
+    "domain.settings.transaction.failed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsDomain. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings transaction failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置事务失败：%1$@"
+          }
+        }
+      }
+    },
+    "domain.settings.verification.writing.failed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsDomain. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ settings verification failed after writing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 设置写入后校验失败"
+          }
+        }
+      }
+    },
+    "domain.writeFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsDomain. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not write %1$@ settings: %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 设置写入失败：%2$@"
+          }
+        }
+      }
+    },
+    "general.application": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Application"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用"
+          }
+        }
+      }
+    },
+    "general.applying": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applying…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在应用…"
+          }
+        }
+      }
+    },
+    "general.change.appearance": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change appearance"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更改外观"
+          }
+        }
+      }
+    },
+    "general.check.again": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check Again"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新检测"
+          }
+        }
+      }
+    },
+    "general.choose.folder": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择目录"
+          }
+        }
+      }
+    },
+    "general.current.status": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current status: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前检测：%1$@"
+          }
+        }
+      }
+    },
+    "general.currently": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Currently %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前%1$@"
+          }
+        }
+      }
+    },
+    "general.hidden": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已隐藏"
+          }
+        }
+      }
+    },
+    "general.hidden.files.finder": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden files in Finder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 隐藏文件"
+          }
+        }
+      }
+    },
+    "general.launch.arcKit.login": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Launch Arc Kit at login"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录时启动 Arc Kit"
+          }
+        }
+      }
+    },
+    "general.login.items.settings": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Login Items Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录项设置"
+          }
+        }
+      }
+    },
+    "general.loginEnableUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Launch at login did not take effect as requested"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录启动未按要求生效"
+          }
+        }
+      }
+    },
+    "general.loginStatusUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot confirm launch at login status"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法确认登录启动状态"
+          }
+        }
+      }
+    },
+    "general.reduce.motion": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reduce Motion"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "减少动态效果"
+          }
+        }
+      }
+    },
+    "general.reopenArcKit": {
+      "extractionState": "manual",
+      "comment": "Help for both menu bar and Dock visibility switches.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Arc Kit from Spotlight or Applications when its icons are hidden."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏图标后，仍可通过 Spotlight 或“应用程序”打开 Arc Kit。"
+          }
+        }
+      }
+    },
+    "general.screenshot.location": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screenshot location"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "截图位置"
+          }
+        }
+      }
+    },
+    "general.show.dock": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show in Dock"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 Dock 中显示"
+          }
+        }
+      }
+    },
+    "general.show.hidden.files": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show Hidden Files"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示隐藏文件"
+          }
+        }
+      }
+    },
+    "general.showMenuBar": {
+      "extractionState": "manual",
+      "comment": "Controls only the Arc Kit status bar icon.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show in menu bar"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在菜单栏中显示"
+          }
+        }
+      }
+    },
+    "general.shown": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shown"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已显示"
+          }
+        }
+      }
+    },
+    "general.stop.showing": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop Showing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止显示"
+          }
+        }
+      }
+    },
+    "general.toggle.dock.visibility": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle Dock visibility"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换 Dock 显示"
+          }
+        }
+      }
+    },
+    "general.toggle.launch.login": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle launch at login"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换登录启动"
+          }
+        }
+      }
+    },
+    "general.toggle.motion.effects": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle motion effects"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换动态效果"
+          }
+        }
+      }
+    },
+    "general.toggleMenuBarVisibility": {
+      "extractionState": "manual",
+      "comment": "Undo action name for menu bar visibility.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle menu bar visibility"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换菜单栏显示"
+          }
+        }
+      }
+    },
+    "general.updates.app.finder.menus": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updates the app and Finder menus after saving. System permission dialogs use the macOS language."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存后立即更新应用和 Finder 菜单。系统授权窗口使用 macOS 的语言。"
+          }
+        }
+      }
+    },
+    "general.waiting.permission.launch.login": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting for permission to launch at login"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待系统允许登录启动"
+          }
+        }
+      }
+    },
+    "language.change": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change language"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更改语言"
+          }
+        }
+      }
+    },
+    "language.title": {
+      "extractionState": "manual",
+      "comment": "Used in SystemSection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Language"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "语言"
+          }
+        }
+      }
+    },
+    "repository.configuration.business.validation.failed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsRepository.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configuration failed business validation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置未通过业务校验"
+          }
+        }
+      }
+    },
+    "repository.incompleteSettings": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsRepository.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incomplete configuration records. Background features stopped."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置记录不完整，已停止后台功能"
+          }
+        }
+      }
+    },
+    "repository.transaction.readback.mismatch": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsRepository.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction readback mismatch"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "事务回读不一致"
+          }
+        }
+      }
+    },
+    "save.backing.up.current.settings.importing": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backing up current settings and importing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在备份当前设置并导入"
+          }
+        }
+      }
+    },
+    "save.backing.up.restoring.defaults": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backing up and restoring defaults"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在备份并恢复默认设置"
+          }
+        }
+      }
+    },
+    "save.backupReadFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read the latest automatic backup: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近自动备份无法读取：%1$@"
+          }
+        }
+      }
+    },
+    "save.change.settings": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修改设置"
+          }
+        }
+      }
+    },
+    "save.checking.backup": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在检查备份"
+          }
+        }
+      }
+    },
+    "save.click.retry": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsPersistenceIndicator. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click to retry: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击重试：%1$@"
+          }
+        }
+      }
+    },
+    "save.current.settings.loaded.disk": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsPersistenceIndicator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current settings loaded from disk"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前设置已从磁盘载入"
+          }
+        }
+      }
+    },
+    "save.current.settings.unsaved.operation.stopped": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current settings are unsaved. Operation stopped."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前设置未保存，操作已停止"
+          }
+        }
+      }
+    },
+    "save.defaults.restored.previous.settings.backed.up": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Defaults restored. Previous settings were backed up automatically."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已恢复默认设置；原设置已自动备份"
+          }
+        }
+      }
+    },
+    "save.exported.backup.moved.deleted": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The exported backup was moved, deleted or is unreadable. Export it again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导出的备份文件已被移动、删除或无法读取，请重新导出"
+          }
+        }
+      }
+    },
+    "save.exported.settings.custom.templates.written": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exported %1$@; settings and custom templates written and verified by readback"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已导出 %1$@；设置与自定义模板已写入并回读验证"
+          }
+        }
+      }
+    },
+    "save.exporting.settings.templates": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exporting settings and templates"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在导出设置与模板"
+          }
+        }
+      }
+    },
+    "save.import.settings": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导入设置"
+          }
+        }
+      }
+    },
+    "save.imported.settings.full.validation.failed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imported settings failed full validation for this version"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导入设置未通过当前版本完整校验"
+          }
+        }
+      }
+    },
+    "save.latest.backup.restored.restore.again.return": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Latest backup restored. Restore again to return to the previous state."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近备份已恢复；再次恢复可回到操作前状态"
+          }
+        }
+      }
+    },
+    "save.redo": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Redo %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重做 %1$@"
+          }
+        }
+      }
+    },
+    "save.redo.failed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Redo failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重做失败：%1$@"
+          }
+        }
+      }
+    },
+    "save.restore.default.settings": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Default Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复默认设置"
+          }
+        }
+      }
+    },
+    "save.restore.latest.backup": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore latest backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复最近备份"
+          }
+        }
+      }
+    },
+    "save.restoring.latest.backup": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restoring latest backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在恢复最近备份"
+          }
+        }
+      }
+    },
+    "save.settings.imported.restore.previous.settings": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings imported. Restore previous settings from the latest automatic backup."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置已导入，原设置可从最近自动备份恢复"
+          }
+        }
+      }
+    },
+    "save.settings.written.verified": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsPersistenceIndicator. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings written and verified at %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置已于 %1$@ 写入并回读验证"
+          }
+        }
+      }
+    },
+    "save.undo": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤销 %1$@"
+          }
+        }
+      }
+    },
+    "save.undo.failed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤销失败：%1$@"
+          }
+        }
+      }
+    },
+    "save.validationFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsModel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configuration validation failed; changes not applied"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置校验失败，修改未应用"
+          }
+        }
+      }
+    },
+    "system.applying.hidden.file.settings.please.wait": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applying hidden file settings. Please wait."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在应用隐藏文件设置，请稍候"
+          }
+        }
+      }
+    },
+    "system.awaiting.system.permission": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Awaiting system permission"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待系统许可"
+          }
+        }
+      }
+    },
+    "system.choose.where.save.new.screenshots.existing": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose where to save new screenshots. Existing screenshots will not be moved."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择新截图的保存目录；不会移动已有截图"
+          }
+        }
+      }
+    },
+    "system.desktop.system.default": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Desktop (system default)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "桌面（系统默认）"
+          }
+        }
+      }
+    },
+    "system.finder.restarted.hidden.file.state": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder restarted, but the hidden file state is unconfirmed. Check again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 已重启，但无法确认隐藏文件状态，请重新检测"
+          }
+        }
+      }
+    },
+    "system.finderRestartFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings saved, but Finder could not restart. Reopen Finder manually."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置已写入，但重启 Finder 失败；请手动重新打开 Finder"
+          }
+        }
+      }
+    },
+    "system.hiddenFilesReadFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read Finder's hidden file setting. Try again later."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取 Finder 隐藏文件状态，请稍后重试"
+          }
+        }
+      }
+    },
+    "system.hideHiddenFilesFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not stop showing hidden files"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止显示隐藏文件失败"
+          }
+        }
+      }
+    },
+    "system.loginDisableUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Launch at login was not removed after disabling: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录启动关闭后仍未移除：%1$@"
+          }
+        }
+      }
+    },
+    "system.loginEnableUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Launch at login did not take effect after registration: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录启动注册后未生效：%1$@"
+          }
+        }
+      }
+    },
+    "system.screenshotLocationFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not set screenshot location: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置截图位置失败：%1$@"
+          }
+        }
+      }
+    },
+    "system.screenshotLocationInvalid": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screenshot location is unavailable or not writable: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "截图位置不可用或不可写：%1$@"
+          }
+        }
+      }
+    },
+    "system.screenshotResetFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not restore the default screenshot location"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复截图默认位置失败"
+          }
+        }
+      }
+    },
+    "system.screenshotResetRestartFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restored to Desktop, but SystemUIServer could not refresh. Sign in again for the change to take effect."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已恢复到桌面，但刷新 SystemUIServer 失败；重新登录后会生效"
+          }
+        }
+      }
+    },
+    "system.screenshotRestartFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screenshot location saved, but SystemUIServer could not refresh. Sign in again for the change to take effect."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已设置截图位置，但刷新 SystemUIServer 失败；重新登录后会生效"
+          }
+        }
+      }
+    },
+    "system.showHiddenFilesFailed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not show hidden files"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示隐藏文件失败"
+          }
+        }
+      }
+    },
+    "system.stateUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot confirm the current state. Check again first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法确认当前状态，请先重新检测"
+          }
+        }
+      }
+    },
+    "system.use.folder": {
+      "extractionState": "manual",
+      "comment": "Used in SystemEnhancementService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use This Folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用此目录"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

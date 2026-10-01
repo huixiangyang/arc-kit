@@ -1,0 +1,96 @@
+name: Quality
+
+on:
+  push:
+    branches-ignore: ['updates']
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      ref:
+        type: string
+        required: true
+    outputs:
+      artifact-name:
+        description: 已验证的双架构测试包，Release 直接发布同一份 DMG 和 ZIP
+        value: ${{ jobs.build-test.outputs.artifact-name }}
+
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    runs-on: macos-15
+    timeout-minutes: 35
+    outputs:
+      artifact-name: ArcKit-test-${{ github.sha }}-${{ github.run_attempt }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.ref }}
+          persist-credentials: false
+
+      - name: Select Xcode 26
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '26'
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Check localization coverage
+        run: python3 Build/Scripts/localization.py
+
+      - name: Check reproducible Office templates
+        run: python3 Build/Scripts/generate-office-templates.py --check
+
+      # AppKit 消费与真实 CVDisplayLink 回归需要活动显示器，按开发文档在有桌面的环境单独验证。
+      - name: Run offline regressions
+        run: swift test --skip 'MouseScrollPipelineTests/(appKitConsumption|displayLinkRecovery)'
+
+      - name: Build complete product
+        run: |
+          set -euo pipefail
+          mkdir -p .build/xcode
+          xcodegen generate --project .build/xcode
+          xcodebuild -quiet \
+            -project .build/xcode/ArcKit.xcodeproj \
+            -scheme ArcKit \
+            -configuration Release \
+            -destination 'generic/platform=macOS' \
+            -derivedDataPath .build/derived-data-ci \
+            ARCHS='arm64 x86_64' ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGNING_ALLOWED=NO build
+
+          # XcodeGen 生成的产品元数据必须与提交的声明一致。
+          git diff --exit-code -- 'Targets/*/Configuration/Info.plist'
+
+      - name: Package test app
+        run: |
+          export ARCKIT_SOURCE_REVISION="$(git rev-parse HEAD)"
+          bash Build/Scripts/package-app.sh \
+            '.build/derived-data-ci/Build/Products/Release/Arc Kit.app' dist/test
+
+      - name: Upload test package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ArcKit-test-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/test/*
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+
+      - name: Summarize artifact
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ### 测试安装包
+
+          本次运行的 Artifacts 包含双架构 DMG、ZIP、构建信息和 SHA-256。
+          使用 ad-hoc 签名，未经过 Apple 公证，macOS 可能阻止打开。
+          分支构建用于开发验证；只有版本 Tag 的 Release 流程会公开发行，构建通过不代表真实设备验收通过。
+          EOF

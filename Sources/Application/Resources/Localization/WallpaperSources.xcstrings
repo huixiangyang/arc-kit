@@ -1,0 +1,1782 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "channels.add.video.feed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Video Feed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加视频订阅"
+          }
+        }
+      }
+    },
+    "channels.built.sources": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Built-in %1$@ sources"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "内置%1$@渠道"
+          }
+        }
+      }
+    },
+    "channels.close.source.management": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close source management"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭渠道管理"
+          }
+        }
+      }
+    },
+    "channels.custom.video.sources": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom Video Sources"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义视频渠道"
+          }
+        }
+      }
+    },
+    "channels.feeds.yet.add.video.catalog.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No feeds yet. Add a video catalog below."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没有订阅，可在下方添加视频目录。"
+          }
+        }
+      }
+    },
+    "channels.images.videos.combined.their": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Images and videos are combined in their respective galleries. Source switches save automatically."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图片和视频分别混合展示，开关自动保存。"
+          }
+        }
+      }
+    },
+    "channels.libraryUnaffectedHint": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disabling or removing sources does not affect downloaded wallpapers or the current background."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭或移除渠道不影响已下载壁纸和当前背景。"
+          }
+        }
+      }
+    },
+    "channels.manage.sources": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manage Sources"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "渠道管理"
+          }
+        }
+      }
+    },
+    "channels.reload.configuration": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reload Configuration"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新读取配置"
+          }
+        }
+      }
+    },
+    "channels.remove": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除 %1$@"
+          }
+        }
+      }
+    },
+    "channels.remove.feed.keep.downloaded.wallpapers": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove feed and keep downloaded wallpapers"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除订阅，保留已下载壁纸"
+          }
+        }
+      }
+    },
+    "channels.retry.all.sources.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retry All Failed Sources"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重试全部失败渠道"
+          }
+        }
+      }
+    },
+    "channels.supports.https.json.catalogs.arcKit": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supports HTTPS JSON catalogs in Arc Kit format. Videos download on demand."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持 Arc Kit 格式的 HTTPS JSON 目录，视频按需下载。"
+          }
+        }
+      }
+    },
+    "channels.video.feed.url": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video feed URL"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频订阅目录地址"
+          }
+        }
+      }
+    },
+    "gallery.cancel.catalog.loading": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel catalog loading"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消目录加载"
+          }
+        }
+      }
+    },
+    "gallery.choose.what.display.source.management": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose what to display in source management."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在渠道管理中选择想看的内容。"
+          }
+        }
+      }
+    },
+    "gallery.click.resume.loading.continue.unfinished.sources": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click Resume Loading to continue unfinished sources."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击继续加载可恢复未完成的渠道。"
+          }
+        }
+      }
+    },
+    "gallery.combined.sources": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery. Arguments: 1 (String), 2 (String), 3 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ · Combined from %3$@ sources"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 项%2$@ · %3$@ 个渠道混合展示"
+          }
+        }
+      }
+    },
+    "gallery.expand.source.errors.retry.individually": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expand source errors to retry individually, or adjust source settings."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可展开渠道错误单独重试，或在渠道管理中调整。"
+          }
+        }
+      }
+    },
+    "gallery.gathering": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gathering"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在汇集"
+          }
+        }
+      }
+    },
+    "gallery.image.source.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperMixedBrowser.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not an image source."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不是图片渠道。"
+          }
+        }
+      }
+    },
+    "gallery.independentLoadingHint": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sources load independently. Available content appears first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "各渠道分别加载，已有内容会先显示。"
+          }
+        }
+      }
+    },
+    "gallery.load.more": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Load More"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加载更多"
+          }
+        }
+      }
+    },
+    "gallery.loading": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在读取%1$@"
+          }
+        }
+      }
+    },
+    "gallery.loading.paused": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading paused"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已暂停加载"
+          }
+        }
+      }
+    },
+    "gallery.manage.source.settings": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": ". Manage these in source settings."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "，可在渠道管理中处理。"
+          }
+        }
+      }
+    },
+    "gallery.open.source.management": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Source Management"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开渠道管理"
+          }
+        }
+      }
+    },
+    "gallery.refresh.incomplete.showing.previous.results": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh incomplete; showing previous results."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刷新未完成，仍显示上次结果。"
+          }
+        }
+      }
+    },
+    "gallery.resume.loading": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resume Loading"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "继续加载"
+          }
+        }
+      }
+    },
+    "gallery.search.enabled.sources": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search %1$@ from enabled sources"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索已启用渠道的%1$@"
+          }
+        }
+      }
+    },
+    "gallery.source.configuration.notReady": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source configuration not ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "渠道配置未就绪"
+          }
+        }
+      }
+    },
+    "gallery.sources.enabled.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No %1$@ sources enabled"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没有启用%1$@渠道"
+          }
+        }
+      }
+    },
+    "gallery.try.another.keyword.load.next": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try another keyword or load the next batch."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "换个关键词，或加载下一批内容。"
+          }
+        }
+      }
+    },
+    "gallery.updating.previous.results.remain.visible": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updating; previous results remain visible."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在更新，暂时保留上次结果。"
+          }
+        }
+      }
+    },
+    "gallery.video.source.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperMixedBrowser.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not a video source."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不是视频渠道。"
+          }
+        }
+      }
+    },
+    "gallery.yet.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperRemoteGallery. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No %1$@ yet"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂无%1$@"
+          }
+        }
+      }
+    },
+    "motion.download.library": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download to Library"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载到图库"
+          }
+        }
+      }
+    },
+    "motion.download.quality": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download quality"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载清晰度"
+          }
+        }
+      }
+    },
+    "motion.fetching.preview.available.download.qualities": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fetching the preview and available download qualities."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "获取预览与可用的下载清晰度。"
+          }
+        }
+      }
+    },
+    "motion.invalid.link.enter.complete.https.url": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid link. Enter a complete HTTPS URL."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "链接无效，请输入完整的 HTTPS 地址。"
+          }
+        }
+      }
+    },
+    "motion.maximum": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maximum"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高"
+          }
+        }
+      }
+    },
+    "motion.nasa.supports.online.search.english.keywords.work": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NASA supports online search; English keywords work best. MotionBGS and feeds match titles in the current catalog only."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NASA 在线搜索，建议英文关键词；MotionBGS 与订阅目录只匹配当前目录标题。"
+          }
+        }
+      }
+    },
+    "motion.parse": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parse"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解析"
+          }
+        }
+      }
+    },
+    "motion.parse.video.link": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parse Video Link"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解析视频链接"
+          }
+        }
+      }
+    },
+    "motion.parsing.link": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parsing link"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在解析链接"
+          }
+        }
+      }
+    },
+    "motion.parsing.video": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parsing video"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在解析视频"
+          }
+        }
+      }
+    },
+    "motion.preview.video": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView. Arguments: 1 (String), 2 (String), 3 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@, from %3$@, preview video"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@，%2$@，来自 %3$@，预览视频"
+          }
+        }
+      }
+    },
+    "motion.quality.specified.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quality not specified"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清晰度未标注"
+          }
+        }
+      }
+    },
+    "motion.reading.quality.options": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reading quality options…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在读取清晰度…"
+          }
+        }
+      }
+    },
+    "motion.set.app.background": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set as App Background"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设为应用背景"
+          }
+        }
+      }
+    },
+    "motion.set.desktop.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set as Desktop Wallpaper…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设为桌面壁纸…"
+          }
+        }
+      }
+    },
+    "motion.supports.motionbgs.pages.direct.mp4.mov": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supports MotionBGS pages and direct MP4, MOV or M4V links. Preview first, then choose quality and use."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持 MotionBGS 作品页及 MP4、MOV、M4V 直链。先预览，再选择清晰度与用途。"
+          }
+        }
+      }
+    },
+    "motion.video.details": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video Details"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频详情"
+          }
+        }
+      }
+    },
+    "motion.video.wallpaper": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video Wallpaper"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频壁纸"
+          }
+        }
+      }
+    },
+    "motionSource.direct.video.link": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direct video link"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频直链"
+          }
+        }
+      }
+    },
+    "motionSource.enter.https.url.without.account.credentials": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter an HTTPS URL without account credentials."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请输入不含账号信息的 HTTPS 地址。"
+          }
+        }
+      }
+    },
+    "motionSource.feed.entry.invalid.url": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A feed entry has an invalid URL or no video."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "订阅条目包含无效地址或缺少视频。"
+          }
+        }
+      }
+    },
+    "motionSource.high": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "High"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "高清"
+          }
+        }
+      }
+    },
+    "motionSource.invalid.feed.version.entries": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid feed version or entries."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "订阅目录版本或条目无效。"
+          }
+        }
+      }
+    },
+    "motionSource.low": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Low"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "流畅"
+          }
+        }
+      }
+    },
+    "motionSource.mobile": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mobile"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移动版"
+          }
+        }
+      }
+    },
+    "motionSource.mp4.file.available.missing": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No MP4 file is available for this item."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "该素材暂无 MP4 文件。"
+          }
+        }
+      }
+    },
+    "motionSource.nasaUsage": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NASA media usage guidelines; third-party material follows the original page's terms"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NASA 媒体使用指南；第三方素材以原页标注为准"
+          }
+        }
+      }
+    },
+    "motionSource.original.quality": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original quality"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原始清晰度"
+          }
+        }
+      }
+    },
+    "motionSource.original.video": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original video"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原视频"
+          }
+        }
+      }
+    },
+    "motionSource.preview": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预览版"
+          }
+        }
+      }
+    },
+    "motionSource.public.video.download.link.found.missing": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No public video download link found. The page may have changed."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未找到公开的视频下载链接，页面可能已变化。"
+          }
+        }
+      }
+    },
+    "motionSource.redirectRejected": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The source redirected to an unsupported website."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源跳转到不支持的网站。"
+          }
+        }
+      }
+    },
+    "motionSource.see.source.page.attribution": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See the source page for attribution and usage terms"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "作品归属及使用条件见来源页面"
+          }
+        }
+      }
+    },
+    "motionSource.source.page.structure.changed.catalog": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The source page structure changed. Its catalog cannot be read right now."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源页面结构已变化，暂时无法读取目录。"
+          }
+        }
+      }
+    },
+    "motionSource.standard": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "标准"
+          }
+        }
+      }
+    },
+    "motionSource.supports.motionbgs.item.pages.direct.mp4": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supports MotionBGS item pages and direct MP4, MOV or M4V links."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持 MotionBGS 作品页及 MP4、MOV、M4V 视频直链。"
+          }
+        }
+      }
+    },
+    "motionSource.unsupportedWebsite": {
+      "extractionState": "manual",
+      "comment": "Used in MotionWallpaperSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This website is not supported for parsing."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂不支持解析此网站。"
+          }
+        }
+      }
+    },
+    "online.downloads.stored.independent.copies": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperOnlineView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloads are stored as independent copies for offline use."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载后保留独立副本，可离线使用。"
+          }
+        }
+      }
+    },
+    "online.image.already.library": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperOnlineView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This image is already in your library. Applying it uses the local copy."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此图片已在图库中，应用时直接使用本地副本。"
+          }
+        }
+      }
+    },
+    "online.library": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperOnlineView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In library"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已在图库"
+          }
+        }
+      }
+    },
+    "online.view.image.details": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperOnlineView. Arguments: 1 (String), 2 (String), 3 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@, from %3$@, view image details"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@，%2$@，来自 %3$@，查看图片详情"
+          }
+        }
+      }
+    },
+    "online.wallhaven.commons.support.online.search.daily": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperOnlineView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wallhaven and Commons support online search. Daily images and photography picks match this batch's titles or authors only."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wallhaven、Commons 在线搜索；每日图与摄影推荐只匹配本批标题或作者。"
+          }
+        }
+      }
+    },
+    "onlineSource.see.original.image.page.usage": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperOnlineSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See the original image page for usage terms"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用条件见原图页面"
+          }
+        }
+      }
+    },
+    "onlineSource.see.source.page.bing.image": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperOnlineSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See the source page for Bing image usage terms"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bing 原图使用条件见来源页面"
+          }
+        }
+      }
+    },
+    "onlineSource.see.source.page.usage.terms": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperOnlineSource.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See the source page for usage terms"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用条件见来源页面"
+          }
+        }
+      }
+    },
+    "source.bingDescription": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Latest 8 daily images · Filter by title"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近 8 张每日图 · 按标题筛选"
+          }
+        }
+      }
+    },
+    "source.enter.complete.https.json.catalog.url": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a complete HTTPS JSON catalog URL."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请输入完整的 HTTPS JSON 目录地址。"
+          }
+        }
+      }
+    },
+    "source.feed.already.added.enable": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This feed is already added. Enable it in the list."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这个订阅已添加，可在列表中开启。"
+          }
+        }
+      }
+    },
+    "source.invalid.feed.source.configuration": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid feed or source configuration."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "订阅或渠道配置无效。"
+          }
+        }
+      }
+    },
+    "source.live.wallpaper.picks.filter.catalog.titles": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live wallpaper picks · Filter catalog titles"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "动态壁纸精选 · 按目录标题筛选"
+          }
+        }
+      }
+    },
+    "source.open.images.online.search.attribution.licenses": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open images · Online search · Attribution and licenses"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开放图片 · 在线搜索 · 作者与许可"
+          }
+        }
+      }
+    },
+    "source.photography.picks.filter.author": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photography picks · Filter by author"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "摄影推荐 · 按作者筛选"
+          }
+        }
+      }
+    },
+    "source.readFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not read source configuration: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "渠道配置未能读取：%1$@"
+          }
+        }
+      }
+    },
+    "source.saveFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not save source switch: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "渠道开关未能保存：%1$@"
+          }
+        }
+      }
+    },
+    "source.sfw.wallpapers.online.search": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SFW wallpapers · Online search"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SFW 壁纸 · 在线搜索"
+          }
+        }
+      }
+    },
+    "source.source.configuration.changed.reload.saving": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source configuration changed. Reload before saving."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "渠道配置已经变化，请重新读取后再保存。"
+          }
+        }
+      }
+    },
+    "source.source.configuration.record.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source configuration record is missing."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "渠道配置记录缺失。"
+          }
+        }
+      }
+    },
+    "source.space.nature.videos.online.search.english": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Space and nature videos · Online search, English recommended"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "太空与自然视频 · 在线搜索，建议英文"
+          }
+        }
+      }
+    },
+    "source.subscriptionLimit": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can add up to 50 video feeds."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最多添加 50 个视频订阅。"
+          }
+        }
+      }
+    },
+    "source.unavailable.remove.feed": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not remove feed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "订阅未能移除：%1$@"
+          }
+        }
+      }
+    },
+    "source.wait.source.configuration.finish.loading": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannels.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wait for source configuration to finish loading."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先等待渠道配置读取完成。"
+          }
+        }
+      }
+    },
+    "sources.failedCount": {
+      "extractionState": "manual",
+      "comment": "Used in WallpaperChannelViews. Arguments: 1 (Int).",
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld source failed to load"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld sources failed to load"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 个渠道未能加载"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

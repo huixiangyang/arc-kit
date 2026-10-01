@@ -1,0 +1,798 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "accessibility.accessibility.access.granted.window": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accessibility access is granted, but the window interface is unavailable. Check again; view technical details if it persists."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助功能已授权，但窗口接口当前不可用；请先重新检测，持续失败时查看技术详情"
+          }
+        }
+      }
+    },
+    "accessibility.appUnavailable": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The original app is unavailable. Select an external window, then open the Quick Panel."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原目标应用不可用，请先选中需要调整的外部窗口，再打开快捷面板"
+          }
+        }
+      }
+    },
+    "accessibility.current.window.dialog.close": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The current window is a dialog. Close it before arranging the window."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前是对话框，请关闭后再调整窗口"
+          }
+        }
+      }
+    },
+    "accessibility.current.window.fullScreen": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The current window is full-screen and cannot be arranged"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前窗口处于全屏模式，无法调整"
+          }
+        }
+      }
+    },
+    "accessibility.frameReadFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read the current window position. It may be full-screen, minimized or a system window."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取当前窗口位置，可能是全屏、最小化或系统窗口"
+          }
+        }
+      }
+    },
+    "accessibility.frameUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window adjustment did not take effect. Expected %1$@, actual %2$@."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口调整未生效，目标 %1$@，实际 %2$@"
+          }
+        }
+      }
+    },
+    "accessibility.fullScreenUnconfirmed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full-screen change did not take effect. Expected %1$@, actual %2$@."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全屏切换未生效，目标状态 %1$@，实际状态 %2$@"
+          }
+        }
+      }
+    },
+    "accessibility.fullScreenUnsupported": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The current window does not support full screen"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前窗口不支持全屏显示"
+          }
+        }
+      }
+    },
+    "accessibility.minimized": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The current window is minimized and cannot be arranged"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前窗口已最小化，无法调整"
+          }
+        }
+      }
+    },
+    "accessibility.notResizable": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The current window cannot be resized or moved"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前窗口不允许调整大小或移动"
+          }
+        }
+      }
+    },
+    "accessibility.regular.window": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regular window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "普通窗口"
+          }
+        }
+      }
+    },
+    "accessibility.targetMissing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No regular window selected. Click the window you want to arrange."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前没有普通窗口，请先点选要调整的窗口"
+          }
+        }
+      }
+    },
+    "accessibility.unsupportedType": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAccessibilityClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This window type cannot be arranged. Switch to a regular window."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前窗口类型不支持调整，请切换到普通窗口"
+          }
+        }
+      }
+    },
+    "action.accessibility.required.arrange.windows": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accessibility permission is required to arrange windows"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要辅助功能权限后才能调整窗口"
+          }
+        }
+      }
+    },
+    "action.current.app.adjustable.window.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The current app has no adjustable window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前 App 没有可调整窗口"
+          }
+        }
+      }
+    },
+    "action.current.app.excluded.window": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The current app is excluded from window management"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前 App 已在窗口管理排除列表中"
+          }
+        }
+      }
+    },
+    "action.displayMissing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot find the window's display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未找到窗口所在显示器"
+          }
+        }
+      }
+    },
+    "action.fullScreen.change.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full-screen change failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换全屏失败：%1$@"
+          }
+        }
+      }
+    },
+    "action.noEligibleWindow": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The current app has no adjustable window. Select the target window first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前 App 没有可调整窗口，请先选中目标窗口"
+          }
+        }
+      }
+    },
+    "action.other.display.found.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No other display found"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未找到其他显示器"
+          }
+        }
+      }
+    },
+    "action.previous.window.position.restore.missing": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No previous window position to restore"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有可恢复的上次窗口位置"
+          }
+        }
+      }
+    },
+    "action.select.external.window.arrange.first": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select an external window to arrange first"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先选中需要调整的外部窗口"
+          }
+        }
+      }
+    },
+    "action.target.app.exited.select.window.again": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target app exited. Select a window again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标应用已退出，请重新选中窗口"
+          }
+        }
+      }
+    },
+    "action.target.window.expired.select.again": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target window expired. Select it again and reopen the panel."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标窗口已失效，请重新选中窗口并打开面板"
+          }
+        }
+      }
+    },
+    "action.targetResolutionFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not resolve window target: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口目标解析失败：%1$@"
+          }
+        }
+      }
+    },
+    "action.window.action.running.retry": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A window action is running. Try again later."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口操作正在执行，请稍后重试"
+          }
+        }
+      }
+    },
+    "action.window.adjustment.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window adjustment failed: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口调整失败：%1$@"
+          }
+        }
+      }
+    },
+    "action.window.configuration.changed.action.cancelled": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window configuration changed. Action cancelled."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口配置已变化，操作已取消"
+          }
+        }
+      }
+    },
+    "connection.window.management.off": {
+      "extractionState": "manual",
+      "comment": "Used in WindowRuntimeClient.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window management is off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口管理已关闭"
+          }
+        }
+      }
+    },
+    "layout.fullScreen": {
+      "extractionState": "manual",
+      "comment": "Used in WindowLayoutPresentation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full Screen"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全屏"
+          }
+        }
+      }
+    },
+    "shortcuts.eventHandlerFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentHotKeyRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not install global shortcut event handler"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全局快捷键事件处理器安装失败"
+          }
+        }
+      }
+    },
+    "shortcuts.retryingRegistration": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentHotKeyRuntime. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Global shortcuts failed to register: %1$@. Retrying automatically."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 个全局快捷键注册失败，正在自动重试"
+          }
+        }
+      }
+    },
+    "shortcuts.serviceUnavailable": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentHotKeyRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window shortcut execution service unavailable. Reload settings."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口快捷键执行服务不可用，请重载设置"
+          }
+        }
+      }
+    },
+    "shortcuts.unregisteredEvent": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentHotKeyRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Received an unregistered window shortcut event. Turn window management off and on."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收到未注册的窗口快捷键事件，请关闭后重新开启窗口管理"
+          }
+        }
+      }
+    },
+    "snapping.macos.disabled.snapping.monitoring": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentDragSnapRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS disabled drag snapping monitoring"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附监听被系统停用"
+          }
+        }
+      }
+    },
+    "snapping.macos.disabled.snapping.recovered.automatically": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentDragSnapRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS disabled drag snapping. It recovered automatically."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附监听曾被系统停用，已自动恢复"
+          }
+        }
+      }
+    },
+    "snapping.macos.disabled.snapping.timeout": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentDragSnapRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS disabled drag snapping after a timeout. It recovered automatically."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附监听曾因处理超时被系统停用，已自动恢复"
+          }
+        }
+      }
+    },
+    "snapping.macos.disabled.snapping.turn.window.management": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentDragSnapRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS disabled drag snapping. Turn window management off and on."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附监听被系统停用；请关闭后重新开启窗口管理"
+          }
+        }
+      }
+    },
+    "snapping.readbackFailed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentDragSnapRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag snapping monitor enablement failed readback validation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附监听启用事件未通过状态回读"
+          }
+        }
+      }
+    },
+    "snapping.snapping.monitor.expired": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentDragSnapRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag snapping monitor expired"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附监听失效"
+          }
+        }
+      }
+    },
+    "snapping.snapping.monitor.expired.turn.window.management": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentDragSnapRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag snapping monitor expired. Turn window management off and on."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附监听失效；请关闭后重新开启窗口管理"
+          }
+        }
+      }
+    },
+    "snapping.snapping.recovery.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentDragSnapRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag snapping recovery failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附监听恢复失败"
+          }
+        }
+      }
+    },
+    "snapping.snapping.recovery.turn.window.management.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentDragSnapRuntime.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag snapping recovery failed. Turn window management off and on."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附监听恢复失败，请关闭后重新开启窗口管理"
+          }
+        }
+      }
+    },
+    "snapping.snapping.start.failed": {
+      "extractionState": "manual",
+      "comment": "Used in WindowAgentDragSnapRuntime. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag snapping failed to start: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖拽吸附启动失败：%1$@"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

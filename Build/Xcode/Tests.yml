@@ -1,0 +1,21 @@
+targets:
+  ArcKitTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - Tests/ArcKitTests
+    dependencies:
+      - target: ArcKitPersistence
+      - target: ArcKitFinderSync
+      - target: ArcKitFinderRuntime
+      - target: ArcKitMouse
+      - target: ArcKitWindow
+      - target: ArcKitWindowRuntime
+      - target: ArcKitPlatform
+      - target: ArcKitFinder
+      - target: ArcKitMouseRuntime
+      - target: ArcKitApplication
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        MACOSX_DEPLOYMENT_TARGET: 14.0

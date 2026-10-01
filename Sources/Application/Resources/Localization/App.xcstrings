@@ -1,0 +1,3174 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "application.app.uninstalled.data.preserved": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App uninstalled; data preserved"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用已卸载，数据仍保留"
+          }
+        }
+      }
+    },
+    "application.background.permission": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background Permission"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台许可"
+          }
+        }
+      }
+    },
+    "application.description": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS Productivity Toolbox\nSettings are saved locally. External state, such as screenshot location, is always determined by macOS."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 效率工具箱\n设置保存在本机；系统截图位置等外部状态始终以 macOS 为准。"
+          }
+        }
+      }
+    },
+    "application.desktop.using.arcKit.assets": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The desktop is using Arc Kit assets"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "桌面正在使用 Arc Kit 素材"
+          }
+        }
+      }
+    },
+    "application.finder.extension.switch": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder extension switch"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 扩展开关"
+          }
+        }
+      }
+    },
+    "application.finder.settings.notReady": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder settings are not ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 设置尚未就绪"
+          }
+        }
+      }
+    },
+    "application.finderConnectionHint": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\nCheck the Finder menu connection: Home → Diagnostics"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\nFinder 菜单链路检查：首页 → 诊断"
+          }
+        }
+      }
+    },
+    "application.hostRestoreFailed": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not restore background service"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台服务恢复失败"
+          }
+        }
+      }
+    },
+    "application.menuBar.inputMonitoring": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menu bar input monitoring"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "菜单栏输入监听"
+          }
+        }
+      }
+    },
+    "application.quitIncomplete": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not fully quit Arc Kit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法完整退出 Arc Kit"
+          }
+        }
+      }
+    },
+    "application.restore.settings.access.repairing.finder": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore settings access before repairing Finder."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先恢复设置读取，再执行 Finder 修复。"
+          }
+        }
+      }
+    },
+    "application.switch.system.wallpaper.deleting": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Switch to a system wallpaper before deleting data, or uninstall while keeping data."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先切换系统壁纸，再删除数据。也可以选择保留数据卸载。"
+          }
+        }
+      }
+    },
+    "application.toggle.finder.context.menu": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle Finder context menu"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换 Finder 右键菜单"
+          }
+        }
+      }
+    },
+    "application.toggle.mouse.enhancement": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle mouse enhancement"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换鼠标增强"
+          }
+        }
+      }
+    },
+    "application.toggle.window.management": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle window management"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换窗口管理"
+          }
+        }
+      }
+    },
+    "application.uninstallFailed": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot start uninstall"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法开始卸载"
+          }
+        }
+      }
+    },
+    "application.unsavedSettings": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings have not been saved"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置尚未保存"
+          }
+        }
+      }
+    },
+    "application.wait.current.operation.finish": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wait for the current operation to finish or resolve the save error before quitting."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请等待当前操作结束，或处理保存错误后再退出。"
+          }
+        }
+      }
+    },
+    "application.window.service.ended": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window service has ended"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口服务已结束"
+          }
+        }
+      }
+    },
+    "application.windows.mouse.finder.all.off": {
+      "extractionState": "manual",
+      "comment": "Used in AppController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Windows, Mouse and Finder are all off; no background connection needed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口、鼠标和 Finder 均已关闭，无需连接后台"
+          }
+        }
+      }
+    },
+    "debug.exit.debug": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsDebugSession.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exit Debug"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "退出调试"
+          }
+        }
+      }
+    },
+    "debug.installed.app.required": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsDebugSession.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installed app required"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此操作需要安装版"
+          }
+        }
+      }
+    },
+    "debug.window.previews.settings.pages.saves": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsDebugSession.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This window previews settings pages and saves configuration in a separate debug folder. Background and system operations are not connected."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前窗口用于调试管理页面，配置保存到独立调试目录，后台与系统操作未接入。"
+          }
+        }
+      }
+    },
+    "login.disable.launch.login.again": {
+      "extractionState": "manual",
+      "comment": "Used in LaunchAtLoginCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disable launch at login again"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新关闭登录启动"
+          }
+        }
+      }
+    },
+    "login.re.enable.launch.login": {
+      "extractionState": "manual",
+      "comment": "Used in LaunchAtLoginCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Re-enable launch at login"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新开启登录启动"
+          }
+        }
+      }
+    },
+    "login.roll.back.launch.login": {
+      "extractionState": "manual",
+      "comment": "Used in LaunchAtLoginCoordinator.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roll back launch at login"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "回滚登录启动"
+          }
+        }
+      }
+    },
+    "menu.about.arcKit": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About Arc Kit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关于 Arc Kit"
+          }
+        }
+      }
+    },
+    "menu.arcKit.user.guide": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit User Guide"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit 使用指南"
+          }
+        }
+      }
+    },
+    "menu.bring.all.front": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bring All to Front"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前置全部窗口"
+          }
+        }
+      }
+    },
+    "menu.check.updates": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check for Updates…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检查更新…"
+          }
+        }
+      }
+    },
+    "menu.close.window": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close Window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭窗口"
+          }
+        }
+      }
+    },
+    "menu.copy": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拷贝"
+          }
+        }
+      }
+    },
+    "menu.cut": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cut"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剪切"
+          }
+        }
+      }
+    },
+    "menu.edit": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编辑"
+          }
+        }
+      }
+    },
+    "menu.enter.fullScreen": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter Full Screen"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "进入全屏幕"
+          }
+        }
+      }
+    },
+    "menu.help": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Help"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "帮助"
+          }
+        }
+      }
+    },
+    "menu.hide.arcKit": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide Arc Kit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏 Arc Kit"
+          }
+        }
+      }
+    },
+    "menu.hide.others": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide Others"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏其他"
+          }
+        }
+      }
+    },
+    "menu.minimize": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minimize"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最小化"
+          }
+        }
+      }
+    },
+    "menu.navigate": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Navigate"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导航"
+          }
+        }
+      }
+    },
+    "menu.paste": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "粘贴"
+          }
+        }
+      }
+    },
+    "menu.quick.find": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Find…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快速查找…"
+          }
+        }
+      }
+    },
+    "menu.quit.arcKit": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quit Arc Kit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "退出 Arc Kit"
+          }
+        }
+      }
+    },
+    "menu.select.all": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select All"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全选"
+          }
+        }
+      }
+    },
+    "menu.services": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Services"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "服务"
+          }
+        }
+      }
+    },
+    "menu.settings": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统设置…"
+          }
+        }
+      }
+    },
+    "menu.show.all": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show All"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部显示"
+          }
+        }
+      }
+    },
+    "menu.show.main.window": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show Main Window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示主窗口"
+          }
+        }
+      }
+    },
+    "menu.using.finder.context.menus": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Using Finder Context Menus"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 右键怎么用"
+          }
+        }
+      }
+    },
+    "menu.using.mouse.enhancement": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Using Mouse Enhancement"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标增强怎么用"
+          }
+        }
+      }
+    },
+    "menu.using.window.management": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Using Window Management"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口管理怎么用"
+          }
+        }
+      }
+    },
+    "menu.zoom": {
+      "extractionState": "manual",
+      "comment": "Used in ApplicationMenuBuilder.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zoom"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缩放"
+          }
+        }
+      }
+    },
+    "menuBar.check.failed": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检查失败"
+          }
+        }
+      }
+    },
+    "menuBar.check.see.home.next.steps.failed": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel. Arguments: 1 (String), 2 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ check failed: %2$@\nSee Home for next steps; click to retry"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 检查失败：%2$@\n在首页查看处理入口；点击可重试"
+          }
+        }
+      }
+    },
+    "menuBar.check.status": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check Status"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检查状态"
+          }
+        }
+      }
+    },
+    "menuBar.checkScope": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@; does not reload settings or request permissions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@；不重新加载设置或申请权限"
+          }
+        }
+      }
+    },
+    "menuBar.checked": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel. Arguments: 1 (String), 2 (String), 3 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ checked\n%2$@\n%3$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 已检查\n%2$@\n%3$@"
+          }
+        }
+      }
+    },
+    "menuBar.checkedStatus": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checked"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已检查"
+          }
+        }
+      }
+    },
+    "menuBar.checking": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检查中"
+          }
+        }
+      }
+    },
+    "menuBar.click.check.again": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click to check again"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击可重新检查"
+          }
+        }
+      }
+    },
+    "menuBar.enable.window.management.first": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable window management first"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先开启窗口管理"
+          }
+        }
+      }
+    },
+    "menuBar.finder.menu": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder Menu"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 右键"
+          }
+        }
+      }
+    },
+    "menuBar.loading": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "读取中"
+          }
+        }
+      }
+    },
+    "menuBar.needs.attention": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Needs attention"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需处理"
+          }
+        }
+      }
+    },
+    "menuBar.open.arcKit.quick.panel": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Arc Kit Quick Panel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开 Arc Kit 快捷面板"
+          }
+        }
+      }
+    },
+    "menuBar.open.settings": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open %1$@ Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开%1$@设置"
+          }
+        }
+      }
+    },
+    "menuBar.quick.panel": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Panel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快捷面板"
+          }
+        }
+      }
+    },
+    "menuBar.readinessHint": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check background connection, permissions and enabled features"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检查后台连接、权限与已开启功能的状态"
+          }
+        }
+      }
+    },
+    "menuBar.retry.save": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retry Save"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重试保存"
+          }
+        }
+      }
+    },
+    "menuBar.save.click.retry.failed": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save failed. Click to retry: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存失败，点击重试：%1$@"
+          }
+        }
+      }
+    },
+    "menuBar.save.retry.save.failed": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save failed. Retry save."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存失败，重试保存"
+          }
+        }
+      }
+    },
+    "menuBar.see.home.next.steps.click": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See Home for next steps; click to check again"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在首页查看处理入口；点击可重新检查"
+          }
+        }
+      }
+    },
+    "menuBar.stageManagerHint": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use the right 85% of available width, leaving 15% on the left"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "靠右占可用宽度 85%，左侧预留 15%"
+          }
+        }
+      }
+    },
+    "menuBar.target.window": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标窗口"
+          }
+        }
+      }
+    },
+    "menuBar.unchecked": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not checked"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未检测"
+          }
+        }
+      }
+    },
+    "menuBar.waiting.background.response": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@; waiting for background response"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@，正在等待后台回应"
+          }
+        }
+      }
+    },
+    "menuBar.window.captured.click.select.missing": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarController.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't identify the app before the click. Select the target window, then reopen the menu."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未识别点击前的应用，请先点选目标窗口，再打开菜单"
+          }
+        }
+      }
+    },
+    "menuBar.window.ready": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口已就绪"
+          }
+        }
+      }
+    },
+    "menuBar.window.unavailable": {
+      "extractionState": "manual",
+      "comment": "Used in MenuBarPanel.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window unavailable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口未就绪"
+          }
+        }
+      }
+    },
+    "save.dismiss.save.message": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsSaveToast.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dismiss save message"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭保存提示"
+          }
+        }
+      }
+    },
+    "save.save.failed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsSaveToast.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存失败"
+          }
+        }
+      }
+    },
+    "save.save.view.error.details.failed": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsSaveToast.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save failed. View error details."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存失败，查看错误详情"
+          }
+        }
+      }
+    },
+    "save.saving": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsSaveToast.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在保存"
+          }
+        }
+      }
+    },
+    "save.view.error.details": {
+      "extractionState": "manual",
+      "comment": "Used in SettingsSaveToast. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View error details: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看错误详情：%1$@"
+          }
+        }
+      }
+    },
+    "search.about": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关于"
+          }
+        }
+      }
+    },
+    "search.accessibility.finder.extension.permissions": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accessibility and Finder extension permissions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助功能与 Finder 扩展授权"
+          }
+        }
+      }
+    },
+    "search.across.displays": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Across displays"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跨屏"
+          }
+        }
+      }
+    },
+    "search.arcKit.app.background": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit · App Background"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit · 应用背景"
+          }
+        }
+      }
+    },
+    "search.arrange.most.recently.used.external.app": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arrange the most recently used external app window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "立即整理刚才使用的外部 App 窗口"
+          }
+        }
+      }
+    },
+    "search.background": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景"
+          }
+        }
+      }
+    },
+    "search.bottom": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bottom"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下面"
+          }
+        }
+      }
+    },
+    "search.bottom.left": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bottom Left"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左下"
+          }
+        }
+      }
+    },
+    "search.bottom.right": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bottom Right"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右下"
+          }
+        }
+      }
+    },
+    "search.center": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Center"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中央"
+          }
+        }
+      }
+    },
+    "search.clear.search": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear search"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清除搜索"
+          }
+        }
+      }
+    },
+    "search.create.open.terminal.copy": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create, open, terminal and copy"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新建、打开、终端和复制"
+          }
+        }
+      }
+    },
+    "search.data.management": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data Management"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "数据管理"
+          }
+        }
+      }
+    },
+    "search.dataDescription": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Storage, backup, restore, cache, diagnostics and uninstall"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "存储空间、备份恢复、缓存、诊断与卸载"
+          }
+        }
+      }
+    },
+    "search.display": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示器"
+          }
+        }
+      }
+    },
+    "search.enter.leave.macos.fullScreen": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter or leave a macOS full-screen space"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "进入或退出 macOS 全屏空间"
+          }
+        }
+      }
+    },
+    "search.feature.diagnostics": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feature Diagnostics"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "功能诊断"
+          }
+        }
+      }
+    },
+    "search.fill.current.display.s.available.area": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fill the current display's available area, preserving the menu bar and Dock"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "铺满当前屏幕可用区域，保留菜单栏和 Dock"
+          }
+        }
+      }
+    },
+    "search.finder.connection.scroll.input.samples": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder connection and scroll input samples"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 连接与滚轮输入采样"
+          }
+        }
+      }
+    },
+    "search.finder.favorite.apps": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder · Favorite Apps"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder · 常用 App"
+          }
+        }
+      }
+    },
+    "search.finder.favorite.folders": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder · Favorite Folders"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder · 常用目录"
+          }
+        }
+      }
+    },
+    "search.finder.menu.items": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder · Menu Items"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder · 菜单项目"
+          }
+        }
+      }
+    },
+    "search.finder.newFile": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder · New File"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder · 新建文件"
+          }
+        }
+      }
+    },
+    "search.finder.scope": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder · Scope"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder · 生效范围"
+          }
+        }
+      }
+    },
+    "search.fullScreen.space": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full-screen space"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全屏空间"
+          }
+        }
+      }
+    },
+    "search.general": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "General"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通用"
+          }
+        }
+      }
+    },
+    "search.generalDescription": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appearance, startup, hidden files and screenshot location"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外观、启动、隐藏文件与截图位置"
+          }
+        }
+      }
+    },
+    "search.image.video.backgrounds.soft.glow.opacity": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Image and video backgrounds, soft glow, opacity and blur"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图片与视频背景、柔光、不透明度与模糊"
+          }
+        }
+      }
+    },
+    "search.keep.menuBar": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep menu bar"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保留菜单栏"
+          }
+        }
+      }
+    },
+    "search.layouts": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Layouts"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布局"
+          }
+        }
+      }
+    },
+    "search.layouts.shortcuts.snapping.excluded.apps": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Layouts, shortcuts, drag snapping and excluded apps"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布局、快捷键、拖拽吸附与排除 App"
+          }
+        }
+      }
+    },
+    "search.left": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左边"
+          }
+        }
+      }
+    },
+    "search.live.wallpaper.gallery": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live Wallpaper Gallery"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "动态壁纸图库"
+          }
+        }
+      }
+    },
+    "search.local.images.video.wallpapers.online.gallery": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local images, video wallpapers, online gallery and rotation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本地图片、视频动态壁纸、在线图库与轮换"
+          }
+        }
+      }
+    },
+    "search.manage.context.menu.file.templates": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manage context menu file templates"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "管理右键新建模板"
+          }
+        }
+      }
+    },
+    "search.manage.context.menu.open.apps": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manage context menu Open With apps"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "管理右键打开方式"
+          }
+        }
+      }
+    },
+    "search.manage.folders.where.context.menus.appear": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manage folders where context menus appear"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "管理右键菜单的生效目录"
+          }
+        }
+      }
+    },
+    "search.manage.navigation.copy.move.destinations": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manage navigation, copy and move destinations"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "管理导航及复制、移动目的地"
+          }
+        }
+      }
+    },
+    "search.mouse.enhancement": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mouse Enhancement"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠标增强"
+          }
+        }
+      }
+    },
+    "search.move.current.window.requires.second": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move the current window; requires a second display"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移动当前窗口，需要第二台显示器"
+          }
+        }
+      }
+    },
+    "search.noResults": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No results for “%1$@”"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有找到“%1$@”"
+          }
+        }
+      }
+    },
+    "search.one.third": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One Third"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "三分之一"
+          }
+        }
+      }
+    },
+    "search.open.related.settings": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open related settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开对应设置"
+          }
+        }
+      }
+    },
+    "search.pages": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pages"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "页面"
+          }
+        }
+      }
+    },
+    "search.per.display.wallpapers.scaling.rotation.scope": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per-display wallpapers, scaling and rotation scope"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每屏壁纸、缩放方式与轮换范围"
+          }
+        }
+      }
+    },
+    "search.permission.check": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permission Check"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "权限检测"
+          }
+        }
+      }
+    },
+    "search.permissions.feature.status": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permissions and feature status"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "权限与功能运行状态"
+          }
+        }
+      }
+    },
+    "search.quick.access": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Access"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常用入口"
+          }
+        }
+      }
+    },
+    "search.restore": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还原"
+          }
+        }
+      }
+    },
+    "search.restore.current.window.s.previous.position": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore the current window's previous position and size"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复当前窗口上一次位置和大小"
+          }
+        }
+      }
+    },
+    "search.resultLimit": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Showing up to 12 matches"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最多显示 12 个匹配结果"
+          }
+        }
+      }
+    },
+    "search.return.run.esc.close": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Return to run · Esc to close"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Return 执行 · Esc 关闭"
+          }
+        }
+      }
+    },
+    "search.right": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Right"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右边"
+          }
+        }
+      }
+    },
+    "search.run": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Run"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "执行"
+          }
+        }
+      }
+    },
+    "search.run.window.action.now": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Run window action now"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "立即执行窗口动作"
+          }
+        }
+      }
+    },
+    "search.search.features.settings.window.actions": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search features, settings or window actions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索功能、设置或窗口动作"
+          }
+        }
+      }
+    },
+    "search.settings.about.updates": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings · About & Updates"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统设置 · 关于与更新"
+          }
+        }
+      }
+    },
+    "search.settings.data.management": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings · Data Management"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统设置 · 数据管理"
+          }
+        }
+      }
+    },
+    "search.settings.general": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings · General"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统设置 · 通用"
+          }
+        }
+      }
+    },
+    "search.smooth.scrolling.gestures.per.app.feel": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smooth scrolling, gestures and per-app feel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "平滑滚动、手势与按 App 手感"
+          }
+        }
+      }
+    },
+    "search.stageManagerHint": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use the right 85% of available width, leaving 15% on the left"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "靠右占可用宽度的 85%，左侧留出 15%"
+          }
+        }
+      }
+    },
+    "search.thumbnails": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thumbnails"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缩略图"
+          }
+        }
+      }
+    },
+    "search.top": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Top"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上面"
+          }
+        }
+      }
+    },
+    "search.top.left": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Top Left"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左上"
+          }
+        }
+      }
+    },
+    "search.top.right": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Top Right"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右上"
+          }
+        }
+      }
+    },
+    "search.try.screenshot.shortcut.left.half.update": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try “screenshot”, “shortcut”, “left half” or “update”."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可以搜索“截图”“快捷键”“左半屏”或“更新”。"
+          }
+        }
+      }
+    },
+    "search.two.thirds": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Two Thirds"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "三分之二"
+          }
+        }
+      }
+    },
+    "search.undo.layout": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo layout"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤回布局"
+          }
+        }
+      }
+    },
+    "search.version.privacy.update.checks": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version, privacy and update checks"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "版本、隐私与检查更新"
+          }
+        }
+      }
+    },
+    "search.video.previews.feeds.downloads.app.backgrounds": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video previews, feeds, downloads and app backgrounds"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频预览、订阅、下载与应用背景"
+          }
+        }
+      }
+    },
+    "search.wallpaper.displays.playback": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wallpaper · Displays & Playback"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "壁纸 · 屏幕与播放"
+          }
+        }
+      }
+    },
+    "search.window.actions": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window Actions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口动作"
+          }
+        }
+      }
+    },
+    "search.window.management": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitQuickFind.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window Management"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口管理"
+          }
+        }
+      }
+    },
+    "uninstall.checking.arcKit.installation.location": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking Arc Kit installation location…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在检查 Arc Kit 安装位置…"
+          }
+        }
+      }
+    },
+    "uninstall.commandTimeout": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System command exceeded 10 seconds and was terminated"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统命令执行超过 10 秒，已终止"
+          }
+        }
+      }
+    },
+    "uninstall.current.installation.uninstalled": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only the current installation can be uninstalled: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只允许卸载当前安装位置：%1$@"
+          }
+        }
+      }
+    },
+    "uninstall.extensionRestoreIncomplete": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@; Finder extension state was not fully restored. Reopen Arc Kit and repair it."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@；Finder 扩展未能完全恢复，请重新打开 Arc Kit 后修复。"
+          }
+        }
+      }
+    },
+    "uninstall.finder.extension.path.outside": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Finder extension path is outside this Arc Kit installation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 扩展路径不属于当前 Arc Kit 安装包"
+          }
+        }
+      }
+    },
+    "uninstall.finder.extension.state.restored.retry": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService. Arguments: 1 (String).",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@; Finder extension state restored. You can retry."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@；Finder 扩展状态已恢复，可以重试。"
+          }
+        }
+      }
+    },
+    "uninstall.finder.extension.still.registered": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Finder extension is still registered to this installation"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder 扩展仍注册到当前安装包"
+          }
+        }
+      }
+    },
+    "uninstall.identityVerificationFailed": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installation identity verification failed. Nothing was uninstalled."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装包身份校验失败，未执行任何卸载操作"
+          }
+        }
+      }
+    },
+    "uninstall.moving.arcKit.trash": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moving Arc Kit to Trash…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在将 Arc Kit 移到废纸篓…"
+          }
+        }
+      }
+    },
+    "uninstall.outputLimit": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Command output exceeds the 8 MiB limit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "命令输出超过 8 MiB 上限"
+          }
+        }
+      }
+    },
+    "uninstall.registrationUnreadable": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read Finder extension registration. Uninstall stopped."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取 Finder 扩展注册状态，未执行卸载"
+          }
+        }
+      }
+    },
+    "uninstall.removing.finder.extension.registration": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removing Finder extension registration…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在移除 Finder 扩展注册…"
+          }
+        }
+      }
+    },
+    "uninstall.system.returned.arcKit.path.missing": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The system returned no Arc Kit path in Trash"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统没有返回废纸篓中的 Arc Kit 路径"
+          }
+        }
+      }
+    },
+    "uninstall.trashIncomplete": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit was not fully moved to Trash"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit 未被完整移入废纸篓"
+          }
+        }
+      }
+    },
+    "uninstall.uninstall.preparation.complete.quitting.arcKit": {
+      "extractionState": "manual",
+      "comment": "Used in ArcKitUninstallService.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uninstall preparation complete. Quitting Arc Kit…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载准备完成，正在退出 Arc Kit…"
+          }
+        }
+      }
+    },
+    "window.quick.find": {
+      "extractionState": "manual",
+      "comment": "Used in MainWindowView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Find"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快速查找"
+          }
+        }
+      }
+    },
+    "window.quick.find.k": {
+      "extractionState": "manual",
+      "comment": "Used in MainWindowView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Find (⌘K)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快速查找（⌘K）"
+          }
+        }
+      }
+    },
+    "window.settingsNotLoaded": {
+      "extractionState": "manual",
+      "comment": "Used in MainWindowView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings not loaded"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置未载入"
+          }
+        }
+      }
+    },
+    "window.settingsUnavailable": {
+      "extractionState": "manual",
+      "comment": "Used in MainWindowView.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No committed configuration available. Resolve the save message first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚无可用的已提交配置，请先处理保存提示"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
