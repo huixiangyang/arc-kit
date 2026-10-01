@@ -112,3 +112,11 @@ jobs:
           git -C .build/updates add appcast.xml release.json
           git -C .build/updates commit -m "Publish $RELEASE_TAG update metadata"
           git -C .build/updates push origin HEAD:updates
+
+  sync-website:
+    needs: [prepare, release]
+    uses: ./.github/workflows/sync-website.yml
+    with:
+      tag: ${{ needs.prepare.outputs.tag }}
+    secrets:
+      ARC_KIT_SITE_DEPLOY_KEY: ${{ secrets.ARC_KIT_SITE_DEPLOY_KEY }}
