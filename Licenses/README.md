@@ -15,7 +15,7 @@ Lucide 部分图标继承自 [Feather](https://github.com/feathericons/feather)�
 
 应用品牌由项目维护者提供，运行资源与设计导出分别位于 `Sources/Application/Resources/Brand/` 和 `Targets/ArcKitApp/Resources/Brand/`。不将品牌商标权视为第三方开源许可的一部分。
 
-README 以文字说明“要你命 3000”的命名出处；公开仓库不包含电影截图，不将电影内容纳入项目许可。
+README 使用《国产凌凌漆》中的「要你命 3000」电影截图说明命名出处，文件为 `Documentation/Images/yao-ni-ming-3000.png`，与官网使用同一图片。电影截图版权归原权利人所有，不适用项目 MIT 许可，不随应用安装包提供。
 
 README 中的实际界面截图保存在 `Documentation/Images/`。图库截图包含 Dietmar Rabich 的两张 CC BY-SA 4.0 照片缩略图及 NASA 视频缩略图，原作品链接、署名、截图版本与使用范围见[图片说明](../Documentation/Images/README.md)。这些第三方内容不适用项目 MIT 许可。
 
