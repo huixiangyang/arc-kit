@@ -17,6 +17,8 @@ Lucide 部分图标继承自 [Feather](https://github.com/feathericons/feather)�
 
 README 以文字说明“要你命 3000”的命名出处；公开仓库不包含电影截图，不将电影内容纳入项目许可。
 
+README 中的实际界面截图保存在 `Documentation/Images/`。图库截图包含 Dietmar Rabich 的两张 CC BY-SA 4.0 照片缩略图及 NASA 视频缩略图，原作品链接、署名、截图版本与使用范围见[图片说明](../Documentation/Images/README.md)。这些第三方内容不适用项目 MIT 许可。
+
 ## 在线素材
 
 壁纸来源包括 Wallhaven、Wikimedia Commons、Bing、Lorem Picsum、MotionBGS、MoeWalls、NASA，以及用户添加的链接与订阅。图片和视频不随应用分发，其归属与使用条件以作品来源页为准；NASA 素材另参见[媒体使用指南](https://www.nasa.gov/nasa-brand-center/images-and-media/)。

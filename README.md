@@ -1,105 +1,112 @@
 # Arc Kit
 
-**macOS 下的「要你命 3000」。**
+**Arc Kit，一个工具缝合怪，macOS 下的「要你命 3000」。**
 
-[官网](https://arc-kit.com) · [下载](https://arc-kit.com/download/) · [GitHub](https://github.com/huixiangyang/arc-kit)
+[下载安装](https://arc-kit.com/download/) · [使用指南](https://arc-kit.com/guide/) · [官网](https://arc-kit.com) · [反馈问题](https://github.com/huixiangyang/arc-kit/issues)
 
-Arc Kit 是一个 macOS 工具箱，包含 Finder 增强、窗口管理、鼠标设置和壁纸功能。各项功能可以单独开启，设置集中在同一个窗口中。
+Finder 增强、窗口管理、鼠标增强和壁纸，放在一个原生应用里。需要什么就开启什么。「要你命 3000」的名字借自《国产凌凌漆》。
 
-项目定位就是个「缝合怪」：把常用工具放到一起，后续也会加入其他功能。「要你命 3000」的名字借自《国产凌凌漆》。
+支持 **macOS 13 及以上**，Apple Silicon 和 Intel 共用一个安装包。界面支持简体中文和 English。
 
-使用 Swift、SwiftUI、AppKit 与 SQLite，最低支持 macOS 13。
+## 安装
 
-## 现在能做什么
+**直接下载安装包即可使用，不需要安装 Xcode，也不用编译源码。**
 
-| 能力 | 功能 |
+1. 打开[官网下载页](https://arc-kit.com/download/)，点击 **下载 ZIP**。安装包由本站提供，下载 ZIP 不需要访问 GitHub。
+2. 双击下载的 `ArcKit-universal.zip` 解压，将 **Arc Kit.app** 拖进 Finder 左侧的 **应用程序（Applications）**。
+3. 从“应用程序”中双击 Arc Kit，打开设置窗口。请保留在 `/Applications/Arc Kit.app`，不要直接从下载目录运行。
+
+也可以从 [GitHub Releases](https://github.com/huixiangyang/arc-kit/releases) 下载 DMG，打开后将应用拖进“应用程序”。官网下载页会跟随正式版本更新。
+
+### 第一次打开被 macOS 拦住了？
+
+当前版本**没有 Apple Developer ID 签名和公证**。如果提示无法验证开发者或 Apple 无法检查 App，确认文件来自上面的官网下载页或官方 Release 后：
+
+1. 先尝试打开一次 Arc Kit，再打开 **Mac 的系统设置 → 隐私与安全性**。
+2. 向下找到 Arc Kit 被阻止的提示，点击 **仍要打开**。
+3. 按系统提示认证，并在确认框中点击 **打开**。
+
+这是 Apple 提供的单个 App 处理方式，见 [Apple 官方说明](https://support.apple.com/zh-cn/102445)。若提示文件已损坏，先删除下载文件并重新下载；仍无法打开时，反馈完整提示和 macOS 版本。若系统明确提示含有恶意软件或会损坏电脑，不要强行运行。
+
+## 第一次使用
+
+先选一个要用的功能，再到 **首页 → 权限** 按提示开启所需权限。Finder、窗口和鼠标的总开关都在各自页面顶部。
+
+| 想做什么 | 先做这一步 |
 | --- | --- |
-| Finder 增强 | 新建文件、常用目录与应用、打开终端、复制路径、文件信息、批量重命名、文件整理及图像工具 |
-| 窗口管理 | 台前调度模式、半屏、四角、三分屏、居中、铺满、全屏、跨屏移动、位置恢复、快捷键与拖拽吸附 |
-| 鼠标增强 | 平滑、反向与横向滚动、按应用设置参数、右键手势；预置可修改或删除的 UU 远程规则 |
-| 壁纸与个性化 | 本地图片与视频、在线与动态图源、订阅下载、循环编辑、多屏壁纸与轮换、应用背景与柔光主题 |
-| 系统便捷设置 | Finder 隐藏文件、截图保存位置、登录启动、菜单栏与 Dock 图标显示、中英文与外观设置 |
-| 数据与诊断 | 功能状态、权限检查、备份恢复、空间占用、缓存清理和诊断导出 |
+| 使用 Finder 右键菜单 | 开启 Finder 总开关，并在“首页 → 权限”进入扩展设置，启用 Arc Kit 的 Finder 扩展 |
+| 调整窗口、使用平滑滚动和手势 | 开启对应功能，按提示为 **Arc Kit Runtime Host** 授予辅助功能权限，并允许后台运行 |
+| 从菜单栏调整当前窗口 | 按“首页 → 权限”的提示，为 **Arc Kit** 开启输入监控 |
+| 换壁纸或应用背景 | 先在“壁纸”中导入图片或视频；访问文件时按系统提示选择允许 |
 
-日常操作从 Finder 右键菜单、菜单栏、快捷键或手势进入；设置集中在原生侧栏与 Tab 中，支持 `⌘K` 快速查找。Finder 菜单可选择项目并调整顺序，鼠标可按应用设置行为，菜单栏与 Dock 图标可按需隐藏。
+权限开启后回到 Arc Kit 点击“重新检测”。不用一次打开所有权限，具体入口见[安装与使用指南](https://arc-kit.com/guide/#permissions)。
 
-窗口的台前调度模式将当前窗口放在可用区域的右侧 85%，左侧留出缩略图空间。这是手动布局预设，不改变 macOS 的台前调度开关。
+![首页的权限入口，可分别查看辅助功能、菜单栏输入监听、Finder 扩展和后台运行状态](Documentation/Images/permissions.jpg)
 
-具体入口、权限和操作方式见[使用](Documentation/使用.md)。Finder Sync 受系统回调范围限制，**iCloud Drive 原生右键菜单仍不保证出现**；已提供工具栏入口，目标缺失时相关操作不可用。其他实机场景与待验收事项见[规划](Documentation/规划.md)。
+## 界面与常用操作
 
-## 还想加入什么
+本文五张设置页面截图来自 **0.1.0（56）发布版**；菜单栏截图由维护者提供。截图展示已有配置，不代表首次安装时所有开关都已开启。点击图片可查看大图。
 
-下面是一些备选方向，尚未排期。具体进展见[规划](Documentation/规划.md)。
+### 菜单栏：点选布局、开关功能
 
-| 方向 | 可以探索的功能 |
-| --- | --- |
-| 效率与自动化 | 剪贴板历史、快捷启动、文本片段、串联多个动作的工作流 |
-| 文件与内容 | 文件预览、格式转换、批量处理、截图标注与文字识别 |
-| 系统与设备 | 音频设备切换、显示器控制、电池与系统状态、专注场景 |
-| 开发与智能工具 | 文本与编码处理、接口调试、本地 AI 辅助、自然语言触发工具 |
-| 桌面与趣味 | 桌面小组件、交互效果、情境主题 |
+点开菜单栏的 Arc Kit 图标，就能为当前窗口选择台前调度、半屏、三分屏等布局。窗口管理、鼠标增强和 Finder 右键可以分别开关，壁纸也有独立入口。
 
-## 开发约定
+<a href="Documentation/Images/menu-bar.png"><img src="Documentation/Images/menu-bar.png" alt="Arc Kit 菜单栏面板：窗口布局、窗口管理、鼠标增强、Finder 右键和壁纸入口" width="320" /></a>
 
-- 新功能的入口和设置放在对应的功能页，提供可直接使用的默认配置。
-- 功能可以单独关闭，规则可以修改或删除。权限按需申请，数据支持备份恢复。
-- 后台任务按需运行；新增功能时检查内存、能耗、空闲释放与退出行为。
-- 在真实应用和设备上验证，包含文件、多屏和异常情况；失败时给出具体原因。
-- 各功能独立维护，共用设置、存储和运行管理。
+面板顶部显示当前应用，图中为 ChatGPT。
 
-## 项目状态
+### Finder：在当前文件夹里新建文件
 
-当前版本为 **0.1.0**，支持 macOS 13+、Apple Silicon 与 Intel，界面提供简体中文和 English。[官网下载](https://arc-kit.com/download/)与 [GitHub Releases](https://github.com/huixiangyang/arc-kit/releases)提供同一份 GitHub Actions 构建的 DMG / ZIP。
+在 **Finder → 菜单项目** 勾选“新建文件”。回到 Finder，在文件夹空白处右键，选择模板即可创建文件。还可以启用打开终端、复制路径、常用目录、批量重命名、文件整理和图片转换。
 
-**安装包未使用 Apple Developer ID 签名或公证。** macOS 可能阻止首次打开，下载和安装条件见[交付说明](Documentation/交付.md)。应用使用 Sparkle 自动检查更新、校验签名并完成安装与重启；可在“系统设置 → 关于”关闭自动检查，或开启自动下载并在退出时安装。从旧开发版升级需要先手动安装一次。
+![Finder 菜单项目设置，可选择右键菜单内容并调整顺序](Documentation/Images/finder.jpg)
 
-已知限制包括 iCloud Drive 的 Finder Sync 回调范围、部分应用的窗口控制限制，以及需要真实设备验证的滚动行为。详细进展见[版本说明](Documentation/版本说明.md)和[规划](Documentation/规划.md)。
+### 窗口：台前调度、分屏和跨屏移动
 
-## 数据与运行方式
+先点击要调整的窗口，再点菜单栏的 Arc Kit 图标，选择 **台前调度**、铺满、居中等布局。台前调度布局将窗口放在右侧 85%，为左侧缩略图留出位置；不会替你打开 macOS 的台前调度开关。
 
-生产数据统一存于 `~/.arc-kit/`。`app.sqlite` 保存配置与资源索引，素材、日志、缓存、备份及运行状态按职责分目录。主应用是数据库唯一写入者；Runtime Host 只读已提交配置，Finder 扩展通过可信 XPC 获取菜单快照。
+想用键盘操作，在 **窗口 → 快捷键** 先打开“启用全局快捷键”，再启用或录制相应组合键；拖拽吸附和多屏规则也在“窗口”中设置。下图展示快捷键开关关闭时的界面。
 
-只有一个统一 Runtime Host。窗口或鼠标启用时保留后台；仅 Finder 启用时按需唤醒、空闲退出。Finder 文件动作使用临时 Worker，系统可能创建多个 Finder 扩展实例；两者不等于重复常驻 Host。关闭设置窗口保留功能，正常退出应用会注销后台。
+![窗口快捷键设置，开启全局快捷键后可配置台前调度、半屏和其他布局](Documentation/Images/windows.jpg)
 
-## 开发入口
+### 鼠标：调整滚动手感
 
-需要完整 Xcode 26+、随附 Swift 工具链、XcodeGen 和 Python 3。在仓库根目录启动隔离的界面调试：
+在 **鼠标 → 滚动** 调整平滑滚动、方向和速度，再切回常用应用试一下。某个应用不适合统一设置时，到“应用规则”单独调整；右键手势在同名标签页设置。
 
-```sh
-swift build --product ArcKitApp
-.build/debug/ArcKitApp --ui-debug
-```
+![鼠标滚动设置，可调整平滑滚动、反转方向、速度和平滑时长](Documentation/Images/mouse.jpg)
 
-Debug 数据位于 `.build/ui-debug/data/`，不修改安装版配置，不启动 Host，不更改真实桌面。完整产品构建、按需回归和本地化资源流程见[开发](Documentation/开发.md)。
+### 壁纸：导入图片，也能用视频
 
-```text
-Sources/          Application、Features、Platform、UI
-Targets/          主应用、Runtime Host、Finder 扩展入口与配置
-Tests/ArcKitTests/ 关键行为回归
-Build/            XcodeGen 声明与本地化构建支持
-Documentation/    目录结构、使用、架构、开发、交付、版本说明、规划
-Licenses/         第三方归属及许可证原文
-Package.swift     SwiftPM 模块声明
-project.yml       XcodeGen 根配置
-```
+在 **壁纸 → 我的壁纸 → 导入** 选择图片或视频，打开素材详情，点击“设为桌面壁纸”，再选择目标显示器。多屏分别设置、轮换和视频播放位于“屏幕与播放”；也可以从在线图库和动态图库获取素材。
 
-## 参与贡献
+只想更换 Arc Kit 自己的背景，就选“设为应用背景”，或进入 **系统设置 → 背景** 使用柔光主题。应用背景与桌面壁纸分别设置。
 
-欢迎提交缺陷、翻译、交互改进，也欢迎带来新的工具想法。先描述具体使用场景和可观察的效果；涉及较大设计调整时先开 Issue 讨论。开发流程见[贡献指南](CONTRIBUTING.md)，安全问题见[安全说明](SECURITY.md)。
+![我的壁纸同时展示图片和视频，右上角可以导入，顶部可以切换在线图库和屏幕设置](Documentation/Images/wallpaper.jpg)
 
-项目源码采用 [MIT License](LICENSE)。第三方依赖保留各自的许可证，在线素材不属于项目开源授权范围；实际依赖、品牌和模板的归属见[许可证说明](Licenses/README.md)。
+截图中的照片：Dietmar Rabich / Wikimedia Commons / [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)；视频缩略图：NASA。原作品、截图来源和授权见[图片说明](Documentation/Images/README.md)。图库内容由使用者自行添加，不随安装包附送。
 
-## 文档入口
+### 还有这些日常设置
 
-| 文档 | 用途 |
-| --- | --- |
-| [目录结构](Documentation/目录结构.md) | 带职责说明的源码、构建与运行数据目录树 |
-| [使用](Documentation/使用.md) | 功能入口、权限、备份恢复和故障处理 |
-| [架构](Documentation/架构.md) | 模块边界、进程、配置提交与功能执行链路 |
-| [开发](Documentation/开发.md) | 调试、构建、必要回归、资源和修改规则 |
-| [交付](Documentation/交付.md) | 源码发布、签名、升级及离线恢复流程 |
-| [版本说明](Documentation/版本说明.md) | 已交付变更及关键历史修正 |
-| [规划](Documentation/规划.md) | 尚未交付或验收的事项、优先级和完成条件 |
-| [第三方许可证](Licenses/README.md) | 实际使用范围、授权正文与素材边界 |
+- **系统设置 → 通用**：登录启动、菜单栏和 Dock 图标、语言与外观、Finder 隐藏文件、系统截图保存位置。
+- **系统设置 → 数据管理**：备份与恢复、查看存储占用、清理缓存、导出诊断及卸载。
+- **⌘K**：快速查找功能。设置会自动保存；关闭设置窗口后功能继续运行，选择“退出 Arc Kit”才会停止。
 
-功能变更同步对应文档；个人设备、安装日志和临时诊断不进入公开仓库。
+## 更新与常见问题
+
+**怎么更新？** 在“系统设置 → 关于”点击“检查更新”，也可开启自动检查。应用内更新目前需要连接 GitHub；连接失败时，从[官网](https://arc-kit.com/download/)重新下载，退出旧版后替换“应用程序”里的 Arc Kit。替换应用不需要删除个人数据；更新前可在“数据管理”中导出备份。
+
+**Finder 中没有菜单？** 检查 Finder 总开关和系统扩展开关，关闭旧右键菜单后重新打开。iCloud Drive 中的右键菜单不保证出现，可尝试 Finder 工具栏入口。详细排查见[使用说明](Documentation/使用.md)。
+
+**快捷键或鼠标没反应？** 先看“首页 → 权限”和“功能状态”，再检查对应功能及快捷键开关。部分应用会限制窗口控制，滚动效果也会因应用、设备而不同。
+
+**怎么卸载？** 从“系统设置 → 数据管理”使用卸载入口，可选择是否移除个人数据。需要保留配置时先导出备份。
+
+遇到其他问题，请[提交 Issue](https://github.com/huixiangyang/arc-kit/issues)，附上 macOS 版本、Arc Kit 版本、操作步骤和提示截图。诊断报告可从“数据管理”导出，上传前检查其中内容。
+
+## 参与开发
+
+欢迎反馈问题、补充文档、翻译或提交代码。源码使用 Swift、SwiftUI、AppKit 与 SQLite；构建和运行细节单独放在开发文档中。
+
+[贡献指南](CONTRIBUTING.md) · [开发与构建](Documentation/开发.md) · [架构](Documentation/架构.md) · [目录结构](Documentation/目录结构.md) · [交付与签名](Documentation/交付.md) · [版本记录](Documentation/版本说明.md) · [后续规划](Documentation/规划.md) · [安全问题](SECURITY.md)
+
+项目源码采用 [MIT License](LICENSE)。第三方依赖和在线素材保留各自的授权，见[许可证说明](Licenses/README.md)。
