@@ -488,13 +488,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": " · Missing copies repaired: %1$@"
+            "value": " · Media or thumbnails repaired: %1$@"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "，修复 %1$@ 项缺失副本"
+            "value": "，修复 %1$@ 项媒体或缩略图"
           }
         }
       }

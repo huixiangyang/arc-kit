@@ -22,6 +22,7 @@ public final class WallpaperModel: ObservableObject {
     let channels: WallpaperChannels
     let isPreview: Bool
     private let desktop: any WallpaperDesktopHandling
+    private let workspaceNotifications: NotificationCenter
     private var work: Task<Void, Never>?
     private var rotation: Task<Void, Never>?
     private var observers: Set<AnyCancellable> = []
@@ -32,11 +33,13 @@ public final class WallpaperModel: ObservableObject {
     private var sleeping: Bool { !pauseReasons.isEmpty }
     private let thumbnails = NSCache<NSURL, NSImage>()
 
-    init(isPreview: Bool = false, desktop: (any WallpaperDesktopHandling)? = nil, library: WallpaperLibrary) {
+    init(isPreview: Bool = false, desktop: (any WallpaperDesktopHandling)? = nil, library: WallpaperLibrary,
+         workspaceNotifications: NotificationCenter = NSWorkspace.shared.notificationCenter) {
         self.library = library
         channels = WallpaperChannels(database: library.database)
         self.isPreview = isPreview
         self.desktop = desktop ?? WallpaperDesktop(isPreview: isPreview)
+        self.workspaceNotifications = workspaceNotifications
         thumbnails.countLimit = 80
         if let native = self.desktop as? WallpaperDesktop {
             native.playbackFailed = { [weak self] message in
@@ -53,12 +56,21 @@ public final class WallpaperModel: ObservableObject {
         guard !running else { return }
         running = true
         pauseReasons.removeAll()
+        desktop.pauseVideos(videoPaused)
         refreshDisplays()
         NotificationCenter.default.publisher(for: NSApplication.didChangeScreenParametersNotification)
             .sink { [weak self] _ in Task { @MainActor in self?.refreshDisplays() } }.store(in: &observers)
         NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)
             .sink { [weak self] _ in Task { @MainActor in self?.refreshDisplays() } }.store(in: &observers)
-        let workspace = NSWorkspace.shared.notificationCenter
+        let workspace = workspaceNotifications
+        // Space 变化只重新读取实际桌面状态，不重写静态壁纸或抢回其他程序的设置。
+        workspace.publisher(for: NSWorkspace.activeSpaceDidChangeNotification)
+            .sink { [weak self] _ in
+                Task { @MainActor in
+                    guard let self, self.running else { return }
+                    self.refreshDisplays()
+                }
+            }.store(in: &observers)
         let pairs = [(NSWorkspace.willSleepNotification, NSWorkspace.didWakeNotification),
                      (NSWorkspace.screensDidSleepNotification, NSWorkspace.screensDidWakeNotification),
                      (NSWorkspace.sessionDidResignActiveNotification, NSWorkspace.sessionDidBecomeActiveNotification)]
@@ -143,7 +155,11 @@ public final class WallpaperModel: ObservableObject {
 
     private func restoreVideos(on displayIDs: Set<String>) async throws {
         var failures: [String] = []
-        defer { desktop.pauseVideos(videoPaused || sleeping) }
+        desktop.pauseVideos(videoPaused || sleeping)
+        defer {
+            desktop.pauseVideos(videoPaused || sleeping)
+            if !running { desktop.stopVideos() }
+        }
         for (id, assignment) in catalog.assignments {
             guard running, displayIDs.contains(id), displays.contains(where: { $0.id == id }),
                   let item = catalog.items.first(where: { $0.id == assignment.itemID && $0.kind == .video }) else { continue }
@@ -166,6 +182,9 @@ public final class WallpaperModel: ObservableObject {
 
     private func acceptImport(_ result: WallpaperLibrary.ImportResult) async throws {
         catalog = result.catalog
+        // 重导可修复同一条目的媒体和缩略图；清掉旧图与失败标记，无需重开页面。
+        thumbnails.removeAllObjects()
+        thumbnailRequests.removeAll()
         if let id = result.itemID { selectedID = id }
         let summary = L10n.string(.Wallpaper.libraryImportedDuplicateFilesSkipped(String(describing: result.imported), String(describing: result.duplicates))) + (result.repaired > 0 ? L10n.string(.Wallpaper.libraryMissingCopiesRepaired(String(describing: result.repaired))) : "")
         report(result.failures.isEmpty ? summary : summary + "；" + result.failures.prefix(4).joined(separator: "；"), kind: result.failures.isEmpty ? .success : .failure)
@@ -266,6 +285,13 @@ public final class WallpaperModel: ObservableObject {
             catalog = try await library.save(next)
             change.commit()
             selectedID = item.id
+            // 保存会挂起，期间播放器可能已经失败；已提交分配不回滚，但不能覆盖成成功回执。
+            if item.kind == .video, change.displayIDs.contains(where: {
+                !desktop.isShowing(item, url: library.mediaURL(item), on: $0)
+            }) {
+                report(L10n.string(.WallpaperPlayback.desktopVideoPlaybackFailed), kind: .failure)
+                return
+            }
             let names = displays.filter { request.displayIDs.contains($0.id) }.map(displayTitle).joined(separator: "、")
             if change.unconfirmedDisplayIDs.isEmpty {
                 report(L10n.string(.WallpaperPlayback.applySucceeded(String(describing: item.name), String(describing: names), String(describing: item.kind == .video ? L10n.string(.WallpaperMedia.libraryLiveWallpaper) : L10n.string(.Common.wallpaper)))))
@@ -377,7 +403,9 @@ public final class WallpaperModel: ObservableObject {
             // 显式停止也停止轮换，避免下一次定时器立即重新播放。
             next.preferences.rotationEnabled = false
             catalog = try await library.save(next)
-            desktop.stopVideos(); videoPaused = false; scheduleRotation()
+            desktop.stopVideos(); videoPaused = false
+            desktop.pauseVideos(sleeping)
+            scheduleRotation()
             report(L10n.string(.WallpaperPlayback.libraryLiveWallpapersRotationStoppedOriginal))
         }
     }

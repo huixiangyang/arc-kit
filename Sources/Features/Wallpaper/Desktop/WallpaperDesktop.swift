@@ -25,6 +25,8 @@ protocol WallpaperDesktopHandling: AnyObject {
 @MainActor
 final class WallpaperDesktop: WallpaperDesktopHandling {
     private var videos: [String: WallpaperVideoSession] = [:]
+    private var videosPaused = false
+    private var videoGeneration: UInt64 = 0
     private let isPreview: Bool
     var playbackFailed: ((String) -> Void)?
 
@@ -56,6 +58,7 @@ final class WallpaperDesktop: WallpaperDesktopHandling {
 
     func apply(_ item: WallpaperItem, url: URL, request: WallpaperDesktopRequest) async throws -> WallpaperDesktopChange {
         guard !isPreview else { throw WallpaperError.message(L10n.string(.WallpaperPlayback.desktopDebugScope)) }
+        let generation = videoGeneration
         var targets = screens.filter { request.displayIDs.contains($0.id) }
         try request.validate(connected: Set(targets.map(\.id)))
         guard FileManager.default.isReadableFile(atPath: url.path) else { throw WallpaperError.message(L10n.string(.WallpaperPlayback.desktopUnreadableFile)) }
@@ -65,17 +68,21 @@ final class WallpaperDesktop: WallpaperDesktopHandling {
         defer { if !handedOff { prepared.values.forEach { $0.close() } } }
         if item.kind == .video {
             for target in targets {
-                let session = WallpaperVideoSession(url: url, screen: target.screen, scaling: request.scaling)
-                do { try await session.waitUntilReady() }
+                let session = WallpaperVideoSession(url: url, screen: target.screen, scaling: request.scaling, paused: videosPaused)
+                do { try await session.playback.waitUntilReady() }
                 catch { session.close(); throw error }
                 prepared[target.id] = session
             }
         }
         try Task.checkCancellation()
+        guard generation == videoGeneration else { throw CancellationError() }
         // 视频准备会挂起；真正写入前重新读取拓扑，目标缺失则整次拒绝。
         targets = screens.filter { request.displayIDs.contains($0.id) }
         try request.validate(connected: Set(targets.map(\.id)))
-        for target in targets { prepared[target.id]?.setFrame(target.screen.frame) }
+        for target in targets {
+            try prepared[target.id]?.playback.checkPlaybackFailure()
+            prepared[target.id]?.setFrame(target.screen.frame)
+        }
         let imageTransaction: WallpaperImageTransaction? = item.kind == .image ? WallpaperImageTransaction(
             targets: displays.filter { request.displayIDs.contains($0.id) },
             access: WallpaperImageAccess(
@@ -96,25 +103,39 @@ final class WallpaperDesktop: WallpaperDesktopHandling {
 
         let rollback: () async throws -> Void = { [self] in
             let connected = Set(screens.map(\.id))
+            var failures: [String] = []
             for target in targets {
-                if let current = videos.removeValue(forKey: target.id), current !== previousVideos[target.id] { current.close() }
+                // 迟到事务只清理自己持有的 session，不撤掉停止后新启动的播放。
+                if let current = videos[target.id], current === prepared[target.id] || current === previousVideos[target.id] {
+                    videos.removeValue(forKey: target.id)
+                    if current !== previousVideos[target.id] { current.close() }
+                }
             }
             for (id, session) in previousVideos {
-                if connected.contains(id) { videos[id] = session; session.show() }
-                else { session.close() }
+                if generation == videoGeneration, connected.contains(id) {
+                    do { try session.show(paused: videosPaused); videos[id] = session }
+                    catch { session.close(); failures.append(error.localizedDescription) }
+                } else { session.close() }
             }
-            try await imageTransaction?.rollback()
+            // 一个旧视频无法恢复，也仍要完成其余屏幕与已写入静态壁纸的回滚。
+            do { try await imageTransaction?.rollback() }
+            catch { failures.append(error.localizedDescription) }
+            if !failures.isEmpty { throw WallpaperError.message(failures.joined(separator: "；")) }
         }
         do {
             let unconfirmed = try await imageTransaction?.apply(url, options: Self.options(request.scaling)) ?? []
             try Task.checkCancellation()
+            guard generation == videoGeneration else { throw CancellationError() }
             try request.validate(connected: Set(screens.map(\.id)))
             for target in targets {
                 videos.removeValue(forKey: target.id)?.hide()
                 if let session = prepared[target.id] {
-                    session.failed = { [weak self] message in self?.playbackFailed?(message) }
+                    session.failed = { [weak self, weak session] message in
+                        guard let self, let session, self.videos[target.id] === session else { return }
+                        self.playbackFailed?(message)
+                    }
                     videos[target.id] = session
-                    session.show()
+                    try session.show(paused: videosPaused)
                 }
             }
             handedOff = true
@@ -134,8 +155,17 @@ final class WallpaperDesktop: WallpaperDesktopHandling {
          .allowClipping: scaling == .fill, .fillColor: NSColor.black]
     }
 
-    func stopVideos() { videos.values.forEach { $0.close() }; videos.removeAll() }
-    func pauseVideos(_ paused: Bool) { videos.values.forEach { $0.setPaused(paused) } }
+    func stopVideos() {
+        // 失效未完成事务：旧 session 可能正被回滚闭包持有，不能在退出后重新显示。
+        videoGeneration &+= 1
+        videos.values.forEach { $0.close() }
+        videos.removeAll()
+    }
+    func pauseVideos(_ paused: Bool) {
+        // 即使尚无 session，也保留状态；准备中的视频与回滚恢复都必须继承它。
+        videosPaused = paused
+        videos.values.forEach { $0.playback.setPaused(paused) }
+    }
     func discardDisconnectedDisplays() {
         let connected = Set(screens.map(\.id))
         for id in Array(videos.keys) where !connected.contains(id) { videos.removeValue(forKey: id)?.close() }
@@ -145,19 +175,14 @@ final class WallpaperDesktop: WallpaperDesktopHandling {
 
 @MainActor
 private final class WallpaperVideoSession {
+    let playback: WallpaperVideoPlayback
     private let url: URL
     private let window: WallpaperVideoWindow
-    private let player: AVQueuePlayer
-    private let looper: AVPlayerLooper
-    private var observation: NSKeyValueObservation?
     var failed: ((String) -> Void)?
 
-    init(url: URL, screen: NSScreen, scaling: WallpaperScaling) {
+    init(url: URL, screen: NSScreen, scaling: WallpaperScaling, paused: Bool) {
         self.url = url
-        player = AVQueuePlayer()
-        player.isMuted = true
-        player.preventsDisplaySleepDuringVideoPlayback = false
-        looper = AVPlayerLooper(player: player, templateItem: AVPlayerItem(url: url))
+        playback = WallpaperVideoPlayback(url: url, paused: paused)
         window = WallpaperVideoWindow(contentRect: screen.frame, styleMask: .borderless, backing: .buffered, defer: false)
         window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.desktopWindow)) + 1)
         window.collectionBehavior = [.canJoinAllSpaces, .stationary, .ignoresCycle]
@@ -168,34 +193,34 @@ private final class WallpaperVideoSession {
         window.isReleasedWhenClosed = false
         let view = WallpaperVideoView(frame: NSRect(origin: .zero, size: screen.frame.size))
         view.wantsLayer = true
-        view.playerLayer.player = player
+        view.playerLayer.player = playback.player
         view.playerLayer.videoGravity = scaling == .fill ? .resizeAspectFill : (scaling == .fit ? .resizeAspect : .resize)
         window.contentView = view
-        observation = player.observe(\.status, options: [.new]) { [weak self] player, _ in
-            guard player.status == .failed else { return }
-            let message = player.error?.localizedDescription ?? L10n.string(.WallpaperPlayback.desktopVideoPlaybackFailed)
-            Task { @MainActor [weak self] in self?.hide(); self?.failed?(message) }
+        playback.failed = { [weak self] message in
+            self?.closeWindow()
+            self?.failed?(message)
         }
     }
 
-    func waitUntilReady() async throws {
-        for _ in 0..<100 {
-            try Task.checkCancellation()
-            if player.currentItem?.status == .readyToPlay { return }
-            if player.status == .failed || player.currentItem?.status == .failed || looper.status == .failed {
-                throw WallpaperError.message(player.currentItem?.error?.localizedDescription ?? L10n.string(.WallpaperPlayback.desktopPlaybackFailed))
-            }
-            try await Task.sleep(for: .milliseconds(50))
-        }
-        throw WallpaperError.message(L10n.string(.WallpaperPlayback.desktopVideoLoadingTimeoutOriginalWallpaper))
+    func show(paused: Bool) throws {
+        try playback.show(paused: paused)
+        window.orderBack(nil)
     }
-
-    func show() { window.orderBack(nil); player.play() }
-    func isShowing(_ url: URL) -> Bool { self.url == url && window.isVisible }
-    func hide() { player.pause(); window.orderOut(nil) }
-    func setPaused(_ paused: Bool) { if paused { player.pause() } else { player.play() } }
-    func setFrame(_ frame: NSRect) { window.setFrame(frame, display: true) }
-    func close() { observation = nil; player.pause(); window.close() }
+    func isShowing(_ url: URL) -> Bool { self.url == url && playback.state.isPresented && window.isVisible }
+    func hide() { playback.hide(); window.orderOut(nil) }
+    func setFrame(_ frame: NSRect) {
+        guard playback.state.phase != .closed, playback.state.phase != .failed else { return }
+        window.setFrame(frame, display: true)
+    }
+    func close() {
+        failed = nil
+        playback.close()
+        closeWindow()
+    }
+    private func closeWindow() {
+        (window.contentView as? WallpaperVideoView)?.playerLayer.player = nil
+        window.close()
+    }
 }
 
 private final class WallpaperVideoWindow: NSWindow {

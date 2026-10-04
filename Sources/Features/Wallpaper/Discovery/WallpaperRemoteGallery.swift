@@ -14,7 +14,7 @@ struct WallpaperRemoteGallery<Item: Identifiable & Sendable, Card: View, Tools: 
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 10) {
-                TextField(L10n.string(.WallpaperSources.gallerySearchEnabledSources(String(describing: kind.rawValue))), text: $browser.searchText)
+                TextField(L10n.string(.WallpaperSources.gallerySearchEnabledSources(kind.title)), text: $browser.searchText)
                     .textFieldStyle(.roundedBorder).onSubmit(search)
                 Button(browser.searchText.isEmpty ? L10n.string(.Common.refresh) : L10n.string(.Common.search), action: search).disabled(channels.enabled(kind).isEmpty)
                 if browser.busy {
@@ -26,7 +26,7 @@ struct WallpaperRemoteGallery<Item: Identifiable & Sendable, Card: View, Tools: 
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
-                        Text(L10n.string(.WallpaperSources.galleryCombinedSources(String(describing: browser.items.count), String(describing: kind.rawValue), String(describing: channels.enabled(kind).count))))
+                        Text(L10n.string(.WallpaperSources.galleryCombinedSources(String(describing: browser.items.count), kind.title, String(describing: channels.enabled(kind).count))))
                         Spacer()
                         if browser.busy { ProgressView().controlSize(.small); Text(L10n.string(.WallpaperSources.galleryGathering)) }
                     }.font(.caption).foregroundStyle(.secondary)
@@ -37,14 +37,14 @@ struct WallpaperRemoteGallery<Item: Identifiable & Sendable, Card: View, Tools: 
                     LazyVGrid(columns: WallpaperGalleryLayout.columns, spacing: 16) { ForEach(browser.items) { card($0) } }
                     if browser.items.isEmpty {
                         if browser.busy || channels.busy && !channels.loaded {
-                            WallpaperGalleryState(title: L10n.string(.WallpaperSources.galleryLoading(String(describing: kind.rawValue))), message: L10n.string(.WallpaperSources.galleryIndependentLoadingHint), loading: true)
+                            WallpaperGalleryState(title: L10n.string(.WallpaperSources.galleryLoading(kind.title)), message: L10n.string(.WallpaperSources.galleryIndependentLoadingHint), loading: true)
                         } else if channels.enabled(kind).isEmpty {
-                            WallpaperGalleryState(title: channels.loaded ? L10n.string(.WallpaperSources.gallerySourcesEnabledMissing(String(describing: kind.rawValue))) : L10n.string(.WallpaperSources.gallerySourceConfigurationNotReady), message: L10n.string(.WallpaperSources.galleryChooseWhatDisplaySourceManagement))
+                            WallpaperGalleryState(title: channels.loaded ? L10n.string(.WallpaperSources.gallerySourcesEnabledMissing(kind.title)) : L10n.string(.WallpaperSources.gallerySourceConfigurationNotReady), message: L10n.string(.WallpaperSources.galleryChooseWhatDisplaySourceManagement))
                             Button(L10n.string(.WallpaperSources.galleryOpenSourceManagement)) { showChannels = true }.frame(maxWidth: .infinity)
                         } else if !browser.paused.isEmpty {
                             WallpaperGalleryState(title: L10n.string(.WallpaperSources.galleryLoadingPaused), message: L10n.string(.WallpaperSources.galleryClickResumeLoadingContinueUnfinishedSources))
                         } else {
-                            WallpaperGalleryState(title: L10n.string(.WallpaperSources.galleryYetMissing(String(describing: kind.rawValue))), message: browser.failures.isEmpty ? L10n.string(.WallpaperSources.galleryTryAnotherKeywordLoadNext) : L10n.string(.WallpaperSources.galleryExpandSourceErrorsRetryIndividually))
+                            WallpaperGalleryState(title: L10n.string(.WallpaperSources.galleryYetMissing(kind.title)), message: browser.failures.isEmpty ? L10n.string(.WallpaperSources.galleryTryAnotherKeywordLoadNext) : L10n.string(.WallpaperSources.galleryExpandSourceErrorsRetryIndividually))
                         }
                     }
                     if browser.hasMore && !browser.busy {

@@ -215,6 +215,7 @@ struct StorageMaintenance: Sendable {
                   try ArcKitRecord.load(WallpaperSourceConfiguration.self, layout: WallpaperSourceConfiguration.recordLayout, db: db) != nil else { throw ArcKitDatabaseError.message(L10n.string(.DataManagement.storageBackupLacksFeatureRecords)) }
             _ = try wallpaper.validated(); _ = try background.validated()
             let entries = Dictionary(uniqueKeysWithValues: manifest.files.map { ($0.path, $0) })
+            var assets: [String: StorageBackupManifest.File] = [:]
             for row in try Row.fetchAll(db, sql: "SELECT path,digest,byte_count FROM assets") {
                 // 外部备份不能信任声明的列类型；拒绝坏记录，避免强制转换终止进程。
                 guard case .string(let path) = (row["path"] as DatabaseValue).storage,
@@ -224,14 +225,32 @@ struct StorageMaintenance: Sendable {
                 guard let entry = entries[path], !entry.isDirectory, entry.digest == digest, entry.bytes == bytes else {
                     throw ArcKitDatabaseError.message(L10n.string(.DataManagement.storageDatabaseAssetReferenceMissing(String(describing: path))))
                 }
+                assets[digest] = entry
+            }
+            // 哈希外键只证明资产存在；还要验证业务实际打开的文件名与大小，避免恢复出无法读取的图库。
+            for item in wallpaper.items {
+                let path = "assets/media/" + item.filename
+                guard let asset = assets[item.digest], asset.path == path, asset.bytes == item.byteCount else {
+                    throw ArcKitDatabaseError.message(L10n.string(.DataManagement.storageDatabaseAssetReferenceMissing(String(describing: path))))
+                }
+            }
+            if let id = background.imageID {
+                guard let asset = assets[id], asset.path.hasPrefix("assets/media/" + id + "."),
+                      !asset.path.dropFirst("assets/media/".count).contains("/") else {
+                    throw ArcKitDatabaseError.message(L10n.string(.DataManagement.storageDatabaseAssetReferenceMissing(String(describing: id))))
+                }
             }
             for template in settings.finder.menuConfiguration.fileTemplates {
                 if case .managedUserFile(let path) = template.templateSource {
                     guard entries[try templateRelativePath(path)] != nil else { throw ArcKitDatabaseError.message(L10n.string(.DataManagement.storageBackupLacksCustomTemplates)) }
                 }
             }
-            if let filename = background.videoFilename, entries["assets/media/" + filename] == nil {
-                throw ArcKitDatabaseError.message(L10n.string(.DataManagement.storageBackupLacksBackgroundVideo))
+            if let filename = background.videoFilename {
+                let digest = URL(fileURLWithPath: filename).deletingPathExtension().lastPathComponent
+                // 清单中碰巧存在同名文件，不等于它是内容寻址的背景视频资产。
+                guard assets[digest]?.path == "assets/media/" + filename else {
+                    throw ArcKitDatabaseError.message(L10n.string(.DataManagement.storageBackupLacksBackgroundVideo))
+                }
             }
         }
     }

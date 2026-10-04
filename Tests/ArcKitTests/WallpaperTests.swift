@@ -140,10 +140,16 @@ struct WallpaperTests {
         let directory = root.appendingPathComponent("Library")
         let library = WallpaperLibrary(database: ApplicationStorage.makeDatabase(paths: ArcKitStoragePaths(root: directory)))
         let empty = try await library.load()
+        let competing = WallpaperLibrary(database: library.database)
+        let stale = try await competing.load()
         let result = try await library.importFiles([source, source], into: empty)
         #expect(result.imported == 1)
         #expect(result.duplicates == 1)
         let item = try #require(result.catalog.items.first)
+        // 两个实例先读同一旧目录；后提交者冲突，不能删掉先提交者已引用的共享缩略图。
+        do { _ = try await competing.importFiles([source], into: stale); Issue.record("旧修订不能覆盖已提交目录") } catch {}
+        #expect(try await library.load() == result.catalog)
+        #expect(CGImageSourceCreateImageAtIndex(try #require(CGImageSourceCreateWithURL(library.thumbnailURL(item) as CFURL, nil)), 0, nil) != nil)
         try FileManager.default.removeItem(at: source)
         #expect(FileManager.default.fileExists(atPath: library.mediaURL(item).path))
         #expect(CGImageSourceCreateWithURL(library.thumbnailURL(item) as CFURL, nil) != nil)
@@ -152,7 +158,6 @@ struct WallpaperTests {
         var draft = try await failed.load()
         draft.items[0].isFavorite = true
         do { _ = try await failed.save(draft); Issue.record("失败写入不应提交") } catch {}
-        #expect(try await library.load() == result.catalog)
         #expect(try await library.load() == result.catalog)
         // 收藏池为空不能偷偷扩大为全部图片。
         var favorites = result.catalog
@@ -168,11 +173,19 @@ struct WallpaperTests {
         let indexBeforeRepair = try Data(contentsOf: indexURL)
         let replacement = try imageFixture(in: root, name: "replacement")
         try FileManager.default.removeItem(at: library.mediaURL(item))
+        try FileManager.default.removeItem(at: library.thumbnailURL(item))
         let repaired = try await library.importFiles([replacement], into: saved)
         #expect(repaired.repaired == 1 && repaired.imported == 0 && repaired.duplicates == 0)
         #expect(repaired.itemID == item.id && repaired.catalog == saved)
         #expect(try Data(contentsOf: library.mediaURL(item)) == Data(contentsOf: replacement))
         #expect(try Data(contentsOf: indexURL) == indexBeforeRepair)
+        #expect(try await library.load() == saved)
+        // 文件存在却已损坏时也重建，仍保留原 ID、收藏、分屏和数据库修订。
+        try Data("broken thumbnail".utf8).write(to: library.thumbnailURL(item))
+        let repairedThumbnail = try await library.importFiles([replacement], into: saved)
+        #expect(repairedThumbnail.repaired == 1 && repairedThumbnail.duplicates == 0)
+        #expect(repairedThumbnail.catalog == saved && repairedThumbnail.itemID == item.id)
+        #expect(CGImageSourceCreateImageAtIndex(try #require(CGImageSourceCreateWithURL(library.thumbnailURL(item) as CFURL, nil)), 0, nil) != nil)
         #expect(try await library.load() == saved)
     }
 
@@ -708,10 +721,13 @@ struct WallpaperTests {
         var catalog = try await library.load()
         catalog.assignments[original.id] = WallpaperAssignment(itemID: item.id, scaling: .fit)
         _ = try await library.save(catalog)
-        let model = WallpaperModel(desktop: desktop, library: library)
+        let notifications = NotificationCenter()
+        let model = WallpaperModel(desktop: desktop, library: library, workspaceNotifications: notifications)
+        model.toggleVideoPause()
         model.start(); defer { model.stop() }
         try await settle(model)
         #expect(desktop.applied == 1 && model.appliedDisplayIDs == [original.id])
+        #expect(desktop.pausedAtApply == [true])
         desktop.displays = []
         model.refreshDisplays()
         #expect(model.appliedDisplayIDs.isEmpty)
@@ -726,6 +742,49 @@ struct WallpaperTests {
         #expect(desktop.requests.last == WallpaperDesktopRequest(displayIDs: [original.id], scaling: .fit))
         #expect(model.appliedDisplayIDs == [original.id])
         #expect(model.catalog.assignments[added.id] == nil)
+        #expect(desktop.pausedAtApply == [true, true])
+
+        // 通知只发到测试注入的中心，不休眠系统或修改真实桌面。
+        func notify(_ name: Notification.Name, paused: Bool) async throws {
+            let count = desktop.pauseStates.count
+            notifications.post(name: name, object: nil)
+            for _ in 0..<100 where desktop.pauseStates.count == count { try await Task.sleep(for: .milliseconds(5)) }
+            try #require(desktop.pauseStates.count > count)
+            #expect(desktop.pauseStates.last == paused)
+        }
+        model.toggleVideoPause()
+        #expect(desktop.pauseStates.last == false)
+        try await notify(NSWorkspace.willSleepNotification, paused: true)
+        try await notify(NSWorkspace.screensDidSleepNotification, paused: true)
+        try await notify(NSWorkspace.sessionDidResignActiveNotification, paused: true)
+        try await notify(NSWorkspace.screensDidWakeNotification, paused: true)
+        try await notify(NSWorkspace.didWakeNotification, paused: true)
+        try await notify(NSWorkspace.sessionDidBecomeActiveNotification, paused: false)
+
+        // Space 通知只回读；其他程序改变桌面后不能自动重新应用。
+        desktop.active.removeAll()
+        notifications.post(name: NSWorkspace.activeSpaceDidChangeNotification, object: nil)
+        for _ in 0..<100 where !model.appliedDisplayIDs.isEmpty { try await Task.sleep(for: .milliseconds(5)) }
+        #expect(model.appliedDisplayIDs.isEmpty && desktop.applied == 2)
+
+        model.toggleVideoPause()
+        model.stopDynamicWallpaper()
+        try await settle(model)
+        #expect(!model.videoPaused && desktop.pauseStates.last == false)
+        #expect(model.catalog.assignments.isEmpty)
+        model.apply(item, request: .init(displayIDs: [original.id], scaling: .fit))
+        try await settle(model)
+        #expect(desktop.pausedAtApply.last == false && !model.hasError)
+
+        // 模拟新视频在保存分配期间失效：分配已经提交，错误不能被成功提示覆盖。
+        desktop.failsPlaybackOnCommit = true
+        model.apply(item, request: .init(displayIDs: [original.id], scaling: .fit))
+        try await settle(model)
+        #expect(model.hasError && model.appliedDisplayIDs.isEmpty)
+        #expect(desktop.rolledBack == 0)
+        #expect(try await library.load().assignments[original.id]?.itemID == item.id)
+        model.stop()
+        #expect(desktop.videoDisplays.isEmpty && desktop.active.isEmpty)
     }
 
     @Test("旧数据完整离线导入，损坏源不启用；备份跨根恢复模板和媒体")
@@ -848,6 +907,9 @@ private final class WallpaperDesktopSpy: WallpaperDesktopHandling {
     var committed = 0
     var active: [String: UUID] = [:]
     var videoDisplays: Set<String> = []
+    var pauseStates: [Bool] = []
+    var pausedAtApply: [Bool] = []
+    var failsPlaybackOnCommit = false
     var displays: [WallpaperDisplay]
 
     init() {
@@ -857,13 +919,19 @@ private final class WallpaperDesktopSpy: WallpaperDesktopHandling {
     func apply(_ item: WallpaperItem, url: URL, request: WallpaperDesktopRequest) async throws -> WallpaperDesktopChange {
         try request.validate(connected: Set(displays.map(\.id)))
         requests.append(request)
+        if item.kind == .video { pausedAtApply.append(pauseStates.last ?? false) }
         let previous = active
         let previousVideos = videoDisplays
         for id in request.displayIDs {
             if !unconfirmed.contains(id) { active[id] = item.id }
             if item.kind == .video { videoDisplays.insert(id) } else { videoDisplays.remove(id) }
         }
-        return WallpaperDesktopChange(displayIDs: request.displayIDs.sorted(), unconfirmedDisplayIDs: request.displayIDs.intersection(unconfirmed), commit: { self.committed += 1 }, rollback: {
+        return WallpaperDesktopChange(displayIDs: request.displayIDs.sorted(), unconfirmedDisplayIDs: request.displayIDs.intersection(unconfirmed), commit: {
+            self.committed += 1
+            if item.kind == .video && self.failsPlaybackOnCommit {
+                for id in request.displayIDs { self.active.removeValue(forKey: id) }
+            }
+        }, rollback: {
             self.rolledBack += 1
             for id in request.displayIDs {
                 self.active[id] = previous[id]
@@ -873,7 +941,7 @@ private final class WallpaperDesktopSpy: WallpaperDesktopHandling {
     }
     func isShowing(_ item: WallpaperItem, url: URL, on displayID: String) -> Bool { active[displayID] == item.id }
     func stopVideos() { for id in videoDisplays { active.removeValue(forKey: id) }; videoDisplays.removeAll() }
-    func pauseVideos(_ paused: Bool) {}
+    func pauseVideos(_ paused: Bool) { pauseStates.append(paused) }
     func discardDisconnectedDisplays() {
         let connected = Set(displays.map(\.id))
         active = active.filter { connected.contains($0.key) }

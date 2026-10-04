@@ -27,9 +27,6 @@ struct WallpaperChannelsSheet: View {
                 if let error = channels.error {
                     Section {
                         Text(error).font(.caption).foregroundStyle(.orange).textSelection(.enabled)
-                        if !channels.loaded {
-                            Button(L10n.string(.WallpaperSources.channelsReloadConfiguration)) { Task { await channels.load() } }.disabled(channels.busy)
-                        }
                     }
                 }
                 ForEach(WallpaperChannelKind.allCases, id: \.self) { kind in
@@ -65,6 +62,15 @@ struct WallpaperChannelsSheet: View {
                         .disabled(channels.busy || !channels.loaded || address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
                 if let inputError { Text(inputError).font(.caption).foregroundStyle(.orange).textSelection(.enabled) }
+                if channels.error != nil || inputError != nil {
+                    // 开关与添加订阅都可能遇到配置版本冲突；显式重读后由用户重试操作。
+                    Button(L10n.string(.WallpaperSources.channelsReloadConfiguration)) {
+                        Task {
+                            await channels.load(force: true)
+                            if channels.error == nil { inputError = nil }
+                        }
+                    }.disabled(channels.busy || adding)
+                }
                 Text(L10n.string(.WallpaperSources.channelsSupportsHttpsJsonCatalogsArcKit))
                 Text(L10n.string(.WallpaperSources.channelsLibraryUnaffectedHint))
             }.font(.caption).foregroundStyle(.secondary).padding(16)

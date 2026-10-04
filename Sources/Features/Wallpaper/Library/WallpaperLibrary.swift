@@ -67,15 +67,13 @@ actor WallpaperLibrary {
         try FileManager.default.createDirectory(at: database.paths.media, withIntermediateDirectories: true)
         try FileManager.default.createDirectory(at: database.paths.thumbnails, withIntermediateDirectories: true)
         var candidate = original
-        var created: [URL] = []
         var failures: [String] = []
         var duplicates = 0
         var repaired = 0
         var imported = 0
         var itemID: UUID?
-        var committed = false
-        // 保存失败或取消只清理本次新副本，绝不删除用户选择的原文件。
-        defer { if !committed { for url in created { try? FileManager.default.removeItem(at: url) } } }
+        // 缩略图按内容共享，失败或取消不能删掉另一笔成功导入正在使用的缓存。
+        // 未被引用的缓存交由存储维护清理，原文件和不可变媒体副本始终保留。
         for url in urls {
             try Task.checkCancellation()
             let access = url.startAccessingSecurityScopedResource()
@@ -98,8 +96,9 @@ actor WallpaperLibrary {
                 let destination = stored.url
                 let digest = stored.digest
                 if let existing = candidate.items.first(where: { $0.digest == digest }) {
+                    let rebuilt = try await rebuildThumbnail(existing)
                     itemID = existing.id
-                    if missing { repaired += 1 } else { duplicates += 1 }
+                    if missing || rebuilt { repaired += 1 } else { duplicates += 1 }
                     continue
                 }
                 guard candidate.items.count < 2_000 else { throw WallpaperError.message(L10n.string(.Wallpaper.libraryCapacityLimit)) }
@@ -142,13 +141,7 @@ actor WallpaperLibrary {
                 let item = WallpaperItem(id: id, name: url.deletingPathExtension().lastPathComponent,
                     fileExtension: stored.url.pathExtension, kind: video ? .video : .image, width: width, height: height,
                     byteCount: Int64(bytes), digest: digest, addedAt: Date(), origin: origin)
-                let thumbnailPath = thumbnailURL(item)
-                created.append(thumbnailPath)
-                guard let encoder = CGImageDestinationCreateWithURL(thumbnailPath as CFURL, UTType.jpeg.identifier as CFString, 1, nil) else {
-                    throw CocoaError(.fileWriteUnknown)
-                }
-                CGImageDestinationAddImage(encoder, thumbnail, [kCGImageDestinationLossyCompressionQuality: 0.86] as CFDictionary)
-                guard CGImageDestinationFinalize(encoder) else { throw CocoaError(.fileWriteUnknown) }
+                try writeThumbnail(thumbnail, to: thumbnailURL(item))
                 candidate.items.append(item)
                 itemID = item.id
                 imported += 1
@@ -157,16 +150,19 @@ actor WallpaperLibrary {
         }
         try Task.checkCancellation()
         if imported > 0 { candidate = try save(candidate) }
-        // 不完整文件不进入图库；清理失败项目留下的临时副本。
-        let used = Set(candidate.items.flatMap { [mediaURL($0), thumbnailURL($0)] })
-        for url in created where !used.contains(url) { try? FileManager.default.removeItem(at: url) }
-        committed = true
         return ImportResult(catalog: candidate, imported: imported, duplicates: duplicates, repaired: repaired, failures: failures, itemID: itemID)
     }
 
-    func rebuildThumbnail(_ item: WallpaperItem) async throws {
+    @discardableResult
+    func rebuildThumbnail(_ item: WallpaperItem) async throws -> Bool {
+        try Task.checkCancellation()
         let destination = thumbnailURL(item)
-        guard !FileManager.default.fileExists(atPath: destination.path) else { return }
+        // 存在不代表可用：清缓存中断或磁盘损坏也可能留下无法解码的文件。
+        if let source = CGImageSourceCreateWithURL(destination as CFURL, nil),
+           CGImageSourceGetStatus(source) == .statusComplete,
+           CGImageSourceCreateImageAtIndex(source, 0, [kCGImageSourceShouldCacheImmediately: true] as CFDictionary) != nil {
+            return false
+        }
         let image: CGImage
         if item.kind == .video {
             let generator = AVAssetImageGenerator(asset: AVURLAsset(url: mediaURL(item)))
@@ -177,10 +173,17 @@ actor WallpaperLibrary {
                   let thumbnail = CGImageSourceCreateThumbnailAtIndex(source, 0, [kCGImageSourceCreateThumbnailFromImageAlways: true, kCGImageSourceCreateThumbnailWithTransform: true, kCGImageSourceThumbnailMaxPixelSize: 800] as CFDictionary) else { throw CocoaError(.fileReadCorruptFile) }
             image = thumbnail
         }
+        try writeThumbnail(image, to: destination)
+        return true
+    }
+
+    private func writeThumbnail(_ image: CGImage, to destination: URL) throws {
+        try Task.checkCancellation()
         let buffer = NSMutableData()
         guard let writer = CGImageDestinationCreateWithData(buffer, UTType.jpeg.identifier as CFString, 1, nil) else { throw CocoaError(.fileWriteUnknown) }
-        CGImageDestinationAddImage(writer, image, nil)
+        CGImageDestinationAddImage(writer, image, [kCGImageDestinationLossyCompressionQuality: 0.86] as CFDictionary)
         guard CGImageDestinationFinalize(writer) else { throw CocoaError(.fileWriteUnknown) }
+        try Task.checkCancellation()
         try ArcKitAtomicFile.writeAtomically(buffer as Data, to: destination)
     }
 

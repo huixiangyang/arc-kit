@@ -48,18 +48,16 @@ final class WallpaperMixedBrowser<Item: Identifiable & Sendable>: ObservableObje
         more.formIntersection(enabled); paused.formIntersection(enabled)
         for i in batches.indices { batches[i].items = batches[i].items.filter { enabled.contains($0.key) } }
         for i in previousBatches.indices { previousBatches[i].items = previousBatches[i].items.filter { enabled.contains($0.key) } }
-        if showingPrevious {
-            // 刷新全部失败时，旧结果也保留来源归属，停用渠道只过滤它自己的内容。
-            items = mergedItems(previousBatches)
-            showingPrevious = !items.isEmpty
-        } else { publishItems() }
+        publishItems()
         // 开关只影响变化的渠道；已成功渠道保留结果与页码，不重复请求。
         request(channels.filter { !oldIDs.contains($0.id) || paused.contains($0.id) })
     }
     func search(channels: [WallpaperChannel], query: String) {
         let term = String(query.trimmingCharacters(in: .whitespacesAndNewlines).prefix(160))
         let keep = started && term == self.query && channels == self.channels && !items.isEmpty
-        previousBatches = keep ? (showingPrevious ? previousBatches : batches) : []
+        // 连续刷新时，新旧结果可能并存；两部分都保留来源归属，直到各自刷新成功。
+        previousBatches = keep ? previousBatches + batches : []
+        previousBatches.removeAll { $0.items.values.allSatisfy(\.isEmpty) }
         stop(); started = true
         self.channels = channels; self.query = term; searchText = term
         showingPrevious = keep
@@ -109,6 +107,10 @@ final class WallpaperMixedBrowser<Item: Identifiable & Sendable>: ObservableObje
                     self.loading.remove(id)
                     switch result {
                     case .success(let result):
+                        // 首屏成功才替换该来源的旧页；空结果同样有效，不能继续展示过期内容。
+                        if page == 1 {
+                            for index in self.previousBatches.indices { self.previousBatches[index].items.removeValue(forKey: id) }
+                        }
                         self.pages[id] = page
                         if result.more { self.more.insert(id) } else { self.more.remove(id) }
                         if let index = self.batches.firstIndex(where: { $0.id == token }) { self.batches[index].items[id] = result.items }
@@ -121,8 +123,10 @@ final class WallpaperMixedBrowser<Item: Identifiable & Sendable>: ObservableObje
         }
     }
     private func publishItems() {
-        items = mergedItems(batches)
-        previousBatches = []; showingPrevious = false
+        previousBatches.removeAll { $0.items.values.allSatisfy(\.isEmpty) }
+        // 尚未更新的来源保持在前，后续分页始终追加，避免“加载更多”挤动仍可浏览的旧项。
+        items = mergedItems(previousBatches + batches)
+        showingPrevious = !previousBatches.isEmpty
     }
     private func mergedItems(_ batches: [Batch]) -> [Item] {
         var seen = Set<Item.ID>(), result: [Item] = []
