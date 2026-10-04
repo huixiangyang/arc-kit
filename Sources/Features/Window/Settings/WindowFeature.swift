@@ -11,6 +11,11 @@ enum WindowFeature {
             ArcKitQuickCommand.command(
                 "section.window", L10n.string(.App.searchWindowManagement), L10n.string(.App.searchLayoutsShortcutsSnappingExcludedApps), .appWindowMac, L10n.string(.App.searchPages),
                 ["快捷键", "吸附", "布局", "多显示器", "window", "hotkey", "snap"], .section(.window), suggested: true, order: 20
+            ),
+            ArcKitQuickCommand.command(
+                "section.window.scenes", L10n.string(.App.scenesTitle), L10n.string(.App.scenesDescription), .panelsTopLeft,
+                L10n.string(.App.searchPages), ["窗口场景", "预设", "工作布局", "scenes", "presets", "workspace"],
+                .windowScenes, order: 21
             )
         ]
         for (index, action) in WindowLayoutAction.allCases.enumerated() {
@@ -27,6 +32,15 @@ enum WindowFeature {
             ))
         }
         return commands
+    }
+
+    static func sceneCommands(_ scenes: [WindowScene]) -> [ArcKitQuickCommand] {
+        scenes.enumerated().map { index, scene in
+            .command("window.scene.\(scene.id.uuidString)", scene.name, L10n.string(.App.scenesApplyHint),
+                     .panelsTopLeft, L10n.string(.App.scenesTitle),
+                     ["场景", "恢复布局", "scene", "preset", "workspace"], .windowScene(scene.id),
+                     suggested: true, order: 80 + index)
+        }
     }
     private static func windowActionDetail(_ action: WindowLayoutAction) -> String {
         switch action {

@@ -211,7 +211,8 @@ public final class AppController: NSObject, NSMenuItemValidation {
             ),
             window: WindowCommandActions(
                 prepareQuickFind: { [weak self] in self?.captureSettingsWindowTarget() },
-                performWindowAction: { [weak self] action in self?.performWindowAction(action) }
+                performWindowAction: { [weak self] action in self?.performWindowAction(action) },
+                performScene: { [weak self] id in self?.runtime.windowService.applyScene(id: id) }
             )
         )
     }
@@ -220,6 +221,11 @@ public final class AppController: NSObject, NSMenuItemValidation {
         MenuBarPanelActions(
             performWindow: { [weak self] action, targetID in
                 self?.runtime.windowService.perform(action, targetID: targetID)
+            },
+            performScene: { [weak self] id in self?.runtime.windowService.applyScene(id: id) },
+            undoScene: { [weak self] token in self?.runtime.windowService.undoScene(token: token) },
+            openScenes: { [weak self] in
+                self?.presentSettings { $0.show(section: .window, windowTarget: .scenes) }
             },
             setWindowEnabled: { [weak self] in self?.setWindowManagementEnabled($0) },
             setMouseEnabled: { [weak self] in self?.setMouseEnhancementEnabled($0) },
@@ -249,6 +255,12 @@ public final class AppController: NSObject, NSMenuItemValidation {
             if settings.windowManagement.isEnabled { state.windowHealth = blocked }
             if settings.mouseEnhancement.isEnabled { state.mouseHealth = blocked }
         }
+        // 场景不读菜单点击来源；Host 的辅助功能权限有效即可，不额外要求主应用输入监控。
+        state.sceneActionsAvailable = settings.windowManagement.isEnabled
+            && state.windowHealth.permission == .granted && runtime.windowService.accessibilityOperational
+        state.isApplyingScene = runtime.windowService.isApplyingScene
+        state.lastSceneResult = runtime.windowService.lastSceneResult
+        state.sceneError = runtime.windowService.lastSceneError
         state.windowHealth = runtime.permissions.windowHealth(state.windowHealth, required: settings.windowManagement.isEnabled, menuBarVisible: settings.showMenuBarIcon)
         // 快捷键冲突不影响手动布局；权限证据与 AX 可操作性仍必须有效。
         state.windowActionsAvailable = settings.windowManagement.isEnabled

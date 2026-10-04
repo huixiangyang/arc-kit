@@ -2130,6 +2130,1032 @@
           }
         }
       }
+    },
+    "scenes.title": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scenes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "场景"
+          }
+        }
+      }
+    },
+    "scenes.intro": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save a group of windows and restore their positions together."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存一组窗口的位置，需要时一起恢复。"
+          }
+        }
+      }
+    },
+    "scenes.capture": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save Current Layout"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存当前布局"
+          }
+        }
+      }
+    },
+    "scenes.needsPermission": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable window management and Accessibility access to capture or arrange windows."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用窗口管理并授予辅助功能权限后，才能读取和排列窗口。"
+          }
+        }
+      }
+    },
+    "scenes.saveBeforeApply": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save the pending settings before applying a scene."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先保存待提交的设置，再应用场景。"
+          }
+        }
+      }
+    },
+    "scenes.empty": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arrange your windows, then save your first scene."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "先摆好工作窗口，再保存第一个场景。"
+          }
+        }
+      }
+    },
+    "scenes.scope": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scenes manage selected, regular windows on the current desktop. Missing displays are skipped. Full-screen windows, minimized windows, and moving windows between Spaces are not supported."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "场景仅管理当前桌面上选中的普通窗口。未连接的显示器会跳过；暂不支持全屏、最小化窗口及跨桌面空间移动。"
+          }
+        }
+      }
+    },
+    "scenes.deleteTitle": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete Scene"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除场景"
+          }
+        }
+      }
+    },
+    "scenes.deleteHint": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only the saved layout will be removed. Your windows will stay where they are."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅删除保存的布局，当前窗口位置保持不变。"
+          }
+        }
+      }
+    },
+    "scenes.counts": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld windows · %2$lld displays"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld 个窗口 · %2$lld 个显示器"
+          }
+        }
+      }
+    },
+    "scenes.apply": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用"
+          }
+        }
+      }
+    },
+    "scenes.edit": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit Scene"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编辑场景"
+          }
+        }
+      }
+    },
+    "scenes.updateLayout": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Update from Current Layout…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从当前布局更新…"
+          }
+        }
+      }
+    },
+    "scenes.saveAs": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save As…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "另存为…"
+          }
+        }
+      }
+    },
+    "scenes.copyName": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ Copy"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 副本"
+          }
+        }
+      }
+    },
+    "scenes.actions": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scene Actions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "场景操作"
+          }
+        }
+      }
+    },
+    "scenes.name": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scene Name"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "场景名称"
+          }
+        }
+      }
+    },
+    "scenes.shortcut": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shortcut (Optional)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快捷键（可选）"
+          }
+        }
+      }
+    },
+    "scenes.shortcutConflict": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This shortcut is already used by another scene or window action. Choose a different shortcut."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此快捷键已用于其他场景或窗口动作，请换一个组合。"
+          }
+        }
+      }
+    },
+    "scenes.shortcutsOff": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Global window shortcuts are off. Enable them in Shortcuts to use this scene shortcut."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口全局快捷键已关闭，请在「快捷键」中启用后使用场景快捷键。"
+          }
+        }
+      }
+    },
+    "scenes.commitHint": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Changes join the pending settings. Save settings to activate them."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修改将加入待提交设置，保存设置后生效。"
+          }
+        }
+      }
+    },
+    "scenes.save": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save Scene"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存场景"
+          }
+        }
+      }
+    },
+    "scenes.chooseWindows": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Windows"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择窗口"
+          }
+        }
+      }
+    },
+    "scenes.chooseHint": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose windows to include. When updating, unchecked identified windows are removed; missing or ambiguous saved windows are preserved."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择需要包含的窗口。更新时会移除明确取消勾选的已识别窗口，缺失或有歧义的原窗口仍会保留。"
+          }
+        }
+      }
+    },
+    "scenes.refresh": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh Windows"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刷新窗口"
+          }
+        }
+      }
+    },
+    "scenes.noWindows": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No manageable windows found on the current desktop. Open a regular window and refresh."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前桌面没有可管理的窗口，请打开普通窗口后刷新。"
+          }
+        }
+      }
+    },
+    "scenes.untitledWindow": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untitled Window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无标题窗口"
+          }
+        }
+      }
+    },
+    "scenes.useSelected": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use Selected Windows"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用所选窗口"
+          }
+        }
+      }
+    },
+    "scenes.layoutPreview": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved Window Layout"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保存的窗口布局"
+          }
+        }
+      }
+    },
+    "scenes.focus": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Focus After Applying"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用后聚焦"
+          }
+        }
+      }
+    },
+    "scenes.keepFocus": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep Current Focus"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保留当前焦点"
+          }
+        }
+      }
+    },
+    "scenes.reselect": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Windows and Update Layout…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新选择窗口并更新布局…"
+          }
+        }
+      }
+    },
+    "scenes.matchRule": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window Matching"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口匹配规则"
+          }
+        }
+      }
+    },
+    "scenes.matchValue": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Title or Keyword"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "标题或关键词"
+          }
+        }
+      }
+    },
+    "scenes.matchHint": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After an app restarts, only a unique match is used. Ambiguous windows require manual rebinding. Editing this rule clears the current window binding."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用重启后仅使用唯一匹配的窗口；多个候选需手动重新绑定。修改规则会清除当前窗口绑定。"
+          }
+        }
+      }
+    },
+    "scenes.rebind": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rebind Window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新绑定窗口"
+          }
+        }
+      }
+    },
+    "scenes.noMatchingWindows": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Windows from This App"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此应用没有可选窗口"
+          }
+        }
+      }
+    },
+    "scenes.chooseReplacement": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Current Window…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择当前窗口…"
+          }
+        }
+      }
+    },
+    "scenes.displays": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Displays"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示器"
+          }
+        }
+      }
+    },
+    "scenes.displayHint": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A missing display is skipped. Remap it explicitly to preserve the layout proportions on another display."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缺失的显示器会跳过。可明确指定另一显示器，按原布局比例恢复。"
+          }
+        }
+      }
+    },
+    "scenes.displayMissing": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disconnected"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未连接"
+          }
+        }
+      }
+    },
+    "scenes.remapDisplay": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Map To…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "映射到…"
+          }
+        }
+      }
+    },
+    "scenes.rebound": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window rebound. The saved position and display are unchanged."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口已重新绑定，保存的位置和显示器保持不变。"
+          }
+        }
+      }
+    },
+    "scenes.connectionFailed": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window scenes are unavailable. Check window management and Accessibility access, then retry."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口场景暂不可用，请检查窗口管理及辅助功能权限后重试。"
+          }
+        }
+      }
+    },
+    "scenes.undoSummary": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: undid %2$lld of %3$lld windows"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@：已撤销 %2$lld / %3$lld 个窗口"
+          }
+        }
+      }
+    },
+    "scenes.applySummary": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: restored %2$lld of %3$lld windows"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@：已恢复 %2$lld / %3$lld 个窗口"
+          }
+        }
+      }
+    },
+    "scenes.lastResult": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last Scene Result"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上次场景执行结果"
+          }
+        }
+      }
+    },
+    "scenes.undo": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo Layout"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤销本次布局"
+          }
+        }
+      }
+    },
+    "scenes.reviewBindings": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review Windows and Displays…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检查窗口与显示器绑定…"
+          }
+        }
+      }
+    },
+    "scenes.undoHint": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo restores only windows moved by this operation that still exist. It does not reopen closed windows."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤销仅恢复本次移动且仍然存在的窗口，不会重新打开已关闭的窗口。"
+          }
+        }
+      }
+    },
+    "scenes.windowNumber": {
+      "extractionState": "manual",
+      "comment": "Window scene settings and execution feedback.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window %1$lld"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口 %1$lld"
+          }
+        }
+      }
+    },
+    "scenes.limit": {
+      "extractionState": "manual",
+      "comment": "Window scene limits.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can save up to %1$lld scenes. Remove a scene to add another."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最多保存 %1$lld 个场景，删除一个后可继续添加。"
+          }
+        }
+      }
+    },
+    "scenes.selectionCount": {
+      "extractionState": "manual",
+      "comment": "Window scene limits.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selected %1$lld of up to %2$lld windows"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已选 %1$lld 个窗口，最多 %2$lld 个"
+          }
+        }
+      }
+    },
+    "scenes.inventoryExpired": {
+      "extractionState": "manual",
+      "comment": "Window scene capture and persistence boundaries.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The window service restarted. Refresh the window list before selecting or rebinding windows."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口服务已重启，请刷新清单后再选择或绑定窗口。"
+          }
+        }
+      }
+    },
+    "scenes.selectionExpired": {
+      "extractionState": "manual",
+      "comment": "Window scene capture and persistence boundaries.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some selected windows are no longer available. Review the refreshed list and select again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "部分所选窗口已不可用，请检查刷新后的清单并重新选择。"
+          }
+        }
+      }
+    },
+    "scenes.preservedWindows": {
+      "extractionState": "manual",
+      "comment": "Window scene capture and persistence boundaries.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld saved windows could not be identified and will keep their layouts. You can remove them explicitly in the next step."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld 个原窗口未能确认，将保留其布局；可在下一步明确删除。"
+          }
+        }
+      }
+    },
+    "scenes.saveRejected": {
+      "extractionState": "manual",
+      "comment": "Window scene capture and persistence boundaries.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings cannot be edited right now. Your scene is still here; try saving again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前无法修改设置，场景草稿仍然保留，请稍后重新保存。"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

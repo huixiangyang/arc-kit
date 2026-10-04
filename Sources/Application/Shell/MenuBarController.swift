@@ -31,6 +31,21 @@ final class MenuBarController: NSObject, NSMenuDelegate {
             self?.menu.cancelTracking()
             performWindow(action, targetID)
         }
+        let performScene = actions.performScene
+        actions.performScene = { [weak self] id in
+            self?.menu.cancelTracking()
+            performScene(id)
+        }
+        let undoScene = actions.undoScene
+        actions.undoScene = { [weak self] token in
+            self?.menu.cancelTracking()
+            undoScene(token)
+        }
+        let openScenes = actions.openScenes
+        actions.openScenes = { [weak self] in
+            self?.menu.cancelTracking()
+            openScenes()
+        }
         let openSection = actions.openSection
         actions.openSection = { [weak self] section in
             self?.menu.cancelTracking()
@@ -82,6 +97,7 @@ final class MenuBarController: NSObject, NSMenuDelegate {
     }
 
     func menuWillOpen(_ menu: NSMenu) {
+        hosting?.frame.size = hosting?.fittingSize ?? .zero
         // 结果保留到本次菜单结束；再次展开不把旧结果当作当前检测。
         if !state.statusCheck.isChecking { state.statusCheck = .idle }
         let requestID = state.windowTarget.begin()

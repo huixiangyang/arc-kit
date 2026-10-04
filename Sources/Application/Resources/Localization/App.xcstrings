@@ -3168,6 +3168,150 @@
           }
         }
       }
+    },
+    "scenes.title": {
+      "extractionState": "manual",
+      "comment": "Window scene navigation and menu-bar actions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window Scenes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口场景"
+          }
+        }
+      }
+    },
+    "scenes.description": {
+      "extractionState": "manual",
+      "comment": "Window scene navigation and menu-bar actions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save and restore a group of window positions across displays."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存并恢复一组窗口在各显示器上的布局。"
+          }
+        }
+      }
+    },
+    "scenes.applyHint": {
+      "extractionState": "manual",
+      "comment": "Window scene navigation and menu-bar actions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore the saved positions of the windows in this scene."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复此场景中各窗口保存的位置。"
+          }
+        }
+      }
+    },
+    "scenes.manage": {
+      "extractionState": "manual",
+      "comment": "Window scene navigation and menu-bar actions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manage"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "管理"
+          }
+        }
+      }
+    },
+    "scenes.create": {
+      "extractionState": "manual",
+      "comment": "Window scene navigation and menu-bar actions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save a window layout…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存窗口布局…"
+          }
+        }
+      }
+    },
+    "scenes.applying": {
+      "extractionState": "manual",
+      "comment": "Window scene navigation and menu-bar actions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arranging windows…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在排列窗口…"
+          }
+        }
+      }
+    },
+    "scenes.resultHint": {
+      "extractionState": "manual",
+      "comment": "Window scene navigation and menu-bar actions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Window Scenes to review the result for each window."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开窗口场景，查看各窗口的执行结果。"
+          }
+        }
+      }
+    },
+    "scenes.undo": {
+      "extractionState": "manual",
+      "comment": "Window scene navigation and menu-bar actions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo this layout"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤销本次布局"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -9,6 +9,10 @@ final class MenuBarPanelState: ObservableObject {
     @Published var windowHealth = FeatureHealth(state: .unknown, title: L10n.string(.App.menuBarUnchecked), detail: "")
     @Published var mouseHealth = FeatureHealth(state: .unknown, title: L10n.string(.App.menuBarUnchecked), detail: "")
     @Published var windowActionsAvailable = false
+    @Published var sceneActionsAvailable = false
+    @Published var isApplyingScene = false
+    @Published var lastSceneResult: WindowSceneExecutionReport?
+    @Published var sceneError: String?
     @Published var windowTarget = WindowTargetSession()
     @Published var windowTargetName: String?
     var canPerformWindowActions: Bool { windowActionsAvailable && windowTarget.targetID != nil }
@@ -61,6 +65,9 @@ enum MenuBarStatusCheck {
 
 struct MenuBarPanelActions {
     var performWindow: @MainActor (WindowLayoutAction, UUID) -> Void
+    var performScene: @MainActor (UUID) -> Void
+    var undoScene: @MainActor (UUID) -> Void
+    var openScenes: @MainActor () -> Void
     var setWindowEnabled: @MainActor (Bool) -> Void
     var setMouseEnabled: @MainActor (Bool) -> Void
     var setFinderEnabled: @MainActor (Bool) -> Void
@@ -80,6 +87,8 @@ struct MenuBarPanel: View {
         VStack(spacing: 10) {
             header
             windowControls
+            Divider()
+            sceneControls
             Divider()
             featureControls
         }
@@ -217,6 +226,58 @@ struct MenuBarPanel: View {
             return "\(detail) · \(binding.displayShortcut)"
         }
         return detail
+    }
+
+    private var sceneControls: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text(L10n.string(.App.scenesTitle)).font(.system(size: 11, weight: .semibold))
+                Spacer()
+                Button(L10n.string(.App.scenesManage), action: actions.openScenes)
+                    .buttonStyle(.plain).foregroundStyle(.secondary)
+            }
+            if state.settings.windowManagement.scenes.isEmpty {
+                Button(L10n.string(.App.scenesCreate), action: actions.openScenes)
+                    .buttonStyle(.plain).foregroundStyle(.secondary)
+            } else {
+                ScrollView {
+                    VStack(spacing: 2) {
+                        ForEach(state.settings.windowManagement.scenes) { scene in
+                            Button { actions.performScene(scene.id) } label: {
+                                HStack(spacing: 7) {
+                                    ArcIcon(.panelsTopLeft, size: 13)
+                                    Text(scene.name).lineLimit(1)
+                                    Spacer()
+                                    ArcIcon(.cornerDownLeft, size: 11).foregroundStyle(.secondary)
+                                }
+                                .padding(.horizontal, 5).frame(height: 26).contentShape(Rectangle())
+                            }
+                            .buttonStyle(MenuBarTileStyle())
+                            // 场景有自己的固定目标，不需要菜单点击时的单窗口捕获令牌。
+                            .disabled(!state.sceneActionsAvailable || state.isApplyingScene)
+                            .help(L10n.string(.App.scenesApplyHint))
+                        }
+                    }
+                }
+                .frame(height: CGFloat(min(state.settings.windowManagement.scenes.count, 4)) * 28)
+            }
+            if state.isApplyingScene {
+                Text(L10n.string(.App.scenesApplying)).foregroundStyle(.secondary)
+            } else if let error = state.sceneError {
+                Text(error).font(.caption).foregroundStyle(ArcPalette.orange).lineLimit(2).help(error)
+            } else if let result = state.lastSceneResult {
+                Button(action: actions.openScenes) {
+                    Text(result.summary).font(.caption).lineLimit(2).frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .buttonStyle(.plain).help(L10n.string(.App.scenesResultHint))
+            }
+            if let token = state.lastSceneResult?.undoToken {
+                Button { actions.undoScene(token) } label: {
+                    Label { Text(L10n.string(.App.scenesUndo)) } icon: { ArcIcon(.undo2, size: 12) }
+                }
+                .buttonStyle(.plain).disabled(!state.sceneActionsAvailable || state.isApplyingScene)
+            }
+        }
     }
 
     private var featureControls: some View {

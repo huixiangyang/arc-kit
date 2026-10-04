@@ -102,7 +102,8 @@ enum FeatureHealthAssessment {
         }
         if settings.hotKeysEnabled && (snapshot.hotKeyHandlerInstallationFailed || snapshot.hotKeyRuntimeWarning != nil ||
             !snapshot.hotKeyFailedBindings.isEmpty || !snapshot.hotKeyDuplicateBindings.isEmpty || !snapshot.hotKeyUnsafeBindings.isEmpty ||
-            snapshot.hotKeyRegisteredCount < settings.bindings.filter(\.isEnabled).count) {
+            !snapshot.sceneHotKeyFailures.isEmpty ||
+            snapshot.hotKeyRegisteredCount < settings.bindings.filter(\.isEnabled).count + settings.scenes.filter({ $0.shortcut?.isEnabled == true }).count) {
             return .init(state: .partial, title: L10n.string(.Overview.healthSomeShortcutsUnavailable), detail: L10n.string(.Overview.healthCheckUnregisteredItemsConflicts),
                          permission: .granted, action: .settings, checkedAt: receivedAt)
         }

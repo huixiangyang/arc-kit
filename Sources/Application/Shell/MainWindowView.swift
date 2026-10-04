@@ -83,7 +83,7 @@ struct MainWindowView<Workspace: View>: View {
             showsQuickFind = true
         }
         .sheet(isPresented: $showsQuickFind) {
-            ArcKitQuickFind(execute: executeQuickCommand)
+            ArcKitQuickFind(scenes: model.committedSettings?.windowManagement.scenes ?? [], execute: executeQuickCommand)
         }
     }
 

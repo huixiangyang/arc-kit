@@ -8,6 +8,9 @@ import Foundation
 @MainActor
 protocol WindowAccessibilityClient {
     func validateAccessibilityOperational() async throws
+    func sceneWindows(isValid: @MainActor () -> Bool) async throws -> [WindowSceneAXWindow]
+    func focusWindow(_ target: WindowActionTarget, isValid: @MainActor () -> Bool) async throws
+    func validateSceneWindowVisible(_ target: WindowActionTarget, isValid: @MainActor () -> Bool) async throws
     func frontmostApplication() -> AppConfigurationCandidate?
     func isApplicationTerminated(pid: pid_t) -> Bool
     func windowTarget(for pid: pid_t, bundleIdentifier: String?) async throws -> WindowActionTarget?
@@ -21,6 +24,9 @@ protocol WindowAccessibilityClient {
 
 extension WindowAccessibilityClient {
     func validateAccessibilityOperational() async throws {}
+    func sceneWindows(isValid: @MainActor () -> Bool) async throws -> [WindowSceneAXWindow] { throw WindowManagementExecutionError.accessibilityAPIUnavailable }
+    func focusWindow(_ target: WindowActionTarget, isValid: @MainActor () -> Bool) async throws { throw WindowManagementExecutionError.unwritableWindow }
+    func validateSceneWindowVisible(_ target: WindowActionTarget, isValid: @MainActor () -> Bool) async throws { throw WindowManagementExecutionError.unreadableWindow }
 }
 
 @MainActor
@@ -36,6 +42,61 @@ struct SystemWindowAccessibilityClient: WindowAccessibilityClient {
         try await executor.perform { kernel in
             kernel.candidatePIDs = pids
             try kernel.validateAccessibilityOperational()
+        }
+    }
+
+    func sceneWindows(isValid: @MainActor () -> Bool) async throws -> [WindowSceneAXWindow] {
+        try await sceneWindows(onlyProcess: nil, isValid: isValid)
+    }
+
+    private func sceneWindows(onlyProcess: pid_t?, isValid: @MainActor () -> Bool) async throws -> [WindowSceneAXWindow] {
+        // CGWindowList 只读取当前桌面窗口的编号/几何元数据，不捕获像素或请求录屏权限。
+        let visible = (CGWindowListCopyWindowInfo([.optionOnScreenOnly, .excludeDesktopElements], kCGNullWindowID) as? [[String: Any]] ?? []).compactMap { item -> WindowSceneVisibleWindow? in
+            guard let pid = item[kCGWindowOwnerPID as String] as? Int32,
+                  let number = item[kCGWindowNumber as String] as? Int,
+                  let layer = item[kCGWindowLayer as String] as? Int, layer == 0,
+                  let bounds = item[kCGWindowBounds as String] as? NSDictionary,
+                  let frame = CGRect(dictionaryRepresentation: bounds) else { return nil }
+            return WindowSceneVisibleWindow(pid: pid, number: number, frame: frame)
+        }
+        var windows: [WindowSceneAXWindow] = []
+        for app in NSWorkspace.shared.runningApplications where app.activationPolicy == .regular && !app.isTerminated && (onlyProcess == nil || onlyProcess == app.processIdentifier) {
+            guard isValid() else { throw CancellationError() }
+            guard let bundle = app.bundleIdentifier else { continue }
+            let pid = app.processIdentifier
+            let appVisible = visible.filter { $0.pid == pid }
+            guard !appVisible.isEmpty else { continue }
+            let name = app.localizedName ?? bundle
+            let launched = app.launchDate
+            do {
+                let targets = try await executor.perform { try $0.sceneTargets(pid: pid, bundleIdentifier: bundle, visible: appVisible) }
+                windows += targets.map { .init(target: $0, applicationName: name, applicationLaunchDate: launched) }
+            } catch {
+                guard isValid() else { throw CancellationError() }
+                // 某个应用 AX 无响应不能阻塞其他应用；只记 PID，不记录窗口标题。
+                ArcKitLog.append("window scene enumeration skipped unresponsive pid=\(pid)")
+            }
+        }
+        return windows
+    }
+
+    func focusWindow(_ target: WindowActionTarget, isValid: @MainActor () -> Bool) async throws {
+        guard let app = NSRunningApplication(processIdentifier: target.pid), !app.isTerminated else {
+            throw WindowManagementExecutionError.captureApplicationUnavailable
+        }
+        try await validateSceneWindowVisible(target, isValid: isValid)
+        guard isValid() else { throw CancellationError() }
+        // 只显式激活用户选定的一个窗口；不改变全屏、Space 或其他应用状态。
+        guard app.activate(options: []) else { throw WindowManagementExecutionError.unwritableWindow }
+        try await executor.perform { try $0.focusWindow(target) }
+    }
+
+    func validateSceneWindowVisible(_ target: WindowActionTarget, isValid: @MainActor () -> Bool) async throws {
+        // 只复核固定 AX 引用仍属于当前桌面，绝不重新选择同标题或前台窗口。
+        let visible = try await sceneWindows(onlyProcess: target.pid, isValid: isValid)
+        guard isValid() else { throw CancellationError() }
+        guard visible.contains(where: { $0.target.pid == target.pid && CFEqual($0.target.element, target.element) }) else {
+            throw WindowManagementExecutionError.unreadableWindow
         }
     }
 
@@ -201,6 +262,52 @@ private final class WindowAXKernel {
         return nil
     }
 
+    func sceneTargets(pid: pid_t, bundleIdentifier: String, visible: [WindowSceneVisibleWindow]) throws -> [WindowActionTarget] {
+        let app = AXUIElementCreateApplication(pid)
+        let windows = copyArrayAttribute(kAXWindowsAttribute as CFString, from: app) ?? []
+        var targets: [WindowActionTarget] = []
+        for window in windows.prefix(128) {
+            guard !expired else { throw CancellationError() }
+            if let target = try? makeWindowTarget(window, pid: pid, bundleIdentifier: bundleIdentifier) { targets.append(target) }
+        }
+        var candidates: [(WindowActionTarget, CGRect, [Int])] = []
+        for target in targets {
+            guard !expired else { throw CancellationError() }
+            guard (try? validateWindowAdjustable(target)) != nil,
+                  let window = try? axElement(from: target),
+                  let frame = try? frame(of: target) else { continue }
+            var positionSettable = DarwinBoolean(false)
+            var sizeSettable = DarwinBoolean(false)
+            guard AXUIElementIsAttributeSettable(window, kAXPositionAttribute as CFString, &positionSettable) == .success,
+                  AXUIElementIsAttributeSettable(window, kAXSizeAttribute as CFString, &sizeSettable) == .success,
+                  positionSettable.boolValue, sizeSettable.boolValue else { continue }
+            let matching = visible.filter { item in
+                if let number = target.restoreKey.windowNumber { return item.number == number }
+                return abs(frame.minX - item.frame.minX) <= 2 && abs(frame.minY - item.frame.minY) <= 2
+                    && abs(frame.width - item.frame.width) <= 2 && abs(frame.height - item.frame.height) <= 2
+            }.map(\.number)
+            candidates.append((target, frame, matching))
+        }
+        // 没有 AXWindowNumber 时，仅接受 AX 与当前桌面 CG 几何的一对一对应。
+        // 多个 Space 窗口重叠会被排除，不能猜测后搬动其他桌面的窗口。
+        return candidates.compactMap { candidate in
+            guard candidate.2.count == 1, let number = candidate.2.first,
+                  candidates.filter({ $0.2.contains(number) }).count == 1 else { return nil }
+            return candidate.0
+        }
+    }
+
+    func focusWindow(_ target: WindowActionTarget) throws {
+        let window = try axElement(from: target)
+        guard AXUIElementPerformAction(window, kAXRaiseAction as CFString) == .success else {
+            throw WindowManagementExecutionError.unwritableWindow
+        }
+        let app = AXUIElementCreateApplication(target.pid)
+        guard let focused = copyElementAttribute(kAXFocusedWindowAttribute as CFString, from: app), CFEqual(focused, window) else {
+            throw WindowManagementExecutionError.unreadableWindow
+        }
+    }
+
     func windowTarget(at point: CGPoint) -> WindowHitTestTarget? {
         guard let hitElement = element(at: point) else { return nil }
         guard let resolved = enclosingWindowAndRoles(for: hitElement) else { return nil }
@@ -245,7 +352,7 @@ private final class WindowAXKernel {
 
     func frame(of target: WindowActionTarget) throws -> CGRect {
         let window = try axElement(from: target)
-        return try frameWriter.frame(of: window)
+        return try frameWriter.frame(of: window, deadline: deadline)
     }
 
     func setFrame(_ frame: CGRect, for target: WindowActionTarget) throws {
@@ -259,7 +366,7 @@ private final class WindowAXKernel {
         else {
             throw WindowManagementExecutionError.unwritableWindow
         }
-        try frameWriter.setFrame(frame, for: window)
+        try frameWriter.setFrame(frame, for: window, deadline: deadline)
     }
 
     private func makeWindowTarget(_ window: AXUIElement, pid: pid_t, bundleIdentifier: String? = nil) throws -> WindowActionTarget {
@@ -585,4 +692,16 @@ enum WindowManagementExecutionError: Error, LocalizedError {
             L10n.string(.WindowRuntime.accessibilityFrameUnconfirmed(String(describing: expected), String(describing: actual)))
         }
     }
+}
+
+struct WindowSceneAXWindow: Sendable {
+    var target: WindowActionTarget
+    var applicationName: String
+    var applicationLaunchDate: Date?
+}
+
+private struct WindowSceneVisibleWindow: Sendable {
+    var pid: Int32
+    var number: Int
+    var frame: CGRect
 }

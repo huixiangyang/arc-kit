@@ -24,6 +24,7 @@ final class MainWindowController: NSObject, NSWindowDelegate {
     func show(
         section: MainWindowSection? = nil,
         preferenceTarget: PreferencesWorkspaceTarget? = nil,
+        windowTarget: WindowWorkspaceTab? = nil,
         opensQuickFind: Bool = false
     ) {
         if let section {
@@ -32,6 +33,7 @@ final class MainWindowController: NSObject, NSWindowDelegate {
         if let preferenceTarget {
             navigation.requestPreferences(preferenceTarget)
         }
+        if let windowTarget { navigation.windowTarget = windowTarget }
         if opensQuickFind {
             navigation.requestQuickFind()
         }

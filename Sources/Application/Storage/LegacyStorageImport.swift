@@ -53,7 +53,7 @@ public enum LegacyStorageImport {
         var settings = AppSettings.defaults
         try read(LegacyGlobalSettings.self, directory: source.appendingPathComponent("Settings"), domain: "global", version: 2, defaultValue: LegacyGlobalSettings()).apply(to: &settings)
         settings.finder = try read(FinderRuntimeSettings.self, directory: source.appendingPathComponent("Settings"), domain: "finder", version: 3, defaultValue: .defaults)
-        settings.windowManagement = try read(WindowManagementSettings.self, directory: source.appendingPathComponent("Settings"), domain: "window", version: 1, defaultValue: .defaults)
+        settings.windowManagement = try read(LegacyWindowSettings.self, directory: source.appendingPathComponent("Settings"), domain: "window", version: 1, defaultValue: .init()).current
         settings.mouseEnhancement = try read(MouseEnhancementSettings.self, directory: source.appendingPathComponent("Settings"), domain: "mouse", version: 2, defaultValue: .defaults)
         _ = try SettingsRepository(database: database).load()
         for index in settings.finder.menuConfiguration.fileTemplates.indices {
@@ -159,6 +159,25 @@ public enum LegacyStorageImport {
             settings.showDockIcon = showDockIcon
             settings.launchAtLoginEnabled = launchAtLoginEnabled
             settings.language = language ?? .system
+        }
+    }
+
+    /// 既有离线导入固定读取旧 v1 编码形状，先验校验和再一次映射；日常模型不兼容旧字段。
+    private struct LegacyWindowSettings: Codable {
+        var isEnabled = true
+        var hotKeysEnabled = true
+        var dragSnapEnabled = true
+        var showSnapPreview = true
+        var windowGap = 0.0
+        var displayNavigationStrategy: WindowDisplayNavigationStrategy = .spatialOrder
+        var bindings = WindowHotKeyBinding.magnetDefaults
+        var excludedApplications: [WindowExcludedApplication] = []
+
+        var current: WindowManagementSettings {
+            .init(isEnabled: isEnabled, hotKeysEnabled: hotKeysEnabled, dragSnapEnabled: dragSnapEnabled,
+                  showSnapPreview: showSnapPreview, windowGap: windowGap,
+                  displayNavigationStrategy: displayNavigationStrategy, bindings: bindings,
+                  excludedApplications: excludedApplications, scenes: [])
         }
     }
 

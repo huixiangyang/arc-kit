@@ -29,6 +29,7 @@ final class MainWindowNavigationModel: ObservableObject {
     @Published var selection: MainWindowSection = .overview
     @Published var quickFindRequestID = 0
     @Published var preferencesTarget: PreferencesWorkspaceTarget = .application
+    @Published var windowTarget: WindowWorkspaceTab = .snapping
 
     func navigate(to section: MainWindowSection, reduceMotion: Bool) {
         guard selection != section else { return }

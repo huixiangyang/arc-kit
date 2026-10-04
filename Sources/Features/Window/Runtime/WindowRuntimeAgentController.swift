@@ -9,7 +9,7 @@ public final class WindowRuntimeAgentController {
     public var stateDidChange: (() -> Void)?
     private let launchID: UUID
     private var generation = 0
-    private let windowRuntime = WindowAgentRuntime()
+    private let windowRuntime: WindowAgentRuntime
     private let hotKeyRuntime = WindowAgentHotKeyRuntime()
     private let dragSnapRuntime = WindowAgentDragSnapRuntime()
     private var settings: WindowManagementSettings = .defaults
@@ -18,6 +18,7 @@ public final class WindowRuntimeAgentController {
 
     public init(launchID: UUID = UUID()) {
         self.launchID = launchID
+        self.windowRuntime = WindowAgentRuntime(hostLaunchID: launchID)
         let publish: () -> Void = { [weak self] in
             Task { @MainActor in self?.stateDidChange?() }
         }
@@ -48,6 +49,17 @@ public final class WindowRuntimeAgentController {
             case .captureTarget:
                 let capture = try await windowRuntime.captureWindowTarget(application: request.captureApplication)
                 return WindowAgentReply(requestID: request.requestID, state: snapshot(), targetCapture: capture)
+            case .sceneInventory:
+                let inventory = try await windowRuntime.sceneInventory(deadline: request.sceneExecutionDeadline)
+                return WindowAgentReply(requestID: request.requestID, state: snapshot(), sceneInventory: inventory)
+            case .applyScene:
+                guard let sceneID = request.sceneID else { throw RuntimeAgentIPCError.missingPayload }
+                let report = try await windowRuntime.applyScene(sceneID, deadline: request.sceneExecutionDeadline)
+                return WindowAgentReply(requestID: request.requestID, state: snapshot(), sceneResult: report)
+            case .undoScene:
+                guard let token = request.undoToken else { throw RuntimeAgentIPCError.missingPayload }
+                let report = try await windowRuntime.undoScene(token, deadline: request.sceneExecutionDeadline)
+                return WindowAgentReply(requestID: request.requestID, state: snapshot(), sceneResult: report)
             case .fetchState:
                 await refreshPermissionAndHealthIfNeeded()
                 return reply(for: request)
@@ -147,7 +159,9 @@ public final class WindowRuntimeAgentController {
             dragSnapState: dragState,
             dragSnapFailureMessage: dragSnapRuntime.lastFailureMessage,
             lastResult: lastResult,
-            configurableApplicationCandidate: windowRuntime.configurableApplicationCandidate()
+            configurableApplicationCandidate: windowRuntime.configurableApplicationCandidate(),
+            lastSceneResult: windowRuntime.lastSceneResult,
+            sceneHotKeyFailures: hotKeyRuntime.sceneFailures
         )
     }
 }

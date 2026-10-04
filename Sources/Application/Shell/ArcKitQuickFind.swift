@@ -4,6 +4,7 @@ import AppKit
 import SwiftUI
 
 struct ArcKitQuickFind: View {
+    let scenes: [WindowScene]
     let execute: (ArcKitQuickCommand) -> Void
 
     @Environment(\.dismiss) private var dismiss
@@ -13,7 +14,7 @@ struct ArcKitQuickFind: View {
     @State private var screenCount = NSScreen.screens.count
 
     private var results: [ArcKitQuickCommand] {
-        Array(ArcKitQuickCommandCatalog.results(for: query).prefix(12))
+        Array(ArcKitQuickCommandCatalog.results(for: query, scenes: scenes).prefix(12))
     }
 
     var body: some View {
@@ -183,8 +184,10 @@ struct ArcKitQuickFind: View {
     }
 
     private func commandRunsImmediately(_ command: ArcKitQuickCommand) -> Bool {
-        if case .window = command.action { return true }
-        return false
+        switch command.action {
+        case .window, .windowScene: true
+        default: false
+        }
     }
 
     private var preferredSelectionID: String? {

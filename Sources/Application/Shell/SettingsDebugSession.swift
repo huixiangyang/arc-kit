@@ -147,7 +147,8 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
             ),
             window: WindowCommandActions(
                 prepareQuickFind: {},
-                performWindowAction: { _ in requiresInstalledApp() }
+                performWindowAction: { _ in requiresInstalledApp() },
+                performScene: { _ in requiresInstalledApp() }
             )
         )
     }

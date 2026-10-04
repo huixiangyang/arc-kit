@@ -67,9 +67,10 @@ struct WindowAXFrameWriter {
         self.diagnostic = diagnostic
     }
 
-    func frame(of window: AXUIElement) throws -> CGRect {
+    func frame(of window: AXUIElement, deadline: Date = .distantFuture) throws -> CGRect {
         var lastError: Error?
         for attempt in 0..<4 {
+            guard Date() < deadline else { throw CancellationError() }
             do {
                 return try io.frame(of: window)
             } catch {
@@ -83,17 +84,18 @@ struct WindowAXFrameWriter {
         throw lastError ?? WindowManagementExecutionError.unreadableWindow
     }
 
-    func setFrame(_ targetFrame: CGRect, for window: AXUIElement) throws {
+    func setFrame(_ targetFrame: CGRect, for window: AXUIElement, deadline: Date = .distantFuture) throws {
+        guard Date() < deadline else { throw CancellationError() }
         let initialFrame = try io.frame(of: window)
         diagnostic(
             "window ax frame write stage=begin target=\(description(targetFrame)) actual=\(description(initialFrame))"
         )
 
-        try writePosition(targetFrame.origin, for: window, stage: "position-initial")
+        try writePosition(targetFrame.origin, for: window, stage: "position-initial", deadline: deadline)
         settle(0.06)
-        try writeSize(targetFrame.size, for: window, stage: "size-initial")
+        try writeSize(targetFrame.size, for: window, stage: "size-initial", deadline: deadline)
         settle(0.12)
-        try writePosition(targetFrame.origin, for: window, stage: "position-after-size")
+        try writePosition(targetFrame.origin, for: window, stage: "position-after-size", deadline: deadline)
         settle(0.06)
 
         let firstPassFrame = try io.frame(of: window)
@@ -104,9 +106,9 @@ struct WindowAXFrameWriter {
         guard needsCorrection else { return }
 
         // AppKit 可能在 AXSize 生效后再次改写 AXPosition；二次校正必须保持 size → position 顺序。
-        try writeSize(targetFrame.size, for: window, stage: "size-correction")
+        try writeSize(targetFrame.size, for: window, stage: "size-correction", deadline: deadline)
         settle(0.16)
-        try writePosition(targetFrame.origin, for: window, stage: "position-final")
+        try writePosition(targetFrame.origin, for: window, stage: "position-final", deadline: deadline)
         settle(0.08)
 
         let finalFrame = try io.frame(of: window)
@@ -115,7 +117,8 @@ struct WindowAXFrameWriter {
         )
     }
 
-    private func writePosition(_ position: CGPoint, for window: AXUIElement, stage: String) throws {
+    private func writePosition(_ position: CGPoint, for window: AXUIElement, stage: String, deadline: Date) throws {
+        guard Date() < deadline else { throw CancellationError() }
         let result = io.setPosition(position, for: window)
         diagnostic("window ax frame write stage=\(stage) axError=\(result.rawValue)")
         guard result != .success else { return }
@@ -128,6 +131,7 @@ struct WindowAXFrameWriter {
         }
 
         settle(0.04)
+        guard Date() < deadline else { throw CancellationError() }
         let retryResult = io.setPosition(position, for: window)
         diagnostic("window ax frame write stage=\(stage)-retry axError=\(retryResult.rawValue)")
         guard retryResult == .success else {
@@ -142,7 +146,8 @@ struct WindowAXFrameWriter {
         }
     }
 
-    private func writeSize(_ size: CGSize, for window: AXUIElement, stage: String) throws {
+    private func writeSize(_ size: CGSize, for window: AXUIElement, stage: String, deadline: Date) throws {
+        guard Date() < deadline else { throw CancellationError() }
         let result = io.setSize(size, for: window)
         diagnostic("window ax frame write stage=\(stage) axError=\(result.rawValue)")
         guard result != .success else { return }
@@ -155,6 +160,7 @@ struct WindowAXFrameWriter {
         }
 
         settle(0.04)
+        guard Date() < deadline else { throw CancellationError() }
         let retryResult = io.setSize(size, for: window)
         diagnostic("window ax frame write stage=\(stage)-retry axError=\(retryResult.rawValue)")
         guard retryResult == .success else {

@@ -22,6 +22,8 @@ enum ArcKitQuickCommandAction: Hashable, Sendable {
     case wallpaper(WallpaperWorkspaceTab)
     case preferences(PreferencesWorkspaceTarget)
     case window(WindowLayoutAction)
+    case windowScenes
+    case windowScene(UUID)
 }
 
 struct ArcKitQuickCommand: Identifiable, Hashable, Sendable {

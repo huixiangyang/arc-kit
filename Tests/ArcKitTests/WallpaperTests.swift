@@ -2,6 +2,7 @@
 import ArcKitPersistence
 import ArcKitPlatform
 import ArcKitFinder
+import ArcKitWindow
 import CryptoKit
 import AppKit
 @preconcurrency import AVFoundation
@@ -824,7 +825,18 @@ struct WallpaperTests {
             reduceMotionEnabled: settings.reduceMotionEnabled, showDockIcon: settings.showDockIcon,
             launchAtLoginEnabled: settings.launchAtLoginEnabled), folder: "Settings", domain: "global", version: 2)
         try envelope(settings.finder, folder: "Settings", domain: "finder", version: 3)
-        try envelope(settings.windowManagement, folder: "Settings", domain: "window", version: 1)
+        struct LegacyWindowFixture: Encodable {
+            let isEnabled = true
+            let hotKeysEnabled = true
+            let dragSnapEnabled = true
+            let showSnapPreview = true
+            let windowGap = 0.0
+            let displayNavigationStrategy: WindowDisplayNavigationStrategy = .spatialOrder
+            let bindings = WindowHotKeyBinding.magnetDefaults
+            let excludedApplications: [WindowExcludedApplication] = []
+        }
+        // 真正旧 v1 没有 scenes；不能用当前模型生成历史样本掩盖导入失败。
+        try envelope(LegacyWindowFixture(), folder: "Settings", domain: "window", version: 1)
         try envelope(settings.mouseEnhancement, folder: "Settings", domain: "mouse", version: 2)
         let fixture = try imageFixture(in: root)
         let item = WallpaperItem(id: UUID(), name: "原名称", fileExtension: "png", kind: .image, width: 32, height: 24,

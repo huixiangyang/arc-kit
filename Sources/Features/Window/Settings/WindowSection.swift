@@ -4,11 +4,12 @@ import ArcKitWindow
 import SwiftUI
 
 enum WindowWorkspaceTab: String, CaseIterable, Identifiable {
-    case snapping, hotKeys, rules
+    case snapping, scenes, hotKeys, rules
     var id: Self { self }
     var title: String {
         switch self {
         case .snapping: L10n.string(.WindowSettings.pageSnapping)
+        case .scenes: L10n.string(.WindowSettings.scenesTitle)
         case .hotKeys: L10n.string(.WindowSettings.pageShortcuts)
         case .rules: L10n.string(.WindowSettings.pageAppsDisplays)
         }
@@ -59,6 +60,8 @@ struct WindowSection: View {
                     }
                 case .hotKeys:
                     WindowHotKeyEditor(model: model, hotKeyService: hotKeyService, health: health)
+                case .scenes:
+                    WindowScenesEditor(model: model, windowService: windowService)
                 case .rules:
                     WindowRulesEditor(model: model, windowService: windowService)
                 }

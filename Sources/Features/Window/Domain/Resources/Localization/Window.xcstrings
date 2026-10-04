@@ -505,6 +505,420 @@
         }
       }
     },
+    "scene.match.application": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only window of this app"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "该应用的唯一窗口"
+          }
+        }
+      }
+    },
+    "scene.match.contains": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window title contains"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口标题包含"
+          }
+        }
+      }
+    },
+    "scene.match.exact": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exact window title"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口标题完全匹配"
+          }
+        }
+      }
+    },
+    "scene.result.ambiguousWindow": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Multiple windows match; choose a window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "匹配到多个窗口，请重新指定"
+          }
+        }
+      }
+    },
+    "scene.result.applied": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restored"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已恢复"
+          }
+        }
+      }
+    },
+    "scene.result.conflictingAssignment": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Several entries match the same window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "多个条目匹配到同一窗口"
+          }
+        }
+      }
+    },
+    "scene.result.constrained": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window size or position is constrained"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口尺寸或位置受限"
+          }
+        }
+      }
+    },
+    "scene.result.excludedApplication": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App is excluded from window management"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用已被窗口管理排除"
+          }
+        }
+      }
+    },
+    "scene.result.failed": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not restore window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法恢复窗口"
+          }
+        }
+      }
+    },
+    "scene.result.missingDisplay": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Display is disconnected"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示器未连接"
+          }
+        }
+      }
+    },
+    "scene.result.missingWindow": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window not found"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未找到窗口"
+          }
+        }
+      }
+    },
+    "scene.result.unavailable": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window is unavailable on this desktop"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前桌面无法管理此窗口"
+          }
+        }
+      }
+    },
+    "scene.result.unchanged": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Already in place"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已在目标位置"
+          }
+        }
+      }
+    },
+    "scene.validation.display": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The scene refers to an invalid or missing saved display."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "场景引用了无效或未保存的显示器。"
+          }
+        }
+      }
+    },
+    "scene.validation.empty": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A scene needs at least one display and one window."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "场景至少需要一个显示器和一个窗口。"
+          }
+        }
+      }
+    },
+    "scene.validation.entry": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A window entry has an invalid app identity or matching rule."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口条目的应用身份或匹配规则无效。"
+          }
+        }
+      }
+    },
+    "scene.validation.entryLimit": {
+      "extractionState": "manual",
+      "comment": "Window scene size limit.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A scene supports up to 24 windows and displays."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每个场景最多保存 24 个窗口和显示器。"
+          }
+        }
+      }
+    },
+    "scene.validation.focus": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The focus window must belong to this scene."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "聚焦窗口必须属于当前场景。"
+          }
+        }
+      }
+    },
+    "scene.validation.geometry": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window geometry must be finite, partly visible, and no larger than four times the display’s usable size."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "窗口坐标必须为有限值，窗口需至少部分可见且尺寸不得超过显示器可用区域的四倍。"
+          }
+        }
+      }
+    },
+    "scene.validation.identity": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scene, display, or window identities must not repeat."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "场景、显示器或窗口标识不能重复。"
+          }
+        }
+      }
+    },
+    "scene.validation.name": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a scene name of 1–80 characters without surrounding whitespace."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "场景名称需为 1–80 个字符，不能包含首尾空白。"
+          }
+        }
+      }
+    },
+    "scene.validation.sceneLimit": {
+      "extractionState": "manual",
+      "comment": "Window scene size limit.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can save up to 64 window scenes."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最多可保存 64 个窗口场景。"
+          }
+        }
+      }
+    },
+    "scene.validation.shortcut": {
+      "extractionState": "manual",
+      "comment": "Window scene domain validation and execution result.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use a valid key with Control, Option, or Command for the scene shortcut."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "场景快捷键需使用有效按键，并包含 Control、Option 或 Command。"
+          }
+        }
+      }
+    },
     "shortcut.window.shortcut.display.value.one": {
       "extractionState": "manual",
       "comment": "Used in WindowHotKey.",

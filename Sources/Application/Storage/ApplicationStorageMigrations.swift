@@ -97,6 +97,14 @@ enum ApplicationStorageMigrations {
                 """, arguments: [rule.id.uuidString, rule.bundleIdentifier, rule.note])
             if db.changesCount > 0 { try ArcKitDatabase.advance(db) }
         }
+        migrator.registerMigration("window-scenes-v1") { db in
+            guard let scenes = WindowManagementSettings.recordLayout.children["scenes"] else { return }
+            let existed = try db.tableExists(scenes.table)
+            try createRecords(scenes, in: db)
+            try db.execute(sql: "CREATE UNIQUE INDEX IF NOT EXISTS window_scenes_identity ON window_scenes(id)")
+            // 只给旧库增加空场景集合，保留窗口偏好、排除列表与快捷键；不重写已应用的历史迁移。
+            if !existed { try ArcKitDatabase.advance(db, runtime: true) }
+        }
         try migrator.migrate(queue)
     }
 

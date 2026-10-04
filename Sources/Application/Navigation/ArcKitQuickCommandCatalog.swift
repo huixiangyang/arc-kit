@@ -1,4 +1,5 @@
 import Foundation
+import ArcKitWindow
 
 /// 命令内容由功能声明；应用只负责聚合和统一搜索排序。
 enum ArcKitQuickCommandCatalog {
@@ -6,13 +7,14 @@ enum ArcKitQuickCommandCatalog {
         ApplicationFeatureCatalog.all.flatMap { $0.commands() }
     }
 
-    static func results(for query: String) -> [ArcKitQuickCommand] {
+    static func results(for query: String, scenes: [WindowScene] = []) -> [ArcKitQuickCommand] {
+        let commands = all + WindowFeature.sceneCommands(scenes)
         let normalizedQuery = normalize(query)
         guard !normalizedQuery.isEmpty else {
-            return all.filter(\.isSuggested).sorted { $0.stableOrder < $1.stableOrder }
+            return commands.filter(\.isSuggested).sorted { $0.stableOrder < $1.stableOrder }
         }
         let terms = normalizedQuery.split(separator: " ").map(String.init)
-        return all.compactMap { command -> (ArcKitQuickCommand, Int)? in
+        return commands.compactMap { command -> (ArcKitQuickCommand, Int)? in
             let title = normalize(command.title)
             let detail = normalize(command.detail)
             let keywords = normalize(command.keywords.joined(separator: " "))

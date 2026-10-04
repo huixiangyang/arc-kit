@@ -28,6 +28,7 @@ public final class WindowAgentRuntime: ObservableObject {
 
     @Published public private(set) var state: State = .stopped
     @Published public private(set) var lastResult: WindowManagementResult?
+    @Published public private(set) var lastSceneResult: WindowSceneExecutionReport?
     @Published public private(set) var accessibilityOperational = false
 
     public var userFeedbackHandler: ((String) -> Void)?
@@ -38,6 +39,7 @@ public final class WindowAgentRuntime: ObservableObject {
     private let screenVisibleFramesProvider: @MainActor () -> [CGRect]
     private let screenFullFramesProvider: @MainActor () -> [CGRect]
     private let verifier: WindowResultVerifier
+    private let sceneRuntime: WindowSceneRuntime
     private var actionInFlight = false
     private var configurationGeneration = 0
     private var settings: WindowManagementSettings = .defaults
@@ -46,13 +48,14 @@ public final class WindowAgentRuntime: ObservableObject {
     private var lastExternalApplication: ExternalApplicationSnapshot?
     private var capturedTargets = WindowTargetStore()
 
-    public convenience init() {
+    public convenience init(hostLaunchID: UUID = UUID()) {
         self.init(
             accessibilityClient: SystemWindowAccessibilityClient(),
             accessibilityTrusted: ProcessPermissions.accessibilityTrusted,
             screenVisibleFramesProvider: WindowAgentRuntime.accessibilityVisibleScreenFrames,
             screenFullFramesProvider: WindowAgentRuntime.accessibilityFullScreenFrames,
-            observesWorkspaceActivation: true
+            observesWorkspaceActivation: true,
+            sceneHostLaunchID: hostLaunchID
         )
     }
 
@@ -62,8 +65,11 @@ public final class WindowAgentRuntime: ObservableObject {
         screenVisibleFramesProvider: @escaping @MainActor () -> [CGRect] = WindowAgentRuntime.accessibilityVisibleScreenFrames,
         screenFullFramesProvider: @escaping @MainActor () -> [CGRect] = WindowAgentRuntime.accessibilityFullScreenFrames,
         fullScreenVerificationStableInterval: TimeInterval = 0.8,
-        observesWorkspaceActivation: Bool = false
+        observesWorkspaceActivation: Bool = false,
+        sceneDisplaysProvider: @escaping @MainActor () -> [WindowSceneDisplay] = WindowSceneRuntime.displays,
+        sceneHostLaunchID: UUID = UUID()
     ) {
+        self.sceneRuntime = WindowSceneRuntime(client: accessibilityClient, displaysProvider: sceneDisplaysProvider, hostLaunchID: sceneHostLaunchID)
         self.accessibilityClient = accessibilityClient
         self.accessibilityTrusted = accessibilityTrusted
         self.screenVisibleFramesProvider = screenVisibleFramesProvider
@@ -79,6 +85,7 @@ public final class WindowAgentRuntime: ObservableObject {
         capturedTargets.removeAll()
         let generation = configurationGeneration
         self.settings = settings
+        sceneRuntime.updateScenes(settings.scenes)
         guard settings.isEnabled else {
             accessibilityOperational = false
             state = .stopped
@@ -177,6 +184,49 @@ public final class WindowAgentRuntime: ObservableObject {
         }
         ArcKitLog.append("window target executing id=\(capturedTargetID) pid=\(target.pid) window=\(target.restoreKey.windowNumber ?? 0)")
         return await perform(action, preferredTarget: target)
+    }
+
+    func sceneInventory(deadline: Date) async throws -> WindowSceneInventory {
+        guard !actionInFlight else { throw WindowSceneRuntimeError.busy }
+        guard sceneAvailable else { throw WindowSceneRuntimeError.unavailable }
+        actionInFlight = true
+        defer { actionInFlight = false }
+        let generation = configurationGeneration
+        return try await sceneRuntime.inventory { self.sceneRequestValid(generation: generation, deadline: deadline) }
+    }
+
+    @discardableResult
+    func applyScene(_ sceneID: UUID, deadline: Date = Date().addingTimeInterval(30)) async throws -> WindowSceneExecutionReport {
+        guard !actionInFlight else { throw WindowSceneRuntimeError.busy }
+        guard sceneAvailable else { throw WindowSceneRuntimeError.unavailable }
+        guard let scene = settings.scenes.first(where: { $0.id == sceneID }) else { throw WindowSceneRuntimeError.missingScene }
+        actionInFlight = true
+        defer { actionInFlight = false }
+        let generation = configurationGeneration
+        let report = await sceneRuntime.apply(scene, settings: settings) {
+            self.sceneRequestValid(generation: generation, deadline: deadline)
+        }
+        lastSceneResult = report
+        return report
+    }
+
+    func undoScene(_ token: UUID, deadline: Date) async throws -> WindowSceneExecutionReport {
+        guard !actionInFlight else { throw WindowSceneRuntimeError.busy }
+        guard sceneAvailable else { throw WindowSceneRuntimeError.unavailable }
+        actionInFlight = true
+        defer { actionInFlight = false }
+        let generation = configurationGeneration
+        let report = try await sceneRuntime.undo(token, settings: settings) {
+            self.sceneRequestValid(generation: generation, deadline: deadline)
+        }
+        lastSceneResult = report
+        return report
+    }
+
+    private var sceneAvailable: Bool { settings.isEnabled && accessibilityTrusted() && accessibilityOperational }
+
+    private func sceneRequestValid(generation: Int, deadline: Date) -> Bool {
+        generation == configurationGeneration && sceneAvailable && Date() < deadline && !Task.isCancelled
     }
 
     public func configurableApplicationCandidate() -> AppConfigurationCandidate? {
@@ -423,7 +473,7 @@ public final class WindowAgentRuntime: ObservableObject {
     }
 
     func windowTarget(at point: CGPoint) async -> WindowHitTestTarget? {
-        guard settings.isEnabled,
+        guard !actionInFlight, settings.isEnabled,
               accessibilityTrusted(),
               accessibilityOperational
         else {

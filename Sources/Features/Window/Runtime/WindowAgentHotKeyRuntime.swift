@@ -8,7 +8,7 @@ import Foundation
 protocol GlobalHotKeyRegistering {
     func installEventHandler(owner: WindowAgentHotKeyRuntime) -> EventHandlerRef?
     func removeEventHandler(_ reference: EventHandlerRef)
-    func register(binding: WindowHotKeyBinding, identifier: UInt32, signature: OSType) -> EventHotKeyRef?
+    func register(keyCode: UInt16, modifiers: WindowHotKeyModifier, identifier: UInt32, signature: OSType) -> EventHotKeyRef?
     func unregister(_ reference: EventHotKeyRef)
 }
 
@@ -35,12 +35,12 @@ private struct CarbonGlobalHotKeyRegistrar: GlobalHotKeyRegistering {
         RemoveEventHandler(reference)
     }
 
-    func register(binding: WindowHotKeyBinding, identifier: UInt32, signature: OSType) -> EventHotKeyRef? {
+    func register(keyCode: UInt16, modifiers: WindowHotKeyModifier, identifier: UInt32, signature: OSType) -> EventHotKeyRef? {
         let hotKeyID = EventHotKeyID(signature: signature, id: identifier)
         var reference: EventHotKeyRef?
         let status = RegisterEventHotKey(
-            UInt32(binding.keyCode),
-            binding.modifiers.carbonModifiers,
+            UInt32(keyCode),
+            modifiers.carbonModifiers,
             hotKeyID,
             GetApplicationEventTarget(),
             0,
@@ -63,17 +63,21 @@ public final class WindowAgentHotKeyRuntime: ObservableObject {
         var windowManagementEnabled: Bool
         var hotKeysEnabled: Bool
         var bindings: [WindowHotKeyBinding]
+        var scenes: [WindowScene]
 
         init(_ settings: WindowManagementSettings) {
             windowManagementEnabled = settings.isEnabled
             hotKeysEnabled = settings.hotKeysEnabled
             bindings = settings.bindings
+            scenes = settings.scenes
         }
     }
 
+    private enum Target { case action(WindowLayoutAction), scene(UUID) }
+
     private struct Registration {
         var reference: EventHotKeyRef
-        var action: WindowLayoutAction
+        var target: Target
     }
 
     private let registrar: GlobalHotKeyRegistering
@@ -86,6 +90,8 @@ public final class WindowAgentHotKeyRuntime: ObservableObject {
     private var activeConfiguration: RegistrationConfiguration?
     private var registrationRetryAttempt = 0
     private var registrationRetryWorkItem: DispatchWorkItem?
+    @Published public private(set) var sceneFailures: [UUID: String] = [:]
+    private var pendingSceneRegistrations: [UUID: WindowSceneShortcut] = [:]
     @Published public private(set) var failedBindings: [WindowHotKeyBinding] = []
     @Published public private(set) var duplicateBindings: [WindowHotKeyBinding] = []
     @Published public private(set) var unsafeBindings: [WindowHotKeyBinding] = []
@@ -137,7 +143,23 @@ public final class WindowAgentHotKeyRuntime: ObservableObject {
         lastRuntimeWarning = nil
         activeConfiguration = configuration
         self.windowService = windowService
-        let plan = settings.hotKeyRegistrationPlan()
+        var plan = settings.hotKeyRegistrationPlan()
+        let sceneShortcuts = settings.scenes.compactMap { scene -> (UUID, WindowSceneShortcut)? in
+            guard let shortcut = scene.shortcut, shortcut.isEnabled else { return nil }
+            return (scene.id, shortcut)
+        }
+        let sceneChords = Dictionary(grouping: sceneShortcuts, by: { $0.1.shortcutIdentifier })
+        let layoutChords = Set(settings.bindings.filter(\.isEnabled).map(\.shortcutIdentifier))
+        let layoutConflicts = plan.validBindings.filter { sceneChords[$0.shortcutIdentifier] != nil }
+        plan.validBindings.removeAll { sceneChords[$0.shortcutIdentifier] != nil }
+        plan.duplicateBindings += layoutConflicts
+        for (sceneID, shortcut) in sceneShortcuts {
+            if !shortcut.isSafeGlobalShortcut {
+                sceneFailures[sceneID] = L10n.string(.WindowRuntime.sceneShortcutUnsafe)
+            } else if layoutChords.contains(shortcut.shortcutIdentifier) || (sceneChords[shortcut.shortcutIdentifier]?.count ?? 0) > 1 {
+                sceneFailures[sceneID] = L10n.string(.WindowRuntime.sceneShortcutConflict)
+            } else { pendingSceneRegistrations[sceneID] = shortcut }
+        }
         unsafeBindings = plan.unsafeBindings
         duplicateBindings = plan.duplicateBindings
         for binding in unsafeBindings {
@@ -146,10 +168,11 @@ public final class WindowAgentHotKeyRuntime: ObservableObject {
         for binding in duplicateBindings {
             ArcKitLog.append("window hotkey duplicate action=\(binding.action.rawValue) shortcut=\(binding.displayShortcut)")
         }
-        guard plan.validBindings.isEmpty || installEventHandlerIfNeeded() else {
+        guard (plan.validBindings.isEmpty && pendingSceneRegistrations.isEmpty) || installEventHandlerIfNeeded() else {
             handlerInstallationFailed = true
             lastRegistrationError = L10n.string(.WindowRuntime.shortcutsEventHandlerFailed)
             failedBindings = plan.validBindings
+            for sceneID in pendingSceneRegistrations.keys { sceneFailures[sceneID] = L10n.string(.WindowRuntime.shortcutsEventHandlerFailed) }
             registeredCount = 0
             ArcKitLog.append("window hotkey handler install failed validBindings=\(plan.validBindings.count)")
             return
@@ -160,6 +183,7 @@ public final class WindowAgentHotKeyRuntime: ObservableObject {
                 ArcKitLog.append("window hotkey register failed action=\(binding.action.rawValue) shortcut=\(binding.displayShortcut)")
             }
         }
+        registerPendingScenes()
         registeredCount = registrations.count
         lastRegistrationError = failedBindings.isEmpty
             ? nil
@@ -180,6 +204,8 @@ public final class WindowAgentHotKeyRuntime: ObservableObject {
         }
         registrations.removeAll()
         failedBindings = []
+        sceneFailures = [:]
+        pendingSceneRegistrations = [:]
         duplicateBindings = []
         unsafeBindings = []
         registeredCount = 0
@@ -195,7 +221,7 @@ public final class WindowAgentHotKeyRuntime: ObservableObject {
     }
 
     private func scheduleFailedRegistrationRetryIfNeeded() {
-        guard !failedBindings.isEmpty,
+        guard (!failedBindings.isEmpty || !pendingSceneRegistrations.isEmpty),
               registrationRetryAttempt < registrationRetryDelays.count,
               windowService != nil
         else { return }
@@ -216,12 +242,13 @@ public final class WindowAgentHotKeyRuntime: ObservableObject {
 
     private func retryFailedRegistrations() {
         registrationRetryWorkItem = nil
-        guard accessibilityTrusted(), windowService != nil, !failedBindings.isEmpty else { return }
+        guard accessibilityTrusted(), windowService != nil, (!failedBindings.isEmpty || !pendingSceneRegistrations.isEmpty) else { return }
         let pending = failedBindings
         failedBindings = []
         for binding in pending where !register(binding) {
             failedBindings.append(binding)
         }
+        registerPendingScenes()
         registeredCount = registrations.count
         lastRegistrationError = failedBindings.isEmpty
             ? nil
@@ -233,32 +260,48 @@ public final class WindowAgentHotKeyRuntime: ObservableObject {
     }
 
     func handle(identifier: UInt32) {
-        guard let action = registrations[identifier]?.action else {
+        guard let target = registrations[identifier]?.target else {
             lastRuntimeWarning = L10n.string(.WindowRuntime.shortcutsUnregisteredEvent)
-            ArcKitLog.append("window hotkey stale event id=\(identifier) registered=\(registrations.count)")
             return
         }
         guard let windowService else {
             lastRuntimeWarning = L10n.string(.WindowRuntime.shortcutsServiceUnavailable)
-            ArcKitLog.append("window hotkey missing window service id=\(identifier) action=\(action.rawValue)")
             return
         }
-        ArcKitLog.append("window hotkey pressed id=\(identifier) action=\(action.rawValue)")
         let generation = configurationGeneration
         Task { [weak self] in
             guard self?.configurationGeneration == generation else { return }
-            _ = await windowService.perform(action)
+            switch target {
+            case .action(let action): _ = await windowService.perform(action)
+            case .scene(let id):
+                do { _ = try await windowService.applyScene(id) }
+                catch { self?.lastRuntimeWarning = error.localizedDescription }
+            }
         }
     }
 
     @discardableResult
     private func register(_ binding: WindowHotKeyBinding) -> Bool {
-        guard let reference = registrar.register(binding: binding, identifier: nextIdentifier, signature: Self.signature) else {
-            return false
-        }
-        registrations[nextIdentifier] = Registration(reference: reference, action: binding.action)
+        register(keyCode: binding.keyCode, modifiers: binding.modifiers, target: .action(binding.action))
+    }
+
+    private func register(keyCode: UInt16, modifiers: WindowHotKeyModifier, target: Target) -> Bool {
+        guard let reference = registrar.register(keyCode: keyCode, modifiers: modifiers,
+                                                  identifier: nextIdentifier, signature: Self.signature) else { return false }
+        registrations[nextIdentifier] = Registration(reference: reference, target: target)
         nextIdentifier += 1
         return true
+    }
+
+    private func registerPendingScenes() {
+        for (sceneID, shortcut) in pendingSceneRegistrations {
+            if register(keyCode: shortcut.keyCode, modifiers: shortcut.modifiers, target: .scene(sceneID)) {
+                pendingSceneRegistrations[sceneID] = nil
+                sceneFailures[sceneID] = nil
+            } else {
+                sceneFailures[sceneID] = L10n.string(.WindowRuntime.sceneShortcutRegistrationFailed)
+            }
+        }
     }
 
     private func installEventHandlerIfNeeded() -> Bool {

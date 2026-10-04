@@ -11,6 +11,7 @@ public struct WindowManagementSettings: Codable, Equatable, Sendable {
     public var displayNavigationStrategy: WindowDisplayNavigationStrategy
     public var bindings: [WindowHotKeyBinding]
     public var excludedApplications: [WindowExcludedApplication]
+    public var scenes: [WindowScene]
 
     public init(
         isEnabled: Bool = true,
@@ -20,7 +21,8 @@ public struct WindowManagementSettings: Codable, Equatable, Sendable {
         windowGap: Double = 0,
         displayNavigationStrategy: WindowDisplayNavigationStrategy = .spatialOrder,
         bindings: [WindowHotKeyBinding] = WindowHotKeyBinding.magnetDefaults,
-        excludedApplications: [WindowExcludedApplication] = []
+        excludedApplications: [WindowExcludedApplication] = [],
+        scenes: [WindowScene] = []
     ) {
         self.isEnabled = isEnabled
         self.hotKeysEnabled = hotKeysEnabled
@@ -30,6 +32,7 @@ public struct WindowManagementSettings: Codable, Equatable, Sendable {
         self.displayNavigationStrategy = displayNavigationStrategy
         self.bindings = bindings
         self.excludedApplications = excludedApplications
+        self.scenes = scenes
     }
 
     enum CodingKeys: String, CodingKey {
@@ -41,6 +44,7 @@ public struct WindowManagementSettings: Codable, Equatable, Sendable {
         case displayNavigationStrategy
         case bindings
         case excludedApplications
+        case scenes
     }
 
     public init(from decoder: Decoder) throws {
@@ -67,6 +71,13 @@ public struct WindowManagementSettings: Codable, Equatable, Sendable {
         let decodedExcludedApplications = try container.decode([WindowExcludedApplication].self, forKey: .excludedApplications)
         try Self.validateDecodedExcludedApplications(decodedExcludedApplications)
         excludedApplications = decodedExcludedApplications
+        // 新备份必须明确包含场景列表；旧 SQLite 由应用命名迁移建表，不在解码时吞掉缺失字段。
+        let decodedScenes = try container.decode([WindowScene].self, forKey: .scenes)
+        guard decodedScenes.count <= WindowScene.maximumSceneCount else { throw WindowSceneValidationError.tooManyScenes }
+        guard Set(decodedScenes.map(\.id)).count == decodedScenes.count else {
+            throw WindowSceneValidationError.duplicateIdentity
+        }
+        scenes = decodedScenes
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -79,6 +90,7 @@ public struct WindowManagementSettings: Codable, Equatable, Sendable {
         try container.encode(displayNavigationStrategy, forKey: .displayNavigationStrategy)
         try container.encode(bindings, forKey: .bindings)
         try container.encode(excludedApplications, forKey: .excludedApplications)
+        try container.encode(scenes, forKey: .scenes)
     }
 
     public static let defaults = WindowManagementSettings()
@@ -207,6 +219,7 @@ public struct WindowManagementSettings: Codable, Equatable, Sendable {
 public extension WindowManagementSettings {
     static let recordLayout = ArcKitRecordLayout("window_preferences", fields: ["isEnabled", "hotKeysEnabled", "dragSnapEnabled", "showSnapPreview", "windowGap", "displayNavigationStrategy"], children: [
         "bindings": ArcKitRecordLayout("window_hotkeys", fields: ["action", "keyCode", "keyEquivalent", "modifiers", "isEnabled"], json: ["modifiers"]),
-        "excludedApplications": ArcKitRecordLayout("window_application_rules", fields: ["id", "displayName", "bundleIdentifier"])
+        "excludedApplications": ArcKitRecordLayout("window_application_rules", fields: ["id", "displayName", "bundleIdentifier"]),
+        "scenes": ArcKitRecordLayout("window_scenes", fields: ["id", "name", "displays", "entries", "focusEntryID", "shortcut"], json: ["displays", "entries", "shortcut"])
     ])
 }

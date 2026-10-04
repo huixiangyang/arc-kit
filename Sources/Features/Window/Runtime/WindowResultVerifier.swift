@@ -19,12 +19,13 @@ struct WindowResultVerifier {
             && abs(actual.height - expected.height) <= tolerance
     }
 
-    func verifiedFrame(for target: WindowActionTarget, expected: CGRect) async throws -> CGRect {
+    func verifiedFrame(for target: WindowActionTarget, expected: CGRect, shouldContinue: @MainActor () -> Bool = { true }) async throws -> CGRect {
         var latestFrame = try await accessibilityClient.frame(of: target)
         let deadline = Date().addingTimeInterval(0.45)
-        while !framesMatch(latestFrame, expected), Date() < deadline {
+        while !framesMatch(latestFrame, expected), Date() < deadline, shouldContinue() {
             // 不同 App 的 AXPosition/AXSize 会先返回 success，再异步完成真实布局；短轮询避免把成功移动误判为失败。
             try await Task.sleep(for: .milliseconds(30))
+            guard shouldContinue() else { return latestFrame }
             latestFrame = try await accessibilityClient.frame(of: target)
         }
         return latestFrame

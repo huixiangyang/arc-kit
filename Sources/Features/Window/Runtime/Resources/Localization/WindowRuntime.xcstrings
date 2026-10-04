@@ -792,6 +792,186 @@
           }
         }
       }
+    },
+    "scene.cancelled": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configuration changed, permission was revoked, or the request expired. Remaining windows were skipped."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置已更改、权限已撤销或请求已超时，已跳过剩余窗口"
+          }
+        }
+      },
+      "comment": "Window scene item skipped because configuration, permission, or execution deadline changed. Previously moved windows retain an undo recovery point."
+    },
+    "scene.focusUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The selected focus window is unavailable."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选定的焦点窗口当前不可用"
+          }
+        }
+      },
+      "comment": "Window scene finished but its explicitly selected focus window could not be activated."
+    },
+    "scene.frameMismatch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app did not accept the exact saved position and size."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用未接受预设的精确位置与尺寸"
+          }
+        }
+      },
+      "comment": "Window scene AX readback differs from the requested saved position or size. This is not reported as an exact success."
+    },
+    "scene.undoExpired": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This undo has expired or was already completed."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本次撤销已失效或已经完成"
+          }
+        }
+      },
+      "comment": "Window scene undo token is unknown, evicted, or already consumed. No windows were changed by this request."
+    },
+    "scene.unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable window management and grant Accessibility access first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先启用窗口管理并授予辅助功能权限"
+          }
+        }
+      },
+      "comment": "Window scene execution requires the window-management feature and operational Accessibility permission."
+    },
+    "scene.missing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This scene no longer exists in the committed settings."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保存的配置中已不存在此场景"
+          }
+        }
+      },
+      "comment": "A scene ID was requested after the scene was removed from committed Host settings."
+    },
+    "scene.shortcutConflict": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This shortcut conflicts with another window action or scene."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此快捷键与其他窗口动作或场景冲突"
+          }
+        }
+      },
+      "comment": "Scene shortcut collides with another scene shortcut or a single-window layout shortcut; conflicting registrations are skipped."
+    },
+    "scene.shortcutUnsafe": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a valid shortcut containing Control, Option, or Command."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请设置包含 Control、Option 或 Command 的有效快捷键"
+          }
+        }
+      },
+      "comment": "Scene shortcut validation requires a valid key plus Control, Option, or Command modifier."
+    },
+    "scene.shortcutRegistrationFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS could not register this scene shortcut; it may be in use."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 无法注册此场景快捷键，可能已被占用"
+          }
+        }
+      },
+      "comment": "Carbon could not register a scene shortcut, usually because another application already owns it."
+    },
+    "scene.displayChanged": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Display geometry changed. Apply the scene again using the current display layout."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示器布局已变化，请按当前显示器布局重新应用场景"
+          }
+        }
+      },
+      "comment": "Display identity still exists but its geometry changed during apply or since undo capture. Reapply the saved scene using the current layout."
     }
   },
   "version": "1.0"

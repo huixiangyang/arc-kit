@@ -26,7 +26,6 @@ struct ApplicationWorkspace: View {
     // 标签属于窗口导航状态，切换侧栏后仍回到上次编辑的分组。
     @State private var finderTab: FinderWorkspaceTab = .menu
     @State private var mouseTab: MouseWorkspaceTab = .scrolling
-    @State private var windowTab: WindowWorkspaceTab = .snapping
     @State private var overviewTab: OverviewWorkspaceTab = .status
     @State private var wallpaperTab: WallpaperWorkspaceTab = .library
     @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
@@ -123,7 +122,7 @@ struct ApplicationWorkspace: View {
                     windowService: windowService,
                     hotKeyService: hotKeyService,
                     health: windowHealth,
-                    selectedTab: $windowTab
+                    selectedTab: $navigation.windowTarget
                 )
             }
         case .wallpaper:
@@ -207,6 +206,11 @@ struct ApplicationWorkspace: View {
             navigate(to: .preferences)
         case let .window(action):
             actions.window.performWindowAction(action)
+        case .windowScenes:
+            navigation.windowTarget = .scenes
+            navigate(to: .window)
+        case let .windowScene(id):
+            actions.window.performScene(id)
         }
     }
 
