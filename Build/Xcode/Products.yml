@@ -49,8 +49,8 @@ targets:
         CFBundleName: Arc Kit Runtime Host
         NSAppleEventsUsageDescription: Arc Kit controls other apps only when you create terminal windows or tabs, or run a script you choose.
         CFBundlePackageType: APPL
-        CFBundleShortVersionString: 0.1.0
-        CFBundleVersion: "56"
+        CFBundleShortVersionString: 0.1.1
+        CFBundleVersion: "62"
         LSMinimumSystemVersion: "13.0"
         LSUIElement: true
   ArcKit:
@@ -113,8 +113,8 @@ targets:
         CFBundleName: Arc Kit
         NSAppleEventsUsageDescription: Arc Kit controls other apps only when you create terminal windows or tabs, or run a script you choose.
         CFBundlePackageType: APPL
-        CFBundleShortVersionString: 0.1.0
-        CFBundleVersion: "56"
+        CFBundleShortVersionString: 0.1.1
+        CFBundleVersion: "62"
         LSMinimumSystemVersion: "13.0"
         NSPrincipalClass: NSApplication
         SUPublicEDKey: fOn/EhaCQV6kXWk6EP6jYaWugtSLxtPQ8NCPM7em7AY=
@@ -179,8 +179,8 @@ targets:
         CFBundleInfoDictionaryVersion: "6.0"
         CFBundleName: Arc Kit Finder Extension
         CFBundlePackageType: XPC!
-        CFBundleShortVersionString: 0.1.0
-        CFBundleVersion: "56"
+        CFBundleShortVersionString: 0.1.1
+        CFBundleVersion: "62"
         NSExtension:
           NSExtensionPointIdentifier: com.apple.FinderSync
           NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).FinderSync
