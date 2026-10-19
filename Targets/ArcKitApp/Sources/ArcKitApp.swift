@@ -30,6 +30,14 @@ enum ArcKitMain {
             do { try StorageRecovery.run(source: source, destination: destination); print(L10n.string(.AppEntry.launchRestoreCompleteOriginalDatabasePreserved)); Darwin.exit(0) }
             catch { print(L10n.string(.AppEntry.launchRestoreFailed(String(describing: error.localizedDescription)))); Darwin.exit(1) }
         }
+        if CommandLine.arguments.contains(WindowManagementSmokeTestService.controllerArgument) {
+            // 验收控制器只读已提交配置；不能抢占正在运行的主应用写锁或执行存储迁移。
+            let application = NSApplication.shared
+            application.setActivationPolicy(.accessory)
+            application.finishLaunching()
+            RunLoop.current.run(until: Date().addingTimeInterval(0.2))
+            Darwin.exit(WindowManagementSmokeTestService.runRemoteController())
+        }
         // AppKit 事件循环必须从同步入口运行；嵌在 async main 的主队列任务里会饿死后续 MainActor 任务。
         // 窗口创建前完成存储准备；进入事件循环后，配置加载与保存仍由异步任务执行。
         do { try StorageBootstrap.prepare() }
@@ -53,14 +61,6 @@ enum ArcKitMain {
         // Arc Kit 的窗口由显式设置恢复，禁止 AppKit 启动时弹出崩溃恢复对话框并阻塞管理界面。
         UserDefaults.standard.set(true, forKey: "ApplePersistenceIgnoreState")
         UserDefaults.standard.set(false, forKey: "NSQuitAlwaysKeepsWindows")
-        if CommandLine.arguments.contains(WindowManagementSmokeTestService.controllerArgument) {
-            // 主 App 只负责图形会话与宿主窗口协调；真实 AX、Carbon 和权限必须由 Window Agent 证明。
-            let application = NSApplication.shared
-            application.setActivationPolicy(.accessory)
-            application.finishLaunching()
-            RunLoop.current.run(until: Date().addingTimeInterval(0.2))
-            Darwin.exit(WindowManagementSmokeTestService.runRemoteController())
-        }
         let application = NSApplication.shared
         application.disableRelaunchOnLogin()
         let delegate = AppDelegate()

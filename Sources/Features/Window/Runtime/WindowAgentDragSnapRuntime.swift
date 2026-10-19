@@ -228,11 +228,11 @@ public final class WindowAgentDragSnapRuntime: ObservableObject {
         guard policy.hasMeaningfulDrag(from: state.start, to: location) else {
             return
         }
-        let action = windowService?.snapAction(at: location)
-        if settings.showSnapPreview, let action {
+        let target = windowService?.snapTarget(at: location, currentFrame: state.currentFrame)
+        if settings.showSnapPreview, let target {
             // 拖拽吸附只会产生固定几何动作，按下时捕获的窗口 frame 已足够；
             // 禁止在高频 dragged 回调中重复跨进程读取 AX frame。
-            showPreview(for: action, at: location, currentFrame: state.currentFrame)
+            showPreview(target.preview)
         } else {
             hidePreview()
         }
@@ -246,20 +246,16 @@ public final class WindowAgentDragSnapRuntime: ObservableObject {
         guard let state = runtime.state else { return }
         let location = event.location
         guard policy.hasMeaningfulDrag(from: state.start, to: location),
-              let action = windowService?.snapAction(at: location)
+              let target = windowService?.snapTarget(at: location, currentFrame: state.currentFrame)
         else {
             ArcKitLog.append("window drag snap cancelled at release point=\(Int(location.x)),\(Int(location.y))")
             return
         }
-        ArcKitLog.append("window drag snap perform action=\(action.rawValue)")
-        _ = await windowService?.perform(action, preferredTarget: state.target)
+        ArcKitLog.append("window drag snap perform action=\(target.action.rawValue) screen=\(target.screen.id)")
+        _ = await windowService?.perform(target.action, preferredTarget: state.target, snapTarget: target)
     }
 
-    private func showPreview(for action: WindowLayoutAction, at point: CGPoint, currentFrame: CGRect) {
-        guard let previewFrame = windowService?.snapPreviewFrame(for: action, at: point, currentFrame: currentFrame) else {
-            hidePreview()
-            return
-        }
+    private func showPreview(_ previewFrame: WindowSnapPreviewFrame) {
         guard lastPreviewFrame != previewFrame.accessibilityFrame || previewWindow?.isVisible != true else {
             return
         }

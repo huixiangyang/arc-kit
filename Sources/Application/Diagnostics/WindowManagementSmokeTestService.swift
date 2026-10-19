@@ -1,4 +1,5 @@
 import ArcKitPlatform
+import ArcKitPersistence
 import ArcKitWindow
 import ApplicationServices
 @preconcurrency import AppKit
@@ -125,14 +126,19 @@ public enum WindowManagementSmokeTestService {
                 throw WindowManagementSmokeFailure(L10n.string(.WindowSettings.smokeTestEnableWindowManagementMainApp))
             }
 
-            let smokeSettings = try SettingsRepository().load().windowManagement
+            let smokeSettings = try SettingsRepository(database: ArcKitDatabase(reading: .current)).load().windowManagement
             let appliedState = initialState
+            let previousApplication = NSWorkspace.shared.frontmostApplication
             let host = try launchIsolatedHost()
             defer {
                 host.application.forceTerminate()
                 try? FileManager.default.removeItem(at: host.cleanupURL)
+                previousApplication?.activate(options: [.activateIgnoringOtherApps])
             }
             try activateAndWaitForFrontmost(host.application)
+            if CommandLine.arguments.contains("--screen-layouts-only") {
+                return try runScreenLayouts(using: client, application: host.application, state: appliedState, gap: smokeSettings.windowGap)
+            }
             _ = try sendRemote(
                 WindowAgentRequest(operation: .captureTarget, timeout: 3),
                 using: client
@@ -224,7 +230,8 @@ public enum WindowManagementSmokeTestService {
         let session = try RuntimeHostSession.load()
         var request = request
         request.sessionID = session.id
-        request.revision = session.revision
+        // owner.json 只保存进程身份；配置代次以数据库已提交快照为准。
+        request.revision = try SettingsRepository(database: ArcKitDatabase(reading: .current)).loadSnapshot().revision.runtime
         client.send(request) { result in
             outcome = result
         }
@@ -248,13 +255,15 @@ public enum WindowManagementSmokeTestService {
 
     private static func performRemote(
         _ action: WindowLayoutAction,
-        using client: WindowAgentXPCClient
+        using client: WindowAgentXPCClient,
+        targetID: UUID? = nil
     ) throws -> WindowManagementResult {
         let reply = try sendRemote(
             WindowAgentRequest(
                 operation: .performAction,
                 timeout: action == .fullScreen ? 6 : 3,
-                action: action
+                action: action,
+                targetID: targetID
             ),
             using: client
         )
@@ -262,6 +271,81 @@ public enum WindowManagementSmokeTestService {
             throw WindowManagementSmokeFailure(L10n.string(.WindowSettings.smokeTestHostReturnedActionResultMissing(String(describing: action.rawValue))))
         }
         return result
+    }
+
+    /// 定向多屏验收：固定独立测试窗口，不发送全局热键、不改设置、不切换 Space。
+    private static func runScreenLayouts(
+        using client: WindowAgentXPCClient, application: NSRunningApplication, state: WindowAgentRuntimeSnapshot, gap: Double
+    ) throws -> Int32 {
+        // LaunchServices 完成和应用激活不等于文档窗口已经创建，等待同一进程的实际 AX 窗口。
+        var targetID: UUID?
+        var captureFailure: String?
+        let captureDeadline = Date().addingTimeInterval(8)
+        repeat {
+            let capture = try sendRemote(WindowAgentRequest(operation: .captureTarget, timeout: 3,
+                captureApplication: .init(displayName: "TextEdit", bundleIdentifier: targetBundleIdentifier,
+                                          processIdentifier: application.processIdentifier)), using: client)
+            targetID = capture.targetCapture?.targetID
+            captureFailure = capture.targetCapture?.failureMessage
+            if targetID == nil { pumpApplicationEvents(for: 0.15) }
+        } while targetID == nil && Date() < captureDeadline && !application.isTerminated
+        guard let targetID else {
+            throw WindowManagementSmokeFailure(captureFailure ?? "Screen smoke could not capture the isolated test window")
+        }
+        let native = NSScreen.screens
+        let coordinates = ArcKitScreenCoordinateSpace(screenFrames: native.map(\.frame))
+        let expectedScreens = Dictionary(uniqueKeysWithValues: native.compactMap { screen -> (String, CGRect)? in
+            guard let number = screen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? NSNumber else { return nil }
+            return (number.stringValue, coordinates.appKitToAccessibility(screen.visibleFrame))
+        })
+        guard !expectedScreens.isEmpty else { throw WindowManagementSmokeFailure("No displays available for screen smoke") }
+        var visited: Set<String> = []
+        var reports: [WindowManagementSmokeActionReport] = []
+        for index in 0..<expectedScreens.count {
+            for action in [WindowLayoutAction.fill, .stageManager] {
+                let result = try performRemote(action, using: client, targetID: targetID)
+                var fields = result.diagnosticFields
+                let id = fields["sourceScreenID"] ?? ""
+                let visible = expectedScreens[id]
+                let expected: CGRect? = try visible.map { try WindowLayoutEngine().frame(for: .init(
+                    action: action, currentFrame: $0, currentScreenVisibleFrame: $0,
+                    allScreenVisibleFrames: Array(expectedScreens.values),
+                    gap: gap)) }
+                // 独立读取 WindowServer 的真实位置，不能只相信 Host 自报成功。
+                let windows = CGWindowListCopyWindowInfo(.optionOnScreenOnly, kCGNullWindowID) as? [[String: Any]] ?? []
+                let actual = windows.first(where: {
+                    ($0[kCGWindowOwnerPID as String] as? Int32) == application.processIdentifier
+                        && ($0[kCGWindowLayer as String] as? Int) == 0
+                }).flatMap { $0[kCGWindowBounds as String] as? NSDictionary }
+                    .flatMap { CGRect(dictionaryRepresentation: $0) }
+                let matched: Bool
+                if let expected, let actual {
+                    let positionMatches = abs(expected.minX - actual.minX) <= 2 && abs(expected.minY - actual.minY) <= 2
+                    let sizeMatches = abs(expected.width - actual.width) <= 2 && abs(expected.height - actual.height) <= 2
+                    matched = positionMatches && sizeMatches
+                } else {
+                    matched = false
+                }
+                fields["windowServerFrame"] = actual.map { String(describing: $0) } ?? "missing"
+                fields["expectedFrame"] = expected.map { String(describing: $0) } ?? "missing"
+                visited.insert(id)
+                reports.append(.init(action: "screen-\(id)-\(action.rawValue)", succeeded: result.succeeded && matched,
+                    userMessage: result.userMessage ?? (matched ? nil : "WindowServer frame differs from current display layout"), diagnostics: fields))
+            }
+            if index + 1 < expectedScreens.count {
+                let result = try performRemote(.nextDisplay, using: client, targetID: targetID)
+                reports.append(.init(action: "nextDisplay-\(index)", succeeded: result.succeeded,
+                                     userMessage: result.userMessage, diagnostics: result.diagnosticFields))
+            }
+        }
+        reports.append(.init(action: "display-coverage", succeeded: visited == Set(expectedScreens.keys),
+                             diagnostics: ["visited": visited.sorted().joined(separator: ",")]))
+        writeReport(.init(checkedAt: ISO8601DateFormatter().string(from: Date()),
+            accessibilityTrusted: state.accessibilityTrusted, accessibilityOperational: state.accessibilityOperational,
+            screenLocked: false, targetBundleIdentifier: targetBundleIdentifier,
+            targetProcessIdentifier: application.processIdentifier, screenCount: expectedScreens.count,
+            skippedActions: [WindowLayoutAction.fullScreen, .restore].map(\.rawValue), actions: reports, entryPoints: []))
+        return reports.allSatisfy(\.succeeded) ? 0 : 1
     }
 
     private static func runRemoteFullScreenSmoke(

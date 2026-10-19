@@ -277,14 +277,10 @@ final class WindowSceneRuntime {
     }
 
     static func displays() -> [WindowSceneDisplay] {
-        let screens = NSScreen.screens
-        let coordinates = ArcKitScreenCoordinateSpace(screenFrames: screens.map(\.frame))
-        return screens.compactMap { screen in
-            guard let number = screen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? NSNumber,
-                  let uuid = CGDisplayCreateUUIDFromDisplayID(number.uint32Value)?.takeRetainedValue(),
+        WindowScreenSnapshot.capture().screens.compactMap { screen in
+            guard let uuid = CGDisplayCreateUUIDFromDisplayID(screen.id)?.takeRetainedValue(),
                   let value = CFUUIDCreateString(nil, uuid) else { return nil }
-            return .init(id: value as String, name: screen.localizedName,
-                         visibleFrame: coordinates.appKitToAccessibility(screen.visibleFrame))
+            return .init(id: value as String, name: screen.name, visibleFrame: screen.visibleFrame)
         }
     }
 }

@@ -246,6 +246,50 @@ struct WindowLayoutTests {
         }
     }
 
+    @Test("跨屏吸附按松手屏执行，断屏和屏幕几何变化不改投")
+    @MainActor
+    func snapKeepsReleaseScreen() async throws {
+        let client = WindowTargetFixture()
+        let runtime = client.runtime()
+        await runtime.start(settings: .defaults)
+        // 窗口主体还在内屏，但鼠标已到右侧副屏的顶部。
+        client.frames[1] = .init(x: 800, y: 10, width: 800, height: 500)
+        let plan = try #require(runtime.snapTarget(at: .init(x: 1500, y: 1), currentFrame: client.frames[1]!))
+        #expect(plan.screen.id == 3)
+        #expect(await runtime.perform(plan.action, preferredTarget: client.first, snapTarget: plan).succeeded)
+        #expect(client.frames[1] == plan.preview.accessibilityFrame)
+        #expect(client.frames[1] == client.screens[2].visibleFrame)
+
+        let writes = client.writes
+        client.screens[2] = .init(id: 3, name: "right", fullFrame: .init(x: 1440, y: 0, width: 2560, height: 1440),
+                                 visibleFrame: .init(x: 1440, y: 30, width: 2560, height: 1410))
+        #expect(await !runtime.perform(plan.action, preferredTarget: client.first, snapTarget: plan).succeeded)
+        client.screens.removeLast()
+        #expect(await !runtime.perform(plan.action, preferredTarget: client.first, snapTarget: plan).succeeded)
+        #expect(client.writes == writes)
+    }
+
+    @Test("每次布局使用最新屏幕几何，正确处理上方负坐标副屏")
+    @MainActor
+    func layoutUsesUpdatedScreens() async {
+        let client = WindowTargetFixture()
+        let runtime = client.runtime()
+        await runtime.start(settings: .defaults)
+        client.screens = [
+            .init(id: 1, name: "left", fullFrame: .init(x: -554, y: -1440, width: 2560, height: 1440),
+                  visibleFrame: .init(x: -554, y: -1409, width: 2560, height: 1409)),
+            .init(id: 2, name: "right", fullFrame: .init(x: 2006, y: -1080, width: 1920, height: 1080),
+                  visibleFrame: .init(x: 2006, y: -1049, width: 1920, height: 1049))
+        ]
+        client.frames[1] = .init(x: 2006, y: -1049, width: 1920, height: 1049)
+        #expect(await runtime.perform(.stageManager, preferredTarget: client.first).succeeded)
+        #expect(client.frames[1] == CGRect(x: 2294, y: -1049, width: 1632, height: 1049))
+        client.screens[1] = .init(id: 2, name: "right", fullFrame: .init(x: 2006, y: -1440, width: 2560, height: 1440),
+                                 visibleFrame: .init(x: 2006, y: -1409, width: 2560, height: 1409))
+        #expect(await runtime.perform(.fill, preferredTarget: client.first).succeeded)
+        #expect(client.frames[1] == client.screens[1].visibleFrame)
+    }
+
     @Test("新增布局不使已保存快捷键失效，首次录制可持久化且拒绝重复动作")
     func optionalLayoutBinding() throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -308,9 +352,13 @@ private final class WindowTargetFixture: WindowAccessibilityClient {
     var captureError: WindowManagementExecutionError?
     var requestedPIDs: [pid_t] = []
     var terminatedPIDs: Set<pid_t> = []
+    var screens: [WindowScreenSnapshot.Screen] = [
+        CGRect(x: -1920, y: 0, width: 1920, height: 1080), CGRect(x: 0, y: 0, width: 1440, height: 900),
+        CGRect(x: 1440, y: 0, width: 1920, height: 1080)
+    ].enumerated().map { .init(id: UInt32($0.offset + 1), name: "screen", fullFrame: $0.element, visibleFrame: $0.element) }
     func runtime() -> WindowAgentRuntime {
-        WindowAgentRuntime(accessibilityClient: self, accessibilityTrusted: { true }, screenVisibleFramesProvider: {
-            [.init(x: -1920, y: 0, width: 1920, height: 1080), .init(x: 0, y: 0, width: 1440, height: 900), .init(x: 1440, y: 0, width: 1920, height: 1080)]
+        WindowAgentRuntime(accessibilityClient: self, accessibilityTrusted: { true }, screensProvider: {
+            .init(screens: self.screens, coordinates: .init(referenceMaxY: 900))
         })
     }
     func frontmostApplication() -> AppConfigurationCandidate? { frontmost }

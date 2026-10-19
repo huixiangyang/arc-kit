@@ -36,8 +36,7 @@ public final class WindowAgentRuntime: ObservableObject {
     private let engine = WindowLayoutEngine()
     private let accessibilityClient: WindowAccessibilityClient
     private let accessibilityTrusted: () -> Bool
-    private let screenVisibleFramesProvider: @MainActor () -> [CGRect]
-    private let screenFullFramesProvider: @MainActor () -> [CGRect]
+    private let screensProvider: @MainActor () -> WindowScreenSnapshot
     private let verifier: WindowResultVerifier
     private let sceneRuntime: WindowSceneRuntime
     private var actionInFlight = false
@@ -52,8 +51,6 @@ public final class WindowAgentRuntime: ObservableObject {
         self.init(
             accessibilityClient: SystemWindowAccessibilityClient(),
             accessibilityTrusted: ProcessPermissions.accessibilityTrusted,
-            screenVisibleFramesProvider: WindowAgentRuntime.accessibilityVisibleScreenFrames,
-            screenFullFramesProvider: WindowAgentRuntime.accessibilityFullScreenFrames,
             observesWorkspaceActivation: true,
             sceneHostLaunchID: hostLaunchID
         )
@@ -62,8 +59,7 @@ public final class WindowAgentRuntime: ObservableObject {
     init(
         accessibilityClient: WindowAccessibilityClient,
         accessibilityTrusted: @escaping () -> Bool,
-        screenVisibleFramesProvider: @escaping @MainActor () -> [CGRect] = WindowAgentRuntime.accessibilityVisibleScreenFrames,
-        screenFullFramesProvider: @escaping @MainActor () -> [CGRect] = WindowAgentRuntime.accessibilityFullScreenFrames,
+        screensProvider: @escaping @MainActor () -> WindowScreenSnapshot = WindowScreenSnapshot.capture,
         fullScreenVerificationStableInterval: TimeInterval = 0.8,
         observesWorkspaceActivation: Bool = false,
         sceneDisplaysProvider: @escaping @MainActor () -> [WindowSceneDisplay] = WindowSceneRuntime.displays,
@@ -72,8 +68,7 @@ public final class WindowAgentRuntime: ObservableObject {
         self.sceneRuntime = WindowSceneRuntime(client: accessibilityClient, displaysProvider: sceneDisplaysProvider, hostLaunchID: sceneHostLaunchID)
         self.accessibilityClient = accessibilityClient
         self.accessibilityTrusted = accessibilityTrusted
-        self.screenVisibleFramesProvider = screenVisibleFramesProvider
-        self.screenFullFramesProvider = screenFullFramesProvider
+        self.screensProvider = screensProvider
         self.verifier = WindowResultVerifier(accessibilityClient: accessibilityClient, fullScreenVerificationStableInterval: fullScreenVerificationStableInterval)
         if observesWorkspaceActivation {
             observeWorkspaceActivation()
@@ -250,7 +245,7 @@ public final class WindowAgentRuntime: ObservableObject {
     }
 
     @discardableResult
-    func perform(_ action: WindowLayoutAction, preferredTarget: WindowActionTarget?) async -> WindowManagementResult {
+    func perform(_ action: WindowLayoutAction, preferredTarget: WindowActionTarget?, snapTarget: WindowSnapTarget? = nil) async -> WindowManagementResult {
         guard !actionInFlight else { return .init(succeeded: false, userMessage: L10n.string(.WindowRuntime.actionWindowActionRunningRetry)) }
         actionInFlight = true
         defer { actionInFlight = false }
@@ -304,13 +299,19 @@ public final class WindowAgentRuntime: ObservableObject {
             try await accessibilityClient.validateWindowAdjustable(target)
             let currentFrame = try await accessibilityClient.frame(of: target)
             guard generation == configurationGeneration, settings.isEnabled else { return cancelledResult }
-            let screens = screenVisibleFramesProvider()
+            let snapshot = screensProvider()
+            let screens = snapshot.screens.map(\.visibleFrame)
             let previousFrame = restoreHistory.frame(for: target.restoreKey)
             if action == .restore, previousFrame == nil {
                 throw WindowLayoutEngineError.missingRestoreFrame
             }
             let currentFrameVisibleScreen = screenFrame(containing: currentFrame, screens: screens)
-            guard let currentScreen = currentFrameVisibleScreen
+            // 吸附使用松手点锁定的屏幕，不再按窗口大部分面积重新选择另一块屏幕。
+            // AX 查询期间若断屏或几何改变，直接取消，不把预览悄悄转投其他屏幕。
+            if let snapTarget, action != snapTarget.action || !snapshot.screens.contains(snapTarget.screen) {
+                return finish(.init(succeeded: false, userMessage: L10n.string(.WindowRuntime.actionDisplayMissing)))
+            }
+            guard let currentScreen = snapTarget?.screen.visibleFrame ?? currentFrameVisibleScreen
                     ?? restoreScreenFrame(for: action, previousFrame: previousFrame, screens: screens)
             else {
                 return finish(.init(succeeded: false, userMessage: L10n.string(.WindowRuntime.actionDisplayMissing)))
@@ -325,6 +326,8 @@ public final class WindowAgentRuntime: ObservableObject {
                 displayNavigationStrategy: settings.displayNavigationStrategy
             )
             let targetFrame = try engine.frame(for: input)
+            let screenID = snapshot.screens.first(where: { $0.visibleFrame == currentScreen })?.id ?? 0
+            ArcKitLog.append("window layout plan action=\(action.rawValue) pid=\(target.pid) screen=\(screenID) source=\(rectDescription(currentFrame)) visible=\(rectDescription(currentScreen)) target=\(rectDescription(targetFrame))")
             let frameChanged = !verifier.framesMatch(currentFrame, targetFrame)
             if !frameChanged {
                 state = .running
@@ -335,6 +338,7 @@ public final class WindowAgentRuntime: ObservableObject {
                     succeeded: true,
                     diagnosticFields: [
                         "action": action.rawValue,
+                        "sourceScreenID": String(screenID),
                         "bundleIdentifier": target.bundleIdentifier ?? "-",
                         "windowTitle": target.restoreKey.title,
                         "windowIdentity": target.restoreKey.diagnosticDescription,
@@ -374,6 +378,7 @@ public final class WindowAgentRuntime: ObservableObject {
                 succeeded: true,
                 diagnosticFields: [
                     "action": action.rawValue,
+                    "sourceScreenID": String(screenID),
                     "bundleIdentifier": target.bundleIdentifier ?? "-",
                     "windowTitle": target.restoreKey.title,
                     "windowIdentity": target.restoreKey.diagnosticDescription,
@@ -437,39 +442,19 @@ public final class WindowAgentRuntime: ObservableObject {
         }
     }
 
-    func snapAction(at point: CGPoint) -> WindowLayoutAction? {
+    func snapTarget(at point: CGPoint, currentFrame: CGRect) -> WindowSnapTarget? {
         guard settings.isEnabled, settings.dragSnapEnabled else { return nil }
-        let fullFrames = screenFullFramesProvider()
-        guard let screen = fullFrames.first(where: { $0.containsInclusive(point) }) else {
-            return nil
-        }
-        return engine.snapAction(for: point, visibleFrame: screen, allVisibleFrames: fullFrames)
-    }
-
-    func snapPreviewFrame(for action: WindowLayoutAction, at point: CGPoint, currentFrame: CGRect) -> WindowSnapPreviewFrame? {
-        guard settings.isEnabled, settings.dragSnapEnabled else { return nil }
-        let visibleFrames = screenVisibleFramesProvider()
-        let fullFrames = screenFullFramesProvider()
-        guard let screenIndex = fullFrames.firstIndex(where: { $0.containsInclusive(point) }),
-              visibleFrames.indices.contains(screenIndex)
-        else {
-            return nil
-        }
-        let screen = visibleFrames[screenIndex]
-        guard let accessibilityFrame = try? engine.frame(for: WindowLayoutInput(
-            action: action,
-            currentFrame: currentFrame,
-            currentScreenVisibleFrame: screen,
-            allScreenVisibleFrames: visibleFrames,
-            gap: settings.windowGap,
-            displayNavigationStrategy: settings.displayNavigationStrategy
-        )) else {
-            return nil
-        }
-        return WindowSnapPreviewFrame(
-            accessibilityFrame: accessibilityFrame,
-            appKitFrame: Self.coordinateSpace().accessibilityToAppKit(accessibilityFrame)
-        )
+        let snapshot = screensProvider()
+        guard let screen = snapshot.screens.first(where: { $0.fullFrame.containsInclusive(point) }),
+              let action = engine.snapAction(for: point, visibleFrame: screen.fullFrame,
+                                             allVisibleFrames: snapshot.screens.map(\.fullFrame)),
+              let frame = try? engine.frame(for: WindowLayoutInput(
+                action: action, currentFrame: currentFrame,
+                currentScreenVisibleFrame: screen.visibleFrame,
+                allScreenVisibleFrames: snapshot.screens.map(\.visibleFrame), gap: settings.windowGap,
+                displayNavigationStrategy: settings.displayNavigationStrategy)) else { return nil }
+        return WindowSnapTarget(action: action, screen: screen, preview: .init(
+            accessibilityFrame: frame, appKitFrame: snapshot.coordinates.accessibilityToAppKit(frame)))
     }
 
     func windowTarget(at point: CGPoint) async -> WindowHitTestTarget? {
@@ -544,22 +529,6 @@ public final class WindowAgentRuntime: ObservableObject {
 
     private func rectDescription(_ rect: CGRect) -> String {
         "\(Int(rect.minX)),\(Int(rect.minY)),\(Int(rect.width)),\(Int(rect.height))"
-    }
-
-    static func accessibilityVisibleScreenFrames() -> [CGRect] {
-        let screens = NSScreen.screens
-        let coordinateSpace = ArcKitScreenCoordinateSpace(screenFrames: screens.map(\.frame))
-        return screens.map { coordinateSpace.appKitToAccessibility($0.visibleFrame) }
-    }
-
-    static func accessibilityFullScreenFrames() -> [CGRect] {
-        let screens = NSScreen.screens
-        let coordinateSpace = ArcKitScreenCoordinateSpace(screenFrames: screens.map(\.frame))
-        return screens.map { coordinateSpace.appKitToAccessibility($0.frame) }
-    }
-
-    static func coordinateSpace() -> ArcKitScreenCoordinateSpace {
-        ArcKitScreenCoordinateSpace(screenFrames: NSScreen.screens.map(\.frame))
     }
 
     private func observeWorkspaceActivation() {
