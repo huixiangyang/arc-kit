@@ -2,7 +2,7 @@
 
 **Arc Kit，一个工具缝合怪，macOS 下的「要你命 3000」。**
 
-[下载安装](https://arc-kit.com/download/) · [使用指南](https://arc-kit.com/guide/) · [官网](https://arc-kit.com) · [反馈问题](https://github.com/huixiangyang/arc-kit/issues)
+[下载安装](https://github.com/huixiangyang/arc-kit/releases/latest) · [使用指南](https://arc-kit.com/guide/) · [官网](https://arc-kit.com) · [反馈问题](https://github.com/huixiangyang/arc-kit/issues)
 
 Finder 增强、窗口管理、鼠标增强和壁纸，放在一个原生应用里。需要什么就开启什么。「要你命 3000」的名字借自《国产凌凌漆》。
 
@@ -16,15 +16,15 @@ Finder 增强、窗口管理、鼠标增强和壁纸，放在一个原生应用�
 
 **直接下载安装包即可使用，不需要安装 Xcode，也不用编译源码。**
 
-1. 打开[官网下载页](https://arc-kit.com/download/)，点击 **下载 ZIP**。安装包由本站提供，下载 ZIP 不需要访问 GitHub。
+1. 打开 [GitHub 最新 Release](https://github.com/huixiangyang/arc-kit/releases/latest)，在 **Assets** 中下载 **ArcKit-universal.zip**。
 2. 双击下载的 `ArcKit-universal.zip` 解压，将 **Arc Kit.app** 拖进 Finder 左侧的 **应用程序（Applications）**。
 3. 从“应用程序”中双击 Arc Kit，打开设置窗口。请保留在 `/Applications/Arc Kit.app`，不要直接从下载目录运行。
 
-也可以从 [GitHub Releases](https://github.com/huixiangyang/arc-kit/releases) 下载 DMG，打开后将应用拖进“应用程序”。官网下载页会跟随正式版本更新。
+也可以在同一 Release 下载 **ArcKit-universal.dmg**，打开后将应用拖进“应用程序”。官网所有下载入口都跳转到 GitHub 最新 Release。
 
 ### 第一次打开被 macOS 拦住了？
 
-当前版本**没有 Apple Developer ID 签名和公证**。如果提示无法验证开发者或 Apple 无法检查 App，确认文件来自上面的官网下载页或官方 Release 后：
+当前版本**没有 Apple Developer ID 签名和公证**。如果提示无法验证开发者或 Apple 无法检查 App，确认文件来自官方 GitHub Release 后：
 
 1. 先尝试打开一次 Arc Kit，再打开 **Mac 的系统设置 → 隐私与安全性**。
 2. 向下找到 Arc Kit 被阻止的提示，点击 **仍要打开**。
@@ -97,7 +97,7 @@ Finder 增强、窗口管理、鼠标增强和壁纸，放在一个原生应用�
 
 ## 更新与常见问题
 
-**怎么更新？** 在“系统设置 → 关于”点击“检查更新”，也可开启自动检查。应用内更新目前需要连接 GitHub；连接失败时，从[官网](https://arc-kit.com/download/)重新下载，退出旧版后替换“应用程序”里的 Arc Kit。替换应用不需要删除个人数据；更新前可在“数据管理”中导出备份。
+**怎么更新？** 在“系统设置 → 关于”点击“检查更新”，也可开启自动检查。应用内更新和手动下载都需要连接 GitHub；手动更新可从 [GitHub 最新 Release](https://github.com/huixiangyang/arc-kit/releases/latest) 获取安装包，退出旧版后替换“应用程序”里的 Arc Kit。替换应用不需要删除个人数据；更新前可在“数据管理”中导出备份。
 
 **Finder 中没有菜单？** 检查 Finder 总开关和系统扩展开关，关闭旧右键菜单后重新打开。iCloud Drive 中的右键菜单不保证出现，可尝试 Finder 工具栏入口。详细排查见[使用说明](Documentation/使用.md)。
 

@@ -96,7 +96,7 @@ jobs:
           gh release create "$RELEASE_TAG" dist/release/* --verify-tag --draft \
             --title "Arc Kit $RELEASE_TAG" --notes-file "Documentation/Releases/${RELEASE_TAG#v}.md"
           gh release edit "$RELEASE_TAG" --draft=false --latest
-      - name: Publish website version data and update feed
+      - name: Publish release metadata and update feed
         run: |
           set -euo pipefail
           gh auth setup-git
@@ -112,11 +112,3 @@ jobs:
           git -C .build/updates add appcast.xml release.json
           git -C .build/updates commit -m "Publish $RELEASE_TAG update metadata"
           git -C .build/updates push origin HEAD:updates
-
-  sync-website:
-    needs: [prepare, release]
-    uses: ./.github/workflows/sync-website.yml
-    with:
-      tag: ${{ needs.prepare.outputs.tag }}
-    secrets:
-      ARC_KIT_SITE_DEPLOY_KEY: ${{ secrets.ARC_KIT_SITE_DEPLOY_KEY }}

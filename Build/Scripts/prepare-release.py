@@ -69,7 +69,8 @@ def main():
         shutil.copy2(args.output / files['zip']['name'], staging / files['zip']['name'])
         (staging / 'ArcKit-universal.md').write_text(notes.read_text())
         run_tool('generate_appcast', '--ed-key-file', '-', '--download-url-prefix', prefix,
-                 '--embed-release-notes', '--link', 'https://arc-kit.com/download/', '--maximum-deltas', '0', staging)
+                 '--embed-release-notes', '--link', f'https://github.com/{args.repository}/releases/tag/{args.tag}',
+                 '--maximum-deltas', '0', staging)
         feed = staging / 'appcast.xml'
         run_tool('sign_update', '--ed-key-file', '-', '--verify', feed)
         item = ET.parse(feed).find('./channel/item')
