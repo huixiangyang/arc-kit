@@ -14,6 +14,7 @@ struct ApplicationWorkspace: View {
     @ObservedObject private var backgroundModel: AppBackgroundModel
     @ObservedObject private var mouseService: MouseScrollEnhancementService
     @ObservedObject private var windowService: WindowManagementService
+    @ObservedObject private var menuBarService: MenuBarManagementService
     @ObservedObject private var hotKeyService: GlobalHotKeyService
     @ObservedObject private var supportDiagnosticsService: SupportDiagnosticsService
     @ObservedObject private var uninstallService: ArcKitUninstallService
@@ -21,18 +22,21 @@ struct ApplicationWorkspace: View {
     @ObservedObject private var permissions: ApplicationPermissions
     @ObservedObject private var healthModel: AppRuntimeHealthModel
     @ObservedObject private var navigation: MainWindowNavigationModel
+    @ObservedObject private var agentSessions: AgentSessionModel
     private let actions: ApplicationActions
 
     // 标签属于窗口导航状态，切换侧栏后仍回到上次编辑的分组。
     @State private var finderTab: FinderWorkspaceTab = .menu
     @State private var mouseTab: MouseWorkspaceTab = .scrolling
     @State private var overviewTab: OverviewWorkspaceTab = .status
+    @State private var menuBarTab: MenuBarWorkspaceTab = .organize
     @State private var wallpaperTab: WallpaperWorkspaceTab = .library
     @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
 
     init(
         model: SettingsModel,
         dataModel: DataManagementModel,
+        agentSessions: AgentSessionModel,
         loginService: LaunchAtLoginService,
         systemService: SystemEnhancementService,
         wallpaperModel: WallpaperModel,
@@ -40,6 +44,7 @@ struct ApplicationWorkspace: View {
         mouseService: MouseScrollEnhancementService,
         windowService: WindowManagementService,
         hotKeyService: GlobalHotKeyService,
+        menuBarService: MenuBarManagementService,
         supportDiagnosticsService: SupportDiagnosticsService,
         uninstallService: ArcKitUninstallService,
         updateService: ArcKitUpdateService,
@@ -50,6 +55,7 @@ struct ApplicationWorkspace: View {
     ) {
         self.model = model
         self.dataModel = dataModel
+        self.agentSessions = agentSessions
         self.loginService = loginService
         self.systemService = systemService
         self.wallpaperModel = wallpaperModel
@@ -57,6 +63,7 @@ struct ApplicationWorkspace: View {
         self.mouseService = mouseService
         self.windowService = windowService
         self.hotKeyService = hotKeyService
+        self.menuBarService = menuBarService
         self.supportDiagnosticsService = supportDiagnosticsService
         self.uninstallService = uninstallService
         self.updateService = updateService
@@ -125,10 +132,14 @@ struct ApplicationWorkspace: View {
                     selectedTab: $navigation.windowTarget
                 )
             }
+        case .menuBar:
+            MenuBarSection(model: model.menuBarEditor, service: menuBarService, selectedTab: $menuBarTab)
         case .wallpaper:
             WallpaperSection(model: wallpaperModel,
                 backgroundAction: WallpaperBackgroundIntegration.action(for: backgroundModel),
                 backgroundFeedback: AppBackgroundFeedback(model: backgroundModel), selectedTab: $wallpaperTab)
+        case .agentSessions:
+            AgentSessionsSection(model: agentSessions, settings: model.agentSessionsEditor)
         case .preferences:
             Group {
                 SystemSection(
@@ -206,6 +217,16 @@ struct ApplicationWorkspace: View {
             navigate(to: .preferences)
         case let .window(action):
             actions.window.performWindowAction(action)
+        case .menuBarCollection:
+            if menuBarService.isEnabled { menuBarService.toggleShelf(scope: .collected) }
+            else { menuBarTab = .organize; navigate(to: .menuBar) }
+        case .menuBarShelf:
+            if menuBarService.isEnabled { menuBarService.toggleShelf(scope: .all) }
+            else { menuBarTab = .organize; navigate(to: .menuBar) }
+        case .menuBarShowAll:
+            menuBarService.present(.all)
+            menuBarTab = .organize
+            navigate(to: .menuBar)
         case .windowScenes:
             navigation.windowTarget = .scenes
             navigate(to: .window)

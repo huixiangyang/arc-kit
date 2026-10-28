@@ -9,6 +9,68 @@ import Testing
 
 @Suite("设置提交与通信顺序")
 struct SettingsCommitTests {
+    @Test("0.1.2 完整库升级和跨根恢复只增加关闭的新功能，保留 UU 与既有配置")
+    func releasedDatabaseUpgradeAndRestore() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).resolvingSymlinksInPath()
+        defer { try? FileManager.default.removeItem(at: root) }
+        let seed = SettingsRepository(directoryURL: root.appendingPathComponent("seed"))
+        var expected = try seed.load()
+        expected.appearance = .dark
+        expected.showDockIcon = false
+        expected.windowManagement.windowGap = 18
+        expected.mouseEnhancement.globalTuning.speedGain = 1.5
+        expected.mouseEnhancement.appProfiles[0].note = "保留远程滚动说明"
+        let committed = try seed.save(expected)
+        let backup = try StorageMaintenance(database: seed.database).backup(full: true)
+        try seed.database.close()
+
+        // 将隔离夹具收敛到正式 0.1.2 的表与迁移集合；不使用安装版或个人数据库。
+        let fixture = try DatabaseQueue(path: backup.appendingPathComponent("app.sqlite").path)
+        try fixture.write { db in
+            try db.execute(sql: """
+                DROP TABLE agent_session_search_fts;
+                DROP TABLE agent_session_search_entries;
+                DROP TABLE agent_session_search_documents;
+                DROP TABLE agent_session_versions;
+                DROP TABLE agent_session_jobs;
+                DROP TABLE agent_session_sources;
+                DROP TABLE agent_session_preferences;
+                DROP TABLE menu_bar_preferences;
+                DELETE FROM grdb_migrations WHERE identifier IN
+                    ('menu-bar-management-v1','menu-bar-shortcuts-v1','agent-sessions-v1','agent-sessions-search-v1');
+                """)
+        }
+        try fixture.close()
+        let installedRoot = root.appendingPathComponent("installed")
+        try ArcKitStoragePaths.secureDirectory(installedRoot)
+        try FileManager.default.copyItem(at: backup.appendingPathComponent("app.sqlite"), to: installedRoot.appendingPathComponent("app.sqlite"))
+        let upgraded = SettingsRepository(directoryURL: installedRoot)
+        let first = try upgraded.loadSnapshot()
+        #expect(first.settings == expected)
+        #expect(!first.settings.menuBar.isEnabled && !first.settings.agentSessions.isEnabled)
+        #expect(first.settings.agentSessions.sources.isEmpty)
+        #expect(first.revision.runtime == committed.revision.runtime)
+        #expect(try upgraded.database.read { try $0.tableExists("agent_session_search_documents") })
+        try upgraded.database.close()
+        let reopened = SettingsRepository(directoryURL: installedRoot)
+        #expect(try reopened.loadSnapshot() == first)
+
+        var edited = expected
+        edited.menuBar.isEnabled = true
+        edited.agentSessions.isEnabled = true
+        edited.mouseEnhancement.appProfiles.removeAll()
+        try reopened.save(edited)
+        try StorageMaintenance(database: reopened.database).restore(backup)
+        #expect(try reopened.load() == expected)
+        try reopened.database.close()
+        var readOnly = Configuration(); readOnly.readonly = true
+        let originalBackup = try DatabaseQueue(path: backup.appendingPathComponent("app.sqlite").path, configuration: readOnly)
+        #expect(try originalBackup.read { try !$0.tableExists("menu_bar_preferences") && !$0.tableExists("agent_session_search_documents") })
+        try originalBackup.close()
+        var oldJSON = expected; oldJSON.schemaVersion = 25
+        #expect(throws: (any Error).self) { try JSONDecoder().decode(AppSettings.self, from: JSONEncoder().encode(oldJSON)) }
+    }
+
     @Test("UU 默认规则一次性迁移，保留自定义，删除后重启与恢复不补回", arguments: [false, true])
     func uuRemoteDefaultMigrationAndPersistence(existingRule: Bool) throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).resolvingSymlinksInPath()

@@ -99,6 +99,8 @@ targets:
       - path: Sources/Features/Wallpaper
       - path: Sources/Features/Appearance
       - path: Sources/Features/SystemTools
+      - path: Sources/Features/MenuBar
+      - path: Sources/Features/AgentSessions
       - path: Sources/Application/Resources/Brand
         buildPhase: resources
         # 保留父组路径，支持工程生成到 .build/xcode。

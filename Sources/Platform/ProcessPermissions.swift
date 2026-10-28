@@ -1,7 +1,7 @@
 import ApplicationServices
 import Foundation
 
-/// 权限属于执行进程。查询不缓存、不弹窗；AX 由 Host 申请，菜单栏只读输入由主 App 申请。
+/// 权限属于执行进程。查询不缓存、不弹窗；窗口/鼠标 AX 由 Host 负责，菜单栏读取/取用与输入监听使用主 App 权限。
 public enum ProcessPermissions {
     public static func accessibilityTrusted() -> Bool { AXIsProcessTrusted() }
 

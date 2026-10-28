@@ -8,6 +8,14 @@ import Foundation
 enum ArcKitMain {
     @MainActor
     static func main() {
+        #if DEBUG
+        if let result = AgentSessionDevelopment.handle(arguments: CommandLine.arguments) { Darwin.exit(result) }
+        if let result = MenuBarDevelopmentSession.handle(arguments: CommandLine.arguments) { Darwin.exit(result) }
+        #else
+        if CommandLine.arguments.contains(where: { $0.hasPrefix("--menu-bar-") || $0.hasPrefix("--agent-sessions") }) {
+            print(L10n.string(.AppEntry.launchDevelopmentBuildRequired)); Darwin.exit(2)
+        }
+        #endif
         if let index = CommandLine.arguments.firstIndex(of: "--import-legacy-storage") {
             guard CommandLine.arguments.count == index + 3 else {
                 print(L10n.string(.AppEntry.launchUsageArckitappImportLegacyStorageLegacyArc))

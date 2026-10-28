@@ -22,6 +22,9 @@ enum ArcKitQuickCommandAction: Hashable, Sendable {
     case wallpaper(WallpaperWorkspaceTab)
     case preferences(PreferencesWorkspaceTarget)
     case window(WindowLayoutAction)
+    case menuBarCollection
+    case menuBarShelf
+    case menuBarShowAll
     case windowScenes
     case windowScene(UUID)
 }

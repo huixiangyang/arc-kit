@@ -215,6 +215,7 @@ struct StorageMaintenance: Sendable {
                   try ArcKitRecord.load(WallpaperSourceConfiguration.self, layout: WallpaperSourceConfiguration.recordLayout, db: db) != nil else { throw ArcKitDatabaseError.message(L10n.string(.DataManagement.storageBackupLacksFeatureRecords)) }
             _ = try wallpaper.validated(); _ = try background.validated()
             let entries = Dictionary(uniqueKeysWithValues: manifest.files.map { ($0.path, $0) })
+            try AgentSessionStore.validateReferences(db, entries: entries)
             var assets: [String: StorageBackupManifest.File] = [:]
             for row in try Row.fetchAll(db, sql: "SELECT path,digest,byte_count FROM assets") {
                 // 外部备份不能信任声明的列类型；拒绝坏记录，避免强制转换终止进程。

@@ -674,13 +674,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "All data includes settings, templates, wallpapers and app backgrounds. Settings and templates only is for migrating feature configuration."
+            "value": "All data includes settings, templates, wallpapers, backgrounds and the Agent session library. Settings-only exports contain protection policies, not conversations."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "全部数据包含设置、模板、壁纸和应用背景；仅设置与模板用于迁移功能配置。"
+            "value": "全部数据包含设置、模板、壁纸、背景和 Agent 会话库；仅设置导出包含保护策略，不包含对话正文。"
           }
         }
       }
@@ -1034,13 +1034,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Resets general, Finder, window and mouse settings. Wallpapers, app backgrounds and assets are preserved. A settings and templates restore point is saved first; reset stops if backup fails."
+            "value": "Resets feature settings, sources and automatic protection. Saved Agent sessions, wallpapers and backgrounds remain."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "重置通用、Finder、窗口和鼠标设置，保留壁纸、应用背景和素材。先保存当前设置与模板恢复点；备份失败时不会重置。"
+            "value": "重置功能设置、来源与自动保护，保留已备份的 Agent 会话、壁纸和背景。"
           }
         }
       }
@@ -1304,13 +1304,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Unregisters login items, background services and the Finder extension, then moves the app to Trash. Removing data also moves the data folder to Trash."
+            "value": "Unregisters login items, background services and the Finder extension, then moves the app to Trash. Removing data also moves the Agent session library and its local backups to Trash. Export an encrypted copy first."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "注销登录项、后台和 Finder 扩展，将应用移到废纸篓。选择移除数据时，也将数据目录移到废纸篓。"
+            "value": "注销登录项、后台和 Finder 扩展，将应用移到废纸篓。移除数据也会移除 Agent 会话库及本机备份，请先导出加密副本。"
           }
         }
       }
@@ -2312,13 +2312,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Replaces settings, library, background and asset indexes. Background services stop and a database restore point is saved first. Failed validation prevents database replacement."
+            "value": "Replaces settings, library, background, Agent session library and asset indexes. Pauses pending writes and preserves a database restore point. It does not restore into Codex."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "将替换设置、图库、背景和素材索引。恢复前停止后台并保留当前数据库恢复点；备份校验失败时不会替换数据库。"
+            "value": "将替换设置、图库、背景、Agent 会话库及素材索引。先等待写入并保留数据库恢复点；不会自动写回 Codex。"
           }
         }
       }

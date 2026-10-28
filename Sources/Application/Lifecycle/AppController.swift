@@ -12,6 +12,7 @@ import Foundation
 public final class AppController: NSObject, NSMenuItemValidation {
     private let settingsModel = SettingsModel()
     private lazy var dataModel = DataManagementModel(settingsModel: settingsModel)
+    private lazy var agentSessions = AgentSessionModel(settings: settingsModel)
     private let loginService = LaunchAtLoginService()
     private lazy var menuBarController = MenuBarController(actions: menuBarActions, prepare: { [weak self] application, completion in
         guard let self else { completion(.unavailable(L10n.string(.App.applicationWindowServiceEnded))); return }
@@ -48,6 +49,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
         ApplicationWorkspace(
             model: settingsModel,
             dataModel: dataModel,
+            agentSessions: agentSessions,
             loginService: loginService,
             systemService: systemEnhancementService,
             wallpaperModel: wallpaperModel,
@@ -55,6 +57,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
             mouseService: runtime.mouseService,
             windowService: runtime.windowService,
             hotKeyService: runtime.hotKeyService,
+            menuBarService: runtime.menuBarService,
             supportDiagnosticsService: supportDiagnosticsService,
             uninstallService: uninstallService,
             updateService: updateService,
@@ -80,6 +83,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
         super.init()
         dataModel.beforeStorageOperation = { [weak self] restoring in
             guard let self else { return }
+            await agentSessions.suspendAndWait()
             await wallpaperModel.finishPendingChanges()
             await backgroundModel.finishPendingChanges()
             guard !wallpaperModel.channels.busy else { throw CocoaError(.userCancelled) }
@@ -91,7 +95,9 @@ public final class AppController: NSObject, NSMenuItemValidation {
             }
         }
         dataModel.afterStorageOperation = { [weak self] restoring in
-            guard let self, restoring else { return }
+            guard let self else { return }
+            agentSessions.start()
+            guard restoring else { return }
             backgroundModel.reload()
             wallpaperModel.start()
             runtime.start()
@@ -125,6 +131,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
         runtime.start()
         wallpaperModel.start()
         updateService.start()
+        agentSessions.start()
         if launchMode == .interactive {
             showMainWindow()
         }
@@ -470,6 +477,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
     }
 
     public func shutdown() {
+        agentSessions.stop()
         settingsWindowTarget.reset()
         wallpaperModel.stop()
         finderDiagnostics.close()
@@ -492,6 +500,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
             return false
         }
         guard !isUninstalling else { return false }
+        await agentSessions.suspendAndWait()
         await backgroundModel.finishPendingChanges()
         await wallpaperModel.finishPendingChanges()
         shutdown()
@@ -502,6 +511,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
             // 停止失败不能伪装成完整退出；恢复可操作界面，允许用户重试。
             runtime.start()
             wallpaperModel.start()
+            agentSessions.start()
             showAlert(title: L10n.string(.App.applicationQuitIncomplete), message: error.localizedDescription, style: .warning)
             return false
         }
@@ -530,18 +540,20 @@ public final class AppController: NSObject, NSMenuItemValidation {
                 guard await settingsModel.drainPendingChanges(under: operation) else { throw CocoaError(.fileWriteUnknown) }
                 await wallpaperModel.finishPendingChanges()
                 await backgroundModel.finishPendingChanges()
+                await agentSessions.suspendAndWait()
                 registrationSnapshot = try await runtime.host.unregisterForUninstall()
             } catch {
                 isUninstalling = false
                 settingsModel.operations.end(operation)
                 runtime.start()
                 wallpaperModel.start()
+                agentSessions.start()
                 showAlert(title: L10n.string(.App.applicationUninstallFailed), message: error.localizedDescription, style: .warning)
                 return
             }
             uninstallService.uninstall(onFailure: { [weak self] in
                 guard let self else { return }
-                defer { self.isUninstalling = false; self.settingsModel.operations.end(operation); self.runtime.start(); self.wallpaperModel.start() }
+                defer { self.isUninstalling = false; self.settingsModel.operations.end(operation); self.runtime.start(); self.wallpaperModel.start(); self.agentSessions.start() }
                 do {
                     try self.runtime.host.restoreAfterFailedUninstall(registrationSnapshot)
                 } catch {

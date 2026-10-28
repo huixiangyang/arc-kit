@@ -12,6 +12,10 @@ struct LocalizationTests {
     func nativeCatalogFormatting() {
         #expect(L10n.string(.Common.cancel, language: .english) == "Cancel")
         #expect(L10n.string(.Common.cancel, language: .simplifiedChinese) == "取消")
+        // 增量构建必须同时更新符号和运行资源，不能让新控件显示原始 key。
+        #expect(L10n.string(.MenuBar.actionShowAllShort, language: .english) == "Show all")
+        #expect(L10n.string(.MenuBar.actionShowAllShort, language: .simplifiedChinese) == "显示全部")
+        #expect(L10n.string(.MenuBar.runtimeRequested("Show all"), language: .english) == "Requested: Show all")
         #expect(L10n.string(.Wallpaper.libraryCount(1), language: .english) == "1 wallpaper")
         #expect(L10n.string(.Wallpaper.libraryCount(2), language: .english) == "2 wallpapers")
         #expect(L10n.string(.Wallpaper.libraryCount(0), language: .simplifiedChinese) == "0 项壁纸")
@@ -24,6 +28,14 @@ struct LocalizationTests {
         #expect(ArcKitLanguage.english.resolved(preferredLanguages: ["zh-CN"]) == .english)
         // 功能移动后，入口不能丢失或重复；中英文搜索词仍路由到同一个功能。
         #expect(Set(ApplicationFeatureCatalog.all.map(\.section)) == Set(MainWindowSection.allCases))
+        #expect(ArcKitQuickCommandCatalog.results(for: "menu bar").contains { $0.action == .section(.menuBar) })
+        if MenuBarPartitionMode.current.supportsSections {
+            #expect(ArcKitQuickCommandCatalog.results(for: "普通收纳").first?.action == .menuBarCollection)
+        } else {
+            #expect(!ArcKitQuickCommandCatalog.all.contains { $0.action == .menuBarCollection })
+        }
+        #expect(ArcKitQuickCommandCatalog.all.contains { $0.action == .menuBarShelf })
+        #expect(L10n.string(.MenuBar.overflowTitle, language: .english) == "System overflow")
         let commands = ArcKitQuickCommandCatalog.all
         #expect(Set(commands.map(\.id)).count == commands.count)
         #expect(ArcKitQuickCommandCatalog.results(for: "NEW FILE").first?.action == .finder(.templates))

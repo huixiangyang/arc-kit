@@ -1,0 +1,2184 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "page.title": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent Sessions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent 会话"
+          }
+        }
+      }
+    },
+    "page.description": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protect, browse and restore local coding sessions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保护、浏览和恢复本机编程会话"
+          }
+        }
+      }
+    },
+    "error.settings": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid session backup settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "会话备份设置无效"
+          }
+        }
+      }
+    },
+    "error.archive": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The backup is damaged, incomplete or unsupported. No data was replaced."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份已损坏、缺失或格式不受支持，未替换现有数据。"
+          }
+        }
+      }
+    },
+    "error.format": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This Codex data format is not supported. Update the adapter before restoring."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 Codex 数据格式尚未支持，请更新适配器后恢复。"
+          }
+        }
+      }
+    },
+    "error.changed": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is a partial snapshot. Wait for another backup, or explicitly allow a partial restore."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这是一份过程快照。请等待下一次备份，或明确选择恢复部分数据。"
+          }
+        }
+      }
+    },
+    "error.capacity": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The backup capacity or package size limit has been reached. Increase capacity or export a smaller selection."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已达到备份容量或单包大小限制。请提高容量或分批导出。"
+          }
+        }
+      }
+    },
+    "error.password": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incorrect password or damaged encrypted archive."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "口令错误或加密备份已损坏。"
+          }
+        }
+      }
+    },
+    "error.passwordShort": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use a password of at least 12 characters."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请使用至少 12 个字符的口令。"
+          }
+        }
+      }
+    },
+    "error.busyTarget": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex is using the destination. Quit every client using this data directory before restoring."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex 正在使用目标目录。请退出使用此目录的全部客户端后恢复。"
+          }
+        }
+      }
+    },
+    "error.native": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Native restore requires the validated Codex CLI 0.163.0. Choose that executable; browsing and backups remain available."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原生恢复需要已验证的 Codex CLI 0.163.0。请选择对应可执行文件；浏览和备份不受影响。"
+          }
+        }
+      }
+    },
+    "error.conflict": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "There is nothing to restore with the current conflict policy. Existing sessions were preserved."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按当前冲突处理规则，没有需要恢复的会话，现有会话已保留。"
+          }
+        }
+      }
+    },
+    "error.interrupted": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An interrupted restore must be rolled back before starting another."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "存在中断的恢复，请先回退再开始新的恢复。"
+          }
+        }
+      }
+    },
+    "error.related": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A related parent or child session is missing from this snapshot. Back up the complete session family first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此快照缺少关联的父会话或子会话，请先备份完整会话组。"
+          }
+        }
+      }
+    },
+    "error.duplicate": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duplicate session ID in this source: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此来源存在重复会话 ID：%1$@"
+          }
+        }
+      }
+    },
+    "error.recoveryPath": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A restore needs recovery. Keep Codex closed and roll back this journal: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一次恢复需要回退。请保持 Codex 关闭，并回退此记录：%1$@"
+          }
+        }
+      }
+    },
+    "error.source": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose an existing local directory without symbolic links."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请选择存在的本地目录，不使用符号链接。"
+          }
+        }
+      }
+    },
+    "progress.backup": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protecting sessions…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在备份会话…"
+          }
+        }
+      }
+    },
+    "progress.scan": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking sources…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在检查来源…"
+          }
+        }
+      }
+    },
+    "progress.save": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在保存…"
+          }
+        }
+      }
+    },
+    "progress.import": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Decrypting and importing…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在解密并导入…"
+          }
+        }
+      }
+    },
+    "progress.export": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encrypting and verifying…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在加密并验证…"
+          }
+        }
+      }
+    },
+    "progress.restore": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Validating and restoring with Codex…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在通过 Codex 验证并恢复…"
+          }
+        }
+      }
+    },
+    "result.backup": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved %1$@ new versions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保存 %1$@ 个新版本"
+          }
+        }
+      }
+    },
+    "result.saved": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version retention updated"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已更新版本保留策略"
+          }
+        }
+      }
+    },
+    "result.import": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imported %1$@ session snapshots into Arc Kit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已向 Arc Kit 导入 %1$@ 份会话快照"
+          }
+        }
+      }
+    },
+    "result.export": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encrypted backup saved: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加密备份已保存：%1$@"
+          }
+        }
+      }
+    },
+    "result.restore": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessions restored. Original files are preserved at %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "会话已恢复，原文件保留在 %1$@"
+          }
+        }
+      }
+    },
+    "result.rollback": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interrupted restore rolled back; original sessions preserved"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已回退中断的恢复，原会话已保留"
+          }
+        }
+      }
+    },
+    "sourceErrors": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ sources need attention"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 个来源需要处理"
+          }
+        }
+      }
+    },
+    "sources.manage": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sources & protection"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源与保护策略"
+          }
+        }
+      }
+    },
+    "auto.on": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic protection is on"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动保护已开启"
+          }
+        }
+      }
+    },
+    "auto.off": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manual backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手动备份"
+          }
+        }
+      }
+    },
+    "auto.enable": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatically protect new and changed sessions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动保护新增和变化的会话"
+          }
+        }
+      }
+    },
+    "auto.detail": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runs while Arc Kit is open. Changes are grouped, with a check every 5 minutes. Quitting Arc Kit stops protection."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit 运行时合并处理文件变化，每 5 分钟补扫一次；退出 Arc Kit 后停止保护。"
+          }
+        }
+      }
+    },
+    "importArchive": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import encrypted backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导入加密备份"
+          }
+        }
+      }
+    },
+    "exportArchive": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export encrypted backup"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导出加密备份"
+          }
+        }
+      }
+    },
+    "transfer.title": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import or export"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导入与导出"
+          }
+        }
+      }
+    },
+    "backup.all": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back up all"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份全部"
+          }
+        }
+      }
+    },
+    "backup.selected": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back up selection"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份所选"
+          }
+        }
+      }
+    },
+    "search": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search title, project or session ID"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索标题、项目或会话 ID"
+          }
+        }
+      }
+    },
+    "source": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源"
+          }
+        }
+      }
+    },
+    "project": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Project"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "项目"
+          }
+        }
+      }
+    },
+    "allSources": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All sources"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部来源"
+          }
+        }
+      }
+    },
+    "allProjects": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All projects"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部项目"
+          }
+        }
+      }
+    },
+    "refresh": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check for changes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检查变化"
+          }
+        }
+      }
+    },
+    "column.session": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SESSION / PROJECT"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "会话 / 项目"
+          }
+        }
+      }
+    },
+    "column.protection": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PROTECTION"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保护状态"
+          }
+        }
+      }
+    },
+    "noMatches": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No matching sessions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有匹配的会话"
+          }
+        }
+      }
+    },
+    "archived": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Archived in Codex"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex 已归档"
+          }
+        }
+      }
+    },
+    "restore.native": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore to Codex"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复到 Codex"
+          }
+        }
+      }
+    },
+    "pinVersion": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep this version permanently"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "永久保留此版本"
+          }
+        }
+      }
+    },
+    "unpinVersion": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use normal retention for this version"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此版本恢复常规保留策略"
+          }
+        }
+      }
+    },
+    "version": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup version"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份版本"
+          }
+        }
+      }
+    },
+    "partial.detail": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partial snapshot: records, attachments, related sessions or paginated indexes were not fully captured."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "部分备份：记录、附件、关联会话或分页索引尚未完整采集。"
+          }
+        }
+      }
+    },
+    "searchTranscript": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find in this version"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在此版本中查找"
+          }
+        }
+      }
+    },
+    "backupToPreview": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back up this session to browse a protected copy."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份此会话后，即可浏览已保护的副本。"
+          }
+        }
+      }
+    },
+    "role.user": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YOU"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用户"
+          }
+        }
+      }
+    },
+    "role.assistant": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AGENT"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent"
+          }
+        }
+      }
+    },
+    "selectSession": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select a session to view its history"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择一个会话查看历史"
+          }
+        }
+      }
+    },
+    "multiSelection": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ sessions selected"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已选择 %1$@ 个会话"
+          }
+        }
+      }
+    },
+    "empty.title": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep a recoverable copy."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "为会话保留可恢复的副本"
+          }
+        }
+      }
+    },
+    "empty.detail": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add your Codex data directory to browse and protect local sessions. Deleting a session in Codex will not delete its backup."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加 Codex 数据目录，浏览并保护本机会话。在 Codex 中删除会话，不会删除这里的备份。"
+          }
+        }
+      }
+    },
+    "addSource": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add a Codex source"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加 Codex 来源"
+          }
+        }
+      }
+    },
+    "footer.count": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ sessions · %2$@ stored"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 个会话 · 已保存 %2$@"
+          }
+        }
+      }
+    },
+    "lastCheck": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last source check"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近检查来源"
+          }
+        }
+      }
+    },
+    "status.deleted": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source deleted"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "源已删除"
+          }
+        }
+      }
+    },
+    "status.unprotected": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not backed up"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未备份"
+          }
+        }
+      }
+    },
+    "status.partial": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partial"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "部分备份"
+          }
+        }
+      }
+    },
+    "status.changed": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New changes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有新内容"
+          }
+        }
+      }
+    },
+    "status.protected": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protected"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保护"
+          }
+        }
+      }
+    },
+    "retained": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kept"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "固定保留"
+          }
+        }
+      }
+    },
+    "actionFailed": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Action failed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "操作未完成"
+          }
+        }
+      }
+    },
+    "sourceName": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source name"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源名称"
+          }
+        }
+      }
+    },
+    "removeSource": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop tracking this source; keep all backups"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除此来源，保留全部备份"
+          }
+        }
+      }
+    },
+    "allowAttachments": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow an attachment directory…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "授权附件目录…"
+          }
+        }
+      }
+    },
+    "addDefault": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use ~/.codex"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用 ~/.codex"
+          }
+        }
+      }
+    },
+    "retention": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version history"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "版本历史"
+          }
+        }
+      }
+    },
+    "capacity": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Storage limit"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "存储上限"
+          }
+        }
+      }
+    },
+    "days": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ days"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 天"
+          }
+        }
+      }
+    },
+    "retention.detail": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Always keep the latest version, the last complete version and pinned versions. Removing a source keeps its backups. External attachments are read only from directories you authorize."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "始终保留最新版本、最后一份完整版本和固定版本。移除来源不会删除备份；外部附件只从明确授权的目录读取。"
+          }
+        }
+      }
+    },
+    "import.detail": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter the export password. Import adds snapshots to Arc Kit and does not write to Codex."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输入导出时的口令。导入只添加到 Arc Kit 会话库，不会写入 Codex。"
+          }
+        }
+      }
+    },
+    "export.detail": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The archive contains private conversations and code. Use at least 12 characters and keep the password separately; it cannot be recovered. Maximum 512 MB per package before compression."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份包含私人对话和代码。使用至少 12 个字符的口令，并另行保管；口令无法找回。每包压缩前最多 512 MB。"
+          }
+        }
+      }
+    },
+    "password": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup password"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份口令"
+          }
+        }
+      }
+    },
+    "passwordConfirm": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirm password"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "再次输入口令"
+          }
+        }
+      }
+    },
+    "restore.detail": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verify in an isolated Codex home, then merge only selected sessions. No model requests or past tool calls are executed. Keep Codex closed until recovery finishes."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "先在隔离 Codex 目录中验证，再合入所选会话。不调用模型、不重放历史工具调用。完成前请保持 Codex 关闭。"
+          }
+        }
+      }
+    },
+    "destination": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destination CODEX_HOME"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标 CODEX_HOME"
+          }
+        }
+      }
+    },
+    "chooseDestination": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select the Codex data directory to restore into"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择要恢复到的 Codex 数据目录"
+          }
+        }
+      }
+    },
+    "chooseDirectory": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择…"
+          }
+        }
+      }
+    },
+    "chooseCodex": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Codex CLI…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择 Codex CLI…"
+          }
+        }
+      }
+    },
+    "mapProject": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Map project…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "映射项目…"
+          }
+        }
+      }
+    },
+    "replaceConflicts": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Replace conflicting sessions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "替换冲突会话"
+          }
+        }
+      }
+    },
+    "replace.detail": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conflicts are skipped by default. Replacement preserves the existing files and database in a recovery directory."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "默认跳过冲突。替换前会将原文件和数据库保存在目标目录内的恢复点。"
+          }
+        }
+      }
+    },
+    "allowPartial": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore partial data; missing attachments remain unavailable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复部分数据，缺失附件仍不可用"
+          }
+        }
+      }
+    },
+    "confirmClosed": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I have quit every Codex client using this destination"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我已退出使用此目标目录的全部 Codex 客户端"
+          }
+        }
+      }
+    },
+    "rollbackInterrupted": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roll back interrupted restore"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "回退中断的恢复"
+          }
+        }
+      }
+    },
+    "restore.confirm": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verify and restore"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "验证并恢复"
+          }
+        }
+      }
+    },
+    "restore.new": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新增"
+          }
+        }
+      }
+    },
+    "restore.identical": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Identical · skip"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "相同 · 跳过"
+          }
+        }
+      }
+    },
+    "restore.conflict": {
+      "extractionState": "manual",
+      "comment": "Agent session backup, browsing and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conflict"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "冲突"
+          }
+        }
+      }
+    },
+    "error.schema": {
+      "extractionState": "manual",
+      "comment": "Native schema name that cannot be merged.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex table %1$@ has a different schema. The destination was not replaced."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex 表 %1$@ 的结构不同，未替换目标数据。"
+          }
+        }
+      }
+    },
+    "progress.read": {
+      "extractionState": "manual",
+      "comment": "Loading and validating selected backup versions.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reading protected versions…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在读取并验证备份版本…"
+          }
+        }
+      }
+    },
+    "fullBackupPrivacy": {
+      "extractionState": "manual",
+      "comment": "Scope and privacy of the existing full app backup.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The complete Arc Kit data package is not encrypted and includes session contents. Use Agent Sessions to export a password-encrypted copy."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc Kit 完整数据包未加密，包含会话正文。需要加密副本时，请从「Agent 会话」导出。"
+          }
+        }
+      }
+    },
+    "fullBackupEstimate": {
+      "extractionState": "manual",
+      "comment": "Scope and privacy of the existing full app backup.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated data size: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预计数据大小：%1$@"
+          }
+        }
+      }
+    },
+    "viewParent": {
+      "extractionState": "manual",
+      "comment": "Session family navigation and recovery validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View parent session"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看父会话"
+          }
+        }
+      }
+    },
+    "viewChildren": {
+      "extractionState": "manual",
+      "comment": "Session family navigation and recovery validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Child sessions (%1$@)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "子会话（%1$@）"
+          }
+        }
+      }
+    },
+    "error.projection": {
+      "extractionState": "manual",
+      "comment": "Session family navigation and recovery validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A consistent paginated history index is required for this child session. Open its history in Codex, then create a new backup."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此子会话需要一致的分页历史索引。请先在 Codex 中打开其历史，再创建新的备份。"
+          }
+        }
+      }
+    },
+    "error.idleCheck": {
+      "extractionState": "manual",
+      "comment": "Session family navigation and recovery validation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not confirm that the destination is unused. No files were replaced. Check access to the destination and try again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法确认目标目录是否已停止使用，未替换文件。请检查目标目录的访问权限后重试。"
+          }
+        }
+      }
+    },
+    "backToList": {
+      "extractionState": "manual",
+      "comment": "Compact window navigation from a session back to the list.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All sessions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "返回会话列表"
+          }
+        }
+      }
+    },
+    "backup.filtered": {
+      "extractionState": "manual",
+      "comment": "Back up only sessions matching the current source, project and search filters.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back up filtered sessions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份筛选结果"
+          }
+        }
+      }
+    },
+    "search.messages": {
+      "extractionState": "manual",
+      "comment": "Cross-session saved-message search and exact version navigation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search saved messages"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索已保护的消息"
+          }
+        }
+      }
+    },
+    "search.scope": {
+      "extractionState": "manual",
+      "comment": "Cross-session saved-message search and exact version navigation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search in"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索范围"
+          }
+        }
+      }
+    },
+    "search.metadata": {
+      "extractionState": "manual",
+      "comment": "Cross-session saved-message search and exact version navigation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "会话信息"
+          }
+        }
+      }
+    },
+    "search.body": {
+      "extractionState": "manual",
+      "comment": "Cross-session saved-message search and exact version navigation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Messages"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "消息正文"
+          }
+        }
+      }
+    },
+    "search.body.hint": {
+      "extractionState": "manual",
+      "comment": "Cross-session saved-message search and exact version navigation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Searches saved user and assistant messages. Tool output and unprotected sessions are not included."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅搜索已保护版本中的用户与助手正文，不包含工具输出或尚未备份的会话。"
+          }
+        }
+      }
+    },
+    "search.protected.messages": {
+      "extractionState": "manual",
+      "comment": "Cross-session saved-message search and exact version navigation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved messages"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保护的消息"
+          }
+        }
+      }
+    },
+    "search.session.count": {
+      "extractionState": "manual",
+      "comment": "Cross-session saved-message search and exact version navigation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ sessions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 个会话"
+          }
+        }
+      }
+    },
+    "search.retry": {
+      "extractionState": "manual",
+      "comment": "Cross-session saved-message search and exact version navigation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retry search"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重试搜索"
+          }
+        }
+      }
+    },
+    "search.preparing": {
+      "extractionState": "manual",
+      "comment": "Cross-session saved-message search and exact version navigation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Searching saved messages…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在搜索已保护的消息…"
+          }
+        }
+      }
+    },
+    "search.limit": {
+      "extractionState": "manual",
+      "comment": "Cross-session saved-message search and exact version navigation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Showing the first %1$@ sessions. Refine your search to see more."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示前 %1$@ 个会话，请缩小搜索范围。"
+          }
+        }
+      }
+    },
+    "search.open.message": {
+      "extractionState": "manual",
+      "comment": "Cross-session saved-message search and exact version navigation.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the matching version and message"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开匹配版本并定位消息"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

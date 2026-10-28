@@ -144,6 +144,24 @@
           }
         }
       }
+    },
+    "launch.developmentBuildRequired": {
+      "extractionState": "manual",
+      "comment": "Refuse development-only commands before initializing production storage.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Development commands require a Debug build."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开发命令需要 Debug 构建。"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

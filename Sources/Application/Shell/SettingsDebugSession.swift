@@ -12,6 +12,7 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
     private var languageObservation: AnyCancellable?
     private let model: SettingsModel
     private let dataModel: DataManagementModel
+    private let agentSessions: AgentSessionModel
     private let runtime: ApplicationRuntime
     private let wallpaperModel: WallpaperModel
     private let backgroundModel: AppBackgroundModel
@@ -24,6 +25,7 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
         ApplicationWorkspace(
             model: model,
             dataModel: dataModel,
+            agentSessions: agentSessions,
             loginService: LaunchAtLoginService(),
             systemService: SystemEnhancementService(),
             wallpaperModel: wallpaperModel,
@@ -31,6 +33,7 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
             mouseService: runtime.mouseService,
             windowService: runtime.windowService,
             hotKeyService: runtime.hotKeyService,
+            menuBarService: runtime.menuBarService,
             supportDiagnosticsService: SupportDiagnosticsService(),
             uninstallService: ArcKitUninstallService(),
             updateService: ArcKitUpdateService(),
@@ -49,8 +52,9 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
             templateLibrary: NewFileTemplateLibrary(baseDirectory: paths.templates))
         dataModel = DataManagementModel(settingsModel: model,
             backupService: SettingsBackupService(automaticBackupURL: paths.backups.appendingPathComponent("LastSettingsBackup.json"), managedTemplateDirectory: paths.templates))
+        agentSessions = AgentSessionModel(settings: model, isPreview: true)
         // 只取得未连接的展示服务，禁止调用 start，避免抢占安装版的 Host 会话。
-        runtime = ApplicationRuntime(settingsModel: model)
+        runtime = ApplicationRuntime(settingsModel: model, isPreview: true)
         super.init()
         languageObservation = model.$committedSettings.compactMap { $0?.language }.removeDuplicates().sink { [weak self] language in
             L10n.configure(language)
@@ -59,6 +63,7 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
         }
         dataModel.beforeStorageOperation = { [weak self] restoring in
             guard let self else { return }
+            await agentSessions.suspendAndWait()
             await wallpaperModel.finishPendingChanges()
             await backgroundModel.finishPendingChanges()
             guard !wallpaperModel.channels.busy else { throw CocoaError(.userCancelled) }
@@ -66,7 +71,9 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
             if restoring { wallpaperModel.stop() }
         }
         dataModel.afterStorageOperation = { [weak self] restoring in
-            guard let self, restoring else { return }
+            guard let self else { return }
+            agentSessions.start()
+            guard restoring else { return }
             // 恢复后重新加载调试模型，仍不启动 Runtime 或安装版后台。
             backgroundModel.reload()
             wallpaperModel.start()
@@ -88,7 +95,8 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
         application.mainMenu = menu
         application.finishLaunching()
         session.wallpaperModel.start()
-        session.window.show()
+        session.agentSessions.start()
+        session.window.show(section: CommandLine.arguments.contains("--agent-sessions") ? .agentSessions : (CommandLine.arguments.contains("--menu-bar-settings") ? .menuBar : .overview))
         print("UI_DEBUG_READY pid=\(ProcessInfo.processInfo.processIdentifier) settings=\(paths.root.path)")
         withExtendedLifetime(session) { application.run() }
     }
@@ -98,12 +106,15 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
         guard let operation = try? model.operations.begin(.termination) else { return .terminateCancel }
         Task {
             defer { model.operations.end(operation) }
+            await agentSessions.suspendAndWait()
             await wallpaperModel.finishPendingChanges()
             await backgroundModel.finishPendingChanges()
             let saved = await model.drainPendingChanges(under: operation)
             if case .failed = backgroundModel.persistenceState {
+                agentSessions.start()
                 sender.reply(toApplicationShouldTerminate: false)
             } else {
+                if !saved { agentSessions.start() }
                 sender.reply(toApplicationShouldTerminate: saved)
             }
         }

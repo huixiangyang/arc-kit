@@ -15,6 +15,7 @@ final class ApplicationRuntime {
     let windowService: WindowManagementService
     let hotKeyService: GlobalHotKeyService
     let dragSnapService: WindowDragSnapService
+    let menuBarService: MenuBarManagementService
     let snapshotStore = FinderExtensionSnapshotStore()
     var stateDidChange: (() -> Void)?
     var settingsDidCommit: ((AppSettings?, AppSettings) -> Void)?
@@ -28,6 +29,8 @@ final class ApplicationRuntime {
         didCommit: { [weak self] previous, current in
             guard let self else { return }
             L10n.configure(current.language)
+            menuBarService.apply(current.menuBar)
+            if previous?.language != current.language { menuBarService.refreshLanguage() }
             host.apply(current, revision: settingsModel.committedRevision?.runtime ?? 0)
             if previous?.finder != current.finder || previous?.language != current.language { snapshotStore.publish(settings: current.finder) }
             permissions.refreshSystem()
@@ -42,8 +45,9 @@ final class ApplicationRuntime {
         hotKeyService: hotKeyService, dragSnapService: dragSnapService
     )
 
-    init(settingsModel: SettingsModel) {
+    init(settingsModel: SettingsModel, isPreview: Bool = false) {
         self.settingsModel = settingsModel
+        menuBarService = MenuBarManagementService(isPreview: isPreview)
         let window = WindowRuntimeClient()
         let mouse = MouseRuntimeClient()
         host = RuntimeHostCoordinator(window: window, mouse: mouse, permissions: permissions)
@@ -63,6 +67,7 @@ final class ApplicationRuntime {
 
     func stop() {
         isStarted = false
+        menuBarService.stop()
         host.suspend()
         accessibilityPermissionMonitor.stop()
         settingsSession.stop()

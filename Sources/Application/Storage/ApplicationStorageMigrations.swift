@@ -10,7 +10,7 @@ enum ApplicationStorageMigrations {
     static func migrate(_ queue: DatabaseQueue) throws {
         var migrator = DatabaseMigrator()
         let layouts = [GlobalSettings.recordLayout, FinderRuntimeSettings.recordLayout,
-            WindowManagementSettings.recordLayout, MouseEnhancementSettings.recordLayout,
+            WindowManagementSettings.recordLayout, MouseEnhancementSettings.recordLayout, MenuBarSettings.recordLayout, AgentSessionSettings.recordLayout,
             WallpaperCatalog.recordLayout, AppBackgroundSettings.recordLayout, WallpaperSourceConfiguration.recordLayout]
         migrator.registerMigration("storage-v1") { db in
             try ArcKitDatabase.createStoreSchema(in: db)
@@ -118,6 +118,35 @@ enum ApplicationStorageMigrations {
                 """, arguments: [rule.behavior.rawValue, initialUURemoteNoteChinese, initialUURemoteNoteEnglish,
                                    rule.note, rule.id.uuidString])
             try ArcKitDatabase.advance(db, runtime: true)
+        }
+        migrator.registerMigration("menu-bar-management-v1") { db in
+            // 旧库只增加关闭状态的菜单栏配置；不改动其他功能或系统图标位置。
+            let existed = try db.tableExists(MenuBarSettings.recordLayout.table)
+            try createRecords(MenuBarSettings.recordLayout, in: db)
+            if !existed {
+                try ArcKitRecord.save(MenuBarSettings.defaults, layout: MenuBarSettings.recordLayout, db: db)
+                try ArcKitDatabase.advance(db)
+            }
+        }
+        migrator.registerMigration("menu-bar-shortcuts-v1") { db in
+            let columns = try db.columns(in: "menu_bar_preferences").map(\.name)
+            for column in ["shelfShortcut", "revealShortcut"] where !columns.contains(column) {
+                // 只为已有配置增加关闭的快捷键；不因升级占用用户键盘组合。
+                try db.execute(sql: "ALTER TABLE menu_bar_preferences ADD COLUMN \(column) ANY")
+                try db.execute(sql: "UPDATE menu_bar_preferences SET \(column)='disabled', _types=json_set(_types, '$.\(column)', 'text')")
+                try ArcKitDatabase.advance(db)
+            }
+        }
+        migrator.registerMigration("agent-sessions-v1") { db in
+            let exists = try db.tableExists(AgentSessionSettings.recordLayout.table)
+            try createRecords(AgentSessionSettings.recordLayout, in: db)
+            if !exists { try ArcKitRecord.save(AgentSessionSettings.defaults, layout: AgentSessionSettings.recordLayout, db: db) }
+            try AgentSessionStore.createSchema(db)
+            try ArcKitDatabase.advance(db)
+        }
+        migrator.registerMigration("agent-sessions-search-v1") { db in
+            // 搜索是会话资产的派生索引，不改变用户配置，也不推进 Host 的配置代次。
+            try AgentSessionStore.createSearchSchema(db)
         }
         try migrator.migrate(queue)
     }

@@ -8,6 +8,7 @@
 | [LinearMouse](https://github.com/linearmouse/linearmouse/tree/ef541a5cf5b89e17167b773a545010a454632c08) | EventTap 生命周期与回调、滚轮事件字段封装的参考改写 | [MIT](LinearMouse-MIT.txt) |
 | [Sparkle 2.10.0](https://github.com/sparkle-project/Sparkle/tree/2.10.0) | 软件更新框架、安装助手、更新签名与订阅工具 | [许可证及第三方声明](Sparkle.txt) |
 | [GRDB.swift 7.11.1](https://github.com/groue/GRDB.swift/tree/v7.11.1) | SQLite 连接、事务、迁移与原生备份；仅主应用和 Runtime Host 链接 | [MIT](GRDB-MIT.txt) |
+| [MenubarHide](https://github.com/junior-rj/menubar-hide#macos-27) | macOS 27 分段占位阈值与系统溢出方式的技术参考；按本项目生命周期独立实现 | [MIT](MenubarHide-MIT.txt) |
 
 Lucide 部分图标继承自 [Feather](https://github.com/feathericons/feather)，其 MIT 版权声明与授权正文已包含在上述文件中。LinearMouse 对应源文件另有版权声明：Copyright (c) 2021-2026 LinearMouse。
 

@@ -43,6 +43,7 @@ default.profraw
 *.sqlite
 *.sqlite-*
 *.arckitbackup
+*.arckitsessions
 *.p12
 *.pfx
 *.mobileprovision
