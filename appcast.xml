@@ -4,50 +4,39 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Arc Kit</title>
         <item>
-            <title>0.1.1</title>
-            <pubDate>Mon, 19 Oct 2026 09:26:52 +0000</pubDate>
-            <link>https://arc-kit.com/download/</link>
-            <sparkle:version>62</sparkle:version>
-            <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
+            <title>0.1.2</title>
+            <pubDate>Wed, 28 Oct 2026 06:04:01 +0000</pubDate>
+            <link>https://github.com/huixiangyang/arc-kit/releases/tag/v0.1.2</link>
+            <sparkle:version>63</sparkle:version>
+            <sparkle:shortVersionString>0.1.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Arc Kit 0.1.1
+            <description sparkle:format="markdown"><![CDATA[# Arc Kit 0.1.2
 
-本次更新重点修复多屏窗口落点错误，并加入可保存和恢复的窗口场景。
+本次更新修复 UU 远程中外置鼠标滚动正常、触控板纵向方向仍相反的问题。
 
-## 窗口管理
+## UU 远程滚动
 
-- 修复后台长期运行后仍使用旧屏幕排列或分辨率的问题。窗口布局与场景统一读取实时屏幕快照，屏幕切换尚未完成时取消布局，避免误移到其他屏幕。
-- 修复跨屏拖拽吸附的预览与实际落点不一致：按松手点锁定目标屏，目标屏断开或几何发生变化时取消本次吸附。
-- 新增「窗口 → 场景」：保存当前布局、编辑匹配规则、更新布局、另存为、显示器重映射及快捷键；也可从菜单栏和应用内 `⌘K` 应用场景。
-- 场景按应用与窗口身份唯一匹配，分别报告缺屏、缺窗口、歧义和应用尺寸限制；部分恢复失败时保留已尝试窗口的撤销点。更新布局保留暂时不可用的旧条目，不自动删除副屏预设。
-
-## 壁纸与数据
-
-- 壁纸同词刷新按来源替换结果，失败来源保留旧内容；配置冲突后可重新读取并重试。
-- 重复导入可修复缺失媒体或损坏缩略图，同时保留收藏与分屏分配；失败导入不会删除其他条目的共享缩略图。
-- 桌面视频换片、重连及回滚继承暂停状态；停止或失败后不再被迟到事务恢复。播放失败释放资源，不再误报成功。
-- 备份与恢复检查图库、背景和资产索引的路径及大小关联，拒绝业务引用错配的备份。
+- 默认应用规则改为“仅反转触控纵向”：普通鼠标及不带手势标记的高分辨率滚轮保持原样，只反转触控板上下滚动。
+- 保留系统惯性、手势起止、横向滚动、修饰键及事件目标，不给触控板叠加鼠标平滑或加速。带原生手势标记的 Magic Mouse 也使用这条规则。
+- 其他应用维持原来的滚动处理。可在“鼠标 → 应用规则”将 UU 改为“不启用增强”，让所有输入原样通过。
+- 旧安装中仍采用“不启用增强”和默认参数的原始 UU 规则会一次性升级。自建规则、已修改的行为或参数、已删除的规则，以及用户填写或清空的说明均保留。
 
 ## 下载与升级
 
-版本为 **0.1.1 / build 62**，支持 macOS 13 及以上的 Apple Silicon 和 Intel Mac。使用应用内“检查更新”，或下载 `ArcKit-universal.dmg` / `ArcKit-universal.zip` 安装；替换前正常退出 Arc Kit。
+版本为 **0.1.2 / build 63**，支持 macOS 13 及以上的 Apple Silicon 和 Intel Mac。使用应用内“检查更新”，或下载 `ArcKit-universal.dmg` / `ArcKit-universal.zip`；替换前正常退出 Arc Kit，主应用与后台整包升级。
 
-本版增加窗口场景的数据表，升级时自动迁移，保留已有配置。建议先备份完整数据；若需退回旧版，应使用升级前匹配的数据库备份。配置 JSON 契约升至 24，窗口 IPC 升至 7，主应用与后台必须整包升级。
+升级保留已有配置与素材。配置 JSON 契约升至 25，旧 JSON 配置不再导入；完整数据库备份通过迁移恢复。建议升级前保留完整数据备份，回退时使用与旧版匹配的数据库。
 
-安装包由 GitHub Actions 构建，使用 ad-hoc 签名，**没有 Apple Developer ID 签名或公证**。macOS 可能要求重新确认打开、辅助功能或后台运行权限。安装包摘要见 `SHA256SUMS.txt`；Sparkle 更新包与订阅使用 Ed25519 签名校验。
+安装包由 GitHub Actions 构建，使用 ad-hoc 签名，**没有 Apple Developer ID 签名或公证**。macOS 可能要求重新确认打开、辅助功能或后台运行权限。安装包摘要见 `SHA256SUMS.txt`，Sparkle 更新包与订阅使用 Ed25519 签名校验。
 
-## 验证范围与已知限制
+## 验证范围与限制
 
-- 已在三屏布局中验证最大化、台前调度布局和跨屏切换，并独立读取 WindowServer 的实际窗口位置；包含位于主屏上方的负坐标屏幕。
-- 跨屏吸附的目标固定、断屏和几何变化取消有行为回归；物理热插拔、真实鼠标跨屏拖拽，以及场景批量恢复与撤销的完整桌面验收尚未覆盖。
-- 场景不会启动缺失应用、打开文档、跨 Space 移动窗口或退出全屏，也不会在显示器重连时自动恢复。
-- 部分应用限制窗口尺寸或控制；iCloud Drive 的 Finder 原生右键菜单不保证出现，可使用 Finder 工具栏入口。
-- ad-hoc 跨版本升级后的权限保留与后台注册仍受 macOS 管理；若后台未启动，先检查系统的后台项目与辅助功能授权。
+触控纵向反转、原生手势与惯性字段保留、鼠标滚轮放行、规则修改与删除、旧配置升级均有隔离回归。远程软件版本以及两端设置会影响实际方向，真实设备和远程会话中的最终效果仍需确认。此规则不修改 macOS“自然滚动”或 UU 内部设置。
 ]]></description>
-            <enclosure url="https://github.com/huixiangyang/arc-kit/releases/download/v0.1.1/ArcKit-universal.zip" length="24397664" type="application/octet-stream" sparkle:edSignature="JFu4t7nYEviVi9J7SkVr5LkfSEuCLuhotyHe+G0IL7AcFW7toyGQiHm9y2w0X7YfOmqW//Dz4kVb5Q4zFqjLAg=="></enclosure>
+            <enclosure url="https://github.com/huixiangyang/arc-kit/releases/download/v0.1.2/ArcKit-universal.zip" length="24400971" type="application/octet-stream" sparkle:edSignature="AUCK0FjUJ+/xg4sTO881XvL391iWTeGceW4xuyhY6m6oSc/lbqrm4KYH9PxSU2tPfFc1xmiAHur5bA4+gfhyDQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: cLrI22Pyt8RFhGLUDSiW/kimX3zh64n8FGiJgwysvQsviR9gktfo3ChT1YDWXolJmaNG0h/zVA2sEWpifMfsAg==
-length: 4299
+edSignature: A9e2HLwQrpUYmvPxVWU7UcSomodLbFg1LbA/3a095Vi5tiaMi9myEmR4Fq4LMffVh0+Wu2PU5RNiFndDP0D0DA==
+length: 3187
 -->
