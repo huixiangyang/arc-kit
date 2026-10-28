@@ -667,6 +667,24 @@
         }
       }
     },
+    "appProfile.reverseNativeVertical": {
+      "extractionState": "manual",
+      "comment": "App-specific mode: reverse only native vertical touch scrolling, passing mouse wheels through unchanged.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reverse touch scrolling"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅反转触控纵向"
+          }
+        }
+      }
+    },
     "appProfile.uuRemoteNote": {
       "extractionState": "manual",
       "comment": "Editable note explaining the default UU Remote scrolling rule.",
@@ -674,13 +692,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "UU Remote already reverses scrolling. Avoid reversing it twice."
+            "value": "Leave mouse wheels unchanged; reverse only vertical touch scrolling and preserve native momentum."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "UU 远程自带滚动翻转，避免重复翻转。"
+            "value": "鼠标滚轮保持原样；仅反转触控纵向滚动，保留系统惯性。"
           }
         }
       }

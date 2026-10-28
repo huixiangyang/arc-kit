@@ -77,11 +77,11 @@ final class MouseEventPipeline: @unchecked Sendable {
         if input.kind == .nativeGesture {
             statistics.nativeGestureInputs += 1
             scrollSession.cancelPendingEvents()
-            return event
+        } else {
+            statistics.wheelInputs += 1
+            // 空滚轮事件不应取消上一脉冲；原生零位移事件仍需保留开始/结束 phase。
+            guard input.verticalDelta != 0 || input.horizontalDelta != 0 else { return event }
         }
-        statistics.wheelInputs += 1
-        // 空位移事件不应取消上一脉冲尚未完成的轨迹。
-        guard input.verticalDelta != 0 || input.horizontalDelta != 0 else { return event }
         // 路由只从原始输入捕获一次，后续事件副本不能隐式重新决定投递目标。
         let destination = view.target
         statistics.targetProcessID = destination.processIdentifier
@@ -93,6 +93,9 @@ final class MouseEventPipeline: @unchecked Sendable {
             statistics.bypassedInputs += 1
             scrollSession.cancelPendingEvents()
             return event
+        }
+        if case .reverseNativeVertical = result {
+            return MouseScrollEventFactory.reversingNativeVertical(in: event) ?? event
         }
         // 被配置动作消费的修饰键不再传给应用，避免 Shift 再次换轴、Control 触发缩放。
         guard let context = event.copy(), let tuning = settings.effectiveTuning(for: bundle) else { return event }
@@ -106,7 +109,7 @@ final class MouseEventPipeline: @unchecked Sendable {
             }
         }
         switch result {
-        case .passthrough: return event
+        case .passthrough, .reverseNativeVertical: return event
         case let .direct(vertical, horizontal):
             return scrollSession.handle(MouseScrollImpulse(verticalDelta: vertical, horizontalDelta: horizontal,
                                                            responseTimeMs: tuning.responseTimeMs), originalEvent: context, destination: destination, smooth: false)

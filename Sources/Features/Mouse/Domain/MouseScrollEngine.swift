@@ -48,7 +48,7 @@ public enum MouseScrollInputKind: Equatable, Sendable {
     /// 高分辨率鼠标可能标记 continuous，但不带触控手势 phase。
     /// 这类输入必须平滑，且不能把每个微小脉冲放大成一个完整刻度。
     case highResolutionWheel
-    /// 触控板和 Magic Mouse 自带 scroll / momentum phase，必须交还系统处理。
+    /// 触控板和 Magic Mouse 自带 scroll / momentum phase，不进入鼠标平滑和加速。
     case nativeGesture
 }
 
@@ -86,6 +86,8 @@ public struct MouseScrollImpulse: Equatable, Sendable {
 
 public enum MouseScrollTransformResult: Equatable, Sendable {
     case passthrough
+    /// 保留原生事件语义，只翻转纵向的全部单位字段。
+    case reverseNativeVertical
     case direct(verticalDelta: Double, horizontalDelta: Double)
     case smooth(MouseScrollImpulse)
 }
@@ -104,11 +106,10 @@ public struct MouseScrollEngine: Sendable {
         settings: MouseEnhancementSettings,
         appBundleID: String?
     ) -> MouseScrollTransformResult {
-        guard input.kind != .nativeGesture,
-              let tuning = settings.effectiveTuning(for: appBundleID)
-        else {
-            return .passthrough
+        if input.kind == .nativeGesture {
+            return settings.reversesNativeVertical(for: appBundleID) ? .reverseNativeVertical : .passthrough
         }
+        guard let tuning = settings.effectiveTuning(for: appBundleID) else { return .passthrough }
 
         guard tuning.hasValidModifierAssignments, tuning.hasValidRuntimeValues else {
             return .passthrough

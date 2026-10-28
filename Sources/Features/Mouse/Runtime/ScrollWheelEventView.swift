@@ -14,7 +14,7 @@ struct ScrollWheelEventView {
     var inputKind: MouseScrollInputKind {
         if event.getIntegerValueField(.scrollWheelEventScrollPhase) != 0
             || event.getIntegerValueField(.scrollWheelEventMomentumPhase) != 0 { return .nativeGesture }
-        // 这是事件语义分类，不冒充 USB/蓝牙设备识别。带原生 phase 的输入始终交给系统。
+        // 这是事件语义分类，不冒充 USB/蓝牙设备识别；continuous 本身不能证明是触控板。
         return event.getIntegerValueField(.scrollWheelEventIsContinuous) != 0 ? .highResolutionWheel : .discreteWheel
     }
 

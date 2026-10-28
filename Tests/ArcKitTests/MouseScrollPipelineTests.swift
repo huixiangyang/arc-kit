@@ -9,7 +9,7 @@ import Testing
 @Suite("鼠标输入到 AppKit 消费", .serialized)
 @MainActor
 struct MouseScrollPipelineTests {
-    @Test("UU 默认原样放行并取消旧尾段，修改或删除规则后恢复增强")
+    @Test("UU 默认放行鼠标滚轮并取消旧尾段，修改或删除规则后恢复增强")
     func uuRemoteRuleControlsPipeline() throws {
         let work = LockedTestValue([@Sendable () -> Void]())
         let harness = Harness(provider: { $0 == 222 ? "com.netease.uuremote" : "com.google.Chrome" },
@@ -24,6 +24,9 @@ struct MouseScrollPipelineTests {
         for task in work.read({ $0 }) { task() }
         #expect(harness.outputs.read { $0.isEmpty })
         #expect(harness.runtime.scrollDiagnostics.bypassedInputs == 1)
+        remote.setIntegerValueField(.scrollWheelEventIsContinuous, value: 1)
+        #expect(harness.send(remote) === remote)
+        remote.setIntegerValueField(.scrollWheelEventIsContinuous, value: 0)
 
         var settings = MouseEnhancementSettings.defaults
         settings.appProfiles[0].behavior = .custom
@@ -39,6 +42,75 @@ struct MouseScrollPipelineTests {
         #expect(deleted.send(remote) == nil)
         deleted.driver.drain()
         #expect(deleted.outputs.read { !$0.isEmpty && $0.allSatisfy { (NSEvent(cgEvent: $0)?.scrollingDeltaY ?? 0) < 0 } })
+    }
+
+    @Test("UU 触控纵向反转保留原生手势、惯性、横向和目标，不重建平滑事件")
+    func uuRemoteNativeScrolling() throws {
+        let work = LockedTestValue([@Sendable () -> Void]())
+        let harness = Harness(provider: { $0 == 222 ? "com.netease.uuremote" : "com.google.Chrome" },
+                              delivery: { task in work.mutate { $0.append(task) } })
+        defer { harness.runtime.stop() }
+        _ = harness.send(try makeScrollWheelEvent(verticalDelta: 1))
+        harness.driver.tick()
+        // 包含零位移的开始/结束，以及只有 momentum phase 的惯性尾段。
+        for (phase, momentum, delta) in [(1, 0, 0), (2, 0, 1), (2, 0, -1), (4, 0, 0),
+                                          (0, 1, 1), (0, 2, -1), (0, 3, 0)] {
+            let event = try makeScrollWheelEvent(verticalDelta: Int32(delta), horizontalDelta: Int32(delta),
+                                                isContinuous: true, targetProcessIdentifier: 222)
+            event.setIntegerValueField(.scrollWheelEventScrollPhase, value: Int64(phase))
+            event.setIntegerValueField(.scrollWheelEventMomentumPhase, value: Int64(momentum))
+            event.setDoubleValueField(.scrollWheelEventFixedPtDeltaAxis1, value: Double(delta) * 0.25)
+            event.flags = [.maskShift, .maskAlternate, .maskControl, .maskCommand]
+            let output = try #require(harness.send(event))
+            for field: CGEventField in [.scrollWheelEventDeltaAxis1, .scrollWheelEventPointDeltaAxis1] {
+                #expect(output.getIntegerValueField(field) == -event.getIntegerValueField(field))
+            }
+            #expect(output.getDoubleValueField(.scrollWheelEventFixedPtDeltaAxis1) == -Double(delta) * 0.25)
+            for field: CGEventField in [.scrollWheelEventDeltaAxis2, .scrollWheelEventPointDeltaAxis2,
+                                        .scrollWheelEventIsContinuous, .scrollWheelEventScrollPhase,
+                                        .scrollWheelEventMomentumPhase, .eventTargetUnixProcessID] {
+                #expect(output.getIntegerValueField(field) == event.getIntegerValueField(field))
+            }
+            #expect(output.getDoubleValueField(.scrollWheelEventFixedPtDeltaAxis2) == event.getDoubleValueField(.scrollWheelEventFixedPtDeltaAxis2))
+            #expect(output.flags == event.flags && output.timestamp == event.timestamp && output.location == event.location)
+            let native = try #require(NSEvent(cgEvent: output))
+            #expect(native.windowNumber == 123 && native.hasPreciseScrollingDeltas)
+            #expect(native.scrollingDeltaY == -(NSEvent(cgEvent: event)?.scrollingDeltaY ?? 0))
+            #expect(harness.send(output) === output)
+        }
+        for task in work.read({ $0 }) { task() }
+        #expect(harness.outputs.read { $0.isEmpty })
+        #expect(harness.driver.callback == nil)
+        #expect(harness.runtime.scrollDiagnostics.targetBundleIdentifier == "com.netease.uuremote")
+    }
+
+    @Test("触控修正仅服从应用规则和总开关，其他应用和已删除规则原样放行")
+    func nativeScrollingRespectsRules() throws {
+        let event = try makeScrollWheelEvent(verticalDelta: 1, isContinuous: true)
+        event.setIntegerValueField(.scrollWheelEventScrollPhase, value: 2)
+        for behavior in [MouseAppScrollBehavior.inherit, .custom, .system] {
+            var settings = MouseEnhancementSettings.defaults
+            settings.appProfiles[0].behavior = behavior
+            let harness = Harness(settings: settings, provider: { _ in "com.netease.uuremote" })
+            #expect(harness.send(event) === event)
+            harness.runtime.stop()
+        }
+        let otherApp = Harness(provider: { _ in "com.apple.Safari" })
+        #expect(otherApp.send(event) === event)
+        otherApp.runtime.stop()
+        var settings = MouseEnhancementSettings.defaults
+        settings.appProfiles.removeAll()
+        let deleted = Harness(settings: settings, provider: { _ in "com.netease.uuremote" })
+        #expect(deleted.send(event) === event)
+        deleted.runtime.stop()
+        settings = .defaults
+        settings.isEnabled = false
+        let pipeline = MouseEventPipeline(settings: settings,
+            scrollSession: MouseScrollSession(eventPoster: { _, _ in }, frameDriver: ManualScrollFrames(available: true),
+                                              eventDeliveryScheduler: { $0() }),
+            hintPresenter: MouseInputPresentation(consume: { _ in }), rightClickReposter: { _, _ in },
+            targetBundleIdentifierProvider: { _ in "com.netease.uuremote" })
+        #expect(pipeline.handle(event) === event)
     }
 
     @Test("像素构造、行单位回退与零输入")

@@ -32,7 +32,7 @@ struct SettingsCommitTests {
         try repository.database.write { db in
             try db.execute(sql: "ALTER TABLE mouse_application_rules DROP COLUMN note")
             try db.execute(sql: "UPDATE mouse_application_rules SET _types=json_remove(_types, '$.note')")
-            try db.execute(sql: "DELETE FROM grdb_migrations WHERE identifier IN ('mouse-uu-remote-rule-v1', 'mouse-rule-note-v1')")
+            try db.execute(sql: "DELETE FROM grdb_migrations WHERE identifier IN ('mouse-uu-remote-rule-v1', 'mouse-rule-note-v1', 'mouse-uu-native-scroll-v1')")
         }
         try repository.database.close()
         let upgraded = SettingsRepository(directoryURL: root)
@@ -40,7 +40,7 @@ struct SettingsCommitTests {
         var expected = original
         if !existingRule { expected.mouseEnhancement.appProfiles.append(bundled) }
         #expect(migrated.settings == expected)
-        #expect(migrated.revision.runtime == before.revision.runtime + (existingRule ? 0 : 1))
+        #expect(migrated.revision.runtime == before.revision.runtime + (existingRule ? 0 : 2))
         let host = ArcKitDatabase(reading: upgraded.database.paths)
         #expect(try host.read { db in
             try ArcKitRecord.load(MouseEnhancementSettings.self, layout: MouseEnhancementSettings.recordLayout, db: db) == expected.mouseEnhancement
@@ -85,14 +85,15 @@ struct SettingsCommitTests {
         try repository.database.write { db in
             try db.execute(sql: "ALTER TABLE mouse_application_rules DROP COLUMN note")
             try db.execute(sql: "UPDATE mouse_application_rules SET _types=json_remove(_types, '$.note')")
-            try db.execute(sql: "DELETE FROM grdb_migrations WHERE identifier='mouse-rule-note-v1'")
+            try db.execute(sql: "DELETE FROM grdb_migrations WHERE identifier IN ('mouse-rule-note-v1', 'mouse-uu-native-scroll-v1')")
         }
         try repository.database.close()
         let upgraded = SettingsRepository(directoryURL: root)
         let migrated = try upgraded.loadSnapshot()
         if behavior != .system { original.mouseEnhancement.appProfiles[0].note = "" }
+        if behavior == .system { original.mouseEnhancement.appProfiles[0].behavior = .reverseNativeVertical }
         #expect(migrated.settings == original)
-        #expect(migrated.revision.runtime == before.revision.runtime)
+        #expect(migrated.revision.runtime == before.revision.runtime + (behavior == .system ? 1 : 0))
         #expect(migrated.revision.data > before.revision.data)
 
         var edited = migrated.settings
@@ -122,6 +123,44 @@ struct SettingsCommitTests {
         #expect(try restarted.load() == edited)
         try restoredStorage.restore(clearedBackup)
         #expect(try restarted.load() == cleared)
+        try restarted.database.close()
+    }
+
+    @Test("旧 UU 触控修正只升级预置规则一次，保留用户说明、参数和自建规则",
+          arguments: ["stockChinese", "stockEnglish", "editedNote", "emptyNote", "retuned", "recreated", "deleted"])
+    func uuRemoteNativeScrollMigration(scenario: String) throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).resolvingSymlinksInPath()
+        defer { try? FileManager.default.removeItem(at: root) }
+        let repository = SettingsRepository(directoryURL: root)
+        var expected = try repository.load()
+        var old = expected.mouseEnhancement.appProfiles[0]
+        old.behavior = .system
+        old.note = scenario == "stockEnglish" ? "UU Remote already reverses scrolling. Avoid reversing it twice." : "UU 远程自带滚动翻转，避免重复翻转。"
+        if scenario == "editedNote" { old.note = "保留我的远程设置" }
+        if scenario == "emptyNote" { old.note = "" }
+        if scenario == "retuned" { old.tuning.speedGain = 1.5 }
+        if scenario == "recreated" { old.id = UUID() }
+        expected.mouseEnhancement.appProfiles = scenario == "deleted" ? [] : [old]
+        let before = try repository.save(expected)
+        try repository.database.write { db in
+            try db.execute(sql: "DELETE FROM grdb_migrations WHERE identifier='mouse-uu-native-scroll-v1'")
+        }
+        try repository.database.close()
+        let upgraded = SettingsRepository(directoryURL: root)
+        let snapshot = try upgraded.loadSnapshot()
+        let changesBehavior = !["retuned", "recreated", "deleted"].contains(scenario)
+        if changesBehavior {
+            expected.mouseEnhancement.appProfiles[0].behavior = .reverseNativeVertical
+            if scenario.hasPrefix("stock") { expected.mouseEnhancement.appProfiles[0].note = MouseAppScrollProfile.uuRemoteDefault.note }
+        }
+        #expect(snapshot.settings == expected)
+        #expect(snapshot.revision.runtime == before.revision.runtime + (changesBehavior ? 1 : 0))
+        // 用户升级后主动关闭修正，后续启动不得再次覆盖。
+        if changesBehavior { expected.mouseEnhancement.appProfiles[0].behavior = .system }
+        try upgraded.save(expected)
+        try upgraded.database.close()
+        let restarted = SettingsRepository(directoryURL: root)
+        #expect(try restarted.load() == expected)
         try restarted.database.close()
     }
 

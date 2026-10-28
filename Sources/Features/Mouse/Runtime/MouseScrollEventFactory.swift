@@ -2,8 +2,21 @@ import ArcKitMouse
 import ApplicationServices
 import Foundation
 
-/// 用系统像素事件构造器生成全部单位字段，禁止把像素同时写进行数。
+/// 原生触控保留事件语义；鼠标输出由系统像素事件构造器统一换算单位。
 enum MouseScrollEventFactory {
+    static func reversingNativeVertical(in original: CGEvent) -> CGEvent? {
+        guard let event = original.copy() else { return nil }
+        // 不能使用像素构造器：触控板的 phase、惯性、零位移结束事件和路由必须完整保留。
+        for field: CGEventField in [.scrollWheelEventDeltaAxis1, .scrollWheelEventPointDeltaAxis1] {
+            event.setIntegerValueField(field, value: -original.getIntegerValueField(field))
+        }
+        event.setDoubleValueField(.scrollWheelEventFixedPtDeltaAxis1,
+                                  value: -original.getDoubleValueField(.scrollWheelEventFixedPtDeltaAxis1))
+        event.setIntegerValueField(.eventSourceUserData, value: MouseScrollEventOrigin.syntheticMarker)
+        return event
+    }
+
+    /// 禁止把像素同时写进行数，交给系统构造器生成全部单位字段。
     static func make(vertical: Int32, horizontal: Int32, context: CGEvent) -> CGEvent? {
         guard vertical != 0 || horizontal != 0,
               let pixelEvent = CGEvent(scrollWheelEvent2Source: nil, units: .pixel, wheelCount: 2,

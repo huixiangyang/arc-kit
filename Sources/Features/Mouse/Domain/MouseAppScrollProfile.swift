@@ -9,13 +9,13 @@ public struct MouseAppScrollProfile: Codable, Equatable, Identifiable, Sendable 
     public var tuning: MouseScrollTuning
     public var note: String
 
-    /// 预置为普通应用规则；运行时不硬编码旁路，用户修改或删除后以保存值为准。
+    /// 预置为普通应用规则；运行时按输入类型处理，用户修改或删除后以保存值为准。
     public static var uuRemoteDefault: Self {
         Self(
             id: UUID(uuidString: "CFA79D3A-D9EF-405C-A01F-6694262223BE")!,
             displayName: L10n.string(.Mouse.appProfileUuRemote),
             bundleIdentifier: "com.netease.uuremote",
-            behavior: .system,
+            behavior: .reverseNativeVertical,
             note: L10n.string(.Mouse.appProfileUuRemoteNote)
         )
     }
@@ -131,12 +131,13 @@ public enum MouseAppProfileValidationError: Error, LocalizedError, Equatable, Se
 
 /// “跟随全局”是实时继承，不是添加规则时复制一份参数。
 public enum MouseAppScrollBehavior: String, Codable, CaseIterable, Sendable {
-    case inherit, custom, system
+    case inherit, custom, system, reverseNativeVertical
     public var title: String {
         switch self {
         case .inherit: L10n.string(.Mouse.appProfileFollowGlobal)
         case .custom: L10n.string(.Mouse.appProfileCustomSettings)
         case .system: L10n.string(.Mouse.appProfileUseSystemScrolling)
+        case .reverseNativeVertical: L10n.string(.Mouse.appProfileReverseNativeVertical)
         }
     }
 }

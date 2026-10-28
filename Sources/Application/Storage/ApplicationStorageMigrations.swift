@@ -72,7 +72,7 @@ enum ApplicationStorageMigrations {
             if db.changesCount > 0 { try ArcKitDatabase.advance(db) }
         }
         migrator.registerMigration("mouse-uu-remote-rule-v1") { db in
-            let rule = MouseAppScrollProfile.uuRemoteDefault
+            let rule = initialUURemoteRule
             guard try Int.fetchOne(db, sql: "SELECT count(*) FROM mouse_application_rules WHERE bundleIdentifier=?", arguments: [rule.bundleIdentifier]) == 0 else { return }
             // 使用此迁移发布时的列，不解码后续版本的模型；已有规则保留，后续迁移再补新字段。
             let tuning = String(decoding: try JSONEncoder().encode(rule.tuning), as: UTF8.self)
@@ -88,7 +88,7 @@ enum ApplicationStorageMigrations {
             if try !db.columns(in: "mouse_application_rules").contains(where: { $0.name == "note" }) {
                 try db.execute(sql: "ALTER TABLE mouse_application_rules ADD COLUMN note ANY")
             }
-            let rule = MouseAppScrollProfile.uuRemoteDefault
+            let rule = initialUURemoteRule
             // 只为仍采用预置行为的原始 UU 规则补说明；用户自建、修改或删除的规则不猜测用途。
             try db.execute(sql: """
                 UPDATE mouse_application_rules SET note=CASE
@@ -105,7 +105,31 @@ enum ApplicationStorageMigrations {
             // 只给旧库增加空场景集合，保留窗口偏好、排除列表与快捷键；不重写已应用的历史迁移。
             if !existed { try ArcKitDatabase.advance(db, runtime: true) }
         }
+        migrator.registerMigration("mouse-uu-native-scroll-v1") { db in
+            let rule = MouseAppScrollProfile.uuRemoteDefault
+            // 只升级仍保持旧预置行为与参数的原始规则；用户自建、改行为或删除都不补回。
+            guard let row = try Row.fetchOne(db, sql: """
+                SELECT tuning FROM mouse_application_rules WHERE id=? AND bundleIdentifier=? AND behavior='system'
+                """, arguments: [rule.id.uuidString, rule.bundleIdentifier]) else { return }
+            let tuning: String = row["tuning"]
+            guard try JSONDecoder().decode(MouseScrollTuning.self, from: Data(tuning.utf8)) == rule.tuning else { return }
+            try db.execute(sql: """
+                UPDATE mouse_application_rules SET behavior=?, note=CASE WHEN note IN (?, ?) THEN ? ELSE note END WHERE id=?
+                """, arguments: [rule.behavior.rawValue, initialUURemoteNoteChinese, initialUURemoteNoteEnglish,
+                                   rule.note, rule.id.uuidString])
+            try ArcKitDatabase.advance(db, runtime: true)
+        }
         try migrator.migrate(queue)
+    }
+
+    // 已发布迁移的数据值固定在存储层，不能随当前预置规则改变；这些文字同时用于识别旧说明。
+    private static let initialUURemoteNoteChinese = "UU 远程自带滚动翻转，避免重复翻转。" // i18n-ignore: 历史持久化值
+    private static let initialUURemoteNoteEnglish = "UU Remote already reverses scrolling. Avoid reversing it twice."
+    private static var initialUURemoteRule: MouseAppScrollProfile {
+        var rule = MouseAppScrollProfile.uuRemoteDefault
+        rule.behavior = .system
+        rule.note = L10n.language.resolved() == .simplifiedChinese ? initialUURemoteNoteChinese : initialUURemoteNoteEnglish
+        return rule
     }
 
     private static func createRecords(_ layout: ArcKitRecordLayout, in db: Database) throws {

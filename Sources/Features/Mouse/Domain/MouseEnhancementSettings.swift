@@ -73,10 +73,16 @@ public struct MouseEnhancementSettings: Codable, Equatable, Sendable {
             switch rule.behavior {
             case .inherit: return globalTuning
             case .custom: return rule.tuning
-            case .system: return nil
+            case .system, .reverseNativeVertical: return nil
             }
         }
         return scrollScope == .allApplications ? globalTuning : nil
+    }
+
+    /// 触控修正只来自明确的应用规则，不继承鼠标的全局反转、速度或修饰键。
+    public func reversesNativeVertical(for bundleIdentifier: String?) -> Bool {
+        guard isEnabled, let bundleIdentifier else { return false }
+        return appProfiles.first(where: { $0.bundleIdentifier == bundleIdentifier })?.behavior == .reverseNativeVertical
     }
 
     enum CodingKeys: String, CodingKey {
