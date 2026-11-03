@@ -4,39 +4,51 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Arc Kit</title>
         <item>
-            <title>0.1.2</title>
-            <pubDate>Wed, 28 Oct 2026 06:04:01 +0000</pubDate>
-            <link>https://github.com/huixiangyang/arc-kit/releases/tag/v0.1.2</link>
-            <sparkle:version>63</sparkle:version>
-            <sparkle:shortVersionString>0.1.2</sparkle:shortVersionString>
+            <title>0.1.4</title>
+            <pubDate>Tue, 03 Nov 2026 06:27:05 +0000</pubDate>
+            <link>https://github.com/huixiangyang/arc-kit/releases/tag/v0.1.4</link>
+            <sparkle:version>86</sparkle:version>
+            <sparkle:shortVersionString>0.1.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Arc Kit 0.1.2
+            <description sparkle:format="markdown"><![CDATA[# Arc Kit 0.1.4
 
-本次更新修复 UU 远程中外置鼠标滚动正常、触控板纵向方向仍相反的问题。
+这次更新加入菜单栏图标收纳、编排和搜索。把不常用图标收入一组，平时点击 Arc Kit 左侧三点展开或收起；按住 ⌘ 拖动调整顺序后，收纳选择仍会保留。
 
-## UU 远程滚动
+## 菜单栏图标编排
 
-- 默认应用规则改为“仅反转触控纵向”：普通鼠标及不带手势标记的高分辨率滚轮保持原样，只反转触控板上下滚动。
-- 保留系统惯性、手势起止、横向滚动、修饰键及事件目标，不给触控板叠加鼠标平滑或加速。带原生手势标记的 Magic Mouse 也使用这条规则。
-- 其他应用维持原来的滚动处理。可在“鼠标 → 应用规则”将 UU 改为“不启用增强”，让所有输入原样通过。
-- 旧安装中仍采用“不启用增强”和默认参数的原始 UU 规则会一次性升级。自建规则、已修改的行为或参数、已删除的规则，以及用户填写或清空的说明均保留。
+- 在“菜单栏 → 编排图标”开启收纳，将图标设为常驻或收纳，再点击“应用排列”。行右侧按钮只改归属；列表拖放和右键移动可调整真实菜单栏顺序。
+- 收纳名单独立保存，并随设置和完整数据备份保存。系统 ⌘ 拖动只改变顺序，不再因位置变化丢失收纳目标。
+- 草稿应用前核对当前图标与排列，防止覆盖面板外的新变化；支持撤销未应用更改及最近一次应用。
+- 同一应用的多个图标一起收纳，顺序可分别调整。支持系统输入法菜单（包括搜狗）和可唯一识别的 SCVPN 等 root 应用图标；时钟、控制中心及身份不明的项目保持只读。
+
+编排入口需要 **macOS 27**。收纳直接隐藏所选应用图标，不靠占位挤入系统溢出区；显示全部、关闭收纳或退出 Arc Kit 会恢复本次隐藏的项目。隐藏输入法菜单不会停用输入法，但切换输入源后同一个系统菜单仍按收纳选择显示。
+
+## 一个组合入口，独立搜索与快捷键
+
+- 三点与品牌标志属于同一个菜单栏项目，⌘ 拖动时整体移动。左侧三点切换收纳，右侧品牌或右键打开窗口、鼠标、Finder、壁纸等工具面板。
+- 快捷面板不再重复显示图标管理区；编排和查找集中在主窗口“菜单栏”页。
+- 关闭收纳也能搜索全部图标；可从“查找图标”、⌘K 或独立搜索快捷键进入。
+- 支持录制搜索、展开／收起、显示全部快捷键。重复组合或系统注册冲突会明确反馈；录制时暂停本功能快捷键，避免误触发。
+- 图标菜单请求只发送一次，失效或超时后不自动重放；显示器、Space 和休眠变化时先恢复图标，再等待环境稳定。
 
 ## 下载与升级
 
-版本为 **0.1.2 / build 63**，支持 macOS 13 及以上的 Apple Silicon 和 Intel Mac。使用应用内“检查更新”，或下载 `ArcKit-universal.dmg` / `ArcKit-universal.zip`；替换前正常退出 Arc Kit，主应用与后台整包升级。
+版本为 **0.1.4 / build 86**，支持 macOS 13 及以上的 Apple Silicon 和 Intel Mac。使用应用内“检查更新”，或下载 `ArcKit-universal.dmg` / `ArcKit-universal.zip`；替换前正常退出 Arc Kit，主应用、后台与 Finder 扩展整包升级。
 
-升级保留已有配置与素材。配置 JSON 契约升至 25，旧 JSON 配置不再导入；完整数据库备份通过迁移恢复。建议升级前保留完整数据备份，回退时使用与旧版匹配的数据库。
+升级保留已有设置和素材。配置 JSON 契约升至 **31**，旧版本 JSON 配置不再导入；完整数据库备份通过迁移恢复。升级前建议保留完整备份，回退时使用与旧版匹配的数据库。使用早期 0.1.3 开发版时，若旧分区在升级前已经失效，请在编排页重新选择收纳项目，无需恢复旧顺序。未正式发布的 Agent 会话功能已移除，不删除开发版已有会话记录或资产。
 
-安装包由 GitHub Actions 构建，使用 ad-hoc 签名，**没有 Apple Developer ID 签名或公证**。macOS 可能要求重新确认打开、辅助功能或后台运行权限。安装包摘要见 `SHA256SUMS.txt`，Sparkle 更新包与订阅使用 Ed25519 签名校验。
+安装包由 GitHub Actions 构建，使用 ad-hoc 签名，**没有 Apple Developer ID 签名或公证**。macOS 可能要求重新确认打开、辅助功能或后台运行权限。安装包摘要见 `SHA256SUMS.txt`，Sparkle 更新包与订阅分别使用 Ed25519 签名校验。
 
 ## 验证范围与限制
 
-触控纵向反转、原生手势与惯性字段保留、鼠标滚轮放行、规则修改与删除、旧配置升级均有隔离回归。远程软件版本以及两端设置会影响实际方向，真实设备和远程会话中的最终效果仍需确认。此规则不修改 macOS“自然滚动”或 UU 内部设置。
+macOS 27 已完成真实图标编排、收起、显示全部、退出恢复和重启后收起检查；收纳名单持久化与系统排序解耦有隔离回归。多屏热插拔、Space、休眠恢复、更多多图标应用及第三方原生菜单取用仍需进一步实机覆盖。
+
+macOS 13–26 保留离屏收纳路径，尚未完成对应系统的完整实机验收；深度收纳与普通区筛选不在 macOS 27 开放。菜单栏系统外观设置暂不提供。刘海屏或常驻图标本身放不下时，macOS 自身仍可能显示溢出入口。
 ]]></description>
-            <enclosure url="https://github.com/huixiangyang/arc-kit/releases/download/v0.1.2/ArcKit-universal.zip" length="24400971" type="application/octet-stream" sparkle:edSignature="AUCK0FjUJ+/xg4sTO881XvL391iWTeGceW4xuyhY6m6oSc/lbqrm4KYH9PxSU2tPfFc1xmiAHur5bA4+gfhyDQ=="></enclosure>
+            <enclosure url="https://github.com/huixiangyang/arc-kit/releases/download/v0.1.4/ArcKit-universal.zip" length="25800899" type="application/octet-stream" sparkle:edSignature="HPdIacfZ7p9qJqJR/H3H6wd2VGKlHlBDRsBFHQV6Vlvt2fTB8vfmXubEKvO31fW/T4T+6NVEnO/y7Ks31WP6BQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: A9e2HLwQrpUYmvPxVWU7UcSomodLbFg1LbA/3a095Vi5tiaMi9myEmR4Fq4LMffVh0+Wu2PU5RNiFndDP0D0DA==
-length: 3187
+edSignature: HGoQ9C3/sAHt5j4IM1bcXSQq9lyw5J2VKcYXF9wPwc5mkWOWEWy6lVGqm73m5tcZY4ZMoIIkHshzlcV0zxssBw==
+length: 4888
 -->
