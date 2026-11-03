@@ -55,10 +55,14 @@ struct SystemSection: View {
     private var applicationSettings: some View {
         Section(L10n.string(.Settings.generalApplication)) {
             Toggle(L10n.string(.Settings.generalShowMenuBar), isOn: Binding(
-                get: { model.settings.showMenuBarIcon },
+                get: { model.settings.menuBarEntryVisible },
                 set: { value in model.update(actionName: L10n.string(.Settings.generalToggleMenuBarVisibility)) { $0.showMenuBarIcon = value } }
             ))
             .help(L10n.string(.Settings.generalReopenArcKit))
+            .disabled(model.settings.menuBar.isEnabled)
+            if model.settings.menuBar.isEnabled {
+                Text(L10n.string(.Settings.generalMenuEntryRequired)).font(.system(size: 12)).foregroundStyle(.secondary)
+            }
             Toggle(L10n.string(.Settings.generalShowDock), isOn: Binding(
                 get: { model.settings.showDockIcon },
                 set: { v in model.update(actionName: L10n.string(.Settings.generalToggleDockVisibility)) { $0.showDockIcon = v } }

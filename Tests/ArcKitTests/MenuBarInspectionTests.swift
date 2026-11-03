@@ -4,7 +4,7 @@ import Foundation
 import Testing
 @testable import ArcKitApplication
 
-@Suite("菜单栏身份与外观几何")
+@Suite("菜单栏身份与清单")
 struct MenuBarInspectionTests {
     @Test("匿名、多实例冲突和遍历不完整不能冒充持久化身份")
     func identityCandidates() {
@@ -33,25 +33,8 @@ struct MenuBarInspectionTests {
         #expect(coordinates.appKitToAccessibility(CGRect(x: -554, y: 982, width: 2560, height: 1440)) == displays[1].frame)
     }
 
-    @Test("悬浮与分段避开刘海，拥挤内容合并而非重叠染色")
-    func appearanceRegions() {
-        let bar = CGRect(x: -500, y: -100, width: 1000, height: 36)
-        let notch = CGRect(x: -70, y: -100, width: 140, height: 30)
-        for style in [MenuBarAppearanceStyle.floating, .split] {
-            let regions = MenuBarAppearanceGeometry.regions(style: style, bar: bar, notch: notch, leadingWidth: 300, trailingWidth: 280)
-            #expect(regions.count == 2)
-            #expect(regions.allSatisfy { bar.contains($0) && !$0.intersects(notch) })
-            #expect(!regions[0].intersects(regions[1]))
-        }
-        let crowded = MenuBarAppearanceGeometry.regions(style: .split, bar: bar, notch: nil, leadingWidth: 700, trailingWidth: 400)
-        #expect(crowded == [bar.insetBy(dx: 4, dy: 4)])
-        #expect(MenuBarAppearanceGeometry.regions(style: .native, bar: bar, notch: notch, leadingWidth: 0, trailingWidth: 0) == [bar])
-    }
-
-    @Test("坏几何不产生绘制区域，库存序列化保持系统事实")
+    @Test("清单序列化保持系统事实")
     func invalidGeometryAndReport() throws {
-        #expect(MenuBarAppearanceGeometry.regions(style: .split, bar: .zero, notch: nil, leadingWidth: 100, trailingWidth: 100).isEmpty)
-        #expect(MenuBarAppearanceGeometry.regions(style: .floating, bar: CGRect(x: 0, y: 0, width: 100, height: 30), notch: nil, leadingWidth: .nan, trailingWidth: 10).isEmpty)
         let observation = MenuBarInventory(id: UUID(), capturedAt: Date(), systemVersion: "fixture", accessibility: .denied,
             displays: [], items: [], issues: [.init(kind: .permissionDenied, processID: nil, attribute: nil, errorCode: nil)])
         let decoded = try JSONDecoder().decode(MenuBarInventory.self, from: JSONEncoder().encode(observation))

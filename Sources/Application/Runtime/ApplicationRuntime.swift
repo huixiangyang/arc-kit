@@ -19,6 +19,7 @@ final class ApplicationRuntime {
     let snapshotStore = FinderExtensionSnapshotStore()
     var stateDidChange: (() -> Void)?
     var settingsDidCommit: ((AppSettings?, AppSettings) -> Void)?
+    var prepareMenuBarEntry: ((AppSettings) -> Void)?
     var committedSettings: AppSettings? { settingsSession.current }
 
     private let settingsModel: SettingsModel
@@ -29,6 +30,8 @@ final class ApplicationRuntime {
         didCommit: { [weak self] previous, current in
             guard let self else { return }
             L10n.configure(current.language)
+            // 先登记唯一可见入口，再创建内部收纳锚点，保证首次启用的顺序。
+            prepareMenuBarEntry?(current)
             menuBarService.apply(current.menuBar)
             if previous?.language != current.language { menuBarService.refreshLanguage() }
             host.apply(current, revision: settingsModel.committedRevision?.runtime ?? 0)
@@ -47,7 +50,7 @@ final class ApplicationRuntime {
 
     init(settingsModel: SettingsModel, isPreview: Bool = false) {
         self.settingsModel = settingsModel
-        menuBarService = MenuBarManagementService(isPreview: isPreview)
+        menuBarService = MenuBarManagementService(isPreview: isPreview, collectionAccess: MenuBarCollectionAccess(editor: settingsModel.menuBarEditor))
         let window = WindowRuntimeClient()
         let mouse = MouseRuntimeClient()
         host = RuntimeHostCoordinator(window: window, mouse: mouse, permissions: permissions)
@@ -61,6 +64,7 @@ final class ApplicationRuntime {
         guard !isStarted else { return }
         isStarted = true
         observeRuntimeServiceChanges()
+        menuBarService.recoverVisibilityAtLaunch()
         settingsSession.start()
         permissions.refreshSystem()
     }

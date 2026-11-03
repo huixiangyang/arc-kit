@@ -9,13 +9,20 @@ final class MenuBarController: NSObject, NSMenuDelegate {
     let state = MenuBarPanelState()
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     private let menu = NSMenu()
+    private var entry: MenuBarCombinedEntry?
+    private var presentingMenu = false
+    private var retiredPositionCleaned = false
     private let clickSource = MenuBarClickSource()
     private let prepare: (AppConfigurationCandidate, @escaping (WindowTargetCaptureResult) -> Void) -> Void
     private var originPID: pid_t?
     private var hosting: NSHostingView<MenuBarPanel>?
+    #if DEBUG
+    var nativeCheckMenuDidOpen: (@MainActor () -> Void)?
+    #endif
 
-    init(actions: MenuBarPanelActions, prepare: @escaping (AppConfigurationCandidate, @escaping (WindowTargetCaptureResult) -> Void) -> Void) {
+    init(actions: MenuBarPanelActions, collapse: @escaping @MainActor () -> Void, reveal: @escaping @MainActor () -> Void, cleansRetiredPosition: Bool = true, prepare: @escaping (AppConfigurationCandidate, @escaping (WindowTargetCaptureResult) -> Void) -> Void) {
         self.prepare = prepare
+        self.retiredPositionCleaned = !cleansRetiredPosition
         super.init()
         clickSource.onForegroundChange = { [weak self] pid in
             guard let self, let originPID = self.originPID, pid != originPID else { return }
@@ -64,12 +71,9 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         let item = NSMenuItem()
         item.view = hosting
         menu.addItem(item)
-        // 原生菜单入口由系统进入菜单跟踪，不能再经普通按钮 action 自行弹窗。
-        statusItem.menu = menu
         if let button = statusItem.button {
-            button.title = ""
-            button.imagePosition = .imageOnly
-            button.setAccessibilityHelp(L10n.string(.App.menuBarOpenArcKitQuickPanel))
+            entry = MenuBarCombinedEntry(button: button, collapse: collapse, reveal: reveal,
+                openMenu: { [weak self] in self?.showNativeMenu() })
         }
         refreshPresentation(isVisible: false)
     }
@@ -82,13 +86,15 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         }
         if isVisible && state.settings.windowManagement.isEnabled { clickSource.startIfAuthorized() }
         else { clickSource.stop() }
-        let issue = [state.windowHealth, state.mouseHealth].first(where: \.needsAttention)
-        if let button = statusItem.button {
-            button.image = issue == nil ? ArcBrandImage.menuBar : ArcIconImage.image(.triangleAlert)
-            let status = issue?.title ?? L10n.string(.App.menuBarQuickPanel)
-            button.toolTip = "Arc Kit：\(status)"
-            button.setAccessibilityLabel("Arc Kit，\(status)")
+        // 仅在启用收纳时清理旧开关；普通品牌入口不新增系统排列偏好的读取条件。
+        if isVisible, state.settings.menuBar.isEnabled, !retiredPositionCleaned {
+            MenuBarCombinedEntry.removeRetiredPosition(owner: Bundle.main.bundleIdentifier ?? ProcessInfo.processInfo.processName)
+            retiredPositionCleaned = true
         }
+        let issue = [state.windowHealth, state.mouseHealth].first(where: \.needsAttention)
+        entry?.update(collectionVisible: state.settings.menuBar.isEnabled,
+            presentation: state.collectionPresentation, ready: state.collectionReady, busy: state.collectionBusy,
+            menuStatus: issue?.title ?? L10n.string(.App.menuBarQuickPanel), collectionMessage: state.collectionMessage)
         switch state.settings.appearance {
         case .system: hosting?.appearance = nil
         case .light: hosting?.appearance = NSAppearance(named: .aqua)
@@ -96,7 +102,23 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         }
     }
 
+    /// 临时把同一个状态项交回 AppKit 菜单跟踪；不自行定位浮窗，也不主动激活应用。
+    func showNativeMenu() {
+        guard !presentingMenu, let button = statusItem.button else { return }
+        presentingMenu = true
+        defer {
+            statusItem.menu = nil
+            entry?.reconnectAction()
+            presentingMenu = false
+        }
+        statusItem.menu = menu
+        button.performClick(nil)
+    }
+
     func menuWillOpen(_ menu: NSMenu) {
+        #if DEBUG
+        nativeCheckMenuDidOpen?()
+        #endif
         hosting?.frame.size = hosting?.fittingSize ?? .zero
         // 结果保留到本次菜单结束；再次展开不把旧结果当作当前检测。
         if !state.statusCheck.isChecking { state.statusCheck = .idle }

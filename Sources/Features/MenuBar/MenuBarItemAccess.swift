@@ -1,11 +1,23 @@
 import ArcKitPlatform
 import AppKit
 import ApplicationServices
+import Darwin
 
 struct MenuBarProcessIdentity: Equatable {
     let processID: Int32
     let launchDate: Date
     let bundleIdentifier: String?
+
+    static func capture(_ app: NSRunningApplication) -> Self? {
+        guard !app.isTerminated else { return nil }
+        var info = proc_bsdinfo()
+        let size = Int32(MemoryLayout<proc_bsdinfo>.size)
+        // 常驻 VPN 的图标可能由 root GUI 进程持有。这里只读内核启动身份，不执行该进程的命令。
+        // Host 会话的同用户所有权规则不适用于用户菜单栏里的图标排列。
+        guard proc_pidinfo(app.processIdentifier, PROC_PIDTBSDINFO, 0, &info, size) == size, info.pbi_status != SZOMB else { return nil }
+        let date = Date(timeIntervalSince1970: Double(info.pbi_start_tvsec) + Double(info.pbi_start_tvusec) / 1_000_000)
+        return .init(processID: app.processIdentifier, launchDate: date, bundleIdentifier: app.bundleIdentifier)
+    }
 }
 
 struct MenuBarItemActionState {
@@ -58,8 +70,8 @@ final class MenuBarItemAccessSession {
 
     init(isTrusted: @escaping () -> Bool = { AXIsProcessTrusted() },
          process: @escaping (Int32) -> MenuBarProcessIdentity? = { pid in
-             guard let app = NSRunningApplication(processIdentifier: pid), !app.isTerminated, let date = app.launchDate else { return nil }
-             return .init(processID: pid, launchDate: date, bundleIdentifier: app.bundleIdentifier)
+             guard let app = NSRunningApplication(processIdentifier: pid) else { return nil }
+             return MenuBarProcessIdentity.capture(app)
          }, currentDisplays: @escaping () -> [MenuBarDisplay] = { MenuBarScreenSnapshot.capture()?.displays ?? [] }) {
         self.isTrusted = isTrusted; self.process = process; self.currentDisplays = currentDisplays
     }

@@ -26,92 +26,135 @@ final class MenuBarManagementService: ObservableObject {
     @Published private(set) var requestedPresentation: MenuBarPresentation = .all
     @Published private(set) var message: String?
     @Published private(set) var lastActionReceipt: String?
-    @Published private(set) var inventory: MenuBarInventory?
-    @Published private(set) var inventoryPartition: MenuBarPartitionSnapshot?
-    @Published private(set) var isInspecting = false
     @Published private(set) var environmentState: MenuBarEnvironmentState = .ready
     let shelfModel = MenuBarShelfModel()
+    let managementModel = MenuBarShelfModel()
+    let arrangementModel: MenuBarArrangementModel
+    private enum ItemOwner: Equatable {
+        case shelf(UUID), management(UUID)
+        var isShelf: Bool { if case .shelf = self { return true }; return false }
+    }
+    private var itemOwner: ItemOwner?
+    private var managementOwner: UUID?
     @Published private(set) var hotKeyFailures: [MenuBarHotKeyAction: Int32] = [:]
+    @Published private(set) var registeredHotKeyActions: Set<MenuBarHotKeyAction> = []
+    @Published private(set) var isRecordingShortcut = false
     let isPreview: Bool
     let partitionMode: MenuBarPartitionMode
     private let driverFactory: () -> any MenuBarPartitionDriving
     private var driver: (any MenuBarPartitionDriving)?
     private var settings: MenuBarSettings?
     private var observations: [AnyCancellable] = []
-    private var inspection: Task<Void, Never>?
-    private var inspectionRequestID = UUID()
     private var presentationTask: Task<Void, Never>?
+    @Published private(set) var pendingPresentation: MenuBarPresentation?
     private var requestID = UUID()
     private var environmentTask: Task<Void, Never>?
     private var environmentRequestID = UUID()
     private var isSleeping = false
-    private let captureInventory: () async throws -> MenuBarInventory
+    private let captureInventory: (MenuBarItemAccessSession) async throws -> MenuBarInventory
+    private let accessSessionFactory: () -> MenuBarItemAccessSession
+    private let currentDisplayID: () -> UInt32?
+    private let shelfPanelFactory: (MenuBarShelfModel, MenuBarShelfActions) -> any MenuBarShelfPresenting
+    private var isActive = true
     private let workspaceNotifications: NotificationCenter
     private let applicationNotifications: NotificationCenter
     private let hotKeyFactory: () -> any MenuBarHotKeyDriving
     private var hotKeys: (any MenuBarHotKeyDriving)?
-    private let itemAccess = MenuBarItemAccessSession()
-    private var shelfPanel: MenuBarShelfPanel?
-    private var shelfTask: Task<Void, Never>?
-    private var shelfRequestID = UUID()
-    private var shelfDisplayID: UInt32?
+    private var shortcutRecorders = Set<UUID>()
+    private var itemAccess: MenuBarItemAccessSession?
+    private var shelfPanel: (any MenuBarShelfPresenting)?
+    private var itemTask: Task<Void, Never>?
+    private var itemRequestID = UUID()
+    private var panelDisplayID: UInt32?
     private var isActivatingItem = false
 
+    var canSearchAllIcons: Bool { !isPreview && isActive && !isSleeping }
+
     init(isPreview: Bool = false, partitionMode: MenuBarPartitionMode = .current,
+         arrangementModel: MenuBarArrangementModel? = nil, collectionAccess: MenuBarCollectionAccess? = nil,
          driverFactory: (() -> any MenuBarPartitionDriving)? = nil,
          hotKeyFactory: @escaping () -> any MenuBarHotKeyDriving = { NativeMenuBarHotKeys() },
-         captureInventory: @escaping () async throws -> MenuBarInventory = { try await MenuBarInspector().captureForInteraction() },
+         captureInventory: @escaping (MenuBarItemAccessSession) async throws -> MenuBarInventory = { try await MenuBarInspector().captureForInteraction(session: $0) },
+         accessSessionFactory: @escaping () -> MenuBarItemAccessSession = { MenuBarItemAccessSession() },
+         currentDisplayID: @escaping () -> UInt32? = {
+             let screens = NSScreen.screens.filter { $0.frame.contains(NSEvent.mouseLocation) }
+             guard screens.count == 1 else { return nil }
+             return (screens[0].deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? NSNumber)?.uint32Value
+         },
+         shelfPanelFactory: @escaping (MenuBarShelfModel, MenuBarShelfActions) -> any MenuBarShelfPresenting = { model, actions in
+             MenuBarShelfPanel(model: model, refresh: actions.refresh, openPermission: actions.openPermission, showAll: actions.showAll)
+         },
          workspaceNotifications: NotificationCenter = NSWorkspace.shared.notificationCenter,
          applicationNotifications: NotificationCenter = .default) {
         self.isPreview = isPreview
+        self.arrangementModel = arrangementModel ?? MenuBarArrangementModel(collection: collectionAccess ?? (isPreview ? .preview() : .unavailable), isPreview: isPreview)
         self.partitionMode = partitionMode
         self.driverFactory = driverFactory ?? { NativeMenuBarPartitions(mode: partitionMode) }
         self.hotKeyFactory = hotKeyFactory
         self.captureInventory = captureInventory
+        self.accessSessionFactory = accessSessionFactory
+        self.shelfPanelFactory = shelfPanelFactory
+        self.currentDisplayID = currentDisplayID
         self.workspaceNotifications = workspaceNotifications
         self.applicationNotifications = applicationNotifications
-        shelfModel.supportsCollectedScope = partitionMode.supportsSections
+        managementModel.supportsCollectedScope = false
+        managementModel.selectsFirstResult = false
+        shelfModel.supportsCollectedScope = false
         shelfModel.onActivate = { [weak self] id, inventory in self?.activateShelfItem(id, inventoryID: inventory) }
+        self.arrangementModel.prepareToWrite = { [weak self] in
+            guard let self, !self.isPreview, self.partitionMode == .systemVisibility else { return }
+            self.cancelPresentation()
+            self.driver?.revealAll()
+            self.requestedPresentation = .all
+            try await self.driver?.confirmRevealedLayout()
+        }
     }
 
     func apply(_ settings: MenuBarSettings) {
         let previous = self.settings
-        let wasEnabled = isEnabled
         self.settings = settings
         guard !isPreview else { return }
-        guard settings.isEnabled else {
-            // 已经停用时，其他设置提交不能取消用户单独发起的只读清单查询。
-            if wasEnabled || driver != nil || hotKeys != nil { stop() }
-            return
+        isActive = true
+        observeEnvironment()
+        shelfModel.supportsCollectedScope = partitionMode.supportsSections && settings.isEnabled
+        if settings.isEnabled {
+            if driver == nil {
+                let driver = driverFactory()
+                self.driver = driver
+            }
+            if !isEnabled || previous?.deepSectionEnabled != settings.deepSectionEnabled {
+                let needsRecovery = environmentState != .ready
+                cancelPresentation()
+                cancelEnvironmentRecovery()
+                driver?.install(deepSectionEnabled: partitionMode.supportsSections && settings.deepSectionEnabled)
+                requestedPresentation = .all
+                environmentState = isSleeping ? .sleeping : (needsRecovery ? .settling : .ready)
+                message = nil
+                if needsRecovery, !isSleeping { beginEnvironmentRecovery() }
+            }
+            driver?.setCollectedApplications(settings.collectedApplications)
+            if let previous, previous.collectedApplications != settings.collectedApplications {
+                if requestedPresentation != .all { revealAllPreservingRecovery() }
+                if !arrangementModel.isApplying { arrangementModel.invalidate() }
+            }
+            isEnabled = true
+        } else if isEnabled || driver != nil {
+            disableCollection()
         }
-        if driver == nil {
-            let driver = driverFactory()
-            driver.onRequest = { [weak self] in self?.present($0) }
-            driver.onOpenShelf = { [weak self] in self?.toggleShelf(scope: $0) }
-            self.driver = driver
-            observeEnvironment()
-        }
-        if !isEnabled || previous?.deepSectionEnabled != settings.deepSectionEnabled {
-            let needsRecovery = environmentState != .ready
-            cancelPresentation()
-            cancelEnvironmentRecovery()
-            driver?.install(deepSectionEnabled: partitionMode.supportsSections && settings.deepSectionEnabled)
-            requestedPresentation = .all
-            // 配置重装不能绕过尚未稳定的环境；重新确认新的控件，旧回读仍按代次拒绝。
-            environmentState = isSleeping ? .sleeping : (needsRecovery ? .settling : .ready)
-            message = nil
-            if needsRecovery, !isSleeping { beginEnvironmentRecovery() }
-        }
-        isEnabled = true
-        if !wasEnabled || previous?.shelfShortcut != settings.shelfShortcut || previous?.revealShortcut != settings.revealShortcut {
-            applyHotKeys()
-        }
+        // 只比较实际注册集合：收纳与搜索独立，不因无关配置重建快捷键或关闭搜索面板。
+        if previous?.activeShortcuts != settings.activeShortcuts { applyHotKeys() }
+    }
+
+    func toggleCollection() {
+        let current = pendingPresentation ?? requestedPresentation
+        present(current == .collapsed ? (partitionMode.supportsSections ? .expanded : .all) : .collapsed)
     }
 
     func present(_ state: MenuBarPresentation) {
         guard !isPreview, isEnabled, let driver else { return }
         guard state == .all || environmentState == .ready else { return }
-        closeShelf()
+        if arrangementModel.isApplying { arrangementModel.invalidate() }
+        invalidateItemInteraction()
         lastActionReceipt = nil
         cancelPresentation()
         if state == .all {
@@ -120,9 +163,13 @@ final class MenuBarManagementService: ObservableObject {
             return
         }
         let request = requestID
+        pendingPresentation = state
         presentationTask = Task { [weak self] in
             guard let self, self.requestID == request, self.isEnabled,
                   self.environmentState == .ready, !Task.isCancelled else { return }
+            defer {
+                if self.requestID == request { self.pendingPresentation = nil; self.presentationTask = nil }
+            }
             do {
                 try await driver.present(state)
                 guard self.requestID == request, !Task.isCancelled else { return }
@@ -142,12 +189,20 @@ final class MenuBarManagementService: ObservableObject {
 
     func finishPresentation() async { await presentationTask?.value }
     func finishEnvironmentRecovery() async { await environmentTask?.value }
-    func refreshLanguage() { driver?.refreshLabels(); shelfModel.objectWillChange.send() }
+    func finishItemRequest() async { await itemTask?.value }
+    func recoverVisibilityAtLaunch() {
+        guard !isPreview else { return }
+        do { try MenuBarVisibilityRecovery().restore() }
+        catch { message = error.localizedDescription; environmentState = .unconfirmed }
+    }
+
+    func refreshLanguage() { driver?.refreshLabels(); shelfModel.objectWillChange.send(); managementModel.objectWillChange.send() }
 
     private func cancelPresentation() {
         requestID = UUID()
         presentationTask?.cancel()
         presentationTask = nil
+        pendingPresentation = nil
     }
 
     private func cancelEnvironmentRecovery() {
@@ -156,26 +211,33 @@ final class MenuBarManagementService: ObservableObject {
         environmentTask = nil
     }
 
-    private func invalidateInventory() {
-        inspectionRequestID = UUID()
-        inspection?.cancel(); inspection = nil
-        isInspecting = false
-        inventory = nil
-        inventoryPartition = nil
+    /// 应用清单变化只撤销 AX 引用，不把已经收起的菜单栏擅自展开。
+    /// 如果切换尚未结束，新图标可能改变正在验证的布局，此时仅取消这次切换并释放占位。
+    func applicationsDidChange() {
+        guard !isPreview, isActive else { return }
+        arrangementModel.invalidate()
+        invalidateItemInteraction()
+        lastActionReceipt = nil
+        if pendingPresentation != nil {
+            cancelPresentation()
+            driver?.revealAll()
+            requestedPresentation = .all
+            message = L10n.string(.MenuBar.runtimeApplicationChangeCancelled)
+        }
     }
 
-    /// 环境变化撤销全部旧观察和动作；恢复只回到显示全部，不自动重放收起或图标取用。
+    /// 真正的屏幕／Space／睡眠变化采用保护性展开，不把它混同于普通应用启停。
     func environmentDidChange(_ change: MenuBarEnvironmentChange) {
-        guard !isPreview, isEnabled else { return }
+        guard !isPreview, isActive else { return }
+        arrangementModel.invalidate()
         if change == .sleep { isSleeping = true }
         if change == .wake { isSleeping = false }
         cancelPresentation()
-        closeShelf()
-        invalidateInventory()
+        invalidateItemInteraction()
         cancelEnvironmentRecovery()
         lastActionReceipt = nil
-        message = nil
-        environmentState = isSleeping ? .sleeping : .settling
+        message = isEnabled && !isSleeping ? L10n.string(.MenuBar.runtimeLayoutRevealed) : nil
+        environmentState = isSleeping ? .sleeping : (driver == nil ? .ready : .settling)
         revealAllPreservingRecovery()
     }
 
@@ -183,6 +245,7 @@ final class MenuBarManagementService: ObservableObject {
         driver?.revealAll()
         requestedPresentation = .all
         // 显示全部和全图标取用不依赖分区凭据；重复恢复仅更新确认代次，不关闭这两个入口。
+        if let failure = driver?.recoveryFailure { environmentState = .unconfirmed; message = failure.localizedDescription }
         if !isSleeping, environmentState != .ready { beginEnvironmentRecovery() }
     }
 
@@ -207,42 +270,31 @@ final class MenuBarManagementService: ObservableObject {
     }
 
     func stop() {
-        closeShelf()
+        isActive = false
+        disableCollection()
         hotKeys?.stop(); hotKeys = nil; hotKeyFailures = [:]
-        cancelPresentation()
-        cancelEnvironmentRecovery()
-        invalidateInventory()
-        driver?.remove(); driver = nil
+        registeredHotKeyActions = []
+        shortcutRecorders.removeAll(); isRecordingShortcut = false
         observations.removeAll()
-        isEnabled = false
-        requestedPresentation = .all
-        environmentState = .ready
         isSleeping = false
-        message = nil
-        lastActionReceipt = nil
+        environmentState = .ready
         settings = nil
     }
 
-    func refreshInventory() {
-        guard !isPreview, !isInspecting, !isSleeping else { return }
-        isInspecting = true
-        inspectionRequestID = UUID()
-        let request = inspectionRequestID
-        // 发现是显式只读操作；不要求先启用分区，也不会为了读取而更改图标可见性。
-        inspection = Task { [weak self] in
-            await Task.yield()
-            guard let self, !Task.isCancelled else { return }
-            defer { if inspectionRequestID == request { isInspecting = false } }
-            do {
-                let before = try? driver?.layoutSnapshot()
-                let result = try await captureInventory()
-                guard inspectionRequestID == request, !Task.isCancelled else { return }
-                let after = try? driver?.layoutSnapshot()
-                inventoryPartition = .validated(before: before, after: after, inventory: result, targetDisplayID: before?.displayID)
-                inventory = result
-            } catch is CancellationError { return }
-            catch { if inspectionRequestID == request { message = error.localizedDescription } }
-        }
+    private func disableCollection() {
+        arrangementModel.invalidate()
+        invalidateItemInteraction()
+        cancelPresentation()
+        cancelEnvironmentRecovery()
+        driver?.remove()
+        let recoveryFailure = driver?.recoveryFailure
+        driver = nil
+        isEnabled = false
+        shelfModel.supportsCollectedScope = false
+        requestedPresentation = .all
+        environmentState = isSleeping ? .sleeping : (recoveryFailure == nil ? .ready : .unconfirmed)
+        message = recoveryFailure?.localizedDescription
+        lastActionReceipt = nil
     }
 
     func openAccessibilitySettings() {
@@ -250,142 +302,264 @@ final class MenuBarManagementService: ObservableObject {
         SystemPrivacySettings.open(.accessibility)
     }
 
-    func retryHotKeys() { guard !isPreview, isEnabled else { return }; applyHotKeys() }
+    func retryHotKeys() { guard !isPreview, isActive else { return }; applyHotKeys() }
+
+    /// 录制时撤销本功能的全局拦截，避免按下已有组合却唤出菜单；旧控件不能恢复新控件的热键。
+    func setShortcutRecording(owner: UUID, active: Bool) {
+        guard !isPreview else { return }
+        if active { shortcutRecorders.insert(owner) }
+        else { guard shortcutRecorders.remove(owner) != nil else { return } }
+        let recording = !shortcutRecorders.isEmpty
+        guard isRecordingShortcut != recording else { return }
+        isRecordingShortcut = recording
+        if recording { hotKeys?.stop(); registeredHotKeyActions = [] }
+        else if isActive { applyHotKeys() }
+    }
 
     private func applyHotKeys() {
         guard let settings else { return }
-        guard settings.shelfShortcut != .disabled || settings.revealShortcut != .disabled else {
-            hotKeys?.stop(); hotKeys = nil; hotKeyFailures = [:]; return
+        guard !isRecordingShortcut else { return }
+        let shortcuts = settings.activeShortcuts
+        guard !shortcuts.isEmpty else {
+            hotKeys?.stop(); hotKeys = nil; hotKeyFailures = [:]; registeredHotKeyActions = []; return
         }
         if hotKeys == nil { hotKeys = hotKeyFactory() }
-        hotKeyFailures = hotKeys?.apply(shelf: settings.shelfShortcut, reveal: settings.revealShortcut) { [weak self] action in
+        hotKeyFailures = hotKeys?.apply(shortcuts) { [weak self] action in
+            guard let self, self.isActive, !self.isSleeping, !self.isRecordingShortcut,
+                  self.settings?.activeShortcuts[action] != nil else { return }
             switch action {
-            case .shelf: self?.toggleShelf(scope: .all)
-            case .reveal: self?.present(.all)
+            case .shelf: self.toggleShelf(scope: .all)
+            case .toggle: self.toggleCollection()
+            case .reveal: self.present(.all)
             }
         } ?? [:]
+        registeredHotKeyActions = Set(shortcuts.keys).subtracting(hotKeyFailures.keys)
+    }
+
+    /// 管理页与快捷面板共享一条取用链路；owner 让旧页面的退出和迟到回包不能接管新会话。
+    func beginManagement(owner: UUID) {
+        guard managementOwner != owner else { return }
+        managementOwner = owner
+        guard !isPreview else { return }
+        refreshManagement(owner: owner, clearQuery: true)
+    }
+
+    func applyArrangement() {
+        guard isPreview || (isEnabled && environmentState == .ready && pendingPresentation == nil) else { return }
+        arrangementModel.apply()
+    }
+
+    func refreshManagement(owner: UUID, clearQuery: Bool = false) {
+        guard managementOwner == owner, canSearchAllIcons, !isActivatingItem else { return }
+        observeEnvironment()
+        invalidateItemInteraction()
+        let identity = ItemOwner.management(owner)
+        itemOwner = identity
+        managementModel.scope = .all
+        refreshItems(owner: identity, model: managementModel, clearQuery: clearQuery)
+    }
+
+    func endManagement(owner: UUID) {
+        guard managementOwner == owner else { return }
+        managementOwner = nil
+        if itemOwner == .management(owner) { invalidateItemInteraction() }
+        if !isPreview { managementModel.clear() }
+    }
+
+    func activateManagementItem(_ id: UUID?, owner: UUID) {
+        guard managementOwner == owner, itemOwner == .management(owner),
+              let id = id ?? managementModel.selectedID, let inventory = managementModel.inventoryID else { return }
+        activateItem(id, inventoryID: inventory, owner: .management(owner), model: managementModel)
     }
 
     func toggleShelf(scope: MenuBarShelfScope) {
-        guard !isPreview, isEnabled, !isSleeping else { return }
+        guard canSearchAllIcons else { return }
+        guard scope == .all || isEnabled else { return }
+        observeEnvironment()
         guard scope != .collected || partitionMode.supportsSections else {
             message = L10n.string(.MenuBar.overflowSectionsUnavailable)
             return
         }
-        guard scope == .all || environmentState == .ready else { return }
+        guard scope == .all || (isEnabled && environmentState == .ready) else { return }
         if shelfPanel?.isVisible == true {
             if shelfModel.scope == scope { closeShelf() }
             else { shelfModel.scope = scope }
             return
         }
-        closeShelf()
+        invalidateItemInteraction()
         lastActionReceipt = nil
+        let owner = ItemOwner.shelf(UUID())
+        itemOwner = owner
         shelfModel.scope = scope
         shelfModel.begin(clearQuery: true)
         shelfModel.feedback = message
-        let panel = MenuBarShelfPanel(model: shelfModel, refresh: { [weak self] in self?.refreshShelf() },
+        let panel = shelfPanelFactory(shelfModel, .init(refresh: { [weak self] in self?.refreshShelf(owner: owner) },
             openPermission: { [weak self] in self?.openAccessibilitySettings() },
-            showAll: { [weak self] in self?.present(.all) })
-        panel.onDismiss = { [weak self] in self?.closeShelf() }
+            showAll: { [weak self] in self?.present(.all) }))
+        panel.onDismiss = { [weak self] in
+            guard self?.itemOwner == owner else { return }
+            self?.closeShelf()
+        }
         shelfPanel = panel
         do {
-            shelfDisplayID = try panel.show()
-            refreshShelf()
+            panelDisplayID = try panel.show()
+            refreshShelf(owner: owner)
         } catch { message = error.localizedDescription; closeShelf() }
     }
 
     func closeShelf() {
-        shelfRequestID = UUID()
-        shelfTask?.cancel(); shelfTask = nil
+        guard itemOwner?.isShelf == true else { return }
+        invalidateItemInteraction()
+    }
+
+    private func invalidateItemInteraction() {
+        if case .management = itemOwner {
+            managementModel.invalidate(L10n.string(.MenuBar.managementStale))
+        }
+        itemOwner = nil
+        itemRequestID = UUID()
+        itemTask?.cancel(); itemTask = nil
         shelfPanel?.close(); shelfPanel = nil
-        itemAccess.invalidate()
+        itemAccess?.invalidate(); itemAccess = nil
         shelfModel.clear()
-        shelfDisplayID = nil
+        panelDisplayID = nil
         isActivatingItem = false
     }
 
-    private func refreshShelf() {
-        guard !isPreview, isEnabled, shelfPanel?.isVisible == true, !isActivatingItem else { return }
-        shelfTask?.cancel()
-        shelfRequestID = UUID()
-        let request = shelfRequestID
-        shelfModel.begin(clearQuery: false)
-        itemAccess.invalidate()
-        shelfTask = Task { [weak self] in
-            guard let self, self.shelfRequestID == request, self.isEnabled, !Task.isCancelled else { return }
+    private func refreshShelf(owner: ItemOwner) {
+        guard itemOwner == owner, canSearchAllIcons, shelfPanel?.isVisible == true, !isActivatingItem else { return }
+        guard shelfModel.scope == .all || isEnabled else { return }
+        refreshItems(owner: owner, model: shelfModel, clearQuery: false)
+    }
+
+    private func refreshItems(owner: ItemOwner, model: MenuBarShelfModel, clearQuery: Bool) {
+        itemTask?.cancel()
+        itemRequestID = UUID()
+        let request = itemRequestID
+        model.begin(clearQuery: clearQuery)
+        itemAccess?.invalidate(); itemAccess = nil
+        itemTask = Task { [weak self] in
+            guard let self, self.itemRequestID == request, self.itemOwner == owner,
+                  self.isActive, !self.isSleeping, !Task.isCancelled else { return }
+            let access = accessSessionFactory()
+            var adopted = false
+            defer {
+                if !adopted { access.invalidate() }
+                if self.itemRequestID == request { self.itemTask = nil }
+            }
             do {
                 let before = try? driver?.layoutSnapshot()
-                let result = try await MenuBarInspector().captureForInteraction(session: itemAccess)
-                guard self.shelfRequestID == request, !Task.isCancelled else { return }
+                let result = try await captureInventory(access)
+                guard self.itemRequestID == request, self.itemOwner == owner, !Task.isCancelled else { return }
+                itemAccess = access; adopted = true
                 let after = try? driver?.layoutSnapshot()
-                let partition = MenuBarPartitionSnapshot.validated(before: before, after: after, inventory: result, targetDisplayID: shelfDisplayID)
-                shelfModel.load(result, partition: partition, targetDisplayID: shelfDisplayID)
+                let partition = MenuBarPartitionSnapshot.validated(before: before, after: after, inventory: result, targetDisplayID: panelDisplayID)
+                model.load(result, partition: partition, targetDisplayID: panelDisplayID)
             } catch is CancellationError { return }
             catch {
-                guard self.shelfRequestID == request else { return }
-                shelfModel.fail(error.localizedDescription)
+                guard self.itemRequestID == request, self.itemOwner == owner else { return }
+                model.fail(error.localizedDescription, permissionRequired: (error as? MenuBarItemAccessError)?.requiresPermission == true)
             }
         }
     }
 
     private func activateShelfItem(_ id: UUID, inventoryID: UUID) {
-        guard !isPreview, isEnabled, !isActivatingItem, let displayID = shelfDisplayID,
-              shelfModel.inventoryID == inventoryID, let driver else { return }
-        let scope = shelfModel.scope
-        guard scope == .all || environmentState == .ready else { return }
-        let observedPartition = shelfModel.partition
-        guard shelfModel.filteredItems.contains(where: { $0.id == id && $0.supportsActivation }) else { return }
+        guard let owner = itemOwner, owner.isShelf else { return }
+        activateItem(id, inventoryID: inventoryID, owner: owner, model: shelfModel)
+    }
+
+    private func activateItem(_ id: UUID, inventoryID: UUID, owner: ItemOwner, model: MenuBarShelfModel) {
+        guard !isPreview, isActive, !isSleeping, !isActivatingItem, itemOwner == owner,
+              model.inventoryID == inventoryID, let access = itemAccess,
+              model.filteredItems.contains(where: { $0.id == id && model.canActivate($0) }) else { return }
+        guard let displayID = owner.isShelf ? panelDisplayID : currentDisplayID() else {
+            model.invalidate(L10n.string(.MenuBar.accessDisplayChanged)); return
+        }
+        let scope = model.scope
+        guard scope == .all || (isEnabled && environmentState == .ready) else { return }
+        let observedPartition = model.partition
         isActivatingItem = true
-        shelfPanel?.close()
-        shelfTask?.cancel()
-        shelfRequestID = UUID()
-        let request = shelfRequestID
+        model.beginActivation(id)
+        if owner.isShelf { shelfPanel?.close() }
+        itemTask?.cancel()
+        itemRequestID = UUID()
+        let request = itemRequestID
+        let interruptedTransition = pendingPresentation != nil
         cancelPresentation()
-        shelfTask = Task { [weak self] in
-            guard let self, self.shelfRequestID == request, self.isEnabled, !Task.isCancelled else { return }
+        if interruptedTransition {
+            // 点按不能与未完成的布局写入并发；仅中断正在进行的切换，不展开一个稳定收起的区域。
+            driver?.revealAll()
+            requestedPresentation = .all
+        }
+        itemTask = Task { [weak self] in
+            guard let self, self.itemRequestID == request, self.itemOwner == owner,
+                  self.isActive, !self.isSleeping, !Task.isCancelled else { return }
+            defer {
+                if self.itemRequestID == request {
+                    self.isActivatingItem = false; self.itemTask = nil
+                    model.endActivation()
+                }
+            }
             do {
                 let constraint: MenuBarCollectionConstraint?
                 if scope == .collected {
-                    guard let observedPartition, try driver.layoutSnapshot() == observedPartition else { throw MenuBarItemAccessError.sectionChanged }
-                    // 普通收纳只展开普通区。失败时保持当前状态，不能静默暴露深度区。
-                    requestedPresentation = .expanded
+                    guard isEnabled, let driver, let observedPartition, try driver.layoutSnapshot() == observedPartition else { throw MenuBarItemAccessError.sectionChanged }
                     try await driver.present(.expanded)
+                    requestedPresentation = .expanded
                     let active = try driver.layoutSnapshot()
                     constraint = .init(snapshot: active, isCurrent: { (try? driver.layoutSnapshot()) == active })
                 } else {
-                    revealAllPreservingRecovery()
-                    try await Task.sleep(for: .milliseconds(120))
+                    // 全图标直接作用于已验证的 AX 对象，不通过“全部展开”来冒充单项取用。
                     constraint = nil
                 }
                 try Task.checkCancellation()
-                guard self.shelfRequestID == request, isEnabled else { return }
-                try itemAccess.activate(itemID: id, inventoryID: inventoryID, displayID: displayID, collection: constraint)
-                message = nil
+                guard self.itemRequestID == request, self.itemOwner == owner, isActive, !isSleeping else { return }
+                try access.activate(itemID: id, inventoryID: inventoryID, displayID: displayID, collection: constraint)
                 lastActionReceipt = L10n.string(.MenuBar.accessAccepted)
-                itemAccess.invalidate()
-                shelfModel.clear()
+                if owner.isShelf {
+                    message = nil
+                    itemAccess?.invalidate(); itemAccess = nil
+                    model.clear()
+                } else {
+                    // 只消费本行令牌；其他图标仍可取用，已发送行必须刷新后才能再次点按。
+                    model.finishActivation(id, outcome: .sent)
+                }
             } catch is CancellationError { return }
             catch {
-                guard self.shelfRequestID == request else { return }
-                itemAccess.invalidate()
-                message = error.localizedDescription
-                shelfModel.fail(error.localizedDescription, permissionRequired: (error as? MenuBarItemAccessError)?.requiresPermission == true)
-                // AX 超时可能已经执行，不能重新抢焦点或重试。发送前的拒绝可以在面板解释。
-                if case MenuBarItemAccessError.requestUnconfirmed = error { }
-                else {
-                    do { shelfDisplayID = try shelfPanel?.show() }
-                    catch { message = error.localizedDescription; closeShelf() }
+                guard self.itemRequestID == request, self.itemOwner == owner else { return }
+                itemAccess?.invalidate(); itemAccess = nil
+                let detail = error.localizedDescription
+                let permissionRequired = (error as? MenuBarItemAccessError)?.requiresPermission == true
+                let unconfirmed: Bool
+                if case MenuBarItemAccessError.requestUnconfirmed = error { unconfirmed = true }
+                else { unconfirmed = false }
+                if owner.isShelf {
+                    message = detail
+                    model.fail(detail, permissionRequired: permissionRequired)
+                    // 超时不重开面板抢走原生菜单焦点，也不重放动作。
+                    if !unconfirmed {
+                        do { panelDisplayID = try shelfPanel?.show() }
+                        catch { message = error.localizedDescription; closeShelf() }
+                    }
+                } else if permissionRequired {
+                    model.fail(detail, permissionRequired: true)
+                } else {
+                    model.finishActivation(id, outcome: unconfirmed ? .unconfirmed(detail) : .failed(detail))
+                    model.invalidate(L10n.string(.MenuBar.managementStale))
                 }
             }
-            guard self.shelfRequestID == request else { return }
-            isActivatingItem = false
         }
     }
 
     private func observeEnvironment() {
+        guard observations.isEmpty else { return }
         // 睡眠期间的迟到切屏通知不能解除暂停；只有真实唤醒通知才开始稳定确认。
-        for (name, change) in [(NSWorkspace.didLaunchApplicationNotification, MenuBarEnvironmentChange.layout),
-                               (NSWorkspace.activeSpaceDidChangeNotification, .layout),
+        for name in [NSWorkspace.didLaunchApplicationNotification, NSWorkspace.didTerminateApplicationNotification] {
+            workspaceNotifications.publisher(for: name).receive(on: RunLoop.main).sink { [weak self] _ in
+                self?.applicationsDidChange()
+            }.store(in: &observations)
+        }
+        for (name, change) in [(NSWorkspace.activeSpaceDidChangeNotification, MenuBarEnvironmentChange.layout),
                                (NSWorkspace.didWakeNotification, .wake), (NSWorkspace.willSleepNotification, .sleep)] {
             workspaceNotifications.publisher(for: name).receive(on: RunLoop.main).sink { [weak self] _ in
                 self?.environmentDidChange(change)

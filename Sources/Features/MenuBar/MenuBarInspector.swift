@@ -50,8 +50,10 @@ final class MenuBarInspector {
         let processes: [ProcessDescriptor] = trusted ? NSWorkspace.shared.runningApplications.filter {
             !$0.isTerminated && (processIDs?.contains($0.processIdentifier) ?? true)
         }.map {
-            .init(id: $0.processIdentifier, launchDate: $0.launchDate, bundle: $0.bundleIdentifier,
-                  name: $0.localizedName ?? $0.bundleIdentifier ?? String($0.processIdentifier))
+            // 输入法与部分 Qt 常驻应用没有 LaunchServices 启动日期；统一用内核身份，避免误判为匿名进程。
+            .init(id: $0.processIdentifier, launchDate: MenuBarProcessIdentity.capture($0)?.launchDate, bundle: $0.bundleIdentifier,
+                  name: $0.bundleIdentifier == MenuBarInputMenu.bundleIdentifier ? MenuBarInputMenu.displayName :
+                    ($0.localizedName ?? $0.bundleIdentifier ?? String($0.processIdentifier)))
         } : []
         return Context(displays: displays, displayIssues: issues, trusted: trusted, processes: processes)
     }

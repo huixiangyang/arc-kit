@@ -9,6 +9,38 @@ import Testing
 
 @Suite("设置提交与通信顺序")
 struct SettingsCommitTests {
+    @Test("移除会话功能后新库不建旧表，旧记录及资产仍随完整备份原样保留")
+    func retiredSessionDataPreserved() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).resolvingSymlinksInPath()
+        defer { try? FileManager.default.removeItem(at: root) }
+        let repository = SettingsRepository(directoryURL: root.appendingPathComponent("source"))
+        var settings = try repository.load()
+        #expect(try repository.database.read { try !$0.tableExists("agent_session_preferences") && !$0.tableExists("agent_session_versions") })
+        let encoded = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(settings)) as? [String: Any])
+        #expect(encoded["agentSessions"] == nil)
+        let relative = "assets/agent-sessions/retired.session"
+        let file = repository.database.paths.root.appendingPathComponent(relative)
+        let bytes = Data("retained user archive fixture".utf8)
+        try ArcKitAtomicFile.writeAtomically(bytes, to: file)
+        let digest = try ArcKitAssetStore.digest(file)
+        try repository.database.write { db in
+            try db.execute(sql: "CREATE TABLE agent_session_preferences(isEnabled INTEGER); INSERT INTO agent_session_preferences VALUES(1)")
+            try db.execute(sql: "CREATE TABLE agent_session_versions(id TEXT PRIMARY KEY,digest TEXT REFERENCES assets(digest))")
+            try db.execute(sql: "INSERT INTO assets(digest,path,byte_count) VALUES(?,?,?)", arguments: [digest, relative, bytes.count])
+            try db.execute(sql: "INSERT INTO agent_session_versions VALUES('retained',?)", arguments: [digest])
+        }
+        settings.menuBar.isEnabled = true
+        try repository.save(settings)
+        let backup = try StorageMaintenance(database: repository.database).backup(full: true)
+        let restored = SettingsRepository(directoryURL: root.appendingPathComponent("restored"))
+        _ = try restored.load()
+        try StorageMaintenance(database: restored.database).restore(backup)
+        #expect(try restored.load() == settings)
+        #expect(try restored.database.read { try String.fetchOne($0, sql: "SELECT digest FROM agent_session_versions WHERE id='retained'") } == digest)
+        #expect(try Data(contentsOf: restored.database.paths.root.appendingPathComponent(relative)) == bytes)
+        try repository.database.close(); try restored.database.close()
+    }
+
     @Test("0.1.2 完整库升级和跨根恢复只增加关闭的新功能，保留 UU 与既有配置")
     func releasedDatabaseUpgradeAndRestore() throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).resolvingSymlinksInPath()
@@ -28,16 +60,9 @@ struct SettingsCommitTests {
         let fixture = try DatabaseQueue(path: backup.appendingPathComponent("app.sqlite").path)
         try fixture.write { db in
             try db.execute(sql: """
-                DROP TABLE agent_session_search_fts;
-                DROP TABLE agent_session_search_entries;
-                DROP TABLE agent_session_search_documents;
-                DROP TABLE agent_session_versions;
-                DROP TABLE agent_session_jobs;
-                DROP TABLE agent_session_sources;
-                DROP TABLE agent_session_preferences;
                 DROP TABLE menu_bar_preferences;
                 DELETE FROM grdb_migrations WHERE identifier IN
-                    ('menu-bar-management-v1','menu-bar-shortcuts-v1','agent-sessions-v1','agent-sessions-search-v1');
+                    ('menu-bar-management-v1','menu-bar-shortcuts-v1','agent-sessions-v1','agent-sessions-search-v1','menu-bar-custom-shortcuts-v1','menu-bar-independent-shortcuts-v1');
                 """)
         }
         try fixture.close()
@@ -47,17 +72,15 @@ struct SettingsCommitTests {
         let upgraded = SettingsRepository(directoryURL: installedRoot)
         let first = try upgraded.loadSnapshot()
         #expect(first.settings == expected)
-        #expect(!first.settings.menuBar.isEnabled && !first.settings.agentSessions.isEnabled)
-        #expect(first.settings.agentSessions.sources.isEmpty)
+        #expect(!first.settings.menuBar.isEnabled)
         #expect(first.revision.runtime == committed.revision.runtime)
-        #expect(try upgraded.database.read { try $0.tableExists("agent_session_search_documents") })
+        #expect(try upgraded.database.read { try !$0.tableExists("agent_session_search_documents") })
         try upgraded.database.close()
         let reopened = SettingsRepository(directoryURL: installedRoot)
         #expect(try reopened.loadSnapshot() == first)
 
         var edited = expected
         edited.menuBar.isEnabled = true
-        edited.agentSessions.isEnabled = true
         edited.mouseEnhancement.appProfiles.removeAll()
         try reopened.save(edited)
         try StorageMaintenance(database: reopened.database).restore(backup)

@@ -112,22 +112,8 @@ public struct WindowHotKeyBinding: Codable, Equatable, Identifiable, Sendable {
             && modifiers.containsPrimaryModifier
     }
 
-    public static func isValidKeyCode(_ value: UInt16) -> Bool {
-        // Carbon RegisterEventHotKey 使用 macOS 虚拟键码；坏配置直接拒绝，不在运行时假注册。
-        value <= 127
-    }
-
-    public static func isValidKeyEquivalent(_ value: String) -> Bool {
-        guard value == value.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty else { return false }
-        if namedKeyEquivalents.contains(value) { return true }
-        guard value.count == 1, let scalar = value.unicodeScalars.first else { return false }
-        return scalar.value >= 33 && scalar.value <= 126
-    }
-
-    private static let namedKeyEquivalents: Set<String> = [
-        "↩", "⇥", "⌤", "Home", "PgUp", "End", "PgDn", "←", "→", "↓", "↑", "Space",
-        "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12",
-    ]
+    public static func isValidKeyCode(_ value: UInt16) -> Bool { HotKeyChord.isValidKeyCode(value) }
+    public static func isValidKeyEquivalent(_ value: String) -> Bool { HotKeyChord.isValidKeyEquivalent(value) }
 
     public static let magnetDefaults: [WindowHotKeyBinding] = [
         WindowHotKeyBinding(action: .leftHalf, keyCode: 123, keyEquivalent: "←"),

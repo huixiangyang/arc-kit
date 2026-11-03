@@ -9,18 +9,25 @@ import ScreenCaptureKit
 final class MenuBarNativeCheck {
     private let directory: URL
     private let measuresWidths: Bool
+    private let fixtureOnly: Bool
+    private let orderOnly: Bool
+    private let captureOnly: Bool
     private let driver: NativeMenuBarPartitions
     private var fixtures: [NSStatusItem] = []
+    private var temporaryPositionKeys: [String] = []
     private var signals: [DispatchSourceSignal] = []
     private var report: [String: Any] = [:]
     private var stages: [[String: Any]] = []
     private var completed = false
 
-    init(directory: URL, measuresWidths: Bool = false) {
+    init(directory: URL, measuresWidths: Bool = false, fixtureOnly: Bool = false, orderOnly: Bool = false, captureOnly: Bool = false) {
         self.directory = directory
         self.measuresWidths = measuresWidths
+        self.fixtureOnly = fixtureOnly
+        self.orderOnly = orderOnly
+        self.captureOnly = captureOnly
         driver = NativeMenuBarPartitions(namespace: "menu-bar-native-check.\(UUID())", savesPositions: false,
-                                         mode: measuresWidths ? .offscreen : .current)
+                                         mode: measuresWidths ? .offscreen : .current, trace: { print($0) })
     }
 
     func run() async -> Int32 {
@@ -31,7 +38,7 @@ final class MenuBarNativeCheck {
                       "systemVersion": ProcessInfo.processInfo.operatingSystemVersionString,
                       "screenCaptureGranted": CGPreflightScreenCaptureAccess(),
                       "startedAt": ISO8601DateFormatter().string(from: Date()),
-                      "scope": measuresWidths ? "temporary-owned-widths-only" : "temporary-owned-partitions; no production storage or Host"]
+                      "scope": fixtureOnly ? "one temporary icon; installed app operated separately" : (measuresWidths ? "temporary-owned-widths-only" : "temporary-owned-partitions; no production storage or Host")]
             armCleanup()
             defer { cleanup() }
             guard let screens = MenuBarScreenSnapshot.capture() else { throw MenuBarPartitionError.unavailable }
@@ -41,7 +48,29 @@ final class MenuBarNativeCheck {
             // 截图只记录顶部菜单栏区域，不导出桌面和其他窗口内容。
             for display in screens.displays { await capture("baseline-\(display.id)", display: display) }
 
-            if measuresWidths {
+            if captureOnly {
+                report["scope"] = "read-only menu bar screenshots; no status items or preference writes"
+            } else if orderOnly {
+                try await checkLiveOrder(displays: screens.displays)
+            } else if fixtureOnly {
+                // 只提供一枚测试图标与截图，收起/展开由操作者通过安装版的真实按钮完成。
+                addFixture(.sun, label: "Arc Kit collection test")
+                try await Task.sleep(for: .milliseconds(1000))
+                await record("fixture-ready")
+                for display in screens.displays { await capture("fixture-ready-\(display.id)", display: display) }
+                try Data().write(to: directory.appendingPathComponent("ready"))
+                var captured = Set<String>()
+                while !FileManager.default.fileExists(atPath: directory.appendingPathComponent("finish").path) {
+                    for name in ["collapsed", "revealed", "collapsed-again", "revealed-again", "reordered", "collected", "resident", "undone"] where !captured.contains(name) {
+                        guard FileManager.default.fileExists(atPath: directory.appendingPathComponent("capture-\(name)").path) else { continue }
+                        await record(name)
+                        for display in screens.displays { await capture("\(name)-\(display.id)", display: display) }
+                        captured.insert(name)
+                        try Data().write(to: directory.appendingPathComponent("\(name).done"))
+                    }
+                    try await Task.sleep(for: .milliseconds(100))
+                }
+            } else if measuresWidths {
                 let plan = try MenuBarOverflowPlan(displays: screens.displays)
                 report["spacingPlan"] = ["segmentLength": plan.segmentLength, "segmentCount": plan.segmentCount]
                 driver.install(deepSectionEnabled: false)
@@ -49,16 +78,29 @@ final class MenuBarNativeCheck {
                 addFixture(.sun, label: "Arc Kit temporary width fixture")
                 try await Task.sleep(for: .milliseconds(1000))
                 for collapsed in [false, true, false] {
-                    driver.nativeCheckSetSpacerLength(collapsed ? plan.segmentLength : 18)
-                    for item in spacers { item.length = collapsed ? plan.segmentLength : 0 }
+                    driver.nativeCheckSetSpacerLength(collapsed ? plan.segmentLength : driver.nativeCheckExpandedLength)
+                    if collapsed {
+                        let active = try MenuBarSpacerLayout.stage(spacers, plan: plan)
+                        try MenuBarSpacerLayout.inflate(active, plan: plan)
+                    }
+                    else { MenuBarSpacerLayout.reveal(spacers) }
                     try await Task.sleep(for: .milliseconds(700))
                     let name = "segments-\(collapsed ? "collapsed" : "expanded")-\(stages.count)"
                     await record(name)
                     for display in screens.displays { await capture("\(name)-\(display.id)", display: display) }
                 }
             } else {
+                guard MenuBarPartitionMode.current.supportsSections else {
+                    report["failure"] = "macOS 27 visibility requires an independently owned app fixture; use --menu-bar-visibility-check"
+                    throw MenuBarPartitionError.unavailable
+                }
+                // 常驻对照先注册到右侧；多枚目标随后注册到竖线左侧，避免一枚图标掩盖“被推散”的问题。
+                addFixture(.shieldCheck, label: "Arc Kit visible reference fixture")
                 driver.install(deepSectionEnabled: false)
-                addFixture(.gauge, label: "Arc Kit temporary collected fixture")
+                for (index, icon) in [ArcIconName.gauge, .sun, .cloudDownload, .appWindow].enumerated() {
+                    addFixture(icon, label: "Arc Kit collected fixture \(index + 1)")
+                }
+                report["fixtureContract"] = "On collapse all four collected fixtures must leave the visible bar and the visible reference must remain. Driver anchors must expose no symbol or action. On reveal all four must return. Review screenshots for every display."
                 if MenuBarPartitionMode.current.supportsSections {
                     driver.install(deepSectionEnabled: true)
                     addFixture(.sun, label: "Arc Kit temporary deep fixture")
@@ -66,14 +108,17 @@ final class MenuBarNativeCheck {
                 try await Task.sleep(for: .milliseconds(1400))
                 await record("installed")
                 for display in screens.displays { await capture("installed-\(display.id)", display: display) }
-                for state in MenuBarPartitionMode.current.presentations {
-                    let name = state.rawValue
+                let sequence: [MenuBarPresentation] = MenuBarPartitionMode.current == .systemVisibility
+                    ? [.collapsed, .all, .collapsed, .all] : MenuBarPartitionMode.current.presentations
+                for (index, state) in sequence.enumerated() {
+                    let name = "\(index + 1)-\(state.rawValue)"
                     do {
                         try await driver.present(state)
+                        if state == .all { try await driver.confirmRevealedLayout() }
                         try await Task.sleep(for: .milliseconds(state == .all ? 1200 : 700))
-                        await record(name)
+                        await record(name, presentation: state)
                     } catch {
-                        await record(name, error: error.localizedDescription)
+                        await record(name, presentation: state, error: error.localizedDescription)
                         driver.revealAll()
                     }
                     for display in screens.displays { await capture("\(name)-\(display.id)", display: display) }
@@ -85,7 +130,8 @@ final class MenuBarNativeCheck {
             for display in screens.displays { await capture("removed-\(display.id)", display: display) }
             report["finishedAt"] = ISO8601DateFormatter().string(from: Date())
             let failures = stages.filter { $0["error"] != nil }
-            report["partitionRequestsConfirmed"] = measuresWidths ? NSNull() : failures.isEmpty
+            report["geometryTransactionsConfirmed"] = measuresWidths || fixtureOnly || orderOnly || captureOnly ? NSNull() : failures.isEmpty
+            report["iconVisibilityVerified"] = false
             report["visualAcceptance"] = "Review per-display screenshots for actual icon visibility and recovery"
             completed = true
             try writeReport()
@@ -101,14 +147,88 @@ final class MenuBarNativeCheck {
         }
     }
 
+    /// 只用两枚自有图标区分“位置写入成功”与“现有图标即时移动”，不调整第三方条目。
+    private func checkLiveOrder(displays: [MenuBarDisplay]) async throws {
+        let namespace = "menu-bar-order-check.\(UUID())"
+        let owner = Bundle.main.bundleIdentifier ?? ProcessInfo.processInfo.processName
+        let names = ["\(namespace).sun", "\(namespace).cloud"]
+        let keys = names.map { "status:\(owner)::\($0)" }
+        temporaryPositionKeys = keys
+        report["temporaryPositionKeys"] = keys
+        let domain = FileManager.default.homeDirectoryForCurrentUser
+            .appendingPathComponent("Library/Group Containers/com.apple.MenuBar/Library/Preferences/com.apple.MenuBar").path as CFString
+        let key = "TrailingItemPreferredPositions" as CFString
+        func write(_ values: [Double]?) throws {
+            guard CFPreferencesAppSynchronize(domain), var positions = CFPreferencesCopyAppValue(key, domain) as? [String: Double] else {
+                throw MenuBarPartitionError.overflowOrderUnavailable
+            }
+            for (index, name) in keys.enumerated() { positions[name] = values?[index] }
+            CFPreferencesSetAppValue(key, positions as CFDictionary, domain)
+            guard CFPreferencesAppSynchronize(domain) else { throw MenuBarPartitionError.overflowOrderUnavailable }
+        }
+        func create() {
+            for (index, icon) in [ArcIconName.sun, .cloudDownload].enumerated() {
+                let item = addFixture(icon, label: "Arc Kit order test \(index + 1)")
+                item.autosaveName = .init(names[index])
+            }
+        }
+        func snapshot(_ name: String) async {
+            try? await Task.sleep(for: .milliseconds(1000))
+            await record(name)
+            for display in displays { await capture("\(name)-\(display.id)", display: display) }
+        }
+        report["scope"] = "two owned order fixtures; only their preference keys are written"
+        report["orderProbe"] = ["initialPositions": [80, 120], "swappedPositions": [120, 80]]
+        defer { try? write(nil) }
+        try write([80, 120])
+        try await Task.sleep(for: .milliseconds(300))
+        create()
+        await snapshot("order-initial")
+        try write([120, 80])
+        await snapshot("order-live-write")
+        if let positions = CFPreferencesCopyAppValue(key, domain) as? [String: Double],
+           let boundary = positions["status:com.archalo.arckit::menu-bar.group-v3.hidden"] {
+            report["installedBoundaryPosition"] = boundary
+            try write([boundary + 40, 80])
+            await snapshot("order-collect-target")
+            try write([120, 80])
+            await snapshot("order-restore-target")
+        }
+        // 对照组：同一位置记录在重新注册后是否生效；不得把这一结果当成即时排序。
+        for item in fixtures { NSStatusBar.system.removeStatusItem(item) }
+        fixtures.removeAll()
+        try await Task.sleep(for: .milliseconds(300))
+        create()
+        await snapshot("order-reregistered")
+
+        // 探测外部可写的可见性偏好是否会驱动已注册状态项，直接属性写入作为阳性对照。
+        let visibilityKey = "NSStatusItem VisibleCC \(names[0])" as CFString
+        let originalVisibility = CFPreferencesCopyAppValue(visibilityKey, kCFPreferencesCurrentApplication)
+        defer {
+            CFPreferencesSetAppValue(visibilityKey, originalVisibility, kCFPreferencesCurrentApplication)
+            CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication)
+        }
+        CFPreferencesSetAppValue(visibilityKey, kCFBooleanFalse, kCFPreferencesCurrentApplication)
+        CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication)
+        await snapshot("visibility-preference-false")
+        report["visibilityPreferenceReadback"] = UserDefaults.standard.object(forKey: visibilityKey as String) ?? NSNull()
+        report["visibilityPropertyAfterPreference"] = fixtures[0].isVisible
+        fixtures[0].isVisible = false
+        await snapshot("visibility-property-false")
+        fixtures[0].isVisible = true
+        await snapshot("visibility-restored")
+    }
+
     @discardableResult
     private func addFixture(_ icon: ArcIconName?, label: String, length: CGFloat = 22) -> NSStatusItem {
         let item = NSStatusBar.system.statusItem(withLength: length)
         let image = icon.map { ArcIconImage.image($0) }
         image?.size = NSSize(width: 14, height: 14)
         item.autosaveName = .init("menu-bar-native-check.\(UUID()).fixture")
+        item.isVisible = icon != nil
         item.button?.image = image
         item.button?.setAccessibilityLabel(label)
+        item.button?.toolTip = label
         fixtures.append(item)
         return item
     }
@@ -117,15 +237,28 @@ final class MenuBarNativeCheck {
         driver.remove()
         for item in fixtures { item.autosaveName = nil; NSStatusBar.system.removeStatusItem(item) }
         fixtures.removeAll()
+        if !temporaryPositionKeys.isEmpty {
+            let domain = FileManager.default.homeDirectoryForCurrentUser
+                .appendingPathComponent("Library/Group Containers/com.apple.MenuBar/Library/Preferences/com.apple.MenuBar").path as CFString
+            let key = "TrailingItemPreferredPositions" as CFString
+            CFPreferencesAppSynchronize(domain)
+            if var positions = CFPreferencesCopyAppValue(key, domain) as? [String: Double] {
+                for name in temporaryPositionKeys { positions.removeValue(forKey: name) }
+                CFPreferencesSetAppValue(key, positions as CFDictionary, domain)
+                report["temporaryPositionsCleaned"] = CFPreferencesAppSynchronize(domain)
+            }
+            temporaryPositionKeys.removeAll()
+        }
         report["cleanup"] = ["ownedItemsRemaining": fixtures.count + driver.nativeCheckReadings().count]
     }
 
     private func armCleanup() {
         // 主线程可以继续运行时先恢复长度再撤除；外层监督进程另有硬超时，涵盖主线程卡死。
-        DispatchQueue.main.asyncAfter(deadline: .now() + 30) { [self] in
+        let deadline: TimeInterval = fixtureOnly ? 300 : 30
+        DispatchQueue.main.asyncAfter(deadline: .now() + deadline) { [self] in
             guard !completed else { return }
             cleanup()
-            report["failure"] = "30-second deadline exceeded; owned UI removed"
+            report["failure"] = "\(Int(deadline))-second deadline exceeded; owned UI removed"
             try? writeReport()
             Darwin.exit(124)
         }
@@ -143,9 +276,34 @@ final class MenuBarNativeCheck {
         }
     }
 
-    private func record(_ name: String, error: String? = nil) async {
-        var stage: [String: Any] = ["stage": name, "items": driver.nativeCheckReadings(), "windows": windowReadings()]
+    private func record(_ name: String, presentation: MenuBarPresentation? = nil, error: String? = nil) async {
+        let items = driver.nativeCheckReadings()
+        var stage: [String: Any] = ["stage": name, "items": items, "windows": windowReadings()]
         stage["error"] = error
+        stage["presentation"] = presentation?.rawValue
+        if !items.isEmpty {
+            let concealed = items.allSatisfy {
+                $0["actionable"] as? Bool == false && $0["hasImage"] as? Bool == false && ($0["buttonTitle"] as? String)?.isEmpty == true
+            }
+            stage["noExtraControls"] = concealed
+            if !concealed, error == nil { stage["error"] = "An internal anchor still exposes a symbol or action" }
+            if !measuresWidths, name == "installed" || presentation == .all {
+                let released = items.filter { ($0["name"] as? String)?.hasPrefix("spacer.") == true }.allSatisfy {
+                    $0["isVisible"] as? Bool == true && $0["requestedLength"] as? CGFloat == MenuBarSpacerLayout.inactiveLength
+                }
+                stage["spacersReleased"] = released
+                if !released, error == nil { stage["error"] = "Expanded spacers have not left the effective width range" }
+                if let control = items.first(where: { $0["name"] as? String == "control" }),
+                   let boundary = items.first(where: { $0["name"] as? String == "hidden" }),
+                   let controlFrame = control["windowFrame"] as? String, let boundaryFrame = boundary["windowFrame"] as? String {
+                    let right = NSRectFromString(controlFrame), left = NSRectFromString(boundaryFrame)
+                    if abs(right.midY - left.midY) <= 1 {
+                        // 仅用于新建自有控件的间距诊断；不把代理坐标当成第三方图标可见性。
+                        stage["expandedMarkerWindowGap"] = right.minX - left.maxX
+                    }
+                }
+            }
+        }
         do {
             let layout = try driver.layoutSnapshot()
             stage["layout"] = ["displayID": layout.displayID, "control": NSStringFromRect(layout.control),
@@ -153,10 +311,10 @@ final class MenuBarNativeCheck {
         } catch { stage["layoutError"] = error.localizedDescription }
         stage["fixtures"] = fixtures.map { item -> [String: Any] in
             guard let button = item.button, let window = button.window else { return ["hasWindow": false] }
-            return ["length": item.length, "windowID": window.windowNumber, "frame": NSStringFromRect(window.convertToScreen(button.convert(button.bounds, to: nil)))]
+            return ["label": button.toolTip ?? "", "length": item.length, "isVisible": item.isVisible, "windowID": window.windowNumber, "frame": NSStringFromRect(window.convertToScreen(button.convert(button.bounds, to: nil)))]
         }
         // 实测 AX 读取前后代理映射的显示器不同；在深度区检查结束后记录，再单独检查普通区。
-        if name == "all" || measuresWidths,
+        if presentation == .all || measuresWidths,
            let inventory = try? await MenuBarInspector().captureForInteraction(processIDs: [ProcessInfo.processInfo.processIdentifier]) {
             let owned = inventory.items.filter {
                 $0.processID == ProcessInfo.processInfo.processIdentifier ||

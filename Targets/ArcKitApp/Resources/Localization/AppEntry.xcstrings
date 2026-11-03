@@ -162,6 +162,24 @@
           }
         }
       }
+    },
+    "launch.unsupportedArgument": {
+      "extractionState": "manual",
+      "comment": "Error for a removed development command; exit before storage or AppKit startup.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unsupported launch argument: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不支持的启动参数：%1$@"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -1440,6 +1440,24 @@
           }
         }
       }
+    },
+    "general.menuEntryRequired": {
+      "comment": "Icon collection keeps the unified menu bar entry available.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Icon collection keeps the Arc Kit entry visible so you can show all icons."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图标收纳使用中，会保留 Arc Kit 入口以便随时显示全部图标。"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

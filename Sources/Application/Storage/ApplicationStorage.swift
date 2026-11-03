@@ -13,7 +13,14 @@ enum ApplicationStorage {
                 throw ArcKitDatabaseError.message(L10n.string(.DataManagement.storageLegacyDataDetectedQuitOldVersion))
             }
             #endif
-        }, migrate: ApplicationStorageMigrations.migrate)
+        }, migrate: { queue in
+            try ApplicationStorageMigrations.migrate(queue, legacyMenuBarCollection: {
+                #if !DEBUG
+                if paths == .current { return MenuBarLegacyCollection.read() }
+                #endif
+                return [] // 隔离数据和导入副本不读取当前桌面的旧排列。
+            })
+        })
     }
 }
 

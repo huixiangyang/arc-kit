@@ -31,9 +31,9 @@ struct DataManagementView: View {
                 }
                 .disabled(isWorking)
                 if backupScope == .allData {
-                    Text(L10n.string(.AgentSessions.fullBackupPrivacy)).font(.system(size: 12)).foregroundStyle(.secondary)
+                    Text(L10n.string(.DataManagement.fullBackupPrivacy)).font(.system(size: 12)).foregroundStyle(.secondary)
                     if !usage.isEmpty {
-                        Text(L10n.string(.AgentSessions.fullBackupEstimate(L10n.fileSize(usage.filter { $0.kind == .database || $0.kind == .assets }.reduce(0) { $0 + $1.bytes }))))
+                        Text(L10n.string(.DataManagement.fullBackupEstimate(L10n.fileSize(usage.filter { $0.kind == .database || $0.kind == .assets }.reduce(0) { $0 + $1.bytes }))))
                             .font(.system(size: 12)).foregroundStyle(.secondary)
                     }
                 }

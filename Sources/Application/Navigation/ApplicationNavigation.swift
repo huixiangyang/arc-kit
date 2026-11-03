@@ -25,6 +25,7 @@ enum ArcKitQuickCommandAction: Hashable, Sendable {
     case menuBarCollection
     case menuBarShelf
     case menuBarShowAll
+    case menuBarToggle
     case windowScenes
     case windowScene(UUID)
 }

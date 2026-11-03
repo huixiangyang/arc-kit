@@ -8,11 +8,15 @@ import Foundation
 enum ArcKitMain {
     @MainActor
     static func main() {
+        if let result = MenuBarVisibilityGuardian.handle(arguments: CommandLine.arguments) { Darwin.exit(result) }
+        // 已删除的开发命令必须直接失败，不能意外落入正常启动并打开用户界面。
+        if let argument = CommandLine.arguments.first(where: { $0.hasPrefix("--agent-sessions") }) {
+            print(L10n.string(.AppEntry.launchUnsupportedArgument(argument))); Darwin.exit(2)
+        }
         #if DEBUG
-        if let result = AgentSessionDevelopment.handle(arguments: CommandLine.arguments) { Darwin.exit(result) }
         if let result = MenuBarDevelopmentSession.handle(arguments: CommandLine.arguments) { Darwin.exit(result) }
         #else
-        if CommandLine.arguments.contains(where: { $0.hasPrefix("--menu-bar-") || $0.hasPrefix("--agent-sessions") }) {
+        if CommandLine.arguments.contains(where: { $0.hasPrefix("--menu-bar-") }) {
             print(L10n.string(.AppEntry.launchDevelopmentBuildRequired)); Darwin.exit(2)
         }
         #endif

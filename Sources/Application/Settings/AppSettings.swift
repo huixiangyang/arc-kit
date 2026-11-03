@@ -21,7 +21,7 @@ public enum ArcAppearance: String, CaseIterable, Codable, Sendable, Identifiable
 }
 
 public struct AppSettings: Codable, Equatable, Sendable {
-    public static let schemaVersion = 28
+    public static let schemaVersion = 31
 
     public var schemaVersion: Int
     public var language: ArcKitLanguage
@@ -32,10 +32,12 @@ public struct AppSettings: Codable, Equatable, Sendable {
     public var showMenuBarIcon: Bool
     public var mouseEnhancement: MouseEnhancementSettings
     public var menuBar: MenuBarSettings
-    public var agentSessions: AgentSessionSettings
     public var windowManagement: WindowManagementSettings
     public var launchAtLoginEnabled: Bool
     public var finder: FinderRuntimeSettings
+
+    /// 收纳启用时共用品牌入口，避免隐藏唯一的恢复入口；不再额外创建箭头按钮。
+    public var menuBarEntryVisible: Bool { showMenuBarIcon || menuBar.isEnabled }
 
     public init(
         schemaVersion: Int = AppSettings.schemaVersion,
@@ -47,7 +49,6 @@ public struct AppSettings: Codable, Equatable, Sendable {
         mouseEnhancement: MouseEnhancementSettings = .defaults,
         windowManagement: WindowManagementSettings = .defaults,
         menuBar: MenuBarSettings = .defaults,
-        agentSessions: AgentSessionSettings = .defaults,
         launchAtLoginEnabled: Bool = true,
         finder: FinderRuntimeSettings = .defaults
     ) {
@@ -60,7 +61,6 @@ public struct AppSettings: Codable, Equatable, Sendable {
         self.mouseEnhancement = mouseEnhancement
         self.windowManagement = windowManagement
         self.menuBar = menuBar
-        self.agentSessions = agentSessions
         self.launchAtLoginEnabled = launchAtLoginEnabled
         self.finder = finder
     }
@@ -89,7 +89,6 @@ public extension AppSettings {
         case mouseEnhancement
         case windowManagement
         case menuBar
-        case agentSessions
         case launchAtLoginEnabled
         case finder
     }
@@ -110,7 +109,6 @@ public extension AppSettings {
             mouseEnhancement = try container.decode(MouseEnhancementSettings.self, forKey: .mouseEnhancement)
             windowManagement = try container.decode(WindowManagementSettings.self, forKey: .windowManagement)
             menuBar = try container.decode(MenuBarSettings.self, forKey: .menuBar)
-            agentSessions = try container.decode(AgentSessionSettings.self, forKey: .agentSessions)
             launchAtLoginEnabled = try container.decode(Bool.self, forKey: .launchAtLoginEnabled)
             finder = try container.decode(FinderRuntimeSettings.self, forKey: .finder)
         } catch {
@@ -129,7 +127,6 @@ public extension AppSettings {
         try container.encode(mouseEnhancement, forKey: .mouseEnhancement)
         try container.encode(windowManagement, forKey: .windowManagement)
         try container.encode(menuBar, forKey: .menuBar)
-        try container.encode(agentSessions, forKey: .agentSessions)
         try container.encode(launchAtLoginEnabled, forKey: .launchAtLoginEnabled)
         try container.encode(finder, forKey: .finder)
     }

@@ -32,6 +32,7 @@ public enum ArcIconName: String, CaseIterable, Codable, Hashable, Sendable {
     case command
     case copy
     case cornerDownLeft = "corner-down-left"
+    case ellipsis
     case eye
     case eyeOff = "eye-off"
     case file

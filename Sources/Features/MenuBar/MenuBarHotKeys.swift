@@ -2,33 +2,28 @@ import ArcKitPlatform
 import Carbon.HIToolbox
 import Foundation
 
-public enum MenuBarShortcutPreset: String, Codable, CaseIterable, Identifiable, Sendable {
-    case disabled, controlOptionM, controlOptionShiftM, controlOptionCommandM
-    public var id: Self { self }
-    var title: String {
+enum MenuBarHotKeyAction: String, Hashable, CaseIterable {
+    case shelf, toggle, reveal
+    var requiresCollection: Bool { self != .shelf }
+    var title: LocalizedStringResource {
         switch self {
-        case .disabled: L10n.string(.Common.off)
-        case .controlOptionM: "⌃⌥M"
-        case .controlOptionShiftM: "⌃⌥⇧M"
-        case .controlOptionCommandM: "⌃⌥⌘M"
+        case .shelf: .MenuBar.shelfOpen
+        case .toggle: .MenuBar.hotKeyToggle
+        case .reveal: .MenuBar.actionShowAll
         }
     }
-    var modifiers: UInt32 {
-        let base = UInt32(controlKey | optionKey)
+    var keyPath: WritableKeyPath<MenuBarSettings, HotKeyChord> {
         switch self {
-        case .disabled: return 0
-        case .controlOptionM: return base
-        case .controlOptionShiftM: return base | UInt32(shiftKey)
-        case .controlOptionCommandM: return base | UInt32(cmdKey)
+        case .shelf: \.shelfShortcut
+        case .toggle: \.toggleShortcut
+        case .reveal: \.revealShortcut
         }
     }
 }
 
-enum MenuBarHotKeyAction: String, Hashable { case shelf, reveal }
-
 @MainActor
 protocol MenuBarHotKeyDriving: AnyObject {
-    func apply(shelf: MenuBarShortcutPreset, reveal: MenuBarShortcutPreset, action: @escaping (MenuBarHotKeyAction) -> Void) -> [MenuBarHotKeyAction: Int32]
+    func apply(_ shortcuts: [MenuBarHotKeyAction: HotKeyChord], action: @escaping (MenuBarHotKeyAction) -> Void) -> [MenuBarHotKeyAction: Int32]
     func stop()
 }
 
@@ -42,10 +37,14 @@ final class NativeMenuBarHotKeys: MenuBarHotKeyDriving {
     private var nextID: UInt32 = 1
     private var callback: ((MenuBarHotKeyAction) -> Void)?
 
-    func apply(shelf: MenuBarShortcutPreset, reveal: MenuBarShortcutPreset, action: @escaping (MenuBarHotKeyAction) -> Void) -> [MenuBarHotKeyAction: Int32] {
+    func apply(_ shortcuts: [MenuBarHotKeyAction: HotKeyChord], action: @escaping (MenuBarHotKeyAction) -> Void) -> [MenuBarHotKeyAction: Int32] {
         stop()
-        let bindings: [(MenuBarHotKeyAction, MenuBarShortcutPreset)] = [(.shelf, shelf), (.reveal, reveal)].filter { $0.1 != .disabled }
+        let bindings = MenuBarHotKeyAction.allCases.compactMap { action in shortcuts[action].map { (action, $0) } }.filter { $0.1.isEnabled }
         guard !bindings.isEmpty else { return [:] }
+        guard bindings.allSatisfy({ $0.1.isSafeGlobalShortcut }),
+              Set(bindings.map { $0.1.shortcutIdentifier }).count == bindings.count else {
+            return Dictionary(uniqueKeysWithValues: bindings.map { ($0.0, Int32(paramErr)) })
+        }
         callback = action
         var type = EventTypeSpec(eventClass: OSType(kEventClassKeyboard), eventKind: UInt32(kEventHotKeyPressed))
         let status = InstallEventHandler(GetApplicationEventTarget(), Self.eventCallback, 1, &type,
@@ -56,7 +55,7 @@ final class NativeMenuBarHotKeys: MenuBarHotKeyDriving {
             let identifier = nextID
             nextID &+= 1
             var reference: EventHotKeyRef?
-            let status = RegisterEventHotKey(46, shortcut.modifiers, EventHotKeyID(signature: Self.signature, id: identifier),
+            let status = RegisterEventHotKey(UInt32(shortcut.keyCode), shortcut.modifiers.carbonValue, EventHotKeyID(signature: Self.signature, id: identifier),
                 GetApplicationEventTarget(), 0, &reference)
             if status == noErr, let reference { references.append(reference); actions[identifier] = target }
             else { failures[target] = status == noErr ? Int32(eventInternalErr) : status }
@@ -82,5 +81,16 @@ final class NativeMenuBarHotKeys: MenuBarHotKeyDriving {
         let id = identifier.id
         Task { @MainActor in owner.handle(id) }
         return noErr
+    }
+}
+
+private extension HotKeyChord.Modifiers {
+    var carbonValue: UInt32 {
+        var value: UInt32 = 0
+        if contains(.control) { value |= UInt32(controlKey) }
+        if contains(.option) { value |= UInt32(optionKey) }
+        if contains(.command) { value |= UInt32(cmdKey) }
+        if contains(.shift) { value |= UInt32(shiftKey) }
+        return value
     }
 }

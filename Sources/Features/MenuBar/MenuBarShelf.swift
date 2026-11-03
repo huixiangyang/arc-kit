@@ -3,9 +3,23 @@ import AppKit
 import Combine
 import SwiftUI
 
+enum MenuBarItemRequestOutcome {
+    case sent
+    case failed(String)
+    case unconfirmed(String)
+
+    var detail: String {
+        switch self {
+        case .sent: L10n.string(.MenuBar.accessAccepted)
+        case let .failed(detail), let .unconfirmed(detail): detail
+        }
+    }
+}
+
 @MainActor
 final class MenuBarShelfModel: ObservableObject {
     var supportsCollectedScope = true
+    var selectsFirstResult = true
     @Published var scope: MenuBarShelfScope = .all { didSet { selectFirstIfNeeded() } }
     @Published private(set) var partition: MenuBarPartitionSnapshot?
     @Published var feedback: String?
@@ -18,6 +32,10 @@ final class MenuBarShelfModel: ObservableObject {
     @Published private(set) var error: String?
     @Published private(set) var issueCount = 0
     @Published private(set) var inventoryID: UUID?
+    @Published private(set) var capturedAt: Date?
+    @Published private(set) var staleReason: String?
+    @Published private(set) var activeItemID: UUID?
+    @Published private(set) var outcomes: [UUID: MenuBarItemRequestOutcome] = [:]
     var onActivate: ((UUID, UUID) -> Void)?
 
     var filteredItems: [MenuBarObservedItem] {
@@ -46,11 +64,14 @@ final class MenuBarShelfModel: ObservableObject {
     func begin(clearQuery: Bool) {
         partition = nil
         items = []; selectedID = nil; scrollTarget = nil; inventoryID = nil; error = nil; permissionRequired = false; issueCount = 0; isLoading = true
+        capturedAt = nil; staleReason = nil; activeItemID = nil; outcomes = [:]
         if clearQuery { query = ""; feedback = nil }
     }
     func load(_ inventory: MenuBarInventory, partition: MenuBarPartitionSnapshot? = nil, targetDisplayID: UInt32? = nil) {
         isLoading = false
+        error = nil; permissionRequired = false; staleReason = nil; activeItemID = nil; outcomes = [:]
         inventoryID = inventory.id
+        capturedAt = inventory.capturedAt
         issueCount = inventory.issues.count
         guard inventory.accessibility == .granted else { fail(L10n.string(.MenuBar.settingsMainPermission), permissionRequired: true); return }
         guard inventory.canUseGeometry else { fail(L10n.string(.MenuBar.accessDisplayChanged)); return }
@@ -66,11 +87,24 @@ final class MenuBarShelfModel: ObservableObject {
     func fail(_ detail: String, permissionRequired: Bool = false) {
         isLoading = false; error = detail; feedback = nil; self.permissionRequired = permissionRequired
         inventoryID = nil; items = []; selectedID = nil; scrollTarget = nil; partition = nil
+        capturedAt = nil; staleReason = nil; activeItemID = nil; outcomes = [:]
+    }
+    /// 保留上次清单便于阅读，但失效的原生引用不能继续点按。
+    func invalidate(_ detail: String) {
+        inventoryID = nil; partition = nil; isLoading = false; activeItemID = nil; staleReason = detail
+    }
+    func canActivate(_ item: MenuBarObservedItem) -> Bool {
+        inventoryID != nil && !isLoading && activeItemID == nil && outcomes[item.id] == nil && item.supportsActivation
+    }
+    func beginActivation(_ id: UUID) { activeItemID = id }
+    func endActivation() { activeItemID = nil }
+    func finishActivation(_ id: UUID, outcome: MenuBarItemRequestOutcome) {
+        activeItemID = nil; outcomes[id] = outcome
     }
     func clear() { begin(clearQuery: true); isLoading = false }
     func select(_ id: UUID) { selectedID = id }
     func move(by delta: Int) {
-        let available = filteredItems.filter(\.supportsActivation)
+        let available = filteredItems.filter { canActivate($0) }
         guard !available.isEmpty else { selectedID = nil; return }
         let index = available.firstIndex { $0.id == selectedID } ?? 0
         selectedID = available[max(0, min(available.count - 1, index + delta))].id
@@ -78,12 +112,13 @@ final class MenuBarShelfModel: ObservableObject {
     }
     func activate(_ id: UUID? = nil) {
         guard !isLoading, let inventoryID, let id = id ?? selectedID,
-              filteredItems.contains(where: { $0.id == id && $0.supportsActivation }) else { return }
+              filteredItems.contains(where: { $0.id == id && canActivate($0) }) else { return }
         onActivate?(id, inventoryID)
     }
     private func selectFirstIfNeeded() {
-        if !filteredItems.contains(where: { $0.id == selectedID && $0.supportsActivation }) {
-            selectedID = filteredItems.first(where: \.supportsActivation)?.id
+        if !filteredItems.contains(where: { $0.id == selectedID && canActivate($0) }) {
+            let shouldSelect = selectsFirstResult || !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            selectedID = shouldSelect ? filteredItems.first(where: { canActivate($0) })?.id : nil
             scrollTarget = selectedID
         }
     }
@@ -201,7 +236,21 @@ struct MenuBarShelfView: View {
 
 /// 仅在用户显式打开时创建；局部键盘监听不截获其他窗口的输入。
 @MainActor
-final class MenuBarShelfPanel: NSObject, NSWindowDelegate {
+protocol MenuBarShelfPresenting: AnyObject {
+    var isVisible: Bool { get }
+    var onDismiss: (() -> Void)? { get set }
+    func show() throws -> UInt32
+    func close()
+}
+
+struct MenuBarShelfActions {
+    let refresh: () -> Void
+    let openPermission: () -> Void
+    let showAll: () -> Void
+}
+
+@MainActor
+final class MenuBarShelfPanel: NSObject, NSWindowDelegate, MenuBarShelfPresenting {
     private final class Panel: NSPanel {
         override var canBecomeKey: Bool { true }
         override var canBecomeMain: Bool { false }

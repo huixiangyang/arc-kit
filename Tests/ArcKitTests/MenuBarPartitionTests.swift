@@ -5,6 +5,61 @@ import Testing
 
 @Suite("菜单栏分区凭据")
 struct MenuBarPartitionTests {
+    @Test("占位只登记到自有锚点之间，保留其他位置键；锚点缺失或倒置拒绝收起")
+    func anchoredSpacerRegistration() throws {
+        let prefix = "status:fixture::group."
+        let original = [prefix + "toggle": 100.0, prefix + "hidden": 200.0,
+                        "status:other::icon": 180.0, "module:Clock": 0.0,
+                        prefix + "overflow.spacer.0": 900.0]
+        let result = try MenuBarOverflowOrder.positionSpacers(in: original, prefix: prefix, count: 6)
+        for (key, value) in original where !key.hasPrefix(prefix + "overflow.spacer.") { #expect(result[key] == value) }
+        let values = (0..<6).map { result[prefix + "overflow.spacer.\($0)"]! }
+        #expect(values == values.sorted() && Set(values).count == 6)
+        #expect(values.allSatisfy { $0 > 100 && $0 < 200 })
+        #expect(throws: MenuBarPartitionError.self) {
+            try MenuBarOverflowOrder.positionSpacers(in: [prefix + "toggle": 200, prefix + "hidden": 100], prefix: prefix, count: 6)
+        }
+        #expect(throws: MenuBarPartitionError.self) {
+            try MenuBarOverflowOrder.positionSpacers(in: [:], prefix: prefix, count: 6)
+        }
+    }
+    @Test("占位保持注册，以超宽排除代替隐藏；两轮收起恢复不丢失排列")
+    @MainActor func spacerVisibilityLifecycle() throws {
+        let wide = MenuBarDisplay(id: 3, name: "Wide", frame: CGRect(x: 1920, y: 0, width: 2560, height: 1440),
+            topBand: CGRect(x: 1920, y: 0, width: 2560, height: 32), notch: nil, scale: 1)
+        let plan = try MenuBarOverflowPlan(displays: Self.displays + [wide])
+        let items = (0..<MenuBarOverflowPlan.spacerCapacity).map { _ in SpacerItemFixture() }
+        #expect(!MenuBarSpacerLayout.isReleased(items))
+        MenuBarSpacerLayout.reveal(items)
+        #expect(MenuBarSpacerLayout.isReleased(items))
+        #expect(items.allSatisfy { $0.writes == [.visibility(true), .length(MenuBarSpacerLayout.inactiveLength)] })
+        items.forEach { $0.writes = [] }
+        let active = try MenuBarSpacerLayout.stage(items, plan: plan)
+        #expect(active.count == plan.segmentCount - 1)
+        #expect(zip(active, items).allSatisfy { pair in pair.0 === pair.1 })
+        #expect(active.allSatisfy { $0.writes == [.length(MenuBarSpacerLayout.stagingLength), .visibility(true)] })
+        try MenuBarSpacerLayout.inflate(active, plan: plan)
+        #expect(active.allSatisfy { $0.writes == [.length(1), .visibility(true), .length(plan.segmentLength)] })
+        #expect(items.dropFirst(active.count).allSatisfy { $0.isVisible && $0.length == MenuBarSpacerLayout.inactiveLength })
+        // 再次收起不注销、重建或隐藏槽位，防止原生系统重新排列后把图标夹在空白之间。
+        MenuBarSpacerLayout.reveal(items)
+        #expect(MenuBarSpacerLayout.isReleased(items))
+        let second = try MenuBarSpacerLayout.stage(items, plan: plan)
+        try MenuBarSpacerLayout.inflate(second, plan: plan)
+        #expect(items.allSatisfy { !$0.writes.contains(.visibility(false)) })
+        let smaller = try MenuBarOverflowPlan(displays: [Self.displays[0]])
+        let reduced = try MenuBarSpacerLayout.stage(items, plan: smaller)
+        #expect(reduced.count < active.count)
+        #expect(items.dropFirst(reduced.count).allSatisfy { $0.isVisible && $0.length == MenuBarSpacerLayout.inactiveLength })
+        items.forEach { $0.writes = [] }
+        #expect(throws: MenuBarPartitionError.self) { try MenuBarSpacerLayout.stage(Array(items.prefix(1)), plan: plan) }
+        #expect(items.allSatisfy { $0.writes.isEmpty })
+        MenuBarSpacerLayout.reveal(items)
+        items.forEach { $0.writes = [] }
+        #expect(throws: MenuBarPartitionError.self) { try MenuBarSpacerLayout.inflate(active, plan: plan) }
+        #expect(items.allSatisfy { $0.writes.isEmpty })
+    }
+
     @Test("恢复确认要求连续稳定屏幕和真实占位宽度，缺失或旧读数重新等待")
     func revealedLayoutStability() {
         var confirmation = MenuBarRevealConfirmation()
@@ -24,6 +79,13 @@ struct MenuBarPartitionTests {
         #expect(!changedScreen)
         let settled = confirmation.observe(displays: singleDisplay, expectedWidths: widths, actualWidths: [18, 18, 0])
         #expect(settled)
+        // 超宽虚拟锚点没有可靠的代理 bounds，仍须释放请求成功且屏幕连续稳定。
+        var virtual = MenuBarRevealConfirmation()
+        let observations = [virtual.observe(displays: singleDisplay, released: false),
+                            virtual.observe(displays: singleDisplay, released: true),
+                            virtual.observe(displays: singleDisplay, released: true),
+                            virtual.observe(displays: nil, released: true)]
+        #expect(observations == [false, false, true, false])
     }
 
     @Test("收起确认必须有离屏边界，不能把合法的展开布局当作收起成功")
@@ -157,4 +219,12 @@ struct MenuBarPartitionTests {
               applicationName: name, accessibilityIdentifier: nil, frame: rect(x), displayID: nil,
               declaresPress: true, declaresShowMenu: false, positionSettable: false)
     }
+}
+
+@MainActor
+private final class SpacerItemFixture: MenuBarSpacerItem {
+    enum Write: Equatable { case visibility(Bool), length(CGFloat) }
+    var writes: [Write] = []
+    var length: CGFloat = 0 { didSet { writes.append(.length(length)) } }
+    var isVisible = true { didSet { writes.append(.visibility(isVisible)) } }
 }

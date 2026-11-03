@@ -1,150 +1,6 @@
 {
   "sourceLanguage": "en",
   "strings": {
-    "preview.notch": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notch"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "刘海"
-          }
-        }
-      }
-    },
-    "preview.opacity": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opacity"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "不透明度"
-          }
-        }
-      }
-    },
-    "preview.file": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "File"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "文件"
-          }
-        }
-      }
-    },
-    "preview.edit": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "编辑"
-          }
-        }
-      }
-    },
-    "preview.view": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "View"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "显示"
-          }
-        }
-      }
-    },
-    "preview.illustration": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ILLUSTRATION — NOT THE SYSTEM MENU BAR"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "外观示意 · 非系统菜单栏"
-          }
-        }
-      }
-    },
-    "inventory.title": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Observed menu bar items"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "实际发现的菜单栏图标"
-          }
-        }
-      }
-    },
-    "inventory.search": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search applications"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "搜索应用"
-          }
-        }
-      }
-    },
     "inventory.refresh": {
       "extractionState": "manual",
       "comment": "Menu bar development inspection and appearance preview.",
@@ -152,13 +8,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Refresh observation"
+            "value": "Refresh"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "重新探测"
+            "value": "刷新"
           }
         }
       }
@@ -199,114 +55,6 @@
         }
       }
     },
-    "style.native": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Native"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "原生"
-          }
-        }
-      }
-    },
-    "style.floating": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Floating"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "悬浮"
-          }
-        }
-      }
-    },
-    "style.split": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Split"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "分段"
-          }
-        }
-      }
-    },
-    "style.nativeDetail": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keep the familiar rhythm of the system."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "保留系统的熟悉感，让内容自然排列。"
-          }
-        }
-      }
-    },
-    "style.floatingDetail": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A quiet edge, shaped around the display."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "轻薄的边界，顺应屏幕与刘海形状。"
-          }
-        }
-      }
-    },
-    "style.splitDetail": {
-      "extractionState": "manual",
-      "comment": "Menu bar development inspection and appearance preview.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Separate commands from status. Leave space between."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "左侧是操作，右侧是状态，中间留白。"
-          }
-        }
-      }
-    },
     "probe.usage": {
       "extractionState": "manual",
       "comment": "Menu bar development inspection and appearance preview.",
@@ -343,24 +91,6 @@
         }
       }
     },
-    "inventory.issues": {
-      "extractionState": "manual",
-      "comment": "The observation can be incomplete. Argument: issue count.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ inspection issues; unresponsive processes may be absent from this list."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ 条探测问题；未响应进程的图标可能未包含在此清单中。"
-          }
-        }
-      }
-    },
     "page.title": {
       "extractionState": "manual",
       "comment": "Menu bar settings, native partition control, and status.",
@@ -381,54 +111,18 @@
     },
     "page.description": {
       "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
+      "comment": "Menu bar setup, daily use, and recovery. Icons refer to real controls at the top of the screen.",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Organize status items and design their surroundings."
+            "value": "Hide less-used menu bar icons and find them when you need them."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "整理状态图标，设计菜单栏外观。"
-          }
-        }
-      }
-    },
-    "page.organize": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Items"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "图标管理"
-          }
-        }
-      }
-    },
-    "page.appearance": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Appearance"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "外观预设"
+            "value": "隐藏不常用的菜单栏图标，需要时展开或搜索。"
           }
         }
       }
@@ -440,13 +134,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enable menu bar organization"
+            "value": "Enable collection"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "启用菜单栏分区收纳"
+            "value": "启用收纳"
           }
         }
       }
@@ -487,42 +181,6 @@
         }
       }
     },
-    "settings.experimental": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Experimental: native partition controls are implemented; real-menu-bar acceptance is pending. Start with Show All and arrange the dividers before collapsing."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "实验性功能：分区控制代码已接入，仍待实机验收。开启后先显示全部，摆好分隔线再收起。"
-          }
-        }
-      }
-    },
-    "settings.preview": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preview mode: settings are saved to the isolated debug database; system menu bar controls remain off."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "调试预览：设置保存到独立调试库，不创建系统菜单栏控件。"
-          }
-        }
-      }
-    },
     "settings.mainPermission": {
       "extractionState": "manual",
       "comment": "Menu bar settings, native partition control, and status.",
@@ -530,13 +188,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reading the inventory requires Accessibility access for Arc Kit itself. Runtime Host permission does not cover the main app."
+            "value": "Allow accessibility to read menu bar icons."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "读取清单需要为 Arc Kit 主应用授予辅助功能权限；Runtime Host 的授权不能替代。"
+            "value": "需辅助功能权限以读取图标。"
           }
         }
       }
@@ -559,78 +217,6 @@
         }
       }
     },
-    "settings.appearancePreviewOnly": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This preset is saved and previewed here. Applying it to the system menu bar awaits overlay validation."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "预设会保存并在这里预览；应用到系统菜单栏仍待叠层验证。"
-          }
-        }
-      }
-    },
-    "settings.cornerRadius": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Corner radius"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "圆角"
-          }
-        }
-      }
-    },
-    "settings.resetAppearance": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset appearance preset"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "重置外观预设"
-          }
-        }
-      }
-    },
-    "settings.editAppearance": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit menu bar appearance"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "调整菜单栏外观"
-          }
-        }
-      }
-    },
     "settings.editManagement": {
       "extractionState": "manual",
       "comment": "Menu bar settings, native partition control, and status.",
@@ -645,78 +231,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "调整菜单栏收纳"
-          }
-        }
-      }
-    },
-    "organize.title": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keep the essentials in sight."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "常用的常驻，其余的收起。"
-          }
-        }
-      }
-    },
-    "organize.detail": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Use native dividers to separate everyday tools from background utilities."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "用原生分隔线，区分随手使用的工具与后台常驻项。"
-          }
-        }
-      }
-    },
-    "organize.nativeDrag": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Command-drag icons: keep essentials right of the collection divider and collected items left of it. Deep-storage items go left of the deep divider. Keep the expand control at the far right."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "按住 ⌘ 拖动图标：常驻项放在收纳分隔线右侧，收纳项放在左侧。深度收纳项放在深度分隔线左侧；展开控件始终放在最右侧。"
-          }
-        }
-      }
-    },
-    "organize.recovery": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Option-click the expand control to show everything. Disabling this feature removes its dividers. New applications, display changes and wake also expand all sections."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "按住 Option 点击展开控件可显示全部。关闭功能会移除分隔控件；新应用启动、屏幕变化和唤醒时也会先展开全部。"
           }
         }
       }
@@ -775,60 +289,6 @@
         }
       }
     },
-    "group.visibleDetail": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Frequently used tools remain at the right."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "常用工具放在右侧，随手取用。"
-          }
-        }
-      }
-    },
-    "group.hiddenDetail": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expand this section when needed."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "需要时展开，平时保持整洁。"
-          }
-        }
-      }
-    },
-    "group.deepDetail": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reveal with Show All."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "仅在显示全部时展开。"
-          }
-        }
-      }
-    },
     "action.collapse": {
       "extractionState": "manual",
       "comment": "Menu bar settings, native partition control, and status.",
@@ -872,13 +332,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Show all menu bar items"
+            "value": "Show all"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "显示全部菜单栏图标"
+            "value": "显示全部"
           }
         }
       }
@@ -901,38 +361,20 @@
         }
       }
     },
-    "runtime.toggle": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Menu bar sections — Option-click to show all"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "菜单栏收纳 — Option 点击显示全部"
-          }
-        }
-      }
-    },
     "runtime.invalidOrder": {
       "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
+      "comment": "A non-interactive thin vertical divider marks the boundary; the fixed chevron performs hide/show.",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Divider positions overlap or are out of order. Show All, then check their order and available menu bar space."
+            "value": "Menu bar arrangement anchors are invalid. Show all icons, then reload the arrangement."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "分隔线位置重叠或顺序无效。请显示全部，再检查排列和菜单栏剩余空间。"
+            "value": "菜单栏排列锚点无效。请显示全部，再重新读取编排。"
           }
         }
       }
@@ -955,24 +397,6 @@
         }
       }
     },
-    "inventory.onDemand": {
-      "extractionState": "manual",
-      "comment": "Menu bar settings, native partition control, and status.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Refresh to inspect applications and identity candidates. This list is read-only; organize icons using Command-drag in the system menu bar."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "点击重新探测，查看应用和身份候选。此清单只读；图标整理使用系统菜单栏的 ⌘ 拖动。"
-          }
-        }
-      }
-    },
     "action.showAllShort": {
       "extractionState": "manual",
       "comment": "Compact action in the menu bar settings or the partition control menu.",
@@ -987,42 +411,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "显示全部"
-          }
-        }
-      }
-    },
-    "runtime.requested": {
-      "extractionState": "manual",
-      "comment": "Last requested native partition presentation, not visual verification. Argument: action name.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Requested: %1$@"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "当前请求：%1$@"
-          }
-        }
-      }
-    },
-    "inventory.preview": {
-      "extractionState": "manual",
-      "comment": "The preview backend deliberately does not inspect the live desktop.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preview mode does not read the system inventory. Inspect live items when running outside preview mode."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "调试模式不读取系统清单。正式运行后可按需探测图标。"
           }
         }
       }
@@ -1142,13 +530,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The system accepted the item action. Sections will not automatically collapse while you use the native interface."
+            "value": "Request sent"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "系统已接受图标操作请求。不会自动收起分区，以免打断原生界面。"
+            "value": "已发送"
           }
         }
       }
@@ -1160,13 +548,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Search all menu bar items"
+            "value": "Search all icons"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "搜索全部菜单栏图标"
+            "value": "搜索全部图标"
           }
         }
       }
@@ -1297,114 +685,6 @@
         }
       }
     },
-    "shelf.behaviorTitle": {
-      "extractionState": "manual",
-      "comment": "Menu bar shelf, session-bound action, or global shortcut.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Use the original item action"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "直接取用原生图标动作"
-          }
-        }
-      }
-    },
-    "shelf.behaviorDetail": {
-      "extractionState": "manual",
-      "comment": "Menu bar shelf, session-bound action, or global shortcut.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The shelf searches observed items across all sections. It opens on the display under the pointer; clicking outside or pressing Escape closes it."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "收纳栏搜索所有分区中已发现的图标，显示在指针所在屏幕。点击外部或按 Esc 关闭。"
-          }
-        }
-      }
-    },
-    "shelf.actionBoundary": {
-      "extractionState": "manual",
-      "comment": "Menu bar shelf, session-bound action, or global shortcut.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Selecting an item expands the sections and requests its original AX action, without a coordinate click. Sections stay expanded so the native interface is not interrupted. System acceptance does not confirm that a menu appeared."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "选中后先展开分区，再调用该图标的原生 AX 动作，不模拟坐标点击。使用后保持展开，避免打断原生界面；系统接受请求不等于菜单已显示。"
-          }
-        }
-      }
-    },
-    "page.behavior": {
-      "extractionState": "manual",
-      "comment": "Menu bar shelf, session-bound action, or global shortcut.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shortcuts"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "快捷键"
-          }
-        }
-      }
-    },
-    "hotKey.title": {
-      "extractionState": "manual",
-      "comment": "Menu bar shelf, session-bound action, or global shortcut.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One shortcut away."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "随时唤出，随手取用。"
-          }
-        }
-      }
-    },
-    "hotKey.description": {
-      "extractionState": "manual",
-      "comment": "Menu bar shelf, session-bound action, or global shortcut.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose a shortcut for the shelf and a separate recovery shortcut. Both are off by default."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "为收纳栏和显示全部分别选择快捷键，默认均关闭。"
-          }
-        }
-      }
-    },
     "hotKey.duplicate": {
       "extractionState": "manual",
       "comment": "Menu bar shelf, session-bound action, or global shortcut.",
@@ -1412,31 +692,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Shelf and Show All shortcuts must be different."
+            "value": "Each menu bar action needs a different shortcut."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "收纳栏与显示全部不能使用同一快捷键。"
-          }
-        }
-      }
-    },
-    "hotKey.preview": {
-      "extractionState": "manual",
-      "comment": "Menu bar shelf, session-bound action, or global shortcut.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preview mode does not register global shortcuts."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "调试模式不注册全局快捷键。"
+            "value": "菜单栏各操作不能使用相同的快捷键。"
           }
         }
       }
@@ -1448,13 +710,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Waiting for settings to be saved."
+            "value": "Saving…"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "正在等待设置保存。"
+            "value": "保存中…"
           }
         }
       }
@@ -1502,13 +764,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Global shortcuts are registered."
+            "value": "Shortcuts enabled"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "全局快捷键已注册。"
+            "value": "快捷键已启用"
           }
         }
       }
@@ -1664,13 +926,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This display’s section boundaries could not be confirmed. Show all items to check the dividers, then refresh; or switch to All items."
+            "value": "The hidden group could not be confirmed on this display. Show all and refresh, or search all icons."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "无法确认当前显示器的分区边界。请显示全部检查分隔线后刷新，或切换到全部图标。"
+            "value": "无法确认当前显示器的收纳范围。请显示全部后刷新，或搜索全部图标。"
           }
         }
       }
@@ -1790,67 +1052,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "System overflow"
+            "value": "Collect by app"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "系统溢出区"
-          }
-        }
-      }
-    },
-    "overflow.description": {
-      "extractionState": "manual",
-      "comment": "Native system overflow on macOS 27.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "On macOS 27, collect icons in the system overflow menu. Collapse moves icons to the left of the divider into overflow."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS 27 使用系统溢出菜单收纳图标。展开时保留分隔线，收起时将左侧图标移入系统溢出区。"
-          }
-        }
-      }
-    },
-    "overflow.zoneDetail": {
-      "extractionState": "manual",
-      "comment": "Native system overflow on macOS 27.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open collected icons from system overflow"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "收起后从系统溢出入口取用"
-          }
-        }
-      }
-    },
-    "overflow.arrange": {
-      "extractionState": "manual",
-      "comment": "Native system overflow on macOS 27.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hold ⌘ and drag icons to the left of the horizontal-arrow divider. Keep frequently used icons to the right of the toggle."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "按住 ⌘，把要收纳的图标拖到双向箭头分隔线左侧；常用图标留在展开控件右侧。"
+            "value": "按应用收纳"
           }
         }
       }
@@ -1862,13 +1070,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deep storage and collected-only search are unavailable on this system. Use system overflow or search all icons."
+            "value": "Deep collection and collected-section filtering are unavailable on this system. Search all icons instead."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "此系统暂不支持深度收纳和普通区筛选。可使用系统溢出菜单，或搜索全部图标。"
+            "value": "此系统暂不支持深度收纳和普通区筛选。可搜索全部图标。"
           }
         }
       }
@@ -1898,13 +1106,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Collection spacers are released. Controls resume after the Mac wakes."
+            "value": "Icon recovery was requested. Controls resume after wake."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已释放收纳占位，唤醒后恢复操作。"
+            "value": "已请求恢复图标，唤醒后恢复操作。"
           }
         }
       }
@@ -1916,31 +1124,2047 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The menu bar layout is still changing. Collection spacers remain released. Choose Show All to check again."
+            "value": "Menu bar recovery is not confirmed. Choose Show All to retry."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "菜单栏布局尚未稳定，收纳占位已保持释放。点击“显示全部”可重新检查。"
+            "value": "菜单栏恢复尚未确认。点击“显示全部”重试。"
           }
         }
       }
     },
-    "overflow.displayChanged": {
+    "hotKey.recording": {
       "extractionState": "manual",
-      "comment": "Native system overflow on macOS 27.",
+      "comment": "Menu bar shortcuts are temporarily unregistered while a shortcut control records.",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This display layout needs more spacers. Show All, then turn menu bar management off and on."
+            "value": "Recording…"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "当前显示器布局需要更多占位。请先显示全部，再关闭并重新开启菜单栏收纳。"
+            "value": "录制中…"
+          }
+        }
+      }
+    },
+    "hotKey.enable": {
+      "extractionState": "manual",
+      "comment": "Collection and global shortcuts are independently enabled.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Global shortcuts"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全局快捷键"
+          }
+        }
+      }
+    },
+    "hotKey.toggle": {
+      "extractionState": "manual",
+      "comment": "Collection and global shortcuts are independently enabled.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collapse / expand"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收起／展开"
+          }
+        }
+      }
+    },
+    "hotKey.collectionOff": {
+      "extractionState": "manual",
+      "comment": "Collection and global shortcuts are independently enabled.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collection is off"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收纳关闭"
+          }
+        }
+      }
+    },
+    "action.toggleDetail": {
+      "extractionState": "manual",
+      "comment": "Description of the menu bar toggle action in the command palette.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle collected menu bar icons."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换菜单栏图标的收纳状态。"
+          }
+        }
+      }
+    },
+    "flow.settings": {
+      "extractionState": "manual",
+      "comment": "Menu bar setup, daily use, and recovery. Icons refer to real controls at the top of the screen.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更多设置"
+          }
+        }
+      }
+    },
+    "flow.dragInstruction": {
+      "extractionState": "manual",
+      "comment": "A non-interactive thin vertical divider marks the boundary; the fixed chevron performs hide/show.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Resident or Collected in Arrange icons, then apply the layout."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在“编排图标”中选择常驻或收纳，应用后生效。"
+          }
+        }
+      }
+    },
+    "flow.hidden": {
+      "extractionState": "manual",
+      "comment": "Menu bar setup, daily use, and recovery. Icons refer to real controls at the top of the screen.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hiding is active"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前为收起状态"
+          }
+        }
+      }
+    },
+    "flow.visible": {
+      "extractionState": "manual",
+      "comment": "Menu bar setup, daily use, and recovery. Icons refer to real controls at the top of the screen.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hiding is paused"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前为展开状态"
+          }
+        }
+      }
+    },
+    "flow.expand": {
+      "extractionState": "manual",
+      "comment": "Guided menu bar arrangement and everyday controls.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show icons"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "展开图标"
+          }
+        }
+      }
+    },
+    "flow.collapse": {
+      "extractionState": "manual",
+      "comment": "Guided menu bar arrangement and everyday controls.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide icons"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收起图标"
+          }
+        }
+      }
+    },
+    "flow.find": {
+      "extractionState": "manual",
+      "comment": "Guided menu bar arrangement and everyday controls.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find a menu bar icon"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查找菜单栏图标"
+          }
+        }
+      }
+    },
+    "flow.disable": {
+      "extractionState": "manual",
+      "comment": "Guided menu bar arrangement and everyday controls.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn off icon hiding"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停用图标收纳"
+          }
+        }
+      }
+    },
+    "flow.retry": {
+      "extractionState": "manual",
+      "comment": "Guided menu bar arrangement and everyday controls.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retry"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重试"
+          }
+        }
+      }
+    },
+    "flow.saveFailed": {
+      "extractionState": "manual",
+      "comment": "Guided menu bar arrangement and everyday controls.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t save. Try again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置未保存，请重试。"
+          }
+        }
+      }
+    },
+    "flow.enable": {
+      "extractionState": "manual",
+      "comment": "Menu bar setup, daily use, and recovery. Icons refer to real controls at the top of the screen.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide less-used icons"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏不常用图标"
+          }
+        }
+      }
+    },
+    "flow.offHint": {
+      "extractionState": "manual",
+      "comment": "Menu bar setup, daily use, and recovery. Icons refer to real controls at the top of the screen.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep everyday icons visible. Tuck the rest away."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常用的留在眼前，其他的需要时再展开。"
+          }
+        }
+      }
+    },
+    "flow.disableHint": {
+      "extractionState": "manual",
+      "comment": "Menu bar setup, daily use, and recovery. Icons refer to real controls at the top of the screen.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn off to stop hiding icons."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭此开关，即可停止隐藏图标。"
+          }
+        }
+      }
+    },
+    "flow.changing": {
+      "extractionState": "manual",
+      "comment": "Menu bar setup, daily use, and recovery. Icons refer to real controls at the top of the screen.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applying…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在应用…"
+          }
+        }
+      }
+    },
+    "flow.findHint": {
+      "extractionState": "manual",
+      "comment": "Menu bar setup, daily use, and recovery. Icons refer to real controls at the top of the screen.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search by app name to find an icon."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按应用名搜索，快速找到图标。"
+          }
+        }
+      }
+    },
+    "flow.findIndependent": {
+      "extractionState": "manual",
+      "comment": "Menu bar setup, daily use, and recovery. Icons refer to real controls at the top of the screen.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search works even with hiding turned off."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不用开启隐藏，也能搜索图标。"
+          }
+        }
+      }
+    },
+    "flow.deepHint": {
+      "extractionState": "manual",
+      "comment": "Menu bar setup, daily use, and recovery. Icons refer to real controls at the top of the screen.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deep hiding is on. Icons left of the crossed-eye divider appear only when you choose Show all."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "深度收纳已开启：眼睛斜线标记左侧的图标，仅在“显示全部”时展开。"
+          }
+        }
+      }
+    },
+    "flow.everydayShow": {
+      "extractionState": "manual",
+      "comment": "A non-interactive thin vertical divider marks the boundary; the fixed chevron performs hide/show.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To reveal icons, click the three dots to the left of Arc Kit."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要图标时，点击 Arc Kit 图标左侧的三点按钮。"
+          }
+        }
+      }
+    },
+    "control.boundaryHelp": {
+      "extractionState": "manual",
+      "comment": "A non-interactive thin vertical divider marks the boundary; the fixed chevron performs hide/show.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose the apps to collect in the arrangement panel."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在编排面板选择需要收纳的应用。"
+          }
+        }
+      }
+    },
+    "management.search": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search apps or icons"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索应用或图标"
+          }
+        }
+      }
+    },
+    "management.clearSearch": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear search"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清除搜索"
+          }
+        }
+      }
+    },
+    "management.stale": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The menu bar changed. Refresh to use these icons."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "菜单栏已变化，刷新后即可继续点按。"
+          }
+        }
+      }
+    },
+    "management.permissionTitle": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow access to menu bar icons"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许读取菜单栏图标"
+          }
+        }
+      }
+    },
+    "management.permissionDetail": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable Accessibility for the Arc Kit main app to read and click menu bar icons."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请为 Arc Kit 主应用开启辅助功能权限，以读取和点按菜单栏图标。"
+          }
+        }
+      }
+    },
+    "management.readFailed": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t read menu bar icons"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂时无法读取图标"
+          }
+        }
+      }
+    },
+    "management.readAgain": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Read again"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新读取"
+          }
+        }
+      }
+    },
+    "management.emptyTitle": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No menu bar icons found"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂未发现菜单栏图标"
+          }
+        }
+      }
+    },
+    "management.emptyDetail": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make sure the apps you need are running, then read the menu bar again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "确认需要的应用正在运行，然后重新读取。"
+          }
+        }
+      }
+    },
+    "management.noMatches": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No matching icons"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有匹配的图标"
+          }
+        }
+      }
+    },
+    "management.noMatchesDetail": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try an app name or clear the search."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "换个应用名称试试，或清除搜索。"
+          }
+        }
+      }
+    },
+    "management.sampleData": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sample data"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "示例数据"
+          }
+        }
+      }
+    },
+    "management.preview": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预览"
+          }
+        }
+      }
+    },
+    "management.partial": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some icons could not be read"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "部分图标未能读取"
+          }
+        }
+      }
+    },
+    "management.updated": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updated %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新于 %@"
+          }
+        }
+      }
+    },
+    "management.count": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ icons"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 个图标"
+          }
+        }
+      }
+    },
+    "management.readOnlyDiscovery": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reads icons without opening their menus"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "读取清单不会打开图标菜单"
+          }
+        }
+      }
+    },
+    "management.sending": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sending request"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在发送请求"
+          }
+        }
+      }
+    },
+    "management.unconfirmed": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unconfirmed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "结果未确认"
+          }
+        }
+      }
+    },
+    "management.refreshRequired": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh needed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要刷新"
+          }
+        }
+      }
+    },
+    "management.viewOnly": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View only"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅查看"
+          }
+        }
+      }
+    },
+    "management.openMenu": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open menu"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开菜单"
+          }
+        }
+      }
+    },
+    "management.press": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click icon"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点按图标"
+          }
+        }
+      }
+    },
+    "management.activateItem": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点按 %@"
+          }
+        }
+      }
+    },
+    "management.collection": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Icon hiding"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图标收纳"
+          }
+        }
+      }
+    },
+    "management.collectionOff": {
+      "extractionState": "manual",
+      "comment": "Menu bar management workspace: inline inventory, permissions, explicit native action, and independent collection settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Off · search still works"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已关闭 · 不影响查找"
+          }
+        }
+      }
+    },
+    "preview.docker": {
+      "extractionState": "manual",
+      "comment": "Example data in isolated menu bar previews; these are not observations from the user computer.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Containers and development services"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "容器与开发服务"
+          }
+        }
+      }
+    },
+    "preview.raycast": {
+      "extractionState": "manual",
+      "comment": "Example data in isolated menu bar previews; these are not observations from the user computer.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick actions and clipboard"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快捷操作与剪贴板"
+          }
+        }
+      }
+    },
+    "preview.tailscale": {
+      "extractionState": "manual",
+      "comment": "Example data in isolated menu bar previews; these are not observations from the user computer.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Device network connection"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设备网络连接"
+          }
+        }
+      }
+    },
+    "preview.chatName": {
+      "extractionState": "manual",
+      "comment": "Example data in isolated menu bar previews; these are not observations from the user computer.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WeChat"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "微信"
+          }
+        }
+      }
+    },
+    "preview.chat": {
+      "extractionState": "manual",
+      "comment": "Example data in isolated menu bar previews; these are not observations from the user computer.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Messages and notifications"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "消息与通知"
+          }
+        }
+      }
+    },
+    "preview.cloud": {
+      "extractionState": "manual",
+      "comment": "Example data in isolated menu bar previews; these are not observations from the user computer.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File sync status"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件同步状态"
+          }
+        }
+      }
+    },
+    "preview.clock": {
+      "extractionState": "manual",
+      "comment": "Example data in isolated menu bar previews; these are not observations from the user computer.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clock"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "时钟"
+          }
+        }
+      }
+    },
+    "overflow.capacity": {
+      "extractionState": "manual",
+      "comment": "Menu bar transaction and recovery; never treat an unchecked spacer layout as successful hiding.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This display setup exceeds the safe collection range. Keep the icons expanded."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前显示器组合超出安全收纳范围，请保持展开。"
+          }
+        }
+      }
+    },
+    "runtime.transitioning": {
+      "extractionState": "manual",
+      "comment": "Menu bar transaction and recovery; never treat an unchecked spacer layout as successful hiding.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adjusting menu bar icons. Click again to cancel."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在调整菜单栏图标，再点一次可取消。"
+          }
+        }
+      }
+    },
+    "runtime.applicationChangeCancelled": {
+      "extractionState": "manual",
+      "comment": "Menu bar transaction and recovery; never treat an unchecked spacer layout as successful hiding.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app list changed during the transition. It was cancelled; try again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用列表在切换时发生变化，已取消本次切换，请重新操作。"
+          }
+        }
+      }
+    },
+    "runtime.layoutRevealed": {
+      "extractionState": "manual",
+      "comment": "Menu bar transaction and recovery; never treat an unchecked spacer layout as successful hiding.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The display environment changed. Icons were revealed to restore the layout."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示环境发生变化，已展开图标以恢复布局。"
+          }
+        }
+      }
+    },
+    "overflow.orderUnavailable": {
+      "comment": "The system menu bar position table could not register Arc Kit spacer slots.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The menu bar divider positions could not be read or saved. Turn icon collection off and on, then try again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取或保存系统菜单栏分界位置。请关闭后重新开启图标收纳，再重试。"
+          }
+        }
+      }
+    },
+    "arrange.unsupported": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Icon arrangement requires macOS 27. Icon search remains available."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图标编排需要 macOS 27；查找图标仍可使用。"
+          }
+        }
+      }
+    },
+    "arrange.enableCollection": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on icon collection to arrange the resident and collected sections."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "先开启“隐藏不常用图标”，再编排常驻与收纳区域。"
+          }
+        }
+      }
+    },
+    "arrange.changed": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The system layout or icon identities changed. Read the current layout before applying."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统排列或图标身份已变化，请重新读取后再应用。"
+          }
+        }
+      }
+    },
+    "arrange.invalidOrder": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The insertion position could not be determined. Read the layout again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法确定目标插入位置，请重新读取排列。"
+          }
+        }
+      }
+    },
+    "arrange.unconfirmed": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The layout was written, but its result is not confirmed. Read the layout again instead of applying twice."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排列已写入，但尚未确认系统结果。请重新读取；不要重复应用。"
+          }
+        }
+      }
+    },
+    "arrange.collected": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collected"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收纳"
+          }
+        }
+      }
+    },
+    "arrange.resident": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resident"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常驻"
+          }
+        }
+      }
+    },
+    "arrange.systemFixed": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System-managed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统管理项"
+          }
+        }
+      }
+    },
+    "arrange.identityUnknown": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Identity unavailable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法唯一识别"
+          }
+        }
+      }
+    },
+    "arrange.positionUnknown": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Position unconfirmed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "位置待确认"
+          }
+        }
+      }
+    },
+    "arrange.readOnly": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not available for arrangement"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂不可编排"
+          }
+        }
+      }
+    },
+    "arrange.reading": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reading system layout…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "读取系统排列…"
+          }
+        }
+      }
+    },
+    "arrange.applied": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arrangement applied"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已应用编排"
+          }
+        }
+      }
+    },
+    "arrange.undone": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous layout restored"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已恢复上次排列"
+          }
+        }
+      }
+    },
+    "arrange.applying": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applying layout…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用排列…"
+          }
+        }
+      }
+    },
+    "arrange.pending": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Changes not applied"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有未应用的更改"
+          }
+        }
+      }
+    },
+    "arrange.dragHint": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag to reorder, or use the row action to change sections."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖动排序，或点击图标右侧按钮切换区域。"
+          }
+        }
+      }
+    },
+    "arrange.discard": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard changes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤销更改"
+          }
+        }
+      }
+    },
+    "arrange.discardReload": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard and reload"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "放弃更改并重读"
+          }
+        }
+      }
+    },
+    "arrange.undo": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo last apply"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤销上次应用"
+          }
+        }
+      }
+    },
+    "arrange.apply": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply layout"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用排列"
+          }
+        }
+      }
+    },
+    "arrange.leftToRight": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left to right"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从左到右"
+          }
+        }
+      }
+    },
+    "arrange.dropHere": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drop icons here"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将图标拖到这里"
+          }
+        }
+      }
+    },
+    "arrange.makeResident": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep resident"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设为常驻"
+          }
+        }
+      }
+    },
+    "arrange.collect": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collect icon"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移入收纳"
+          }
+        }
+      }
+    },
+    "arrange.residentItem": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep %@ resident"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将 %@ 设为常驻"
+          }
+        }
+      }
+    },
+    "arrange.collectItem": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collect %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收纳 %@"
+          }
+        }
+      }
+    },
+    "arrange.moveLeft": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move left"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向左移动"
+          }
+        }
+      }
+    },
+    "arrange.moveRight": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move right"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向右移动"
+          }
+        }
+      }
+    },
+    "arrange.tab": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arrange icons"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编排图标"
+          }
+        }
+      }
+    },
+    "arrange.searchTab": {
+      "comment": "Menu bar arrangement control or feedback.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find icons"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查找图标"
+          }
+        }
+      }
+    },
+    "arrange.searchHint": {
+      "comment": "Arrangement behavior while filtering icons.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change sections here. Clear search to drag and reorder."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索时可切换区域；清空搜索后拖动排序。"
+          }
+        }
+      }
+    },
+    "entry.changing": {
+      "comment": "Unified Arc Kit menu bar entry controls.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Changing"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换中"
+          }
+        }
+      }
+    },
+    "entry.unavailable": {
+      "comment": "Unified Arc Kit menu bar entry controls.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not ready"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "待恢复"
+          }
+        }
+      }
+    },
+    "entry.hidden": {
+      "comment": "Unified Arc Kit menu bar entry controls.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已收起"
+          }
+        }
+      }
+    },
+    "entry.shown": {
+      "comment": "Unified Arc Kit menu bar entry controls.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shown"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已展开"
+          }
+        }
+      }
+    },
+    "entry.show": {
+      "comment": "Unified Arc Kit menu bar entry controls.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show Collected Icons"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "展开收纳图标"
+          }
+        }
+      }
+    },
+    "entry.hide": {
+      "comment": "Unified Arc Kit menu bar entry controls.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide icons"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收起图标"
+          }
+        }
+      }
+    },
+    "entry.help": {
+      "extractionState": "manual",
+      "comment": "Single combined native status item.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Within this single item, the left dots toggle collection and the right logo opens the panel."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "同一入口内，左侧三点切换图标收纳，右侧标志打开功能面板。"
+          }
+        }
+      }
+    },
+    "visibility.unavailable": {
+      "extractionState": "manual",
+      "comment": "System menu bar visibility and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not read system menu bar visibility. Try again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取系统菜单栏显示设置，请重试。"
+          }
+        }
+      }
+    },
+    "visibility.unconfirmed": {
+      "extractionState": "manual",
+      "comment": "System menu bar visibility and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Icon visibility could not be confirmed. Choose Show All to retry recovery."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图标显示状态未确认，请点“显示全部”重试恢复。"
+          }
+        }
+      }
+    },
+    "visibility.guardian": {
+      "extractionState": "manual",
+      "comment": "System menu bar visibility and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Icon recovery is not ready. No icons were hidden."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图标恢复进程未就绪，本次未收纳。"
+          }
+        }
+      }
+    },
+    "visibility.identity": {
+      "extractionState": "manual",
+      "comment": "System menu bar visibility and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not confirm the system icon owner for %1$@. No icons were hidden."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法确认 %1$@ 的系统图标归属，本次未收纳。"
+          }
+        }
+      }
+    },
+    "arrange.application.scope": {
+      "extractionState": "manual",
+      "comment": "System menu bar visibility and recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Icons from one app are collected together. Command-drag in the system menu bar changes order only."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "同一应用的图标一起收纳。在系统菜单栏按住 ⌘ 拖动，只调整顺序，不改变收纳归属。"
+          }
+        }
+      }
+    },
+    "inline.help": {
+      "extractionState": "manual",
+      "comment": "Native collection switch beside Arc Kit.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide or show collected icons directly. The Arc Kit icon on the right opens the panel."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直接收起或显示收纳图标；右侧 Arc Kit 图标打开功能面板。"
+          }
+        }
+      }
+    },
+    "inputMenu.title": {
+      "extractionState": "manual",
+      "comment": "System input menu collection support.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Input Menu"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输入法菜单"
+          }
+        }
+      }
+    },
+    "inputMenu.named": {
+      "extractionState": "manual",
+      "comment": "System input menu collection support.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Input Menu · %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输入法菜单 · %1$@"
+          }
+        }
+      }
+    },
+    "inputMenu.scope": {
+      "extractionState": "manual",
+      "comment": "System input menu collection support.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collects the system Input menu without disabling input methods or changing input switching."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收纳的是系统输入法菜单，不会停用输入法或改变中英文切换。"
+          }
+        }
+      }
+    },
+    "inputMenu.unavailable": {
+      "extractionState": "manual",
+      "comment": "System input menu collection support.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not read Input menu visibility. No icons were collected."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取输入法菜单的显示设置，本次未收纳。"
+          }
+        }
+      }
+    },
+    "combined.help": {
+      "extractionState": "manual",
+      "comment": "Single combined native status item.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left dots: %1$@. Right logo: Arc Kit (%2$@)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左侧三点：%1$@；右侧标志：Arc Kit（%2$@）。"
+          }
+        }
+      }
+    },
+    "collection.empty": {
+      "extractionState": "manual",
+      "comment": "Collection membership is saved independently from native order.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose apps to collect in Menu Bar settings first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没有选择收纳应用，请在“菜单栏 → 编排图标”中选择。"
           }
         }
       }

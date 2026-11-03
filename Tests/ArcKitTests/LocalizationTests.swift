@@ -15,7 +15,6 @@ struct LocalizationTests {
         // 增量构建必须同时更新符号和运行资源，不能让新控件显示原始 key。
         #expect(L10n.string(.MenuBar.actionShowAllShort, language: .english) == "Show all")
         #expect(L10n.string(.MenuBar.actionShowAllShort, language: .simplifiedChinese) == "显示全部")
-        #expect(L10n.string(.MenuBar.runtimeRequested("Show all"), language: .english) == "Requested: Show all")
         #expect(L10n.string(.Wallpaper.libraryCount(1), language: .english) == "1 wallpaper")
         #expect(L10n.string(.Wallpaper.libraryCount(2), language: .english) == "2 wallpapers")
         #expect(L10n.string(.Wallpaper.libraryCount(0), language: .simplifiedChinese) == "0 项壁纸")
@@ -35,6 +34,7 @@ struct LocalizationTests {
             #expect(!ArcKitQuickCommandCatalog.all.contains { $0.action == .menuBarCollection })
         }
         #expect(ArcKitQuickCommandCatalog.all.contains { $0.action == .menuBarShelf })
+        #expect(ArcKitQuickCommandCatalog.results(for: "收起").first?.action == .menuBarToggle)
         #expect(L10n.string(.MenuBar.overflowTitle, language: .english) == "System overflow")
         let commands = ArcKitQuickCommandCatalog.all
         #expect(Set(commands.map(\.id)).count == commands.count)

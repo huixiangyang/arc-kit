@@ -738,6 +738,186 @@
           }
         }
       }
+    },
+    "shortcut.invalid": {
+      "extractionState": "manual",
+      "comment": "Shared keyboard shortcut value and recorder used by menu bar and window settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The shortcut contains an invalid key or modifier."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快捷键包含无效按键或修饰键。"
+          }
+        }
+      }
+    },
+    "shortcutRecorder.label": {
+      "extractionState": "manual",
+      "comment": "Shared keyboard shortcut value and recorder used by menu bar and window settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record shortcut"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "录制快捷键"
+          }
+        }
+      }
+    },
+    "shortcutRecorder.unsupportedKey": {
+      "extractionState": "manual",
+      "comment": "Shared keyboard shortcut value and recorder used by menu bar and window settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unsupported key"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不支持此按键"
+          }
+        }
+      }
+    },
+    "shortcutRecorder.requires": {
+      "extractionState": "manual",
+      "comment": "Shared keyboard shortcut value and recorder used by menu bar and window settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add ⌘, ⌃ or ⌥"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请包含 ⌘、⌃ 或 ⌥"
+          }
+        }
+      }
+    },
+    "shortcutRecorder.pressShortcut": {
+      "extractionState": "manual",
+      "comment": "Shared keyboard shortcut value and recorder used by menu bar and window settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Press shortcut…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请按下快捷键…"
+          }
+        }
+      }
+    },
+    "shortcutRecorder.clickRecord": {
+      "extractionState": "manual",
+      "comment": "Shared keyboard shortcut value and recorder used by menu bar and window settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record shortcut"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击录制"
+          }
+        }
+      }
+    },
+    "shortcutRecorder.disabled": {
+      "extractionState": "manual",
+      "comment": "Shared keyboard shortcut value and recorder used by menu bar and window settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disabled"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已关闭"
+          }
+        }
+      }
+    },
+    "shortcutRecorder.duplicate": {
+      "extractionState": "manual",
+      "comment": "Shared keyboard shortcut value and recorder used by menu bar and window settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shortcut already used"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快捷键已被使用"
+          }
+        }
+      }
+    },
+    "shortcutRecorder.hint": {
+      "extractionState": "manual",
+      "comment": "Shared keyboard shortcut value and recorder used by menu bar and window settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click or press Return to record. Escape cancels; Delete disables the shortcut."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击或按回车录制，Esc 取消，Delete 停用快捷键。"
+          }
+        }
+      }
+    },
+    "shortcutRecorder.disable": {
+      "extractionState": "manual",
+      "comment": "Shared keyboard shortcut value and recorder used by menu bar and window settings.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disable shortcut"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停用快捷键"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

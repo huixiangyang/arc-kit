@@ -22,21 +22,18 @@ struct ApplicationWorkspace: View {
     @ObservedObject private var permissions: ApplicationPermissions
     @ObservedObject private var healthModel: AppRuntimeHealthModel
     @ObservedObject private var navigation: MainWindowNavigationModel
-    @ObservedObject private var agentSessions: AgentSessionModel
     private let actions: ApplicationActions
 
     // 标签属于窗口导航状态，切换侧栏后仍回到上次编辑的分组。
     @State private var finderTab: FinderWorkspaceTab = .menu
     @State private var mouseTab: MouseWorkspaceTab = .scrolling
     @State private var overviewTab: OverviewWorkspaceTab = .status
-    @State private var menuBarTab: MenuBarWorkspaceTab = .organize
     @State private var wallpaperTab: WallpaperWorkspaceTab = .library
     @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
 
     init(
         model: SettingsModel,
         dataModel: DataManagementModel,
-        agentSessions: AgentSessionModel,
         loginService: LaunchAtLoginService,
         systemService: SystemEnhancementService,
         wallpaperModel: WallpaperModel,
@@ -55,7 +52,6 @@ struct ApplicationWorkspace: View {
     ) {
         self.model = model
         self.dataModel = dataModel
-        self.agentSessions = agentSessions
         self.loginService = loginService
         self.systemService = systemService
         self.wallpaperModel = wallpaperModel
@@ -133,13 +129,11 @@ struct ApplicationWorkspace: View {
                 )
             }
         case .menuBar:
-            MenuBarSection(model: model.menuBarEditor, service: menuBarService, selectedTab: $menuBarTab)
+            MenuBarSection(model: model.menuBarEditor, service: menuBarService)
         case .wallpaper:
             WallpaperSection(model: wallpaperModel,
                 backgroundAction: WallpaperBackgroundIntegration.action(for: backgroundModel),
                 backgroundFeedback: AppBackgroundFeedback(model: backgroundModel), selectedTab: $wallpaperTab)
-        case .agentSessions:
-            AgentSessionsSection(model: agentSessions, settings: model.agentSessionsEditor)
         case .preferences:
             Group {
                 SystemSection(
@@ -172,7 +166,7 @@ struct ApplicationWorkspace: View {
         let service = FeatureHealthAssessment.window(settings: settings.windowManagement,
             snapshot: windowService.runtimeSnapshot, receivedAt: windowService.lastResponseAt,
             preview: healthModel.isPreview)
-        return permissions.windowHealth(service, required: settings.windowManagement.isEnabled, menuBarVisible: settings.showMenuBarIcon)
+        return permissions.windowHealth(service, required: settings.windowManagement.isEnabled, menuBarVisible: settings.menuBarEntryVisible)
     }
 
     private var mouseHealth: FeatureHealth {
@@ -219,14 +213,16 @@ struct ApplicationWorkspace: View {
             actions.window.performWindowAction(action)
         case .menuBarCollection:
             if menuBarService.isEnabled { menuBarService.toggleShelf(scope: .collected) }
-            else { menuBarTab = .organize; navigate(to: .menuBar) }
+            else { navigate(to: .menuBar) }
         case .menuBarShelf:
-            if menuBarService.isEnabled { menuBarService.toggleShelf(scope: .all) }
-            else { menuBarTab = .organize; navigate(to: .menuBar) }
+            if menuBarService.isPreview { navigate(to: .menuBar) }
+            else { menuBarService.toggleShelf(scope: .all) }
         case .menuBarShowAll:
             menuBarService.present(.all)
-            menuBarTab = .organize
             navigate(to: .menuBar)
+        case .menuBarToggle:
+            if menuBarService.isEnabled { menuBarService.toggleCollection() }
+            else { navigate(to: .menuBar) }
         case .windowScenes:
             navigation.windowTarget = .scenes
             navigate(to: .window)

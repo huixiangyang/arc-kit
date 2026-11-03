@@ -19,6 +19,10 @@ final class MenuBarPanelState: ObservableObject {
     @Published var screenCount = 0
     @Published var saveFailure: String?
     @Published var statusCheck = MenuBarStatusCheck.idle
+    @Published var collectionPresentation: MenuBarPresentation = .all
+    @Published var collectionBusy = false
+    @Published var collectionReady = false
+    @Published var collectionMessage: String?
 }
 
 enum MenuBarStatusCheck {
@@ -86,6 +90,7 @@ struct MenuBarPanel: View {
     var body: some View {
         VStack(spacing: 10) {
             header
+            Divider()
             windowControls
             Divider()
             sceneControls

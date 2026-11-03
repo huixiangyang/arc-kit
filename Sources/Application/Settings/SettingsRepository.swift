@@ -48,12 +48,11 @@ public final class SettingsRepository: @unchecked Sendable {
               let finder = try ArcKitRecord.load(FinderRuntimeSettings.self, layout: FinderRuntimeSettings.recordLayout, db: db),
               let window = try ArcKitRecord.load(WindowManagementSettings.self, layout: WindowManagementSettings.recordLayout, db: db),
               let mouse = try ArcKitRecord.load(MouseEnhancementSettings.self, layout: MouseEnhancementSettings.recordLayout, db: db),
-              let menuBar = try ArcKitRecord.load(MenuBarSettings.self, layout: MenuBarSettings.recordLayout, db: db),
-              let agentSessions = try ArcKitRecord.load(AgentSessionSettings.self, layout: AgentSessionSettings.recordLayout, db: db) else {
+              let menuBar = try ArcKitRecord.load(MenuBarSettings.self, layout: MenuBarSettings.recordLayout, db: db) else {
             throw ArcKitDatabaseError.message(L10n.string(.Settings.repositoryIncompleteSettings))
         }
         var value = AppSettings(finder: finder)
-        global.apply(to: &value); value.windowManagement = window; value.mouseEnhancement = mouse; value.menuBar = menuBar; value.agentSessions = agentSessions
+        global.apply(to: &value); value.windowManagement = window; value.mouseEnhancement = mouse; value.menuBar = menuBar
         return value
     }
     static func store(_ value: AppSettings, db: Database) throws {
@@ -62,6 +61,5 @@ public final class SettingsRepository: @unchecked Sendable {
         try ArcKitRecord.save(value.windowManagement, layout: WindowManagementSettings.recordLayout, db: db)
         try ArcKitRecord.save(value.mouseEnhancement, layout: MouseEnhancementSettings.recordLayout, db: db)
         try ArcKitRecord.save(value.menuBar, layout: MenuBarSettings.recordLayout, db: db)
-        try ArcKitRecord.save(value.agentSessions, layout: AgentSessionSettings.recordLayout, db: db)
     }
 }

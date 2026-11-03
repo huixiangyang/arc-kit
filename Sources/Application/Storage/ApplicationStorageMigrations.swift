@@ -7,10 +7,10 @@ import Foundation
 
 /// 业务表、约束与历史修复由应用拥有；迁移标识和顺序属于已发布的数据契约。
 enum ApplicationStorageMigrations {
-    static func migrate(_ queue: DatabaseQueue) throws {
+    static func migrate(_ queue: DatabaseQueue, legacyMenuBarCollection: @escaping @Sendable () -> Set<String> = { [] }) throws {
         var migrator = DatabaseMigrator()
         let layouts = [GlobalSettings.recordLayout, FinderRuntimeSettings.recordLayout,
-            WindowManagementSettings.recordLayout, MouseEnhancementSettings.recordLayout, MenuBarSettings.recordLayout, AgentSessionSettings.recordLayout,
+            WindowManagementSettings.recordLayout, MouseEnhancementSettings.recordLayout, MenuBarSettings.recordLayout,
             WallpaperCatalog.recordLayout, AppBackgroundSettings.recordLayout, WallpaperSourceConfiguration.recordLayout]
         migrator.registerMigration("storage-v1") { db in
             try ArcKitDatabase.createStoreSchema(in: db)
@@ -137,16 +137,52 @@ enum ApplicationStorageMigrations {
                 try ArcKitDatabase.advance(db)
             }
         }
-        migrator.registerMigration("agent-sessions-v1") { db in
-            let exists = try db.tableExists(AgentSessionSettings.recordLayout.table)
-            try createRecords(AgentSessionSettings.recordLayout, in: db)
-            if !exists { try ArcKitRecord.save(AgentSessionSettings.defaults, layout: AgentSessionSettings.recordLayout, db: db) }
-            try AgentSessionStore.createSchema(db)
-            try ArcKitDatabase.advance(db)
+        // 已退役功能只保留迁移标识，确保旧数据库可继续打开；新库不再创建会话表。
+        // 既有记录与资产留在原位，不加载、不扫描，也不因功能移除删除个人历史。
+        migrator.registerMigration("agent-sessions-v1") { _ in }
+        migrator.registerMigration("agent-sessions-search-v1") { _ in }
+        migrator.registerMigration("menu-bar-custom-shortcuts-v1") { db in
+            for field in ["shelfShortcut", "revealShortcut"] {
+                let rows = try Row.fetchAll(db, sql: "SELECT _position, \(field) FROM menu_bar_preferences WHERE json_extract(_types,'$.\(field)')='text'")
+                for row in rows {
+                    let old: String = row[field]
+                    let value: HotKeyChord
+                    switch old {
+                    case "disabled": value = .disabled
+                    case "controlOptionM": value = .init(keyCode: 46, keyEquivalent: "M", modifiers: [.control, .option])
+                    case "controlOptionShiftM": value = .init(keyCode: 46, keyEquivalent: "M", modifiers: [.control, .option, .shift])
+                    case "controlOptionCommandM": value = .init(keyCode: 46, keyEquivalent: "M", modifiers: [.control, .option, .command])
+                    default: throw ArcKitDatabaseError.message(L10n.string(.MenuBar.settingsInvalid))
+                    }
+                    let encoded = String(decoding: try JSONEncoder().encode(value), as: UTF8.self)
+                    let position: Int = row["_position"]
+                    try db.execute(sql: "UPDATE menu_bar_preferences SET \(field)=?, _types=json_set(_types,'$.\(field)','json') WHERE _position=?", arguments: [encoded, position])
+                }
+                if !rows.isEmpty { try ArcKitDatabase.advance(db) }
+            }
         }
-        migrator.registerMigration("agent-sessions-search-v1") { db in
-            // 搜索是会话资产的派生索引，不改变用户配置，也不推进 Host 的配置代次。
-            try AgentSessionStore.createSearchSchema(db)
+        migrator.registerMigration("menu-bar-independent-shortcuts-v1") { db in
+            let columns = try db.columns(in: "menu_bar_preferences").map(\.name)
+            if !columns.contains("shortcutsEnabled") {
+                try db.execute(sql: "ALTER TABLE menu_bar_preferences ADD COLUMN shortcutsEnabled ANY")
+            }
+            if !columns.contains("toggleShortcut") {
+                try db.execute(sql: "ALTER TABLE menu_bar_preferences ADD COLUMN toggleShortcut TEXT")
+            }
+            // 旧版快捷键随收纳开关启停；只补缺失值，升级不能启用原先关闭的快捷键。
+            try db.execute(sql: "UPDATE menu_bar_preferences SET shortcutsEnabled=isEnabled, _types=json_set(_types,'$.shortcutsEnabled','bool') WHERE shortcutsEnabled IS NULL")
+            var changed = db.changesCount > 0
+            let disabled = String(decoding: try JSONEncoder().encode(HotKeyChord.disabled), as: UTF8.self)
+            try db.execute(sql: "UPDATE menu_bar_preferences SET toggleShortcut=?, _types=json_set(_types,'$.toggleShortcut','json') WHERE toggleShortcut IS NULL", arguments: [disabled])
+            changed = changed || db.changesCount > 0
+            if changed { try ArcKitDatabase.advance(db) }
+        }
+        migrator.registerMigration("menu-bar-collection-membership-v1") { db in
+            guard try !db.columns(in: "menu_bar_preferences").contains(where: { $0.name == "collectedApplications" }) else { return }
+            let encoded = String(decoding: try JSONEncoder().encode(legacyMenuBarCollection()), as: UTF8.self)
+            try db.execute(sql: "ALTER TABLE menu_bar_preferences ADD COLUMN collectedApplications TEXT")
+            try db.execute(sql: "UPDATE menu_bar_preferences SET collectedApplications=?, _types=json_set(_types, '$.collectedApplications', 'json')", arguments: [encoded])
+            try ArcKitDatabase.advance(db)
         }
         try migrator.migrate(queue)
     }

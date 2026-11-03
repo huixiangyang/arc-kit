@@ -55,7 +55,6 @@ public enum SettingsDomain: String, CaseIterable, Codable, Sendable {
     case mouse
     case finder
     case menuBar
-    case agentSessions
 
 }
 

@@ -105,7 +105,7 @@ struct OverviewSection: View {
         return Group {
             Section(L10n.string(.Overview.pageSystemPermissions)) {
                 permissionRow(L10n.string(.Overview.pageAccessibility), health: permissions.accessibilityHealth(required: inputRequired))
-                permissionRow(L10n.string(.App.applicationMenuBarInputMonitoring), health: permissions.menuInputHealth(required: settings?.showMenuBarIcon == true && settings?.windowManagement.isEnabled == true))
+                permissionRow(L10n.string(.App.applicationMenuBarInputMonitoring), health: permissions.menuInputHealth(required: settings?.menuBarEntryVisible == true && settings?.windowManagement.isEnabled == true))
                 permissionRow(L10n.string(.Overview.pageFinderExtension), health: permissions.finderHealth(required: finderRequired))
                 permissionRow(L10n.string(.Overview.pageBackgroundExecution), health: permissions.backgroundHealth(required: inputRequired || finderRequired))
             }

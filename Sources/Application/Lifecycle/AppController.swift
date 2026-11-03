@@ -12,9 +12,10 @@ import Foundation
 public final class AppController: NSObject, NSMenuItemValidation {
     private let settingsModel = SettingsModel()
     private lazy var dataModel = DataManagementModel(settingsModel: settingsModel)
-    private lazy var agentSessions = AgentSessionModel(settings: settingsModel)
     private let loginService = LaunchAtLoginService()
-    private lazy var menuBarController = MenuBarController(actions: menuBarActions, prepare: { [weak self] application, completion in
+    private lazy var menuBarController = MenuBarController(actions: menuBarActions,
+        collapse: { [weak self] in self?.runtime.menuBarService.toggleCollection() },
+        reveal: { [weak self] in self?.runtime.menuBarService.present(.all) }, prepare: { [weak self] application, completion in
         guard let self else { completion(.unavailable(L10n.string(.App.applicationWindowServiceEnded))); return }
         runtime.mouseService.refresh()
         runtime.windowService.captureWindowTarget(application: application) { [weak self] capture in
@@ -49,7 +50,6 @@ public final class AppController: NSObject, NSMenuItemValidation {
         ApplicationWorkspace(
             model: settingsModel,
             dataModel: dataModel,
-            agentSessions: agentSessions,
             loginService: loginService,
             systemService: systemEnhancementService,
             wallpaperModel: wallpaperModel,
@@ -83,7 +83,6 @@ public final class AppController: NSObject, NSMenuItemValidation {
         super.init()
         dataModel.beforeStorageOperation = { [weak self] restoring in
             guard let self else { return }
-            await agentSessions.suspendAndWait()
             await wallpaperModel.finishPendingChanges()
             await backgroundModel.finishPendingChanges()
             guard !wallpaperModel.channels.busy else { throw CocoaError(.userCancelled) }
@@ -95,9 +94,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
             }
         }
         dataModel.afterStorageOperation = { [weak self] restoring in
-            guard let self else { return }
-            agentSessions.start()
-            guard restoring else { return }
+            guard let self, restoring else { return }
             backgroundModel.reload()
             wallpaperModel.start()
             runtime.start()
@@ -110,6 +107,11 @@ public final class AppController: NSObject, NSMenuItemValidation {
         observeAppActivation()
         observeScreenParameters()
         refreshMenuBar()
+        runtime.prepareMenuBarEntry = { [weak self] settings in
+            guard let self else { return }
+            menuBarController.state.settings = settings
+            menuBarController.refreshPresentation(isVisible: settings.menuBarEntryVisible)
+        }
         runtime.stateDidChange = { [weak self] in self?.scheduleMenuBarRefresh() }
         runtime.settingsDidCommit = { [weak self] previous, current in
             guard let self else { return }
@@ -128,10 +130,12 @@ public final class AppController: NSObject, NSMenuItemValidation {
         settingsModel.objectWillChange.sink { [weak self] _ in
             self?.scheduleMenuBarRefresh()
         }.store(in: &serviceCancellables)
+        runtime.menuBarService.objectWillChange.sink { [weak self] _ in
+            self?.scheduleMenuBarRefresh()
+        }.store(in: &serviceCancellables)
         runtime.start()
         wallpaperModel.start()
         updateService.start()
-        agentSessions.start()
         if launchMode == .interactive {
             showMainWindow()
         }
@@ -268,15 +272,19 @@ public final class AppController: NSObject, NSMenuItemValidation {
         state.isApplyingScene = runtime.windowService.isApplyingScene
         state.lastSceneResult = runtime.windowService.lastSceneResult
         state.sceneError = runtime.windowService.lastSceneError
-        state.windowHealth = runtime.permissions.windowHealth(state.windowHealth, required: settings.windowManagement.isEnabled, menuBarVisible: settings.showMenuBarIcon)
+        state.windowHealth = runtime.permissions.windowHealth(state.windowHealth, required: settings.windowManagement.isEnabled, menuBarVisible: settings.menuBarEntryVisible)
         // 快捷键冲突不影响手动布局；权限证据与 AX 可操作性仍必须有效。
         state.windowActionsAvailable = settings.windowManagement.isEnabled
             && state.windowHealth.permission == .granted && runtime.windowService.accessibilityOperational
         state.screenCount = NSScreen.screens.count
+        state.collectionPresentation = runtime.menuBarService.requestedPresentation
+        state.collectionBusy = runtime.menuBarService.pendingPresentation != nil
+        state.collectionReady = runtime.menuBarService.environmentState == .ready
+        state.collectionMessage = runtime.menuBarService.message
         if case let .failed(message) = settingsModel.persistenceState { state.saveFailure = message }
         else { state.saveFailure = nil }
         // 只应用已提交选择；初次加载失败仍保留诊断入口，不根据未保存草稿隐藏图标。
-        let isVisible = runtime.committedSettings?.showMenuBarIcon ?? !settingsModel.isLoading
+        let isVisible = runtime.committedSettings?.menuBarEntryVisible ?? !settingsModel.isLoading
         menuBarController.refreshPresentation(isVisible: isVisible)
     }
 
@@ -477,7 +485,6 @@ public final class AppController: NSObject, NSMenuItemValidation {
     }
 
     public func shutdown() {
-        agentSessions.stop()
         settingsWindowTarget.reset()
         wallpaperModel.stop()
         finderDiagnostics.close()
@@ -500,7 +507,6 @@ public final class AppController: NSObject, NSMenuItemValidation {
             return false
         }
         guard !isUninstalling else { return false }
-        await agentSessions.suspendAndWait()
         await backgroundModel.finishPendingChanges()
         await wallpaperModel.finishPendingChanges()
         shutdown()
@@ -511,7 +517,6 @@ public final class AppController: NSObject, NSMenuItemValidation {
             // 停止失败不能伪装成完整退出；恢复可操作界面，允许用户重试。
             runtime.start()
             wallpaperModel.start()
-            agentSessions.start()
             showAlert(title: L10n.string(.App.applicationQuitIncomplete), message: error.localizedDescription, style: .warning)
             return false
         }
@@ -540,20 +545,18 @@ public final class AppController: NSObject, NSMenuItemValidation {
                 guard await settingsModel.drainPendingChanges(under: operation) else { throw CocoaError(.fileWriteUnknown) }
                 await wallpaperModel.finishPendingChanges()
                 await backgroundModel.finishPendingChanges()
-                await agentSessions.suspendAndWait()
                 registrationSnapshot = try await runtime.host.unregisterForUninstall()
             } catch {
                 isUninstalling = false
                 settingsModel.operations.end(operation)
                 runtime.start()
                 wallpaperModel.start()
-                agentSessions.start()
                 showAlert(title: L10n.string(.App.applicationUninstallFailed), message: error.localizedDescription, style: .warning)
                 return
             }
             uninstallService.uninstall(onFailure: { [weak self] in
                 guard let self else { return }
-                defer { self.isUninstalling = false; self.settingsModel.operations.end(operation); self.runtime.start(); self.wallpaperModel.start(); self.agentSessions.start() }
+                defer { self.isUninstalling = false; self.settingsModel.operations.end(operation); self.runtime.start(); self.wallpaperModel.start() }
                 do {
                     try self.runtime.host.restoreAfterFailedUninstall(registrationSnapshot)
                 } catch {

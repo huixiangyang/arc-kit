@@ -74,7 +74,6 @@ public final class SettingsModel: ObservableObject {
     lazy var windowEditor = editor(for: \.windowManagement)
     lazy var mouseEditor = editor(for: \.mouseEnhancement)
     lazy var menuBarEditor = editor(for: \.menuBar)
-    lazy var agentSessionsEditor = editor(for: \.agentSessions)
 
     private func editor<Value: Equatable>(for keyPath: WritableKeyPath<AppSettings, Value>) -> SettingsEditor<Value> {
         SettingsEditor(changes: objectWillChange,
@@ -82,6 +81,9 @@ public final class SettingsModel: ObservableObject {
             committed: { [unowned self] in committedSettings?[keyPath: keyPath] },
             update: { [unowned self] actionName, coalescingKey, change in
                 update(actionName: actionName, coalescingKey: coalescingKey) { change(&$0[keyPath: keyPath]) }
+            }, save: { [unowned self] in await finishPendingChanges() }, failure: { [unowned self] in
+                if case let .failed(message) = persistenceState { return message }
+                return nil
             })
     }
 

@@ -11,11 +11,10 @@ public enum MainWindowSection: String, CaseIterable, Identifiable, Sendable {
     case mouse
     case menuBar
     case wallpaper
-    case agentSessions
     case preferences
 
     public static let allCases: [MainWindowSection] = [
-        .overview, .finder, .window, .mouse, .menuBar, .wallpaper, .agentSessions, .preferences,
+        .overview, .finder, .window, .mouse, .menuBar, .wallpaper, .preferences,
     ]
 
     public var id: String { rawValue }
