@@ -6,6 +6,8 @@ import Testing
 struct MenuBarEntryTests {
     @Test("左侧切换、右侧菜单互不串用，繁忙时仍可打开菜单，停用后只保留品牌")
     @MainActor func combinedActions() {
+        // 无桌面 CI 也需要 AppKit 的动作派发入口；不创建窗口或真实状态项。
+        _ = NSApplication.shared
         let button = NSButton(frame: NSRect(x: 0, y: 0, width: 54, height: 22))
         var collapsed = 0, revealed = 0, menus = 0
         let entry = MenuBarCombinedEntry(button: button, collapse: { collapsed += 1 }, reveal: { revealed += 1 }, openMenu: { menus += 1 })

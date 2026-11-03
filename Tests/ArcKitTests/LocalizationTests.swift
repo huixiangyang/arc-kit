@@ -35,7 +35,7 @@ struct LocalizationTests {
         }
         #expect(ArcKitQuickCommandCatalog.all.contains { $0.action == .menuBarShelf })
         #expect(ArcKitQuickCommandCatalog.results(for: "收起").first?.action == .menuBarToggle)
-        #expect(L10n.string(.MenuBar.overflowTitle, language: .english) == "System overflow")
+        #expect(L10n.string(.MenuBar.overflowTitle, language: .english) == "Collect by app")
         let commands = ArcKitQuickCommandCatalog.all
         #expect(Set(commands.map(\.id)).count == commands.count)
         #expect(ArcKitQuickCommandCatalog.results(for: "NEW FILE").first?.action == .finder(.templates))

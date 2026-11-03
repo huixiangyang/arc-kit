@@ -141,7 +141,8 @@ struct MenuBarArrangementTests {
         #expect(model.error == nil && writes == 0 && model.draft.collected == [a, c])
         #expect(try access.read() == ["app.a", "app.c"])
         native[c] = 100
-        model.refresh(collectionEnabled: true); await model.finish()
+        // 用注入快照验证重排；真实刷新入口仅支持 macOS 27，不能让 CI 宿主版本决定夹具结果。
+        try model.load(source, positions: native)
         #expect(model.draft.collected == [c, a])
         model.undoLastApply(); await model.finish()
         #expect(model.error == nil && writes == 0 && model.draft.collected == [c])
