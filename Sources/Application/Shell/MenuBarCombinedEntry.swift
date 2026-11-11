@@ -5,7 +5,6 @@ import ArcKitPlatform
 @MainActor
 final class MenuBarCombinedEntry: NSObject {
     enum Region { case collection, menu }
-    static let imageSize = NSSize(width: 38, height: 18)
     static let collectionBoundary: CGFloat = 18
     let button: NSButton
     private let collapse: @MainActor () -> Void
@@ -14,36 +13,56 @@ final class MenuBarCombinedEntry: NSObject {
     private var collectionVisible = false
     private var collectionEnabled = false
     private var shouldCollapse = false
-
-    private static let combinedImage: NSImage = {
-        let result = NSImage(size: imageSize)
-        let dots = ArcIconImage.image(.ellipsis)
-        let brand = ArcBrandImage.menuBar
-        // 提前生成两种倍率的模板位图，不把带主执行器隔离的 Swift 绘制闭包交给后台渲染。
-        for scale in [1, 2] {
-            guard let bitmap = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: 38 * scale, pixelsHigh: 18 * scale,
-                bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: .deviceRGB,
-                bytesPerRow: 0, bitsPerPixel: 0), let context = NSGraphicsContext(bitmapImageRep: bitmap) else { continue }
-            bitmap.size = imageSize
-            NSGraphicsContext.saveGraphicsState()
-            NSGraphicsContext.current = context
-            context.cgContext.scaleBy(x: CGFloat(scale), y: CGFloat(scale))
-            dots.draw(in: NSRect(x: 0, y: 1, width: 16, height: 16))
-            brand.draw(in: NSRect(x: 20, y: 0, width: 18, height: 18))
-            NSGraphicsContext.restoreGraphicsState()
-            result.addRepresentation(bitmap)
-        }
-        result.isTemplate = true
-        return result
-    }()
+    private var animationTask: Task<Void, Never>?
+    private var animationFrame: Int?
+    private let animationSleep: @MainActor (Duration) async throws -> Void
 
     init(button: NSButton, collapse: @escaping @MainActor () -> Void, reveal: @escaping @MainActor () -> Void,
-         openMenu: @escaping @MainActor () -> Void) {
+         openMenu: @escaping @MainActor () -> Void,
+         animationSleep: @escaping @MainActor (Duration) async throws -> Void = { try await Task.sleep(for: $0) }) {
         self.button = button; self.collapse = collapse; self.reveal = reveal; self.openMenu = openMenu
+        self.animationSleep = animationSleep
         super.init()
         button.title = ""; button.imagePosition = .imageOnly
         button.setAccessibilityIdentifier("menu-bar.combined-entry")
         reconnectAction()
+    }
+
+    deinit { animationTask?.cancel() }
+
+    func setAnimationEnabled(_ enabled: Bool) {
+        guard enabled else {
+            animationTask?.cancel(); animationTask = nil; animationFrame = nil
+            refreshImage()
+            return
+        }
+        guard animationTask == nil else { return }
+        let sleep = animationSleep
+        animationTask = Task { [weak self] in
+            do {
+                while !Task.isCancelled {
+                    for frame in 0..<MenuBarIconArtwork.animationFrameCount {
+                        guard self?.showAnimationFrame(frame) == true else { return }
+                        try await sleep(.seconds(MenuBarIconArtwork.animationFrameInterval))
+                    }
+                    guard self?.showAnimationFrame(nil) == true else { return }
+                    // 每轮只动两秒，再静置六秒；间歇期间不逐帧唤醒，也不重新绘制图像。
+                    try await sleep(.seconds(MenuBarIconArtwork.animationRestInterval))
+                }
+            } catch { return }
+        }
+    }
+
+    private func showAnimationFrame(_ frame: Int?) -> Bool {
+        guard !Task.isCancelled, animationTask != nil else { return false }
+        animationFrame = frame
+        refreshImage()
+        return true
+    }
+
+    private func refreshImage() {
+        if let animationFrame { button.image = MenuBarIconArtwork.frame(animationFrame, collectionVisible: collectionVisible) }
+        else { button.image = collectionVisible ? MenuBarIconArtwork.combined : MenuBarIconArtwork.brand }
     }
 
     func reconnectAction() {
@@ -55,7 +74,7 @@ final class MenuBarCombinedEntry: NSObject {
         self.collectionVisible = collectionVisible
         shouldCollapse = presentation != .collapsed && ready
         collectionEnabled = !busy
-        button.image = collectionVisible ? Self.combinedImage : ArcBrandImage.menuBar
+        refreshImage()
         button.isEnabled = true // 收纳切换期间品牌区域仍可打开功能面板。
         let action = L10n.string(busy ? .MenuBar.entryChanging : (shouldCollapse ? .MenuBar.entryHide : .MenuBar.entryShow))
         button.toolTip = collectionVisible ? L10n.string(.MenuBar.combinedHelp(action, menuStatus)) : "Arc Kit：\(menuStatus)"

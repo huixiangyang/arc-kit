@@ -13,7 +13,7 @@ struct MenuBarEntryTests {
         let entry = MenuBarCombinedEntry(button: button, collapse: { collapsed += 1 }, reveal: { revealed += 1 }, openMenu: { menus += 1 })
         entry.update(collectionVisible: true, presentation: .all, ready: true, busy: false, menuStatus: "Menu")
         let image = button.image
-        #expect(image?.isValid == true && image?.isTemplate == true)
+        #expect(image?.isValid == true && image?.isTemplate == false)
         #expect(entry.perform(.collection) && collapsed == 1 && menus == 0)
         #expect(!entry.perform(.collection))
         entry.update(collectionVisible: true, presentation: .all, ready: true, busy: true, menuStatus: "Menu")
@@ -25,7 +25,7 @@ struct MenuBarEntryTests {
         #expect(entry.perform(.collection) && revealed == 2)
         #expect(button.toolTip?.contains("恢复失败") == true)
         entry.update(collectionVisible: false, presentation: .all, ready: true, busy: false, menuStatus: "Menu")
-        #expect(button.image?.size.width == 18 && !entry.perform(.collection))
+        #expect(button.image?.size.width == 18 && button.image?.isTemplate == false && !entry.perform(.collection))
         button.performClick(nil)
         #expect(menus == 2)
     }
@@ -50,4 +50,54 @@ struct MenuBarEntryTests {
         #expect(padded?.x == 10 && hit(padded?.x) == .collection)
         #expect(MenuBarCombinedEntry.localPoint(pointer: .zero, screenFrame: frame, bounds: CGRect(x: 0, y: 0, width: 54, height: 22)) == nil)
     }
+
+    @Test("流光按缓存帧播放后静置，切换入口不重置帧，暂停拒绝迟到更新")
+    @MainActor func animationLifecycle() async throws {
+        _ = NSApplication.shared
+        let button = NSButton(), clock = MenuBarAnimationClockFixture()
+        let entry = MenuBarCombinedEntry(button: button, collapse: {}, reveal: {}, openMenu: {},
+            animationSleep: { try await clock.sleep($0) })
+        defer { entry.setAnimationEnabled(false); clock.cancel() }
+        entry.update(collectionVisible: true, presentation: .all, ready: true, busy: false, menuStatus: "Menu")
+        entry.setAnimationEnabled(true)
+        for frame in 0..<MenuBarIconArtwork.animationFrameCount {
+            try await clock.waitForSleep()
+            #expect(clock.duration == .seconds(MenuBarIconArtwork.animationFrameInterval))
+            if frame == 10 {
+                entry.update(collectionVisible: false, presentation: .all, ready: true, busy: false, menuStatus: "Menu")
+            }
+            #expect(button.image === MenuBarIconArtwork.frame(frame, collectionVisible: frame < 10))
+            #expect(button.image?.size == NSSize(width: frame < 10 ? 38 : 18, height: 18))
+            clock.advance()
+        }
+        try await clock.waitForSleep()
+        #expect(clock.duration == .seconds(6) && button.image === MenuBarIconArtwork.brand)
+        entry.setAnimationEnabled(false)
+        clock.advance()
+        await Task.yield()
+        #expect(button.image === MenuBarIconArtwork.brand)
+        entry.setAnimationEnabled(true)
+        try await clock.waitForSleep()
+        #expect(button.image === MenuBarIconArtwork.frame(0, collectionVisible: false))
+        entry.setAnimationEnabled(false)
+        clock.advance()
+        await Task.yield()
+        #expect(button.image === MenuBarIconArtwork.brand)
+    }
+}
+
+@MainActor
+private final class MenuBarAnimationClockFixture {
+    private var continuation: CheckedContinuation<Void, Error>?
+    private(set) var duration: Duration?
+    func sleep(_ duration: Duration) async throws {
+        self.duration = duration
+        try await withCheckedThrowingContinuation { continuation = $0 }
+    }
+    func waitForSleep() async throws {
+        for _ in 0..<100 where continuation == nil { await Task.yield() }
+        try #require(continuation != nil)
+    }
+    func advance() { let pending = continuation; continuation = nil; pending?.resume() }
+    func cancel() { let pending = continuation; continuation = nil; pending?.resume(throwing: CancellationError()) }
 }

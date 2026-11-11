@@ -9,30 +9,37 @@ public struct MenuBarSettings: Codable, Equatable, Sendable {
     public var shortcutsEnabled: Bool
     public var collectedApplications: Set<String>
     public var isEnabled: Bool
+    public var autoCollapseEnabled: Bool
+    public var autoCollapseDelayMinutes: Int
     public var deepSectionEnabled: Bool
     public var style: MenuBarAppearanceStyle
     public var opacity: Double
     public var cornerRadius: Double
 
     public static let defaults = MenuBarSettings()
+    static let autoCollapseDelayRange = 1...60
+    var autoCollapseInterval: TimeInterval { TimeInterval(autoCollapseDelayMinutes) * 60 }
 
     public init(isEnabled: Bool = false, deepSectionEnabled: Bool = false,
                 style: MenuBarAppearanceStyle = .split, opacity: Double = 0.72, cornerRadius: Double = 9,
                 shelfShortcut: HotKeyChord = .disabled, revealShortcut: HotKeyChord = .disabled,
-                toggleShortcut: HotKeyChord = .disabled, shortcutsEnabled: Bool = false, collectedApplications: Set<String> = []) {
+                toggleShortcut: HotKeyChord = .disabled, shortcutsEnabled: Bool = false, collectedApplications: Set<String> = [],
+                autoCollapseEnabled: Bool = true, autoCollapseDelayMinutes: Int = 5) {
         self.shelfShortcut = shelfShortcut
         self.revealShortcut = revealShortcut
         self.toggleShortcut = toggleShortcut
         self.shortcutsEnabled = shortcutsEnabled
         self.collectedApplications = collectedApplications
         self.isEnabled = isEnabled
+        self.autoCollapseEnabled = autoCollapseEnabled
+        self.autoCollapseDelayMinutes = autoCollapseDelayMinutes
         self.deepSectionEnabled = deepSectionEnabled
         self.style = style
         self.opacity = opacity
         self.cornerRadius = cornerRadius
     }
 
-    private enum CodingKeys: String, CodingKey { case collectedApplications, isEnabled, deepSectionEnabled, style, opacity, cornerRadius, shelfShortcut, revealShortcut, toggleShortcut, shortcutsEnabled }
+    private enum CodingKeys: String, CodingKey { case collectedApplications, isEnabled, autoCollapseEnabled, autoCollapseDelayMinutes, deepSectionEnabled, style, opacity, cornerRadius, shelfShortcut, revealShortcut, toggleShortcut, shortcutsEnabled }
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         shelfShortcut = try container.decode(HotKeyChord.self, forKey: .shelfShortcut)
@@ -48,6 +55,12 @@ public struct MenuBarSettings: Codable, Equatable, Sendable {
             throw DecodingError.dataCorruptedError(forKey: .collectedApplications, in: container, debugDescription: L10n.string(.MenuBar.settingsInvalid))
         }
         isEnabled = try container.decode(Bool.self, forKey: .isEnabled)
+        autoCollapseEnabled = try container.decode(Bool.self, forKey: .autoCollapseEnabled)
+        autoCollapseDelayMinutes = try container.decode(Int.self, forKey: .autoCollapseDelayMinutes)
+        guard Self.autoCollapseDelayRange.contains(autoCollapseDelayMinutes) else {
+            throw DecodingError.dataCorruptedError(forKey: .autoCollapseDelayMinutes, in: container,
+                debugDescription: L10n.string(.MenuBar.autoCollapseInvalidDelay))
+        }
         deepSectionEnabled = try container.decode(Bool.self, forKey: .deepSectionEnabled)
         style = try container.decode(MenuBarAppearanceStyle.self, forKey: .style)
         opacity = try container.decode(Double.self, forKey: .opacity)
@@ -67,7 +80,7 @@ public struct MenuBarSettings: Codable, Equatable, Sendable {
         })
     }
 
-    static let recordLayout = ArcKitRecordLayout("menu_bar_preferences", fields: ["collectedApplications", "isEnabled", "deepSectionEnabled", "style", "opacity", "cornerRadius", "shelfShortcut", "revealShortcut", "toggleShortcut", "shortcutsEnabled"], json: ["collectedApplications", "shelfShortcut", "revealShortcut", "toggleShortcut"])
+    static let recordLayout = ArcKitRecordLayout("menu_bar_preferences", fields: ["collectedApplications", "isEnabled", "autoCollapseEnabled", "autoCollapseDelayMinutes", "deepSectionEnabled", "style", "opacity", "cornerRadius", "shelfShortcut", "revealShortcut", "toggleShortcut", "shortcutsEnabled"], json: ["collectedApplications", "shelfShortcut", "revealShortcut", "toggleShortcut"])
 }
 
 enum MenuBarPresentation: String, CaseIterable, Identifiable, Sendable {

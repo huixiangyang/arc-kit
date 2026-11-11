@@ -7,14 +7,6 @@ import SwiftUI
 enum ArcBrandImage {
     private static let light = load("ArcKitLogo")
     private static let dark = load("ArcKitLogoDark")
-    static let menuBar: NSImage = {
-        // 菜单栏直接使用同一标记的透明轮廓，由系统按外观着色。
-        let image = load("ArcKitLogo")
-        image.size = NSSize(width: 18, height: 18)
-        image.isTemplate = true
-        return image
-    }()
-
     static func logo(for colorScheme: ColorScheme) -> NSImage {
         colorScheme == .dark ? dark : light
     }

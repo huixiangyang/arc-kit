@@ -21,7 +21,7 @@ public enum ArcAppearance: String, CaseIterable, Codable, Sendable, Identifiable
 }
 
 public struct AppSettings: Codable, Equatable, Sendable {
-    public static let schemaVersion = 31
+    public static let schemaVersion = 32
 
     public var schemaVersion: Int
     public var language: ArcKitLanguage

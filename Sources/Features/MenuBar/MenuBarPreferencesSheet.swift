@@ -15,10 +15,12 @@ struct MenuBarPreferencesSheet: View {
                     Task { if await model.commitPendingChanges() { dismiss() } }
                 }.keyboardShortcut(.defaultAction)
             }
+            autoCollapse
+            Divider()
             shortcuts
             if service.partitionMode.supportsSections {
                 Divider()
-                Toggle(L10n.string(.MenuBar.settingsDeepSection), isOn: binding(\.deepSectionEnabled))
+                Toggle(L10n.string(.MenuBar.settingsDeepSection), isOn: binding(\.deepSectionEnabled, actionName: L10n.string(.MenuBar.settingsDeepSection)))
                     .toggleStyle(.switch).controlSize(.small)
                 if model.settings.deepSectionEnabled {
                     Text(L10n.string(.MenuBar.flowDeepHint)).font(.system(size: 12)).foregroundStyle(.secondary)
@@ -26,18 +28,39 @@ struct MenuBarPreferencesSheet: View {
                 }
             }
             if let error = model.failureMessage { notice(error, icon: .triangleAlert) }
+            else if model.hasUncommittedChanges { notice(L10n.string(.MenuBar.settingsPending), icon: .circleInfo) }
         }.padding(24).frame(width: 480)
+    }
+
+    private var autoCollapse: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Toggle(L10n.string(.MenuBar.autoCollapseEnabled), isOn: binding(\.autoCollapseEnabled, actionName: L10n.string(.MenuBar.autoCollapseEdit)))
+                .toggleStyle(.switch).controlSize(.small)
+            HStack {
+                Text(L10n.string(.MenuBar.autoCollapseDelay))
+                Spacer()
+                Text(L10n.string(.MenuBar.autoCollapseMinutes(String(model.settings.autoCollapseDelayMinutes))))
+                    .monospacedDigit()
+            }.font(.system(size: 13))
+            Slider(value: Binding(get: { Double(model.settings.autoCollapseDelayMinutes) }, set: { value in
+                model.update(actionName: L10n.string(.MenuBar.autoCollapseEdit), coalescingKey: "menu-bar.auto-collapse-delay") { $0.autoCollapseDelayMinutes = Int(value) }
+            }), in: Double(MenuBarSettings.autoCollapseDelayRange.lowerBound)...Double(MenuBarSettings.autoCollapseDelayRange.upperBound), step: 1) {
+                Text(L10n.string(.MenuBar.autoCollapseDelay))
+            }.labelsHidden()
+                .disabled(!model.settings.autoCollapseEnabled)
+                .accessibilityValue(L10n.string(.MenuBar.autoCollapseMinutes(String(model.settings.autoCollapseDelayMinutes))))
+            Text(L10n.string(.MenuBar.autoCollapseHint))
+                .font(.system(size: 12)).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+        }
     }
 
     private var shortcuts: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Toggle(L10n.string(.MenuBar.hotKeyEnable), isOn: binding(\.shortcutsEnabled))
+            Toggle(L10n.string(.MenuBar.hotKeyEnable), isOn: binding(\.shortcutsEnabled, actionName: L10n.string(.MenuBar.hotKeyEdit)))
                 .toggleStyle(.switch).controlSize(.small)
             ForEach(MenuBarHotKeyAction.allCases, id: \.self) { shortcutRecorder($0) }
             if service.isRecordingShortcut {
                 notice(L10n.string(.MenuBar.hotKeyRecording), icon: .command)
-            } else if model.hasUncommittedChanges {
-                notice(L10n.string(.MenuBar.hotKeyPending), icon: .command)
             } else if !service.hotKeyFailures.isEmpty {
                 ForEach(MenuBarHotKeyAction.allCases, id: \.self) { action in
                     if let code = service.hotKeyFailures[action] {
@@ -79,9 +102,9 @@ struct MenuBarPreferencesSheet: View {
         }.frame(minHeight: 32)
     }
 
-    private func binding(_ keyPath: WritableKeyPath<MenuBarSettings, Bool>) -> Binding<Bool> {
+    private func binding(_ keyPath: WritableKeyPath<MenuBarSettings, Bool>, actionName: String) -> Binding<Bool> {
         Binding(get: { model.settings[keyPath: keyPath] }, set: { value in
-            model.update(actionName: L10n.string(.MenuBar.hotKeyEdit)) { $0[keyPath: keyPath] = value }
+            model.update(actionName: actionName) { $0[keyPath: keyPath] = value }
         })
     }
     private func notice(_ text: String, icon: ArcIconName) -> some View {

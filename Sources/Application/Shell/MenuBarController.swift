@@ -1,6 +1,7 @@
 import AppKit
 import ArcKitPlatform
 import ArcKitWindow
+import Combine
 import SwiftUI
 
 /// 菜单的展开、焦点和取消交给 AppKit；自定义视图只承载功能控件。
@@ -16,6 +17,9 @@ final class MenuBarController: NSObject, NSMenuDelegate {
     private let prepare: (AppConfigurationCandidate, @escaping (WindowTargetCaptureResult) -> Void) -> Void
     private var originPID: pid_t?
     private var hosting: NSHostingView<MenuBarPanel>?
+    private var isStopped = true
+    private var animationSuspensions = Set<Notification.Name>()
+    private var animationObservers = Set<AnyCancellable>()
     #if DEBUG
     var nativeCheckMenuDidOpen: (@MainActor () -> Void)?
     #endif
@@ -75,10 +79,12 @@ final class MenuBarController: NSObject, NSMenuDelegate {
             entry = MenuBarCombinedEntry(button: button, collapse: collapse, reveal: reveal,
                 openMenu: { [weak self] in self?.showNativeMenu() })
         }
+        observeAnimationEnvironment()
         refreshPresentation(isVisible: false)
     }
 
     func refreshPresentation(isVisible: Bool) {
+        if isVisible { isStopped = false }
         if statusItem.isVisible != isVisible {
             // 隐藏同时结束菜单跟踪与目标捕获，只停止菜单入口自己的输入监听。
             if !isVisible { stop() }
@@ -100,22 +106,51 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         case .light: hosting?.appearance = NSAppearance(named: .aqua)
         case .dark: hosting?.appearance = NSAppearance(named: .darkAqua)
         }
+        refreshIconAnimation()
+    }
+
+    private func refreshIconAnimation() {
+        entry?.setAnimationEnabled(statusItem.isVisible && !isStopped && !presentingMenu &&
+            animationSuspensions.isEmpty && !state.collectionBusy && !state.settings.reduceMotionEnabled &&
+            !NSWorkspace.shared.accessibilityDisplayShouldReduceMotion)
+    }
+
+    private func observeAnimationEnvironment() {
+        let notifications = NSWorkspace.shared.notificationCenter
+        notifications.publisher(for: NSWorkspace.accessibilityDisplayOptionsDidChangeNotification)
+            .receive(on: RunLoop.main).sink { [weak self] _ in self?.refreshIconAnimation() }.store(in: &animationObservers)
+        // 休眠、息屏和切换用户分别暂停，任一恢复通知都不能提前解除其他暂停原因。
+        for (pause, resume) in [(NSWorkspace.willSleepNotification, NSWorkspace.didWakeNotification),
+                                (NSWorkspace.screensDidSleepNotification, NSWorkspace.screensDidWakeNotification),
+                                (NSWorkspace.sessionDidResignActiveNotification, NSWorkspace.sessionDidBecomeActiveNotification)] {
+            for (name, suspended) in [(pause, true), (resume, false)] {
+                notifications.publisher(for: name).receive(on: RunLoop.main).sink { [weak self] _ in
+                    guard let self else { return }
+                    if suspended { self.animationSuspensions.insert(pause) }
+                    else { self.animationSuspensions.remove(pause) }
+                    self.refreshIconAnimation()
+                }.store(in: &animationObservers)
+            }
+        }
     }
 
     /// 临时把同一个状态项交回 AppKit 菜单跟踪；不自行定位浮窗，也不主动激活应用。
     func showNativeMenu() {
         guard !presentingMenu, let button = statusItem.button else { return }
         presentingMenu = true
+        refreshIconAnimation()
         defer {
             statusItem.menu = nil
             entry?.reconnectAction()
             presentingMenu = false
+            refreshIconAnimation()
         }
         statusItem.menu = menu
         button.performClick(nil)
     }
 
     func menuWillOpen(_ menu: NSMenu) {
+        entry?.setAnimationEnabled(false)
         #if DEBUG
         nativeCheckMenuDidOpen?()
         #endif
@@ -157,9 +192,12 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         state.windowTarget.reset()
         state.windowTargetName = nil
         originPID = nil
+        refreshIconAnimation()
     }
 
     func stop() {
+        isStopped = true
+        entry?.setAnimationEnabled(false)
         menu.cancelTracking()
         menuDidClose(menu)
         clickSource.stop()

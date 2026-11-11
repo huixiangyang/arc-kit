@@ -22,11 +22,17 @@ enum MenuBarEnvironmentChange: Equatable, Sendable {
 /// 调试模式不构造 native driver，即使预览开关开启也不能接触系统菜单栏。
 @MainActor
 final class MenuBarManagementService: ObservableObject {
-    @Published private(set) var isEnabled = false
-    @Published private(set) var requestedPresentation: MenuBarPresentation = .all
+    @Published private(set) var isEnabled = false {
+        didSet { if isEnabled != oldValue { resetAutoCollapse() } }
+    }
+    @Published private(set) var requestedPresentation: MenuBarPresentation = .all {
+        didSet { resetAutoCollapse() }
+    }
     @Published private(set) var message: String?
     @Published private(set) var lastActionReceipt: String?
-    @Published private(set) var environmentState: MenuBarEnvironmentState = .ready
+    @Published private(set) var environmentState: MenuBarEnvironmentState = .ready {
+        didSet { resetAutoCollapse() }
+    }
     let shelfModel = MenuBarShelfModel()
     let managementModel = MenuBarShelfModel()
     let arrangementModel: MenuBarArrangementModel
@@ -48,6 +54,7 @@ final class MenuBarManagementService: ObservableObject {
     private var presentationTask: Task<Void, Never>?
     @Published private(set) var pendingPresentation: MenuBarPresentation?
     private var requestID = UUID()
+    private var autoCollapseRequestID: UUID?
     private var environmentTask: Task<Void, Never>?
     private var environmentRequestID = UUID()
     private var isSleeping = false
@@ -67,6 +74,11 @@ final class MenuBarManagementService: ObservableObject {
     private var itemRequestID = UUID()
     private var panelDisplayID: UInt32?
     private var isActivatingItem = false
+    private let uptime: () -> TimeInterval
+    private let inputIdleTime: () -> TimeInterval
+    private let idleTicks: () -> AnyPublisher<Void, Never>
+    private var autoCollapseObservation: AnyCancellable?
+    private var autoCollapseNotBefore: TimeInterval = 0
 
     var canSearchAllIcons: Bool { !isPreview && isActive && !isSleeping }
 
@@ -84,6 +96,16 @@ final class MenuBarManagementService: ObservableObject {
          shelfPanelFactory: @escaping (MenuBarShelfModel, MenuBarShelfActions) -> any MenuBarShelfPresenting = { model, actions in
              MenuBarShelfPanel(model: model, refresh: actions.refresh, openPermission: actions.openPermission, showAll: actions.showAll)
          },
+         uptime: @escaping () -> TimeInterval = { ProcessInfo.processInfo.systemUptime },
+         inputIdleTime: @escaping () -> TimeInterval = {
+             // 只读取当前登录会话的输入空闲时长，不监听按键内容，也不注册事件拦截。
+             // kCGAnyInputEventType 的 C 宏不导出到 Swift，对应 UInt32.max。
+             CGEventSource.secondsSinceLastEventType(.combinedSessionState, eventType: CGEventType(rawValue: .max)!)
+         },
+         idleTicks: @escaping () -> AnyPublisher<Void, Never> = {
+             Timer.publish(every: 1, tolerance: 0.2, on: .main, in: .default)
+                 .autoconnect().map { _ in () }.eraseToAnyPublisher()
+         },
          workspaceNotifications: NotificationCenter = NSWorkspace.shared.notificationCenter,
          applicationNotifications: NotificationCenter = .default) {
         self.isPreview = isPreview
@@ -95,6 +117,9 @@ final class MenuBarManagementService: ObservableObject {
         self.accessSessionFactory = accessSessionFactory
         self.shelfPanelFactory = shelfPanelFactory
         self.currentDisplayID = currentDisplayID
+        self.uptime = uptime
+        self.inputIdleTime = inputIdleTime
+        self.idleTicks = idleTicks
         self.workspaceNotifications = workspaceNotifications
         self.applicationNotifications = applicationNotifications
         managementModel.supportsCollectedScope = false
@@ -141,6 +166,14 @@ final class MenuBarManagementService: ObservableObject {
         } else if isEnabled || driver != nil {
             disableCollection()
         }
+        if previous?.autoCollapseEnabled != settings.autoCollapseEnabled || previous?.autoCollapseDelayMinutes != settings.autoCollapseDelayMinutes {
+            // 配置提交后取消旧的自动请求；手动收起不受这个开关影响。
+            if autoCollapseRequestID == requestID {
+                cancelPresentation()
+                revealAllPreservingRecovery()
+            }
+            resetAutoCollapse()
+        }
         // 只比较实际注册集合：收纳与搜索独立，不因无关配置重建快捷键或关闭搜索面板。
         if previous?.activeShortcuts != settings.activeShortcuts { applyHotKeys() }
     }
@@ -168,7 +201,9 @@ final class MenuBarManagementService: ObservableObject {
             guard let self, self.requestID == request, self.isEnabled,
                   self.environmentState == .ready, !Task.isCancelled else { return }
             defer {
-                if self.requestID == request { self.pendingPresentation = nil; self.presentationTask = nil }
+                if self.requestID == request {
+                    self.pendingPresentation = nil; self.presentationTask = nil; self.autoCollapseRequestID = nil
+                }
             }
             do {
                 try await driver.present(state)
@@ -182,6 +217,8 @@ final class MenuBarManagementService: ObservableObject {
                 let detail = error.localizedDescription
                 driver.revealAll()
                 requestedPresentation = .all
+                // 失败后保留展开与错误反馈，等待用户操作，不在空闲期间反复重试。
+                autoCollapseObservation = nil
                 message = detail
             }
         }
@@ -198,8 +235,33 @@ final class MenuBarManagementService: ObservableObject {
 
     func refreshLanguage() { driver?.refreshLabels(); shelfModel.objectWillChange.send(); managementModel.objectWillChange.send() }
 
+    private func resetAutoCollapse() {
+        autoCollapseObservation = nil
+        guard let settings, settings.autoCollapseEnabled, !isPreview, isActive, isEnabled, !isSleeping,
+              environmentState == .ready, requestedPresentation != .collapsed else { return }
+        // 展开和环境恢复都从此刻重新等待，不能沿用展开前或休眠前的空闲时间。
+        autoCollapseNotBefore = uptime() + settings.autoCollapseInterval
+        autoCollapseObservation = idleTicks().sink { [weak self] in self?.collapseIfIdle() }
+    }
+
+    private func collapseIfIdle() {
+        guard let settings, settings.autoCollapseEnabled, !isPreview, isActive, isEnabled, !isSleeping,
+              environmentState == .ready, requestedPresentation != .collapsed else { return }
+        // 不抢占原生布局写入、图标取用或快捷键录制；操作结束后仍留出完整空闲期。
+        guard pendingPresentation == nil, !arrangementModel.isApplying,
+              itemTask == nil, !isActivatingItem, !isRecordingShortcut else {
+            autoCollapseNotBefore = uptime() + settings.autoCollapseInterval
+            return
+        }
+        guard uptime() >= autoCollapseNotBefore, inputIdleTime() >= settings.autoCollapseInterval else { return }
+        autoCollapseObservation = nil
+        present(.collapsed)
+        autoCollapseRequestID = requestID
+    }
+
     private func cancelPresentation() {
         requestID = UUID()
+        autoCollapseRequestID = nil
         presentationTask?.cancel()
         presentationTask = nil
         pendingPresentation = nil

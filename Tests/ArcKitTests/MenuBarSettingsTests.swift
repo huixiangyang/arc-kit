@@ -46,6 +46,183 @@ struct MenuBarSettingsTests {
 
     }
 
+    @Test("展开后连续空闲五分钟才收起，输入与再次展开重新计时", arguments: [MenuBarPartitionMode.systemVisibility, .offscreen])
+    @MainActor func idleAutoCollapse(mode: MenuBarPartitionMode) async {
+        let driver = MenuBarDriverFixture()
+        let clock = MenuBarIdleClockFixture()
+        let service = MenuBarManagementService(partitionMode: mode, driverFactory: { driver },
+            uptime: { clock.now }, inputIdleTime: { clock.idle }, idleTicks: { clock.publisher },
+            workspaceNotifications: NotificationCenter(), applicationNotifications: NotificationCenter())
+        defer { service.stop() }
+        service.apply(.init(isEnabled: true))
+        #expect(clock.isRunning)
+        clock.tick(at: 299.9, idle: 1_000)
+        #expect(service.pendingPresentation == nil && driver.collapseRequests == 0)
+        clock.tick(at: 300, idle: 0) // 模拟任意键盘、鼠标或触控板输入。
+        clock.tick(at: 599.9, idle: 299.9)
+        #expect(service.requestedPresentation == .all && driver.collapseRequests == 0)
+        // 无关设置提交不能延长同一轮空闲计时。
+        service.apply(.init(isEnabled: true, opacity: 0.6))
+        clock.tick(at: 600, idle: 300)
+        await service.finishPresentation()
+        #expect(service.requestedPresentation == .collapsed && driver.collapseRequests == 1)
+        #expect(!clock.isRunning)
+        clock.tick(at: 900, idle: 600)
+        service.toggleCollection(); await service.finishPresentation()
+        #expect(service.requestedPresentation == (mode.supportsSections ? .expanded : .all))
+        clock.tick(at: 1_199.9, idle: 899.9)
+        #expect(driver.collapseRequests == 1)
+        clock.tick(at: 1_200, idle: 900)
+        await service.finishPresentation()
+        #expect(service.requestedPresentation == .collapsed && driver.collapseRequests == 2)
+    }
+
+    @Test("自动收起在停用、休眠和恢复失败时取消，恢复与显示全部重新等待五分钟")
+    @MainActor func idleAutoCollapseLifecycle() async {
+        let driver = MenuBarDriverFixture()
+        let clock = MenuBarIdleClockFixture()
+        let service = MenuBarManagementService(driverFactory: { driver },
+            uptime: { clock.now }, inputIdleTime: { clock.idle }, idleTicks: { clock.publisher },
+            workspaceNotifications: NotificationCenter(), applicationNotifications: NotificationCenter())
+        defer { service.stop() }
+        service.apply(.init(isEnabled: true))
+        service.apply(.init(isEnabled: false))
+        clock.tick(at: 600, idle: 600)
+        #expect(!clock.isRunning && driver.collapseRequests == 0)
+        service.apply(.init(isEnabled: true))
+        service.environmentDidChange(.sleep)
+        service.environmentDidChange(.layout)
+        clock.tick(at: 1_200, idle: 1_200)
+        #expect(!clock.isRunning && driver.collapseRequests == 0)
+        driver.failConfirmation = true
+        service.environmentDidChange(.wake); await service.finishEnvironmentRecovery()
+        #expect(service.environmentState == .unconfirmed && !clock.isRunning)
+        clock.tick(at: 1_800, idle: 1_800)
+        driver.failConfirmation = false
+        service.present(.all); await service.finishEnvironmentRecovery()
+        #expect(service.environmentState == .ready && clock.isRunning)
+        clock.tick(at: 2_099.9, idle: 2_099.9)
+        #expect(driver.collapseRequests == 0)
+        clock.tick(at: 2_100, idle: 2_100)
+        await service.finishPresentation()
+        #expect(driver.collapseRequests == 1)
+        service.present(.all)
+        #expect(clock.isRunning)
+        service.stop()
+        clock.tick(at: 2_400, idle: 2_400)
+        #expect(!clock.isRunning && driver.collapseRequests == 1 && driver.lastPresentation == .all)
+    }
+
+    @Test("自动收起失败不循环重试，手动展开后可恢复；预览不启动空闲检查")
+    @MainActor func idleAutoCollapseFailureAndPreview() async {
+        let driver = MenuBarDriverFixture()
+        let clock = MenuBarIdleClockFixture()
+        let preview = MenuBarManagementService(isPreview: true, idleTicks: { clock.publisher })
+        preview.apply(.init(isEnabled: true))
+        #expect(!clock.isRunning)
+        let service = MenuBarManagementService(driverFactory: { driver },
+            uptime: { clock.now }, inputIdleTime: { clock.idle }, idleTicks: { clock.publisher },
+            workspaceNotifications: NotificationCenter(), applicationNotifications: NotificationCenter())
+        defer { service.stop() }
+        service.apply(.init(isEnabled: true))
+        driver.failCollapse = true
+        clock.tick(at: 300, idle: 300)
+        await service.finishPresentation()
+        #expect(service.requestedPresentation == .all && service.message != nil && driver.collapseRequests == 1)
+        service.apply(.init(isEnabled: true, opacity: 0.6))
+        clock.tick(at: 600, idle: 600)
+        #expect(!clock.isRunning && driver.collapseRequests == 1)
+        driver.failCollapse = false
+        service.present(.all)
+        let recorder = UUID()
+        service.setShortcutRecording(owner: recorder, active: true)
+        clock.tick(at: 900, idle: 900)
+        #expect(service.pendingPresentation == nil && driver.collapseRequests == 1)
+        service.setShortcutRecording(owner: recorder, active: false)
+        clock.tick(at: 1_199.9, idle: 1_199.9)
+        #expect(driver.collapseRequests == 1)
+        clock.tick(at: 1_200, idle: 1_200)
+        await service.finishPresentation()
+        #expect(service.requestedPresentation == .collapsed && service.message == nil && driver.collapseRequests == 2)
+    }
+
+    @Test("自动收起只消费已提交开关与时长，修改重新计时，关闭取消旧自动请求但不影响手动收起")
+    @MainActor func idleAutoCollapseConfiguration() async throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).resolvingSymlinksInPath()
+        defer { try? FileManager.default.removeItem(at: root) }
+        let repository = SettingsRepository(directoryURL: root)
+        let model = SettingsModel(store: repository, templateLibrary: NewFileTemplateLibrary(baseDirectory: root.appendingPathComponent("templates")))
+        await model.waitForPendingChanges()
+        let driver = MenuBarDriverFixture(), clock = MenuBarIdleClockFixture()
+        let service = MenuBarManagementService(driverFactory: { driver },
+            uptime: { clock.now }, inputIdleTime: { clock.idle }, idleTicks: { clock.publisher },
+            workspaceNotifications: NotificationCenter(), applicationNotifications: NotificationCenter())
+        let session = RuntimeSettingsSession(model: model) { _, current in service.apply(current.menuBar) }
+        session.start()
+        defer { session.stop(); service.stop(); try? repository.database.close() }
+        model.menuBarEditor.update { $0.isEnabled = true; $0.autoCollapseEnabled = false }
+        #expect(await model.finishPendingChanges())
+        clock.tick(at: 600, idle: 600)
+        #expect(!clock.isRunning && driver.collapseRequests == 0)
+        try repository.database.write { try $0.execute(sql: "CREATE TRIGGER reject_auto_collapse BEFORE INSERT ON menu_bar_preferences BEGIN SELECT RAISE(FAIL, 'injected'); END") }
+        model.menuBarEditor.update { $0.autoCollapseEnabled = true; $0.autoCollapseDelayMinutes = 2 }
+        #expect(!(await model.finishPendingChanges()))
+        #expect(!clock.isRunning)
+        try repository.database.write { try $0.execute(sql: "DROP TRIGGER reject_auto_collapse") }
+        #expect(await model.finishPendingChanges())
+        clock.tick(at: 719.9, idle: 719.9)
+        #expect(service.pendingPresentation == nil && driver.collapseRequests == 0)
+        // 修改已提交时长后从当前时刻重新等待，不沿用已经累计的空闲时间。
+        model.menuBarEditor.update { $0.autoCollapseDelayMinutes = 1 }
+        #expect(await model.finishPendingChanges())
+        clock.tick(at: 779.8, idle: 779.8)
+        #expect(service.pendingPresentation == nil)
+        clock.tick(at: 780, idle: 780)
+        await service.finishPresentation()
+        #expect(service.requestedPresentation == .collapsed && driver.collapseRequests == 1)
+        service.present(.all)
+        driver.delayCollapse = true
+        clock.tick(at: 840, idle: 840)
+        await Task.yield()
+        #expect(service.pendingPresentation == .collapsed)
+        // 关闭配置直接送入运行入口，取消已排队或进行中的自动请求。
+        var disabled = model.menuBarEditor.settings
+        disabled.autoCollapseEnabled = false
+        service.apply(disabled)
+        try await Task.sleep(for: .milliseconds(40))
+        #expect(!clock.isRunning && service.pendingPresentation == nil && driver.lastPresentation == .all)
+        service.present(.collapsed); await service.finishPresentation()
+        #expect(service.requestedPresentation == .collapsed && !clock.isRunning)
+    }
+
+    @Test("自动收起的 SQLite 默认值只迁移一次，保留既有设置且不推进 Host 代次")
+    func idleAutoCollapseMigration() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).resolvingSymlinksInPath()
+        defer { try? FileManager.default.removeItem(at: root) }
+        let repository = SettingsRepository(directoryURL: root)
+        var settings = try repository.load()
+        settings.menuBar.isEnabled = true; settings.menuBar.collectedApplications = ["app.one"]
+        let before = try repository.save(settings)
+        try repository.database.write { db in
+            try db.execute(sql: """
+                ALTER TABLE menu_bar_preferences DROP COLUMN autoCollapseEnabled;
+                ALTER TABLE menu_bar_preferences DROP COLUMN autoCollapseDelayMinutes;
+                UPDATE menu_bar_preferences SET _types=json_remove(_types,'$.autoCollapseEnabled','$.autoCollapseDelayMinutes');
+                DELETE FROM grdb_migrations WHERE identifier='menu-bar-auto-collapse-v1';
+                """)
+        }
+        try repository.database.close()
+        let upgraded = SettingsRepository(directoryURL: root)
+        let migrated = try upgraded.loadSnapshot()
+        #expect(migrated.settings == settings && migrated.revision.runtime == before.revision.runtime)
+        #expect(migrated.settings.menuBar.autoCollapseEnabled && migrated.settings.menuBar.autoCollapseDelayMinutes == 5)
+        settings.menuBar.autoCollapseEnabled = false; settings.menuBar.autoCollapseDelayMinutes = 12
+        try upgraded.save(settings); try upgraded.database.close()
+        let reopened = SettingsRepository(directoryURL: root)
+        #expect(try reopened.load() == settings)
+        try reopened.database.close()
+    }
+
     @Test("启用后直接展开，单次点击收起，关闭失败保持原状态且可重试")
     @MainActor func singleButtonWorkflow() async throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).resolvingSymlinksInPath()
@@ -340,7 +517,7 @@ struct MenuBarSettingsTests {
         #expect(migrated.settings.menuBar.revealShortcut == .init(keyCode: 46, keyEquivalent: "M", modifiers: [.control, .option, .command]))
         #expect(migrated.revision.runtime == previous.revision.runtime)
         var changed = original
-        changed.menuBar = .init(isEnabled: true, deepSectionEnabled: true, style: .floating, opacity: 0.55, cornerRadius: 12, shelfShortcut: .init(keyCode: 46, keyEquivalent: "M", modifiers: [.control, .option]), revealShortcut: .init(keyCode: 46, keyEquivalent: "M", modifiers: [.control, .option, .shift]))
+        changed.menuBar = .init(isEnabled: true, deepSectionEnabled: true, style: .floating, opacity: 0.55, cornerRadius: 12, shelfShortcut: .init(keyCode: 46, keyEquivalent: "M", modifiers: [.control, .option]), revealShortcut: .init(keyCode: 46, keyEquivalent: "M", modifiers: [.control, .option, .shift]), autoCollapseEnabled: false, autoCollapseDelayMinutes: 12)
         try upgraded.database.write { db in
             try db.execute(sql: "CREATE TRIGGER reject_menu_bar BEFORE INSERT ON menu_bar_preferences BEGIN SELECT RAISE(FAIL, 'injected'); END")
         }
@@ -354,6 +531,15 @@ struct MenuBarSettingsTests {
         try StorageMaintenance(database: upgraded.database).restore(backup)
         #expect(try upgraded.load() == changed)
         #expect(try JSONDecoder().decode(AppSettings.self, from: JSONEncoder().encode(changed)) == changed)
+        for delay in [0, 61] {
+            var invalid = changed; invalid.menuBar.autoCollapseDelayMinutes = delay
+            #expect(throws: (any Error).self) { try upgraded.save(invalid) }
+        }
+        for field in ["autoCollapseEnabled", "autoCollapseDelayMinutes"] {
+            var missing = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(changed.menuBar)) as? [String: Any])
+            missing.removeValue(forKey: field)
+            #expect(throws: (any Error).self) { try JSONDecoder().decode(MenuBarSettings.self, from: JSONSerialization.data(withJSONObject: missing)) }
+        }
         var invalid = changed; invalid.menuBar.opacity = 2
         #expect(throws: (any Error).self) { try upgraded.save(invalid) }
         invalid = changed; invalid.menuBar.revealShortcut = invalid.menuBar.shelfShortcut
@@ -552,6 +738,7 @@ private final class MenuBarDriverFixture: MenuBarPartitionDriving {
     var installedDeepSection = false
     var removals = 0
     var failCollapse = false
+    var collapseRequests = 0
     var delayCollapse = false
     var failConfirmation = false
     var deferConfirmation = false
@@ -561,6 +748,7 @@ private final class MenuBarDriverFixture: MenuBarPartitionDriving {
     func install(deepSectionEnabled: Bool) { installations += 1; installedDeepSection = deepSectionEnabled; lastPresentation = .all }
     func present(_ state: MenuBarPresentation) async throws {
         if state == .collapsed {
+            collapseRequests += 1
             if failCollapse { throw MenuBarPartitionError.invalidOrder }
             if delayCollapse {
                 lastPresentation = .collapsed // 模拟已改宽度、尚未完成回读的原生请求。
@@ -579,6 +767,22 @@ private final class MenuBarDriverFixture: MenuBarPartitionDriving {
         if deferConfirmation { try await withCheckedThrowingContinuation { confirmations.append($0) } }
     }
     func layoutSnapshot() throws -> MenuBarPartitionSnapshot { throw MenuBarPartitionError.unavailable }
+}
+
+@MainActor
+private final class MenuBarIdleClockFixture {
+    var now: TimeInterval = 0
+    var idle: TimeInterval = 0
+    private let ticks = PassthroughSubject<Void, Never>()
+    private(set) var isRunning = false
+    var publisher: AnyPublisher<Void, Never> {
+        ticks.handleEvents(receiveSubscription: { [weak self] _ in self?.isRunning = true },
+            receiveCancel: { [weak self] in self?.isRunning = false }).eraseToAnyPublisher()
+    }
+    func tick(at time: TimeInterval, idle: TimeInterval) {
+        now = time; self.idle = idle
+        ticks.send(())
+    }
 }
 
 @MainActor

@@ -62,13 +62,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Usage: ArcKitApp --menu-bar-probe <new-directory> | --menu-bar-render <new-directory> | --ui-debug --menu-bar-settings | --menu-bar-native-check <new-directory> | --menu-bar-width-check <new-directory>"
+            "value": "Usage: ArcKitApp --menu-bar-probe <new-directory> | --menu-bar-render <new-directory> | --menu-bar-preferences-render <new-directory> | --ui-debug --menu-bar-settings | --menu-bar-native-check <new-directory> | --menu-bar-width-check <new-directory>"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "用法：ArcKitApp --menu-bar-probe <新目录> | --menu-bar-render <新目录> | --ui-debug --menu-bar-settings | --menu-bar-native-check <新目录> | --menu-bar-width-check <新目录>"
+            "value": "用法：ArcKitApp --menu-bar-probe <新目录> | --menu-bar-render <新目录> | --menu-bar-preferences-render <新目录> | --ui-debug --menu-bar-settings | --menu-bar-native-check <新目录> | --menu-bar-width-check <新目录>"
           }
         }
       }
@@ -699,24 +699,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "菜单栏各操作不能使用相同的快捷键。"
-          }
-        }
-      }
-    },
-    "hotKey.pending": {
-      "extractionState": "manual",
-      "comment": "Menu bar shelf, session-bound action, or global shortcut.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saving…"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "保存中…"
           }
         }
       }
@@ -3165,6 +3147,132 @@
           "stringUnit": {
             "state": "translated",
             "value": "还没有选择收纳应用，请在“菜单栏 → 编排图标”中选择。"
+          }
+        }
+      }
+    },
+    "autoCollapse.enabled": {
+      "extractionState": "manual",
+      "comment": "Menu bar idle auto-collapse settings; wait time is in whole minutes.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auto-collapse when idle"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "空闲后自动收起"
+          }
+        }
+      }
+    },
+    "autoCollapse.delay": {
+      "extractionState": "manual",
+      "comment": "Menu bar idle auto-collapse settings; wait time is in whole minutes.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wait time"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待时间"
+          }
+        }
+      }
+    },
+    "autoCollapse.minutes": {
+      "extractionState": "manual",
+      "comment": "Menu bar idle auto-collapse settings; wait time is in whole minutes.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ min"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 分钟"
+          }
+        }
+      }
+    },
+    "autoCollapse.hint": {
+      "extractionState": "manual",
+      "comment": "Menu bar idle auto-collapse settings; wait time is in whole minutes.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After 1–60 minutes without keyboard, mouse, or trackpad input. Requires menu bar collection."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "键盘、鼠标和触控板均无操作后收起，可设 1–60 分钟；仅在收纳开启时生效。"
+          }
+        }
+      }
+    },
+    "autoCollapse.edit": {
+      "extractionState": "manual",
+      "comment": "Menu bar idle auto-collapse settings; wait time is in whole minutes.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit auto-collapse"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修改自动收起设置"
+          }
+        }
+      }
+    },
+    "autoCollapse.invalidDelay": {
+      "extractionState": "manual",
+      "comment": "Menu bar idle auto-collapse settings; wait time is in whole minutes.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wait time must be a whole number from 1 to 60 minutes."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待时间必须为 1 至 60 分钟的整数。"
+          }
+        }
+      }
+    },
+    "settings.pending": {
+      "extractionState": "manual",
+      "comment": "Menu bar idle auto-collapse settings; wait time is in whole minutes.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings take effect after saving."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置保存后生效。"
           }
         }
       }

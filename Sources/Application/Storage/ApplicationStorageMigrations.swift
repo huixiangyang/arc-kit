@@ -184,6 +184,18 @@ enum ApplicationStorageMigrations {
             try db.execute(sql: "UPDATE menu_bar_preferences SET collectedApplications=?, _types=json_set(_types, '$.collectedApplications', 'json')", arguments: [encoded])
             try ArcKitDatabase.advance(db)
         }
+        migrator.registerMigration("menu-bar-auto-collapse-v1") { db in
+            let columns = try db.columns(in: "menu_bar_preferences").map(\.name)
+            for column in ["autoCollapseEnabled", "autoCollapseDelayMinutes"] where !columns.contains(column) {
+                try db.execute(sql: "ALTER TABLE menu_bar_preferences ADD COLUMN \(column) ANY")
+            }
+            // 只补缺失的默认值；开关和分钟数随后均由已提交配置管理，不覆盖已有选择。
+            try db.execute(sql: "UPDATE menu_bar_preferences SET autoCollapseEnabled=1, _types=json_set(_types,'$.autoCollapseEnabled','bool') WHERE autoCollapseEnabled IS NULL")
+            var changed = db.changesCount > 0
+            try db.execute(sql: "UPDATE menu_bar_preferences SET autoCollapseDelayMinutes=5, _types=json_set(_types,'$.autoCollapseDelayMinutes','number') WHERE autoCollapseDelayMinutes IS NULL")
+            changed = changed || db.changesCount > 0
+            if changed { try ArcKitDatabase.advance(db) }
+        }
         try migrator.migrate(queue)
     }
 

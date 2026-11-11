@@ -3,8 +3,11 @@ import ArcKitPlatform
 import ArcKitPersistence
 import ArcKitFinder
 import AppKit
+import Combine
 import Darwin
+import ImageIO
 import SwiftUI
+import UniformTypeIdentifiers
 
 /// 在 StorageBootstrap 之前分流；不读取生产数据库、不注册 Host。
 @MainActor
@@ -94,7 +97,7 @@ public enum MenuBarDevelopmentSession {
             application.run()
             return 0
         }
-        if let index = arguments.firstIndex(where: { ["--menu-bar-render", "--menu-bar-arrangement-render", "--menu-bar-entry-render"].contains($0) }) {
+        if let index = arguments.firstIndex(where: { ["--menu-bar-render", "--menu-bar-preferences-render", "--menu-bar-arrangement-render", "--menu-bar-entry-render"].contains($0) }) {
             guard index == 1, arguments.count == 3 else { print(L10n.string(.MenuBar.probeUsage)); return 2 }
             let application = NSApplication.shared
             application.setActivationPolicy(.prohibited)
@@ -105,6 +108,7 @@ public enum MenuBarDevelopmentSession {
                 switch arguments[index] {
                 case "--menu-bar-entry-render": result = await exportEntry(to: directory)
                 case "--menu-bar-arrangement-render": result = await exportArrangement(to: directory)
+                case "--menu-bar-preferences-render": result = await exportPreferences(to: directory)
                 default: result = await exportSettings(to: directory)
                 }
                 Darwin.exit(result)
@@ -149,6 +153,7 @@ public enum MenuBarDevelopmentSession {
                     return .init(processID: pid, launchDate: launch, bundleIdentifier: item.bundleIdentifier)
                 }, currentDisplays: { previewInventory().displays }) }, currentDisplayID: { 900 },
                 shelfPanelFactory: { _, _ in WorkflowPreviewPanel() },
+                idleTicks: { Empty().eraseToAnyPublisher() },
                 workspaceNotifications: NotificationCenter(), applicationNotifications: NotificationCenter())
             let session = RuntimeSettingsSession(model: model) { _, current in service.apply(current.menuBar) }
             session.start()
@@ -249,11 +254,8 @@ public enum MenuBarDevelopmentSession {
                     try await writeEntryPanel(scheme: scheme,
                         to: directory.appendingPathComponent("entry-panel-\(scheme == .light ? "light" : "dark")-\(language.rawValue).png"))
                 }
-                let view = MenuBarPreferencesSheet(model: model.menuBarEditor, service: service)
-                    .environment(\.locale, L10n.locale)
-                try await writeSettingsImage(view, size: CGSize(width: 528, height: 460), scheme: .light,
-                    to: directory.appendingPathComponent("07-settings-\(language.rawValue).png"))
             }
+            try await writePreferencesImages(model: model, service: service, directory: directory)
             for language in [ArcKitLanguage.simplifiedChinese, .english] {
                 L10n.configure(language)
                 for scheme in [ColorScheme.light, .dark] {
@@ -303,6 +305,44 @@ public enum MenuBarDevelopmentSession {
         } catch {
             print(L10n.string(.MenuBar.probeFailure(error.localizedDescription)))
             return 1
+        }
+    }
+
+    private static func exportPreferences(to directory: URL) async -> Int32 {
+        do {
+            guard !FileManager.default.fileExists(atPath: directory.path) else { throw CocoaError(.fileWriteFileExists) }
+            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700])
+            let repository = SettingsRepository(directoryURL: directory.appendingPathComponent("data"))
+            defer { try? repository.database.close() }
+            let model = SettingsModel(store: repository,
+                templateLibrary: NewFileTemplateLibrary(baseDirectory: directory.appendingPathComponent("data/templates")))
+            await model.waitForPendingChanges()
+            let service = MenuBarManagementService(isPreview: true)
+            try await writePreferencesImages(model: model, service: service, directory: directory)
+            print("MENU_BAR_PREFERENCES_RENDER path=\(directory.path) images=8 runtime=preview")
+            return 0
+        } catch { print(error.localizedDescription); return 1 }
+    }
+
+    private static func writePreferencesImages(model: SettingsModel, service: MenuBarManagementService, directory: URL) async throws {
+        for language in [ArcKitLanguage.simplifiedChinese, .english] {
+            L10n.configure(language)
+            for scheme in [ColorScheme.light, .dark] {
+                for enabled in [true, false] {
+                    model.menuBarEditor.update {
+                        $0.autoCollapseEnabled = enabled
+                        $0.autoCollapseDelayMinutes = enabled ? 5 : 12
+                    }
+                    guard await model.finishPendingChanges() else { throw CocoaError(.fileWriteUnknown) }
+                    let view = MenuBarPreferencesSheet(model: model.menuBarEditor, service: service)
+                        .environment(\.locale, L10n.locale).environment(\.controlActiveState, .active)
+                        .transaction { $0.animation = nil; $0.disablesAnimations = true }
+                    let size = NSHostingView(rootView: view).fittingSize
+                    let suffix = enabled && scheme == .light ? language.rawValue : "\(enabled ? "on" : "off")-\(scheme == .light ? "light" : "dark")-\(language.rawValue)"
+                    try await writeSettingsImage(view, size: size, scheme: scheme,
+                        to: directory.appendingPathComponent("07-settings-\(suffix).png"))
+                }
+            }
         }
     }
 
@@ -412,9 +452,83 @@ public enum MenuBarDevelopmentSession {
                         to: directory.appendingPathComponent("entry-panel-\(suffix).png"))
                 }
             }
-            print("MENU_BAR_ENTRY_RENDER path=\(directory.path) images=12 runtime=preview")
+            try await writeIconArtworkPreview(to: directory.appendingPathComponent("menu-bar-icon-preview.png"))
+            try writeIconAnimationPreview(to: directory)
+            print("MENU_BAR_ENTRY_RENDER path=\(directory.path) images=13 animationKeyframes=5 gifs=1 runtime=preview")
             return 0
         } catch { print(error.localizedDescription); return 1 }
+    }
+
+    private static func writeIconArtworkPreview(to url: URL) async throws {
+        let samples: [(String, Color, Color)] = [
+            ("浅色", Color(red: 0.96, green: 0.96, blue: 0.95), .black),
+            ("深色", Color(red: 0.10, green: 0.11, blue: 0.13), .white),
+            ("橄榄色", Color(red: 0.31, green: 0.31, blue: 0.21), .white),
+            ("蓝色", Color(red: 0.16, green: 0.35, blue: 0.65), .white)
+        ]
+        let view = VStack(alignment: .leading, spacing: 18) {
+            Text("Arc Kit · 彩色菜单栏标志").font(.system(size: 19, weight: .semibold))
+            HStack(spacing: 12) {
+                ForEach(samples.indices, id: \.self) { index in
+                    let sample = samples[index]
+                    VStack(spacing: 18) {
+                        Text(sample.0).font(.system(size: 12, weight: .medium)).foregroundStyle(sample.2.opacity(0.75))
+                        Image(nsImage: MenuBarIconArtwork.detailPreview).frame(width: 114, height: 54)
+                        Image(nsImage: MenuBarIconArtwork.combined).frame(width: 58, height: 28)
+                    }.frame(width: 156, height: 156)
+                        .background(sample.1, in: RoundedRectangle(cornerRadius: 12))
+                }
+            }
+        }.padding(24).frame(width: 708, height: 240).background(Color.white)
+        try await writeSettingsImage(view, size: CGSize(width: 708, height: 240), scheme: .light, to: url)
+    }
+
+    private static func writeIconAnimationPreview(to directory: URL) throws {
+        let url = directory.appendingPathComponent("menu-bar-animation-preview.gif")
+        guard let destination = CGImageDestinationCreateWithURL(url as CFURL, UTType.gif.identifier as CFString,
+            MenuBarIconArtwork.animationFrameCount + 1, nil) else { throw CocoaError(.fileWriteUnknown) }
+        CGImageDestinationSetProperties(destination, [kCGImagePropertyGIFDictionary: [kCGImagePropertyGIFLoopCount: 0]] as CFDictionary)
+        let keyframes = directory.appendingPathComponent("animation-frames")
+        try FileManager.default.createDirectory(at: keyframes, withIntermediateDirectories: false)
+        for index in 0...MenuBarIconArtwork.animationFrameCount {
+            let isRest = index == MenuBarIconArtwork.animationFrameCount
+            let bitmap = try iconAnimationPreviewFrame(isRest ? nil : index)
+            guard let image = bitmap.cgImage else { throw CocoaError(.fileWriteUnknown) }
+            let delay = isRest ? MenuBarIconArtwork.animationRestInterval : MenuBarIconArtwork.animationFrameInterval
+            CGImageDestinationAddImage(destination, image, [kCGImagePropertyGIFDictionary:
+                [kCGImagePropertyGIFDelayTime: delay, kCGImagePropertyGIFUnclampedDelayTime: delay]] as CFDictionary)
+            if [0, 8, 19, 30, 39].contains(index) {
+                guard let data = bitmap.representation(using: .png, properties: [:]) else { throw CocoaError(.fileWriteUnknown) }
+                try data.write(to: keyframes.appendingPathComponent("frame-\(index).png"))
+            }
+        }
+        guard CGImageDestinationFinalize(destination) else { throw CocoaError(.fileWriteUnknown) }
+    }
+
+    /// 动图只合成离屏素材，动效帧和时长均来自正式菜单栏实现，不创建系统状态项。
+    private static func iconAnimationPreviewFrame(_ index: Int?) throws -> NSBitmapImageRep {
+        let size = NSSize(width: 400, height: 180)
+        guard let bitmap = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: 800, pixelsHigh: 360,
+            bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: .deviceRGB,
+            bytesPerRow: 0, bitsPerPixel: 0), let context = NSGraphicsContext(bitmapImageRep: bitmap) else { throw CocoaError(.fileWriteUnknown) }
+        bitmap.size = size
+        NSGraphicsContext.saveGraphicsState()
+        defer { NSGraphicsContext.restoreGraphicsState() }
+        NSGraphicsContext.current = context
+        context.cgContext.scaleBy(x: 2, y: 2)
+        NSColor(srgbRed: 0.31, green: 0.31, blue: 0.21, alpha: 1).setFill()
+        NSRect(origin: .zero, size: size).fill()
+        let title: [NSAttributedString.Key: Any] = [.font: NSFont.systemFont(ofSize: 18, weight: .semibold), .foregroundColor: NSColor.white]
+        let label: [NSAttributedString.Key: Any] = [.font: NSFont.systemFont(ofSize: 11), .foregroundColor: NSColor.white.withAlphaComponent(0.72)]
+        ("Arc Kit · 菜单栏流光" as NSString).draw(at: NSPoint(x: 24, y: 142), withAttributes: title)
+        ("每轮 2 秒动效 · 6 秒静置" as NSString).draw(at: NSPoint(x: 24, y: 123), withAttributes: label)
+        let detail = index.map { MenuBarIconArtwork.animationDetailPreview(frame: $0) } ?? MenuBarIconArtwork.detailPreview
+        let actual = index.map { MenuBarIconArtwork.frame($0, collectionVisible: true) } ?? MenuBarIconArtwork.combined
+        detail.draw(in: NSRect(x: 40, y: 55, width: 114, height: 54))
+        actual.draw(in: NSRect(x: 285, y: 73, width: 38, height: 18))
+        ("放大细节" as NSString).draw(at: NSPoint(x: 75, y: 27), withAttributes: label)
+        ("菜单栏原尺寸" as NSString).draw(at: NSPoint(x: 271, y: 27), withAttributes: label)
+        return bitmap
     }
 
     private static func writeSettingsImage<Content: View>(_ view: Content, size: CGSize, scheme: ColorScheme, to url: URL) async throws {
