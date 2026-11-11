@@ -4,49 +4,51 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Arc Kit</title>
         <item>
-            <title>0.1.5</title>
-            <pubDate>Wed, 11 Nov 2026 01:13:00 +0000</pubDate>
-            <link>https://github.com/huixiangyang/arc-kit/releases/tag/v0.1.5</link>
-            <sparkle:version>87</sparkle:version>
-            <sparkle:shortVersionString>0.1.5</sparkle:shortVersionString>
+            <title>0.1.6</title>
+            <pubDate>Wed, 11 Nov 2026 06:39:50 +0000</pubDate>
+            <link>https://github.com/huixiangyang/arc-kit/releases/tag/v0.1.6</link>
+            <sparkle:version>88</sparkle:version>
+            <sparkle:shortVersionString>0.1.6</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Arc Kit 0.1.5
+            <description sparkle:format="markdown"><![CDATA[# Arc Kit 0.1.6
 
-这次更新让菜单栏在空闲时自动收起，并为 Arc Kit 菜单栏标志加入彩色渐变与轻量流光。
+本次新增“小工具／输入法管理”和本地剪贴板历史，iCloud 同步暂不开放。
 
-## 空闲后自动收起
+## 输入法，由你选择保留
 
-在“菜单栏 → 更多设置”中控制“空闲后自动收起”，并调整等待时间。默认开启、默认 **5 分钟**，可选择 **1–60 分钟**；设置保存后立即生效，重启后保留。
+打开侧栏“小工具”（`⌘8`），勾选要保留的输入源，再点击“应用更改”。默认保留全部现有项，支持一个或多个输入法及英文键盘，不默认替用户选择搜狗或其他输入法。
 
-- 图标展开后，连续达到设定时长没有键盘、鼠标或触控板操作，就会自动收起；任何应用中的输入都会重新计算空闲时间。
-- 手动展开、修改等待时间或环境恢复后，重新等待完整时长。关闭开关会取消计时，不影响手动展开／收起，也不主动展开已收起图标。
-- 收纳主开关关闭时不执行；休眠、显示环境恢复以及正在应用排列、取用图标或录制快捷键时不抢占操作。
-- 继续使用已有收纳名单与恢复流程，不改变图标排序。只读取当前会话的输入空闲秒数，不记录按键内容。
+- 至少保留一个当前会话可用的输入源；同一输入法的父项和已配置模式作为一组保留。
+- 修改前保存本机恢复点，写入后回读；可以一键恢复处理前配置。外部输入源列表已变化时，不覆盖新的配置。
+- 字符面板、长按选字、底层键盘布局及其他快捷键保持不变，不卸载输入法。
+- 分别反馈“配置已写入”和“当前会话与保留清单一致”，不自动注销、重启服务或后台反复覆盖系统。
 
-## 彩色标志与流光
+HIToolbox 偏好不是稳定公开的输入法管理契约；系统升级或重新登录可能重新整理输入源，必要时请在登录后刷新核对。详见[小工具指南](../小工具.md)。
 
-菜单栏拱形采用珊瑚橙—玫紫渐变、暖金断角和细边高光。每轮流光播放 2 秒，随后静置 6 秒；三点、位置及尺寸保持不动，左侧收纳、右侧工具面板和整体拖动方式不变。
+## 本地剪贴板，把常用内容留下来
 
-动效使用缓存位图原生换帧，不加载 GIF。应用或系统开启减少动态效果时显示静态彩色标志；打开菜单、收纳切换、隐藏入口、退出、休眠、息屏及切换用户时暂停。
+进入“剪贴板”并主动开启“记录”，收集之后复制的文字、链接与图片。首次开启不导入系统剪贴板已有内容。
+
+- 搜索、来源筛选、收藏、内容预览，以及独立快捷面板。
+- 普通／纯文本复制；浮层可以粘贴到唤出前的应用，需要 Arc Kit 主应用的辅助功能权限。
+- 保存为文本、Markdown 或 PNG，可选目录或 Finder 当前目录；重名自动编号，不覆盖已有文件。
+- 默认保留 7 天，可选 1／7／30 天；最多保留 1000 条非收藏记录，收藏不自动过期。
+- 默认排除常见密码管理器及带隐私标记的内容，可以按应用排除；复制敏感内容前请暂停记录。
+
+**本次没有 iCloud 同步入口，不创建 CloudKit 容器，也不上传剪贴板历史。** 本地历史存于 SQLite，完整备份包含历史，请按敏感文件管理。详见[剪贴板指南](../剪贴板.md)。
 
 ## 下载与升级
 
-版本为 **0.1.5 / build 87**，支持 macOS 13 及以上的 Apple Silicon 和 Intel Mac；macOS 27 使用直接隐藏收纳路径。使用应用内“检查更新”，或下载 `ArcKit-universal.dmg` / `ArcKit-universal.zip`，正常退出后整包替换主应用、后台和 Finder 扩展。
+版本为 **0.1.6 / build 88**，支持 macOS 13 及以上的 Apple Silicon 和 Intel Mac。通过应用内“检查更新”，或下载 `ArcKit-universal.dmg` / `ArcKit-universal.zip`，正常退出后整包替换。
 
-升级保留设置、素材、收纳名单及系统图标顺序，旧数据库自动补充自动收起的默认值。配置 JSON 契约升至 **32**，旧版本 JSON 配置不再导入；完整数据库备份通过迁移恢复。回退时使用与旧版匹配的数据备份。
+旧 SQLite 自动增加剪贴板表，保留原有设置、素材和菜单栏配置；记录默认关闭。配置 JSON 契约升至 **33**，旧版本 JSON 不再导入，完整数据库备份通过迁移恢复。回退需使用与旧版匹配的数据备份。
 
-安装包由 GitHub Actions 构建，使用 ad-hoc 签名，没有 Apple Developer ID 签名或公证。macOS 可能要求重新确认打开、辅助功能或后台运行权限。安装包摘要见 `SHA256SUMS.txt`；Sparkle 更新包与订阅分别使用 Ed25519 签名校验。
-
-## 验证范围与限制
-
-已验证自动收起的配置、空闲计时、取消及恢复边界，动效逐帧、静置、入口切换及暂停后的迟到回调，并检查离屏菜单栏尺寸和 GIF 预览。完整双架构产物由 Release 工作流生成。
-
-多屏热插拔、Space、休眠恢复及 macOS 13–26 收纳路径仍需扩大实机覆盖。第三方图标菜单的实际显示结果仍取决于应用自身的辅助功能支持。
+安装包由 GitHub Actions 构建，使用 ad-hoc 签名，没有 Apple Developer ID 签名或公证。macOS 可能要求确认打开、辅助功能或后台运行权限。安装包摘要见 `SHA256SUMS.txt`；Sparkle 更新包和订阅分别使用 Ed25519 签名。
 ]]></description>
-            <enclosure url="https://github.com/huixiangyang/arc-kit/releases/download/v0.1.5/ArcKit-universal.zip" length="25851781" type="application/octet-stream" sparkle:edSignature="NMlgG/geXQUx26RrYYfWXAo4fKoTZEgH8HCKTshZM64Ikqc6ddVVdekhjGSEpvARrW6EFLSr/eszmFtdC4j9BQ=="></enclosure>
+            <enclosure url="https://github.com/huixiangyang/arc-kit/releases/download/v0.1.6/ArcKit-universal.zip" length="26667701" type="application/octet-stream" sparkle:edSignature="4cgis7Ps6pWz1E3hzQYUl9bS0yPvXwOuQaVEVAre7ljBtoE992azoOgEwutAqOW4OkA73mca1T8r86QCKejwAg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 5idgrG1aQalr8pcqUvaT9SvjHHzKU15DYo/3jyhDNWYBXJ3YrXhd4fgPFfaII4FPdl7mLRyHBf/zluIu30XaDg==
-length: 4029
+edSignature: Lj1OVRFi/uBw2wMQtY7WWcnj72tewmLbiXyV83ygC+sw2NfApbOwE4ltUeG4wW3y/ZANwSVAgWhXVGHDGRMKDw==
+length: 4070
 -->
