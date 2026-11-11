@@ -12,6 +12,7 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
     private var languageObservation: AnyCancellable?
     private let model: SettingsModel
     private let dataModel: DataManagementModel
+    private let clipboardModel: ClipboardModel
     private let runtime: ApplicationRuntime
     private let wallpaperModel: WallpaperModel
     private let backgroundModel: AppBackgroundModel
@@ -32,6 +33,7 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
             windowService: runtime.windowService,
             hotKeyService: runtime.hotKeyService,
             menuBarService: runtime.menuBarService,
+            clipboardModel: clipboardModel,
             supportDiagnosticsService: SupportDiagnosticsService(),
             uninstallService: ArcKitUninstallService(),
             updateService: ArcKitUpdateService(),
@@ -50,6 +52,7 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
             templateLibrary: NewFileTemplateLibrary(baseDirectory: paths.templates))
         dataModel = DataManagementModel(settingsModel: model,
             backupService: SettingsBackupService(automaticBackupURL: paths.backups.appendingPathComponent("LastSettingsBackup.json"), managedTemplateDirectory: paths.templates))
+        clipboardModel = ClipboardModel(store: ClipboardStore(database: database), settingsModel: model, isPreview: true)
         // 只取得未连接的展示服务，禁止调用 start，避免抢占安装版的 Host 会话。
         runtime = ApplicationRuntime(settingsModel: model, isPreview: true)
         super.init()
@@ -66,6 +69,7 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
         }
         dataModel.beforeStorageOperation = { [weak self] restoring in
             guard let self else { return }
+            await clipboardModel.suspend()
             await wallpaperModel.finishPendingChanges()
             await backgroundModel.finishPendingChanges()
             guard !wallpaperModel.channels.busy else { throw CocoaError(.userCancelled) }
@@ -73,7 +77,9 @@ public final class SettingsDebugSession: NSObject, NSApplicationDelegate {
             if restoring { wallpaperModel.stop() }
         }
         dataModel.afterStorageOperation = { [weak self] restoring in
-            guard let self, restoring else { return }
+            guard let self else { return }
+            clipboardModel.reload()
+            guard restoring else { return }
             // 恢复后重新加载调试模型，仍不启动 Runtime 或安装版后台。
             backgroundModel.reload()
             wallpaperModel.start()

@@ -44,13 +44,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Arc Kit has no analytics or remote configuration. Settings and file operations run locally. Automatic update checks connect to the official website and GitHub; you can turn them off in About. Online wallpapers and subscriptions connect to their providers. These services receive standard connection information."
+            "value": "Arc Kit has no analytics or remote configuration. Settings and file operations run locally. Clipboard recording is off by default; history stays on this Mac. Update checks connect to the official website and GitHub and can be disabled in About. Online wallpapers and subscriptions connect to their providers. Services receive standard connection information."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Arc Kit 不含分析统计或远程配置，设置与文件操作在本机完成。自动更新检查会连接官网和 GitHub，可在关于页关闭；在线壁纸与订阅会访问对应素材服务。服务方会收到常规网络连接信息。"
+            "value": "Arc Kit 不含分析统计或远程配置，设置与文件操作在本机完成。剪贴板记录默认关闭，历史只保留在本机。自动更新连接官网和 GitHub，可在关于页关闭；在线壁纸与订阅访问对应素材服务。服务方会收到常规网络连接信息。"
           }
         }
       }

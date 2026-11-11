@@ -47,10 +47,10 @@ targets:
         CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
         CFBundleInfoDictionaryVersion: "6.0"
         CFBundleName: Arc Kit Runtime Host
-        NSAppleEventsUsageDescription: Arc Kit controls other apps only when you create terminal windows or tabs, or run a script you choose.
+        NSAppleEventsUsageDescription: Arc Kit accesses other apps when you save a clipboard item to the current Finder folder, create terminal windows or tabs, or run a script you choose.
         CFBundlePackageType: APPL
-        CFBundleShortVersionString: 0.1.5
-        CFBundleVersion: "87"
+        CFBundleShortVersionString: 0.1.6
+        CFBundleVersion: "88"
         LSMinimumSystemVersion: "13.0"
         LSUIElement: true
   ArcKit:
@@ -106,15 +106,16 @@ targets:
         CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
         CFBundleLocalizations: [en, zh-Hans]
         CFBundleDisplayName: Arc Kit
+        ArcKitClipboardCloudContainer: $(ARCKIT_CLIPBOARD_CONTAINER)
         CFBundleExecutable: $(EXECUTABLE_NAME)
         CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
         CFBundleInfoDictionaryVersion: "6.0"
         CFBundleIconName: AppIcon
         CFBundleName: Arc Kit
-        NSAppleEventsUsageDescription: Arc Kit controls other apps only when you create terminal windows or tabs, or run a script you choose.
+        NSAppleEventsUsageDescription: Arc Kit accesses other apps when you save a clipboard item to the current Finder folder, create terminal windows or tabs, or run a script you choose.
         CFBundlePackageType: APPL
-        CFBundleShortVersionString: 0.1.5
-        CFBundleVersion: "87"
+        CFBundleShortVersionString: 0.1.6
+        CFBundleVersion: "88"
         LSMinimumSystemVersion: "13.0"
         NSPrincipalClass: NSApplication
         SUPublicEDKey: fOn/EhaCQV6kXWk6EP6jYaWugtSLxtPQ8NCPM7em7AY=
@@ -179,8 +180,8 @@ targets:
         CFBundleInfoDictionaryVersion: "6.0"
         CFBundleName: Arc Kit Finder Extension
         CFBundlePackageType: XPC!
-        CFBundleShortVersionString: 0.1.5
-        CFBundleVersion: "87"
+        CFBundleShortVersionString: 0.1.6
+        CFBundleVersion: "88"
         NSExtension:
           NSExtensionPointIdentifier: com.apple.FinderSync
           NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).FinderSync

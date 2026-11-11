@@ -58,9 +58,11 @@ enum ApplicationMenuBuilder {
         menu.addItem(.separator())
         menu.addItem(item(title: L10n.string(.Common.home), action: #selector(AppController.showOverview), key: "1", target: target))
         menu.addItem(item(title: "Finder", action: #selector(AppController.showFinderSection), key: "2", target: target))
+        menu.addItem(item(title: L10n.string(.Clipboard.title), action: #selector(AppController.showClipboard), key: "7", target: target))
         menu.addItem(item(title: L10n.string(.Common.windows), action: #selector(AppController.showWindowSection), key: "3", target: target))
         menu.addItem(item(title: L10n.string(.Common.mouse), action: #selector(AppController.showMouseSection), key: "4", target: target))
         menu.addItem(item(title: L10n.string(.Common.wallpaper), action: #selector(AppController.showWallpaperSection), key: "5", target: target))
+        menu.addItem(item(title: L10n.string(.Tools.title), action: #selector(AppController.showToolsSection), key: "8", target: target))
         menu.addItem(item(title: L10n.string(.Common.settings), action: #selector(AppController.showPreferences), key: "6", target: target))
         return menu
     }

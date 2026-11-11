@@ -100,6 +100,7 @@ targets:
       - path: Sources/Features/Appearance
       - path: Sources/Features/SystemTools
       - path: Sources/Features/MenuBar
+      - path: Sources/Features/Clipboard
       - path: Sources/Application/Resources/Brand
         buildPhase: resources
         # 保留父组路径，支持工程生成到 .build/xcode。
@@ -114,6 +115,8 @@ targets:
     dependencies:
       - target: ArcKitPersistence
       - sdk: AVKit.framework
+      - sdk: CloudKit.framework
+      - sdk: Security.framework
       - package: Sparkle
         product: Sparkle
       - target: ArcKitPlatform

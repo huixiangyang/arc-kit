@@ -298,6 +298,8 @@ struct MenuBarPanel: View {
                        enabled: state.settings.finder.menuConfiguration.isEnabled, set: actions.setFinderEnabled)
             Divider()
             navigationRow(L10n.string(.Common.wallpaper), icon: .image, section: .wallpaper)
+            Divider()
+            navigationRow(L10n.string(.Clipboard.title), icon: .copy, section: .clipboard)
         }
     }
 

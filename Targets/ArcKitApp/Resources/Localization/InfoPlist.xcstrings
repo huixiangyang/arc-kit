@@ -3,19 +3,19 @@
   "version": "1.0",
   "strings": {
     "NSAppleEventsUsageDescription": {
-      "comment": "macOS automation permission shown when Arc Kit creates terminal windows or runs a user-selected script.",
+      "comment": "Automation permission for explicitly requested Finder folder access, terminal creation and scripts.",
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Arc Kit controls other apps only when you create terminal windows or tabs, or run a script you choose."
+            "value": "Arc Kit accesses other apps when you save a clipboard item to the current Finder folder, create terminal windows or tabs, or run a script you choose."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Arc Kit 仅在你新建终端窗口或标签、运行自选脚本时控制相应应用。"
+            "value": "Arc Kit 仅在你将剪贴板内容存到当前 Finder 文件夹、新建终端窗口或标签、运行自选脚本时访问相应应用。"
           }
         }
       }

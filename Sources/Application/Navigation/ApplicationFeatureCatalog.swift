@@ -10,7 +10,7 @@ struct ApplicationFeatureEntry {
 /// 只有这里决定侧栏功能的顺序；标题、图标与搜索项由各功能声明。
 enum ApplicationFeatureCatalog {
     static var primary: [ApplicationFeatureEntry] {
-        [OverviewFeature.entry, FinderFeature.entry, WindowFeature.entry, MouseFeature.entry, MenuBarFeature.entry, WallpaperFeature.entry]
+        [OverviewFeature.entry, FinderFeature.entry, ClipboardFeature.entry, WindowFeature.entry, MouseFeature.entry, MenuBarFeature.entry, WallpaperFeature.entry, ToolsFeature.entry]
     }
     static var secondary: [ApplicationFeatureEntry] { [SettingsFeature.entry] }
     static var all: [ApplicationFeatureEntry] { primary + secondary }

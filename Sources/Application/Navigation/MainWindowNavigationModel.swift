@@ -7,14 +7,16 @@ import SwiftUI
 public enum MainWindowSection: String, CaseIterable, Identifiable, Sendable {
     case overview
     case finder
+    case clipboard
     case window
     case mouse
     case menuBar
     case wallpaper
+    case tools
     case preferences
 
     public static let allCases: [MainWindowSection] = [
-        .overview, .finder, .window, .mouse, .menuBar, .wallpaper, .preferences,
+        .overview, .finder, .clipboard, .window, .mouse, .menuBar, .wallpaper, .tools, .preferences,
     ]
 
     public var id: String { rawValue }

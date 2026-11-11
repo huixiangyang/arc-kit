@@ -74,6 +74,7 @@ public final class SettingsModel: ObservableObject {
     lazy var windowEditor = editor(for: \.windowManagement)
     lazy var mouseEditor = editor(for: \.mouseEnhancement)
     lazy var menuBarEditor = editor(for: \.menuBar)
+    lazy var clipboardEditor = editor(for: \.clipboard)
 
     private func editor<Value: Equatable>(for keyPath: WritableKeyPath<AppSettings, Value>) -> SettingsEditor<Value> {
         SettingsEditor(changes: objectWillChange,

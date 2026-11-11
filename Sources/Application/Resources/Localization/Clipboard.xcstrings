@@ -1,0 +1,1338 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clipboard"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剪贴板"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "invalidSettings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The clipboard settings are invalid."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剪贴板配置无效，请检查快捷键、保留期限和应用标识。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "invalidContent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This content cannot be saved. Text supports up to 256 KiB; PNG images up to 10 MiB and 40 million pixels."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法保存此内容。文本上限 256 KiB，PNG 图片上限 10 MiB、4000 万像素。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud is not configured in this build. Local clipboard history is available."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此版本未配置 iCloud，本地剪贴板历史可正常使用。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "accountChanged": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your iCloud account changed. Connect again to resume syncing."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud 账户已更换，请重新连接后继续同步。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "signedOut": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in to iCloud in System Settings, then connect again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先在系统设置登录 iCloud，再重新连接。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "invalidCloudRecord": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some iCloud records could not be processed. Pending changes have been kept for retry."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "部分 iCloud 记录未能处理，待同步变更已保留，请重试。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "noFinderWindow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open a local folder in Finder and allow Arc Kit to control Finder, or choose a folder with Save to folder."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请在 Finder 打开一个本地文件夹，并允许 Arc Kit 控制 Finder；也可使用“选择文件夹保存”。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "pasteTargetLost": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The original app is no longer available. Copy this item and paste it manually."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原应用已不可用，请复制此条内容后手动粘贴。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "pastePermission": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow Arc Kit in Accessibility to paste into another app. Copy remains available."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向其他应用粘贴需要为 Arc Kit 授予辅助功能权限；仍可使用“复制”。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "busy": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A data operation is in progress. Try again when it finishes."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在处理数据，请完成后重试。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "syncOff": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud sync paused · local history"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud 同步已暂停 · 本地历史"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "connectHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect this Mac to your iCloud clipboard."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "连接此 Mac 与你的 iCloud 剪贴板。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "syncing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Syncing with iCloud…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在同步 iCloud…"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "synced": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last synced: %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上次同步：%@"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "syncFailure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud is unavailable (code %@). Changes are kept locally and will retry."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud 暂不可用（代码 %@），变更已保留在本机，将重试。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "copied": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copied"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已复制"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "saved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved: %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保存：%@"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "saveHere": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save here"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存到此处"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "shortcutFailure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shortcut unavailable (code %@). Choose another shortcut."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快捷键注册失败（代码 %@），请选择其他组合。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "search": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search text or source app"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索文字或来源应用"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "preferences": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clipboard settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剪贴板设置"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "filter": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History filter"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "历史筛选"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "history": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "favorites": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收藏"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "allSources": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All apps"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部应用"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "clearLocal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear this Mac"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清理本机"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "clearLocalHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove local history and favorites without deleting iCloud copies. These items will not be downloaded again on this Mac."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除本机历史与收藏，不删除 iCloud 中的副本。这些条目不会在此 Mac 上重新下载。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "delete": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete item"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除此条"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "deleteHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shared items will also be deleted from your other devices after syncing."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已共享的条目会在同步后从你的其他设备删除。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "record": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "记录"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "image": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Image"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图片"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "link": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Link"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "链接"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "text": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文本"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "unknownSource": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown app"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未知应用"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "favorite": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add to favorites"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加入收藏"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "unfavorite": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove from favorites"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消收藏"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "copy": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "actions": {
+      "extractionState": "manual",
+      "comment": "Additional actions for the selected clipboard item.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更多"
+          }
+        }
+      }
+    },
+    "paste": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste into previous app"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "粘贴到原应用"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "pastePlain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste as plain text"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "粘贴为纯文本"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "copyPlain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy as plain text"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制为纯文本"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "saveFinder": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save to Finder folder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "存到 Finder 当前目录"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "saveMarkdown": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save as Markdown to Finder"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "存为 Markdown 到 Finder"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "saveAs": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save to folder…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择文件夹保存…"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "dismiss": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dismiss message"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭提示"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "empty": {
+      "extractionState": "manual",
+      "comment": "Single-line empty history state when recording is enabled.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copied items will appear here."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制的内容会显示在这里。"
+          }
+        }
+      }
+    },
+    "shortcut": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open history"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开历史面板"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "retention": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep recent history"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "历史保留期限"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "oneDay": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 day"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 天"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "sevenDays": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 days"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 天"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "thirtyDays": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 days"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 天"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "retentionHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites do not expire. Keep up to 1,000 recent items. Expired shared items are deleted across devices after syncing."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收藏不自动过期，最近记录最多保留 1000 条。已共享的过期条目会在同步后从其他设备删除。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "syncEnable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sync with iCloud"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通过 iCloud 同步"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "uploadScope": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatically upload"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动上传范围"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "favoritesOnly": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites only"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅收藏"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "allHistory": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All recorded history"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部允许记录的历史"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "scopeHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This controls new uploads from this Mac. Changes to shared items still sync. Changing the scope does not delete existing iCloud history."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此范围决定本机新条目的上传。已共享条目的收藏与删除仍会同步；切换范围不删除既有云端历史。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "connect": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect this Mac"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "连接此 Mac"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "syncNow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sync now"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "立即同步"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "connectConsent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use the Apple Account signed in on this Mac. On the first connection, local history is included according to your upload scope. Records from a previously connected account are not transferred to a different account."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用此 Mac 当前登录的 Apple 账户。首次连接时，本机历史按所选范围上传；更换账户不会转移原账户的记录。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "exclusions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Never record these apps"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不记录这些应用"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "bundleID": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Application bundle ID"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用 Bundle ID"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "add": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "remove": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "privacyHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Password-manager content, concealed or temporary items, file references, and remote clipboard placeholders are skipped. Exclusions cannot identify every secret. Pause recording before copying sensitive information."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过已排除应用、标记为隐私或临时的内容、文件引用和远端剪贴板占位。无法识别所有密钥，复制敏感信息前请暂停记录。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "pending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More changes are waiting to sync."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还有变更等待同步。"
+          }
+        }
+      },
+      "comment": "Clipboard history, privacy, file output and iCloud sync."
+    },
+    "localOnly": {
+      "extractionState": "manual",
+      "comment": "Compact status when clipboard cloud sync is not active.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On this Mac"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅本机"
+          }
+        }
+      }
+    },
+    "noMatches": {
+      "extractionState": "manual",
+      "comment": "Empty search or filtered clipboard history.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No matching items"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有匹配的记录"
+          }
+        }
+      }
+    },
+    "resetFilters": {
+      "extractionState": "manual",
+      "comment": "Clear the search, favorites and source filters.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear filters"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清除筛选"
+          }
+        }
+      }
+    },
+    "startRecording": {
+      "extractionState": "manual",
+      "comment": "Enable recording from the empty clipboard history.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start recording"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启记录"
+          }
+        }
+      }
+    },
+    "clearLocalOnlyHint": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove all history and favorites from this Mac, not just the current search results."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除本机全部历史与收藏，不限于当前搜索结果。"
+          }
+        }
+      },
+      "comment": "Local-only clipboard build: clearLocalOnlyHint",
+      "extractionState": "manual"
+    },
+    "deleteLocalOnlyHint": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove this item from local history."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从本机历史中移除此条记录。"
+          }
+        }
+      },
+      "comment": "Local-only clipboard build: deleteLocalOnlyHint",
+      "extractionState": "manual"
+    },
+    "retentionLocalOnlyHint": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites do not expire. Keep up to 1,000 recent items."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收藏不自动过期，最近记录最多保留 1000 条。"
+          }
+        }
+      },
+      "comment": "Local-only clipboard build: retentionLocalOnlyHint",
+      "extractionState": "manual"
+    }
+  },
+  "version": "1.0"
+}

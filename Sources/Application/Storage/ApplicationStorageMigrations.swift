@@ -10,7 +10,7 @@ enum ApplicationStorageMigrations {
     static func migrate(_ queue: DatabaseQueue, legacyMenuBarCollection: @escaping @Sendable () -> Set<String> = { [] }) throws {
         var migrator = DatabaseMigrator()
         let layouts = [GlobalSettings.recordLayout, FinderRuntimeSettings.recordLayout,
-            WindowManagementSettings.recordLayout, MouseEnhancementSettings.recordLayout, MenuBarSettings.recordLayout,
+            WindowManagementSettings.recordLayout, MouseEnhancementSettings.recordLayout, MenuBarSettings.recordLayout, ClipboardSettings.recordLayout,
             WallpaperCatalog.recordLayout, AppBackgroundSettings.recordLayout, WallpaperSourceConfiguration.recordLayout]
         migrator.registerMigration("storage-v1") { db in
             try ArcKitDatabase.createStoreSchema(in: db)
@@ -195,6 +195,14 @@ enum ApplicationStorageMigrations {
             try db.execute(sql: "UPDATE menu_bar_preferences SET autoCollapseDelayMinutes=5, _types=json_set(_types,'$.autoCollapseDelayMinutes','number') WHERE autoCollapseDelayMinutes IS NULL")
             changed = changed || db.changesCount > 0
             if changed { try ArcKitDatabase.advance(db) }
+        }
+        migrator.registerMigration("clipboard-history-v1") { db in
+            if try !db.tableExists(ClipboardSettings.recordLayout.table) {
+                try createRecords(ClipboardSettings.recordLayout, in: db)
+                try ArcKitRecord.save(ClipboardSettings.defaults, layout: ClipboardSettings.recordLayout, db: db)
+            }
+            try ClipboardStore.createSchema(db)
+            try ArcKitDatabase.advance(db)
         }
         try migrator.migrate(queue)
     }

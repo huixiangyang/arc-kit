@@ -1,0 +1,510 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "title": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Utilities"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "小工具"
+          }
+        }
+      }
+    },
+    "input.title": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Input sources"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输入法"
+          }
+        }
+      }
+    },
+    "subtitle": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source selection and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose which input sources to keep."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "勾选要保留的输入源，按需移除其余项目。"
+          }
+        }
+      }
+    },
+    "session": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Active in this session"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前会话"
+          }
+        }
+      }
+    },
+    "session.unknown": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not available"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未读取到可用输入法"
+          }
+        }
+      }
+    },
+    "keep.label": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source selection and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Input sources to keep"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保留的输入源"
+          }
+        }
+      }
+    },
+    "before.apply": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source selection and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep one or more sources. Modes of the same input method stay together. Before removing an English source, make sure a retained input method can type English."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可多选，同一输入法的模式一起保留。移除英文输入源前，请确认保留的输入法能输入英文。"
+          }
+        }
+      }
+    },
+    "configured": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configured input sources"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置中的输入源"
+          }
+        }
+      }
+    },
+    "removed": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source selection and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Will remove"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将移除"
+          }
+        }
+      }
+    },
+    "no.target": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source selection and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep at least one input source that is available in this session."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请至少保留一个当前会话可用的输入源。"
+          }
+        }
+      }
+    },
+    "refresh": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh input sources"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刷新输入法"
+          }
+        }
+      }
+    },
+    "restore": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore previous configuration"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复处理前配置"
+          }
+        }
+      }
+    },
+    "preservation": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Changes only your input-source list. Keeps the Character Viewer, press-and-hold input and underlying keyboard layout. Does not uninstall input methods, restart services or log you out."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只调整当前用户的输入源列表，保留表情面板、长按选字和底层键盘布局。不卸载输入法、不重启服务，也不自动注销。"
+          }
+        }
+      }
+    },
+    "applied": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source selection and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configuration saved. The active sources match your selection."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置已保存，当前会话与保留清单一致。"
+          }
+        }
+      }
+    },
+    "pending": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source selection and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configuration saved. The active sources have not been confirmed to match your selection. Log out and back in when convenient, then refresh to verify."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置已写入，当前会话与保留清单尚未确认一致。方便时重新登录，再刷新核对。"
+          }
+        }
+      }
+    },
+    "restored": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous configuration restored. If the input menu has not refreshed, log out and back in."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "处理前配置已恢复。如输入法菜单尚未刷新，请重新登录。"
+          }
+        }
+      }
+    },
+    "configuration.changed": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The input-source list changed after this recovery point was saved. Restore will not overwrite a different list. You can keep the current configuration and discard the old recovery point."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输入源列表在处理后发生了变化，恢复不会覆盖不同的列表。可以保留当前配置并放弃旧恢复点。"
+          }
+        }
+      }
+    },
+    "keep.current": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep current configuration"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保留当前配置"
+          }
+        }
+      }
+    },
+    "discard.title": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard the previous recovery point?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "放弃旧恢复点？"
+          }
+        }
+      }
+    },
+    "discard.hint": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This removes the old recovery point without changing system settings. The next operation will save a new one."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅移除旧恢复点，不改动系统配置。下次处理时会重新备份。"
+          }
+        }
+      }
+    },
+    "error.configuration": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The input-source configuration cannot be read safely. Refresh after closing Keyboard settings. Unknown formats or per-host overrides are not changed."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法安全读取输入源配置。请关闭键盘设置后刷新；无法识别的格式或主机专属覆盖不会被修改。"
+          }
+        }
+      }
+    },
+    "error.target": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source selection and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep at least one input source available in this session, then refresh and try again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请至少保留一个当前会话可用的输入源，刷新后再试。"
+          }
+        }
+      }
+    },
+    "error.changed": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The input-source configuration has changed. Refresh and review the list; nothing has been overwritten."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输入源配置已变化，请刷新并重新确认列表；未覆盖新配置。"
+          }
+        }
+      }
+    },
+    "error.write": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS did not confirm the configuration write."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 未确认配置写入。"
+          }
+        }
+      }
+    },
+    "error.rolledBack": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The change could not be verified. The previous configuration has been restored."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未能确认修改结果，已恢复处理前配置。"
+          }
+        }
+      }
+    },
+    "error.recoveryRequired": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The write or recovery could not be verified. The recovery point has been kept. Refresh and restore before trying again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "写入或恢复结果未能确认，恢复点已保留。请刷新并恢复后再试。"
+          }
+        }
+      }
+    },
+    "error.recovery": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source cleanup and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The recovery point cannot be read. No system settings were changed."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取恢复点，未修改系统配置。"
+          }
+        }
+      }
+    },
+    "apply": {
+      "extractionState": "manual",
+      "comment": "Utilities input-source selection and local recovery.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply changes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用更改"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

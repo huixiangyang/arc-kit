@@ -167,6 +167,9 @@ struct StorageMaintenance: Sendable {
         }
         try database.restore(from: snapshot) { db in
             var settings = try SettingsRepository.read(db)
+            // 历史可恢复，云端上传许可不能随备份转移到另一台设备。
+            settings.clipboard.syncEnabled = false
+            try db.execute(sql: "UPDATE clipboard_sync_state SET approved=0,token=NULL WHERE id=1")
             for index in settings.finder.menuConfiguration.fileTemplates.indices {
                 guard case .managedUserFile(let path) = settings.finder.menuConfiguration.fileTemplates[index].templateSource else { continue }
                 let relative = try templateRelativePath(path)

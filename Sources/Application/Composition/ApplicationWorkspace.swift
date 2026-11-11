@@ -15,6 +15,7 @@ struct ApplicationWorkspace: View {
     @ObservedObject private var mouseService: MouseScrollEnhancementService
     @ObservedObject private var windowService: WindowManagementService
     @ObservedObject private var menuBarService: MenuBarManagementService
+    @ObservedObject private var clipboardModel: ClipboardModel
     @ObservedObject private var hotKeyService: GlobalHotKeyService
     @ObservedObject private var supportDiagnosticsService: SupportDiagnosticsService
     @ObservedObject private var uninstallService: ArcKitUninstallService
@@ -42,6 +43,7 @@ struct ApplicationWorkspace: View {
         windowService: WindowManagementService,
         hotKeyService: GlobalHotKeyService,
         menuBarService: MenuBarManagementService,
+        clipboardModel: ClipboardModel,
         supportDiagnosticsService: SupportDiagnosticsService,
         uninstallService: ArcKitUninstallService,
         updateService: ArcKitUpdateService,
@@ -60,6 +62,7 @@ struct ApplicationWorkspace: View {
         self.windowService = windowService
         self.hotKeyService = hotKeyService
         self.menuBarService = menuBarService
+        self.clipboardModel = clipboardModel
         self.supportDiagnosticsService = supportDiagnosticsService
         self.uninstallService = uninstallService
         self.updateService = updateService
@@ -130,10 +133,14 @@ struct ApplicationWorkspace: View {
             }
         case .menuBar:
             MenuBarSection(model: model.menuBarEditor, service: menuBarService)
+        case .clipboard:
+            ClipboardView(model: clipboardModel, editor: model.clipboardEditor)
         case .wallpaper:
             WallpaperSection(model: wallpaperModel,
                 backgroundAction: WallpaperBackgroundIntegration.action(for: backgroundModel),
                 backgroundFeedback: AppBackgroundFeedback(model: backgroundModel), selectedTab: $wallpaperTab)
+        case .tools:
+            ToolsSection(isPreview: healthModel.isPreview)
         case .preferences:
             Group {
                 SystemSection(

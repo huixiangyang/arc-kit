@@ -14,9 +14,11 @@ enum ArcKitMain {
             print(L10n.string(.AppEntry.launchUnsupportedArgument(argument))); Darwin.exit(2)
         }
         #if DEBUG
+        if let result = InputSourceDevelopment.handle(arguments: CommandLine.arguments) { Darwin.exit(result) }
+        if let result = ClipboardDevelopmentRender.handle(arguments: CommandLine.arguments) { Darwin.exit(result) }
         if let result = MenuBarDevelopmentSession.handle(arguments: CommandLine.arguments) { Darwin.exit(result) }
         #else
-        if CommandLine.arguments.contains(where: { $0.hasPrefix("--menu-bar-") }) {
+        if CommandLine.arguments.contains(where: { $0.hasPrefix("--menu-bar-") || $0.hasPrefix("--clipboard-") || $0.hasPrefix("--input-source-") }) {
             print(L10n.string(.AppEntry.launchDevelopmentBuildRequired)); Darwin.exit(2)
         }
         #endif

@@ -24,6 +24,8 @@ public final class AppController: NSObject, NSMenuItemValidation {
         }
     })
     private let systemEnhancementService = SystemEnhancementService()
+    private lazy var clipboardModel = ClipboardModel(store: ClipboardStore(database: ApplicationStorage.database), settingsModel: settingsModel)
+    private let clipboardPanel = ClipboardPanelController()
     private let wallpaperModel = WallpaperModel(library: WallpaperLibrary(database: ApplicationStorage.database))
     private let backgroundModel = AppBackgroundModel(store: AppBackgroundStore(database: ApplicationStorage.database))
     private lazy var runtime = ApplicationRuntime(settingsModel: settingsModel)
@@ -58,6 +60,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
             windowService: runtime.windowService,
             hotKeyService: runtime.hotKeyService,
             menuBarService: runtime.menuBarService,
+            clipboardModel: clipboardModel,
             supportDiagnosticsService: supportDiagnosticsService,
             uninstallService: uninstallService,
             updateService: updateService,
@@ -81,8 +84,11 @@ public final class AppController: NSObject, NSMenuItemValidation {
     public init(launchMode: ArcKitApplicationLaunchMode) {
         self.launchMode = launchMode
         super.init()
+        clipboardModel.showHistory = { [weak self] in self?.showClipboard() }
+        clipboardModel.closeHistory = { [weak self] in self?.clipboardPanel.close() }
         dataModel.beforeStorageOperation = { [weak self] restoring in
             guard let self else { return }
+            await clipboardModel.suspend()
             await wallpaperModel.finishPendingChanges()
             await backgroundModel.finishPendingChanges()
             guard !wallpaperModel.channels.busy else { throw CocoaError(.userCancelled) }
@@ -94,7 +100,9 @@ public final class AppController: NSObject, NSMenuItemValidation {
             }
         }
         dataModel.afterStorageOperation = { [weak self] restoring in
-            guard let self, restoring else { return }
+            guard let self else { return }
+            clipboardModel.start()
+            guard restoring else { return }
             backgroundModel.reload()
             wallpaperModel.start()
             runtime.start()
@@ -134,6 +142,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
             self?.scheduleMenuBarRefresh()
         }.store(in: &serviceCancellables)
         runtime.start()
+        clipboardModel.start()
         wallpaperModel.start()
         updateService.start()
         if launchMode == .interactive {
@@ -241,7 +250,10 @@ public final class AppController: NSObject, NSMenuItemValidation {
             setWindowEnabled: { [weak self] in self?.setWindowManagementEnabled($0) },
             setMouseEnabled: { [weak self] in self?.setMouseEnhancementEnabled($0) },
             setFinderEnabled: { [weak self] in self?.setFinderContextMenuEnabled($0) },
-            openSection: { [weak self] in self?.showMainWindow(section: $0) },
+            openSection: { [weak self] in
+                if $0 == .clipboard { self?.showClipboard() }
+                else { self?.showMainWindow(section: $0) }
+            },
             retrySave: { [weak self] in self?.settingsModel.flush(); self?.refreshMenuBar() },
             checkState: { [weak self] in self?.checkMenuBarState() },
             quit: { [weak self] in self?.quit() }
@@ -410,6 +422,14 @@ public final class AppController: NSObject, NSMenuItemValidation {
         showMainWindow(section: .mouse)
     }
 
+    @objc func showClipboard() {
+        clipboardPanel.show(model: clipboardModel, editor: settingsModel.clipboardEditor)
+    }
+
+    @objc func showToolsSection() {
+        showMainWindow(section: .tools)
+    }
+
     @objc func showWallpaperSection() {
         showMainWindow(section: .wallpaper)
     }
@@ -485,6 +505,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
     }
 
     public func shutdown() {
+        clipboardModel.stop()
         settingsWindowTarget.reset()
         wallpaperModel.stop()
         finderDiagnostics.close()
@@ -509,6 +530,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
         guard !isUninstalling else { return false }
         await backgroundModel.finishPendingChanges()
         await wallpaperModel.finishPendingChanges()
+        await clipboardModel.suspend()
         shutdown()
         do {
             try await runtime.host.unregisterForQuit()
@@ -516,6 +538,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
         } catch {
             // 停止失败不能伪装成完整退出；恢复可操作界面，允许用户重试。
             runtime.start()
+            clipboardModel.start()
             wallpaperModel.start()
             showAlert(title: L10n.string(.App.applicationQuitIncomplete), message: error.localizedDescription, style: .warning)
             return false
@@ -543,6 +566,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
             let registrationSnapshot: RuntimeServiceRegistrationSnapshot
             do {
                 guard await settingsModel.drainPendingChanges(under: operation) else { throw CocoaError(.fileWriteUnknown) }
+                await clipboardModel.suspend()
                 await wallpaperModel.finishPendingChanges()
                 await backgroundModel.finishPendingChanges()
                 registrationSnapshot = try await runtime.host.unregisterForUninstall()
@@ -550,13 +574,14 @@ public final class AppController: NSObject, NSMenuItemValidation {
                 isUninstalling = false
                 settingsModel.operations.end(operation)
                 runtime.start()
+                clipboardModel.start()
                 wallpaperModel.start()
                 showAlert(title: L10n.string(.App.applicationUninstallFailed), message: error.localizedDescription, style: .warning)
                 return
             }
             uninstallService.uninstall(onFailure: { [weak self] in
                 guard let self else { return }
-                defer { self.isUninstalling = false; self.settingsModel.operations.end(operation); self.runtime.start(); self.wallpaperModel.start() }
+                defer { self.isUninstalling = false; self.settingsModel.operations.end(operation); self.runtime.start(); self.clipboardModel.start(); self.wallpaperModel.start() }
                 do {
                     try self.runtime.host.restoreAfterFailedUninstall(registrationSnapshot)
                 } catch {

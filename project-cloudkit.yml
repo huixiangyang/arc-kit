@@ -1,0 +1,17 @@
+# 可选的正式 CloudKit 构建入口；默认 project.yml 与 ad-hoc 发行不变。
+# 团队、容器、描述文件由构建环境提供，不在仓库保存证书或私钥。
+include:
+  - path: project.yml
+    relativePaths: false
+settings:
+  base:
+    DEVELOPMENT_TEAM: $(ARCKIT_DEVELOPMENT_TEAM)
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: Developer ID Application
+    ARCKIT_CLOUD_ENVIRONMENT: Production
+targets:
+  ArcKit:
+    settings:
+      base:
+        CODE_SIGN_ENTITLEMENTS: $(ARCKIT_SOURCE_ROOT)/Targets/ArcKitApp/Configuration/Signing/ArcKitAppCloudKit.entitlements
+        PROVISIONING_PROFILE_SPECIFIER: $(ARCKIT_CLOUD_PROFILE)
