@@ -87,6 +87,21 @@ public enum InputSourceDevelopment {
         try await image(model, size: CGSize(width: 480, height: 650), scheme: .light, to: directory.appendingPathComponent("empty-selection.png"))
         access.available = []; model.refresh()
         try await image(model, size: CGSize(width: 480, height: 650), scheme: .light, to: directory.appendingPathComponent("unavailable.png"))
+
+        // 对照真实问题：配置中有两项，但当前会话只启用搜狗；仍默认全部保留。
+        let mismatch = InputSourcePreviewAccess()
+        mismatch.configuration = try InputSourceConfiguration(propertyList: [InputSourceConfiguration.enabledKey:
+            [InputSourcePreviewAccess.sogou.raw, InputSourcePreviewAccess.pinyin.raw]])
+        mismatch.available = [mismatch.available[0], inactive]
+        mismatch.available[1] = InputSourceDescriptor(id: inactive.id, bundleID: inactive.bundleID,
+            modeID: inactive.modeID, name: inactive.name, enabled: false, selectable: true)
+        let mismatchModel = InputSourceToolModel(access: mismatch)
+        mismatchModel.refresh()
+        for (language, scheme, width) in [(ArcKitLanguage.simplifiedChinese, ColorScheme.light, 620.0), (.english, .dark, 480.0)] {
+            L10n.configure(language)
+            try await image(mismatchModel, size: CGSize(width: width, height: 650), scheme: scheme,
+                to: directory.appendingPathComponent("session-mismatch-\(language.rawValue).png"))
+        }
     }
 
     private static func image(_ model: InputSourceToolModel, size: CGSize, scheme: ColorScheme, to url: URL) async throws {

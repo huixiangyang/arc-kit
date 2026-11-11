@@ -73,20 +73,20 @@ struct InputSourceToolView: View {
 
     private var editor: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(L10n.string(model.recovery == nil ? .Tools.keepLabel : .Tools.configured))
+            Text(L10n.string(.Tools.configured))
                 .font(.system(size: 13, weight: .semibold))
             VStack(spacing: 0) {
                 ForEach(model.rows) { record in
-                    HStack(spacing: 12) {
+                    HStack(alignment: .firstTextBaseline, spacing: 12) {
                         if model.recovery != nil {
                             ArcIcon(.checkCircle, size: 14).foregroundStyle(.secondary)
-                            Text(model.name(for: record)).font(.system(size: 13))
+                            sourceLabel(record)
                         } else {
                             Toggle(isOn: Binding(
                                 get: { model.selectedIDs.contains(record.selectionID) },
                                 set: { model.setKept($0, record: record) }
                             )) {
-                                Text(model.name(for: record)).font(.system(size: 13))
+                                sourceLabel(record)
                             }.toggleStyle(.checkbox)
                                 .accessibilityIdentifier("tools.input-source.keep.\(record.selectionID)")
                         }
@@ -115,6 +115,21 @@ struct InputSourceToolView: View {
         }.padding(20).frame(maxWidth: .infinity, alignment: .leading)
             .background(ArcPalette.panel.opacity(0.8), in: RoundedRectangle(cornerRadius: 12))
             .overlay { RoundedRectangle(cornerRadius: 12).strokeBorder(ArcPalette.panelBorder.opacity(0.4)) }
+    }
+
+    private func sourceLabel(_ record: InputSourceRecord) -> some View {
+        let state = model.sessionState(for: record)
+        let status: LocalizedStringResource = switch state {
+        case .enabled: .Tools.sessionEnabled
+        case .disabled: .Tools.sessionDisabled
+        case .unknown: .Tools.sessionUnconfirmed
+        }
+        return VStack(alignment: .leading, spacing: 4) {
+            Text(model.name(for: record)).font(.system(size: 13))
+            Text(L10n.string(status)).font(.system(size: 12))
+                .foregroundStyle(state == .enabled ? ArcPalette.green : .secondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
     }
 
     @ViewBuilder private var feedback: some View {

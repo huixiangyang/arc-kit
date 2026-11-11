@@ -39,36 +39,36 @@
     },
     "subtitle": {
       "extractionState": "manual",
-      "comment": "Utilities input-source selection and local recovery.",
+      "comment": "Input source management: saved configuration and live session availability are independent of the keep selection.",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Choose which input sources to keep."
+            "value": "Choose which sources to keep. This does not switch or enable an input source."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "勾选要保留的输入源，按需移除其余项目。"
+            "value": "勾选要保留的输入源，不会切换或启用输入法。"
           }
         }
       }
     },
     "session": {
       "extractionState": "manual",
-      "comment": "Utilities input-source cleanup and local recovery.",
+      "comment": "Input source management: saved configuration and live session availability are independent of the keep selection.",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Active in this session"
+            "value": "Enabled in this session"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "当前会话"
+            "value": "当前会话已启用"
           }
         }
       }
@@ -87,24 +87,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "未读取到可用输入法"
-          }
-        }
-      }
-    },
-    "keep.label": {
-      "extractionState": "manual",
-      "comment": "Utilities input-source selection and local recovery.",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Input sources to keep"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "保留的输入源"
           }
         }
       }
@@ -129,7 +111,7 @@
     },
     "configured": {
       "extractionState": "manual",
-      "comment": "Utilities input-source cleanup and local recovery.",
+      "comment": "Input source management: saved configuration and live session availability are independent of the keep selection.",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -140,7 +122,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "配置中的输入源"
+            "value": "已配置的输入源"
           }
         }
       }
@@ -501,6 +483,60 @@
           "stringUnit": {
             "state": "translated",
             "value": "应用更改"
+          }
+        }
+      }
+    },
+    "session.enabled": {
+      "extractionState": "manual",
+      "comment": "Input source management: saved configuration and live session availability are independent of the keep selection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enabled in this session"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前会话已启用"
+          }
+        }
+      }
+    },
+    "session.disabled": {
+      "extractionState": "manual",
+      "comment": "Input source management: saved configuration and live session availability are independent of the keep selection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not enabled in this session"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前会话未启用"
+          }
+        }
+      }
+    },
+    "session.unconfirmed": {
+      "extractionState": "manual",
+      "comment": "Input source management: saved configuration and live session availability are independent of the keep selection.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Session status unconfirmed"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "会话状态未确认"
           }
         }
       }

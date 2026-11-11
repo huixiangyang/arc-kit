@@ -1,6 +1,10 @@
 import ArcKitPlatform
 import Foundation
 
+enum InputSourceSessionState: Equatable {
+    case enabled, disabled, unknown
+}
+
 @MainActor
 final class InputSourceToolModel: ObservableObject {
     @Published private(set) var configuration: InputSourceConfiguration?
@@ -50,6 +54,16 @@ final class InputSourceToolModel: ObservableObject {
     func descriptor(for record: InputSourceRecord) -> InputSourceDescriptor? {
         let matches = sources.filter { record.matches($0) && $0.selectable }
         return matches.count == 1 ? matches[0] : nil
+    }
+    func sessionState(for record: InputSourceRecord) -> InputSourceSessionState {
+        let group = (configuration?.keyboards ?? []).filter { $0.selectionID == record.selectionID }
+        // 输入法父项不能直接选择；有模式时按已配置模式判断，任一可用即表示该组已启用。
+        let modes = group.filter { $0.kind != "Keyboard Input Method" }
+        let records = modes.isEmpty ? group : modes
+        let matches = records.compactMap { descriptor(for: $0) }
+        if matches.contains(where: \.enabled) { return .enabled }
+        // 缺失或歧义不能被显示成“未启用”；勾选草稿也不参与会话状态判断。
+        return !records.isEmpty && matches.count == records.count ? .disabled : .unknown
     }
     func name(for record: InputSourceRecord) -> String {
         let names = (configuration?.keyboards ?? []).filter { $0.selectionID == record.selectionID }

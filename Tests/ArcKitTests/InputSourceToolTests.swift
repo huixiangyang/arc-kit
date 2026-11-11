@@ -5,6 +5,33 @@ import Testing
 @Suite("输入法小工具")
 @MainActor
 struct InputSourceToolTests {
+    @Test("会话状态与保留勾选独立，缺失和歧义不误报未启用，父项按模式汇总")
+    func sessionState() throws {
+        let access = FixtureAccess(), model = InputSourceToolModel(access: access)
+        let sogou = InputSourcePreviewAccess.sogou, pinyin = InputSourcePreviewAccess.pinyin
+        let inactive = access.available[2]
+        access.available[2] = InputSourceDescriptor(id: inactive.id, bundleID: inactive.bundleID,
+            modeID: inactive.modeID, name: inactive.name, enabled: false, selectable: true)
+        model.refresh()
+        #expect(model.sessionState(for: sogou) == .enabled)
+        #expect(model.sessionState(for: pinyin) == .disabled)
+        #expect(model.selectedIDs.contains(pinyin.selectionID))
+        model.setKept(false, record: sogou)
+        #expect(model.sessionState(for: sogou) == .enabled)
+        access.available.removeLast(); model.refresh()
+        #expect(model.sessionState(for: pinyin) == .unknown)
+        access.available.append(access.available[0]); model.refresh()
+        #expect(model.sessionState(for: sogou) == .unknown)
+
+        let parent = InputSourceRecord(raw: ["InputSourceKind": "Keyboard Input Method", "Bundle ID": sogou.bundleID!])
+        let otherMode = InputSourceRecord(raw: ["InputSourceKind": "Input Mode", "Bundle ID": sogou.bundleID!, "Input Mode": "sogou.english"])
+        access.configuration = try InputSourceConfiguration(propertyList: [InputSourceConfiguration.enabledKey: [parent.raw, sogou.raw, otherMode.raw]])
+        access.available = [InputSourcePreviewAccess().available[0]]
+        model.refresh()
+        #expect(model.rows == [parent] && model.sessionState(for: parent) == .enabled)
+        #expect(access.writes == 0 && access.recovery == nil)
+    }
+
     @Test("精简保留同一输入法的模式、父项和非键盘服务，模式 ID 不混用")
     func plan() throws {
         let target = InputSourcePreviewAccess.sogou
