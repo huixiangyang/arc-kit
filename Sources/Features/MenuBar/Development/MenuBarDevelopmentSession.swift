@@ -163,7 +163,7 @@ public enum MenuBarDevelopmentSession {
                 for scheme in [ColorScheme.light, .dark] {
                     for width in [CGFloat(780), CGFloat(480)] {
                         try service.arrangementModel.load(previewInventory(), positions: previewPositions())
-                        model.menuBarEditor.update { $0.isEnabled = false }
+                        model.menuBarEditor.update { $0.isEnabled = false; $0.collectedApplications = previewCollection() }
                         guard await model.finishPendingChanges() else { throw CocoaError(.fileWriteUnknown) }
                         let workflow = MenuBarWorkflow(editor: model.menuBarEditor, service: service)
                         let owner = UUID()
@@ -388,7 +388,7 @@ public enum MenuBarDevelopmentSession {
             defer { try? repository.database.close() }
             let model = SettingsModel(store: repository, templateLibrary: NewFileTemplateLibrary(baseDirectory: directory.appendingPathComponent("data/templates")))
             await model.waitForPendingChanges()
-            model.menuBarEditor.update { $0.isEnabled = true }
+            model.menuBarEditor.update { $0.isEnabled = true; $0.collectedApplications = previewCollection() }
             guard await model.finishPendingChanges() else { throw CocoaError(.fileWriteUnknown) }
             let service = MenuBarManagementService(isPreview: true, collectionAccess: .preview(previewCollection()))
             for language in [ArcKitLanguage.simplifiedChinese, .english] {
@@ -407,10 +407,29 @@ public enum MenuBarDevelopmentSession {
                         service.arrangementModel.move(id, to: .collected)
                         try await writeSettingsImage(view, size: CGSize(width: width, height: 650), scheme: scheme,
                             to: directory.appendingPathComponent("draft-\(suffix).png"))
+                        model.menuBarEditor.update { $0.collectedApplications = [] }
+                        guard await model.finishPendingChanges() else { throw CocoaError(.fileWriteUnknown) }
+                        let restricted = MenuBarArrangementModel(collection: .preview(), isPreview: true,
+                            readCollectionRestrictions: { bundles in
+                                ["com.raycast.macos": MenuBarCollectionRestriction.linkedApplications, "com.microsoft.OneDrive": .unavailable]
+                                    .filter { bundles.contains($0.key) }
+                            })
+                        var restrictedPositions = previewPositions()
+                        restrictedPositions["status:com.raycast.macos::Item-0"] = 900
+                        restrictedPositions["status:com.microsoft.OneDrive::Item-0"] = 800
+                        try restricted.load(previewInventory(), positions: restrictedPositions)
+                        let emptyService = MenuBarManagementService(isPreview: true, partitionMode: .systemVisibility, arrangementModel: restricted)
+                        let emptyView = MenuBarSection(model: model.menuBarEditor, service: emptyService, usesSampleData: true)
+                            .environment(\.locale, L10n.locale).frame(width: width, height: 650)
+                            .environment(\.controlActiveState, .active)
+                        try await writeSettingsImage(emptyView, size: CGSize(width: width, height: 650), scheme: scheme,
+                            to: directory.appendingPathComponent("empty-restricted-\(suffix).png"))
+                        model.menuBarEditor.update { $0.collectedApplications = previewCollection() }
+                        guard await model.finishPendingChanges() else { throw CocoaError(.fileWriteUnknown) }
                     }
                 }
             }
-            print("MENU_BAR_ARRANGEMENT_RENDER path=\(directory.path) images=16 runtime=preview")
+            print("MENU_BAR_ARRANGEMENT_RENDER path=\(directory.path) images=24 runtime=preview")
             return 0
         } catch { print(error.localizedDescription); return 1 }
     }

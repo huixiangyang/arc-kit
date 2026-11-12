@@ -100,7 +100,8 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         let issue = [state.windowHealth, state.mouseHealth].first(where: \.needsAttention)
         entry?.update(collectionVisible: state.settings.menuBar.isEnabled,
             presentation: state.collectionPresentation, ready: state.collectionReady, busy: state.collectionBusy,
-            menuStatus: issue?.title ?? L10n.string(.App.menuBarQuickPanel), collectionMessage: state.collectionMessage)
+            menuStatus: issue?.title ?? L10n.string(.App.menuBarQuickPanel), collectionMessage: state.collectionMessage,
+            needsSelection: state.collectionNeedsSelection)
         switch state.settings.appearance {
         case .system: hosting?.appearance = nil
         case .light: hosting?.appearance = NSAppearance(named: .aqua)

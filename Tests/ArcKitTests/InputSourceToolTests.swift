@@ -20,7 +20,9 @@ struct InputSourceToolTests {
         #expect(model.sessionState(for: sogou) == .enabled)
         access.available.removeLast(); model.refresh()
         #expect(model.sessionState(for: pinyin) == .unknown)
-        access.available.append(access.available[0]); model.refresh()
+        let duplicate = access.available[0]
+        access.available.append(InputSourceDescriptor(id: "another.registration", bundleID: duplicate.bundleID,
+            modeID: duplicate.modeID, name: duplicate.name, enabled: true, selectable: true)); model.refresh()
         #expect(model.sessionState(for: sogou) == .unknown)
 
         let parent = InputSourceRecord(raw: ["InputSourceKind": "Keyboard Input Method", "Bundle ID": sogou.bundleID!])
@@ -29,6 +31,35 @@ struct InputSourceToolTests {
         access.available = [InputSourcePreviewAccess().available[0]]
         model.refresh()
         #expect(model.rows == [parent] && model.sessionState(for: parent) == .enabled)
+        #expect(access.writes == 0 && access.recovery == nil)
+    }
+
+    @Test("系统重复返回同一输入源时可精简并恢复，显示名称不重复")
+    func duplicateRegistrations() throws {
+        let access = FixtureAccess(), model = InputSourceToolModel(access: access)
+        let sogou = access.available[0]
+        access.available += [sogou, sogou] // 远端实测：同一搜狗模式返回三条相同记录。
+        model.refresh(); choose([InputSourcePreviewAccess.sogou], on: model)
+        #expect(model.canApply && model.sessionState(for: InputSourcePreviewAccess.sogou) == .enabled)
+        #expect(model.name(for: InputSourcePreviewAccess.sogou) == sogou.name)
+        #expect(model.sources.filter { $0 == sogou }.count == 1)
+        model.apply()
+        #expect(model.failure == nil && access.writes == 1 && access.recovery != nil)
+        access.available = [sogou, sogou, sogou]; model.refresh()
+        #expect(model.applied && model.activeNames == sogou.name)
+        model.restore()
+        #expect(model.restored && access.configuration == InputSourcePreviewAccess.initial && access.recovery == nil)
+    }
+
+    @Test("重复身份存在启用或可选择状态冲突时仍拒绝写入", arguments: [true, false])
+    func conflictingRegistrations(enabledConflict: Bool) {
+        let access = FixtureAccess(), model = InputSourceToolModel(access: access)
+        let sogou = access.available[0]
+        access.available.append(InputSourceDescriptor(id: sogou.id, bundleID: sogou.bundleID, modeID: sogou.modeID,
+            name: sogou.name, enabled: !enabledConflict, selectable: enabledConflict))
+        model.refresh(); choose([InputSourcePreviewAccess.sogou], on: model)
+        #expect(!model.canApply && model.sessionState(for: InputSourcePreviewAccess.sogou) == .unknown)
+        model.apply()
         #expect(access.writes == 0 && access.recovery == nil)
     }
 

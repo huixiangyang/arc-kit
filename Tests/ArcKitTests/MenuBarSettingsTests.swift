@@ -9,6 +9,38 @@ import Testing
 
 @Suite("菜单栏配置与生命周期", .serialized)
 struct MenuBarSettingsTests {
+    @Test("空名单不启动直接收纳计时，手动点击进入选择，保存后重新计时；旧离屏模式不受影响",
+          arguments: [MenuBarPartitionMode.systemVisibility, .offscreen])
+    @MainActor func emptyCollectionSetup(mode: MenuBarPartitionMode) async {
+        let driver = MenuBarDriverFixture(), clock = MenuBarIdleClockFixture()
+        var setupRequests = 0
+        let service = MenuBarManagementService(partitionMode: mode, driverFactory: { driver },
+            uptime: { clock.now }, inputIdleTime: { clock.idle }, idleTicks: { clock.publisher },
+            workspaceNotifications: NotificationCenter(), applicationNotifications: NotificationCenter())
+        service.requestCollectionSetup = { setupRequests += 1 }
+        defer { service.stop() }
+        var settings = MenuBarSettings(isEnabled: true)
+        service.apply(settings)
+        #expect(service.needsCollectionSelection == (mode == .systemVisibility))
+        #expect(clock.isRunning == (mode == .offscreen))
+        service.toggleCollection(); await service.finishPresentation()
+        if mode == .offscreen {
+            #expect(driver.collapseRequests == 1 && setupRequests == 0)
+            return
+        }
+        #expect(driver.collapseRequests == 0 && setupRequests == 1 && service.pendingPresentation == nil)
+        clock.tick(at: 900, idle: 900)
+        #expect(!clock.isRunning && driver.collapseRequests == 0)
+        settings.collectedApplications = ["app.one"]; service.apply(settings)
+        #expect(clock.isRunning && !service.needsCollectionSelection && service.message == nil)
+        clock.tick(at: 1_199, idle: 1_199)
+        #expect(driver.collapseRequests == 0)
+        clock.tick(at: 1_200, idle: 1_200); await service.finishPresentation()
+        #expect(driver.collapseRequests == 1)
+        settings.collectedApplications = []; service.apply(settings)
+        #expect(!clock.isRunning && service.requestedPresentation == .all)
+    }
+
     @Test("内部锚点不显示符号或响应点击，收纳开启时保留品牌恢复入口")
     @MainActor func unifiedEntryPolicy() {
         let button = NSButton()
@@ -32,7 +64,7 @@ struct MenuBarSettingsTests {
         let service = MenuBarManagementService(driverFactory: { driver },
             workspaceNotifications: NotificationCenter(), applicationNotifications: NotificationCenter())
         defer { service.stop() }
-        service.apply(.init(isEnabled: true))
+        service.apply(.init(isEnabled: true, collectedApplications: ["app.one"]))
         service.present(.collapsed); await service.finishPresentation()
         service.applicationsDidChange()
         #expect(service.requestedPresentation == .collapsed && driver.lastPresentation == .collapsed)
@@ -54,7 +86,7 @@ struct MenuBarSettingsTests {
             uptime: { clock.now }, inputIdleTime: { clock.idle }, idleTicks: { clock.publisher },
             workspaceNotifications: NotificationCenter(), applicationNotifications: NotificationCenter())
         defer { service.stop() }
-        service.apply(.init(isEnabled: true))
+        service.apply(.init(isEnabled: true, collectedApplications: ["app.one"]))
         #expect(clock.isRunning)
         clock.tick(at: 299.9, idle: 1_000)
         #expect(service.pendingPresentation == nil && driver.collapseRequests == 0)
@@ -62,7 +94,7 @@ struct MenuBarSettingsTests {
         clock.tick(at: 599.9, idle: 299.9)
         #expect(service.requestedPresentation == .all && driver.collapseRequests == 0)
         // 无关设置提交不能延长同一轮空闲计时。
-        service.apply(.init(isEnabled: true, opacity: 0.6))
+        service.apply(.init(isEnabled: true, opacity: 0.6, collectedApplications: ["app.one"]))
         clock.tick(at: 600, idle: 300)
         await service.finishPresentation()
         #expect(service.requestedPresentation == .collapsed && driver.collapseRequests == 1)
@@ -85,11 +117,11 @@ struct MenuBarSettingsTests {
             uptime: { clock.now }, inputIdleTime: { clock.idle }, idleTicks: { clock.publisher },
             workspaceNotifications: NotificationCenter(), applicationNotifications: NotificationCenter())
         defer { service.stop() }
-        service.apply(.init(isEnabled: true))
+        service.apply(.init(isEnabled: true, collectedApplications: ["app.one"]))
         service.apply(.init(isEnabled: false))
         clock.tick(at: 600, idle: 600)
         #expect(!clock.isRunning && driver.collapseRequests == 0)
-        service.apply(.init(isEnabled: true))
+        service.apply(.init(isEnabled: true, collectedApplications: ["app.one"]))
         service.environmentDidChange(.sleep)
         service.environmentDidChange(.layout)
         clock.tick(at: 1_200, idle: 1_200)
@@ -124,12 +156,12 @@ struct MenuBarSettingsTests {
             uptime: { clock.now }, inputIdleTime: { clock.idle }, idleTicks: { clock.publisher },
             workspaceNotifications: NotificationCenter(), applicationNotifications: NotificationCenter())
         defer { service.stop() }
-        service.apply(.init(isEnabled: true))
+        service.apply(.init(isEnabled: true, collectedApplications: ["app.one"]))
         driver.failCollapse = true
         clock.tick(at: 300, idle: 300)
         await service.finishPresentation()
         #expect(service.requestedPresentation == .all && service.message != nil && driver.collapseRequests == 1)
-        service.apply(.init(isEnabled: true, opacity: 0.6))
+        service.apply(.init(isEnabled: true, opacity: 0.6, collectedApplications: ["app.one"]))
         clock.tick(at: 600, idle: 600)
         #expect(!clock.isRunning && driver.collapseRequests == 1)
         driver.failCollapse = false
@@ -160,7 +192,7 @@ struct MenuBarSettingsTests {
         let session = RuntimeSettingsSession(model: model) { _, current in service.apply(current.menuBar) }
         session.start()
         defer { session.stop(); service.stop(); try? repository.database.close() }
-        model.menuBarEditor.update { $0.isEnabled = true; $0.autoCollapseEnabled = false }
+        model.menuBarEditor.update { $0.isEnabled = true; $0.collectedApplications = ["app.one"]; $0.autoCollapseEnabled = false }
         #expect(await model.finishPendingChanges())
         clock.tick(at: 600, idle: 600)
         #expect(!clock.isRunning && driver.collapseRequests == 0)
@@ -245,6 +277,8 @@ struct MenuBarSettingsTests {
         try repository.database.write { try $0.execute(sql: "DROP TRIGGER fail_setup") }
         await flow.retry()
         #expect(flow.error == nil && driver.installations == 1 && service.requestedPresentation == .all)
+        model.menuBarEditor.update { $0.collectedApplications = ["app.one"] }
+        #expect(await model.finishPendingChanges())
         driver.failCollapse = true
         flow.toggle(); await service.finishPresentation()
         #expect(service.message != nil && service.requestedPresentation == .all)
@@ -275,7 +309,7 @@ struct MenuBarSettingsTests {
         let driver = MenuBarDriverFixture()
         let service = MenuBarManagementService(partitionMode: .systemVisibility, driverFactory: { driver })
         defer { service.stop() }
-        var draft = MenuBarSettings(isEnabled: true)
+        var draft = MenuBarSettings(isEnabled: true, collectedApplications: ["app.one"])
         let committed = draft
         var completion: CheckedContinuation<Bool, Never>?
         let editor = SettingsEditor(changes: ObservableObjectPublisher(), read: { draft }, committed: { committed },
@@ -316,6 +350,7 @@ struct MenuBarSettingsTests {
         #expect(service.registeredHotKeyActions == [.shelf])
 
         settings.isEnabled = true
+        settings.collectedApplications = ["app.one"]
         service.apply(settings)
         #expect(driver.installations == 1 && hotKeys.bindings.count == 3)
         hotKeys.callback?(.toggle); await service.finishPresentation()
@@ -434,7 +469,7 @@ struct MenuBarSettingsTests {
         let driver = MenuBarDriverFixture()
         let service = MenuBarManagementService(partitionMode: .systemVisibility, driverFactory: { driver })
         defer { service.stop() }
-        service.apply(.init(isEnabled: true, deepSectionEnabled: true))
+        service.apply(.init(isEnabled: true, deepSectionEnabled: true, collectedApplications: ["app.one"]))
         #expect(!driver.installedDeepSection && !service.shelfModel.supportsCollectedScope)
         #expect(service.partitionMode.presentations == [.collapsed, .all])
         service.toggleShelf(scope: .collected)
@@ -573,7 +608,7 @@ struct MenuBarSettingsTests {
         try repository.database.write { db in
             try db.execute(sql: "CREATE TRIGGER reject_menu_bar BEFORE INSERT ON menu_bar_preferences BEGIN SELECT RAISE(FAIL, 'injected'); END")
         }
-        model.menuBarEditor.update { $0.isEnabled = true; $0.shortcutsEnabled = true }
+        model.menuBarEditor.update { $0.isEnabled = true; $0.shortcutsEnabled = true; $0.collectedApplications = ["app.one"] }
         #expect(driver.installations == 0)
         #expect(!(await model.finishPendingChanges()))
         #expect(driver.installations == 0 && !service.isEnabled)
@@ -620,7 +655,7 @@ struct MenuBarSettingsTests {
         preview.present(.collapsed)
         #expect(constructions == 0 && hotKeyConstructions == 0 && !preview.isEnabled && !preview.canSearchAllIcons)
         let service = MenuBarManagementService(driverFactory: { driver })
-        service.apply(.init(isEnabled: true))
+        service.apply(.init(isEnabled: true, collectedApplications: ["app.one"]))
         driver.failCollapse = true
         service.present(.collapsed)
         await service.finishPresentation()
@@ -643,7 +678,7 @@ struct MenuBarSettingsTests {
         let service = MenuBarManagementService(driverFactory: { driver }, captureInventory: { _ in try await capture.capture() }, shelfPanelFactory: { _, _ in ShortcutShelfPanel() },
             workspaceNotifications: NotificationCenter(), applicationNotifications: NotificationCenter())
         defer { service.stop() }
-        service.apply(.init(isEnabled: true))
+        service.apply(.init(isEnabled: true, collectedApplications: ["app.one"]))
         service.toggleShelf(scope: .all)
         for _ in 0..<100 where capture.requests.isEmpty { await Task.yield() }
         try #require(capture.requests.count == 1)
@@ -691,7 +726,7 @@ struct MenuBarSettingsTests {
         let driver = MenuBarDriverFixture()
         let service = MenuBarManagementService(driverFactory: { driver },
             workspaceNotifications: NotificationCenter(), applicationNotifications: NotificationCenter())
-        service.apply(.init(isEnabled: true))
+        service.apply(.init(isEnabled: true, collectedApplications: ["app.one"]))
         service.environmentDidChange(.sleep)
         service.environmentDidChange(.layout)
         service.present(.collapsed)
@@ -706,7 +741,7 @@ struct MenuBarSettingsTests {
         #expect(service.requestedPresentation == .all && driver.lastPresentation == .all)
         driver.failConfirmation = false
         driver.deferConfirmation = true
-        service.apply(.init(isEnabled: true, deepSectionEnabled: true))
+        service.apply(.init(isEnabled: true, deepSectionEnabled: true, collectedApplications: ["app.one"]))
         for _ in 0..<100 where driver.confirmations.isEmpty { await Task.yield() }
         try #require(driver.confirmations.count == 1)
         #expect(service.environmentState == .settling && driver.installations == 2)

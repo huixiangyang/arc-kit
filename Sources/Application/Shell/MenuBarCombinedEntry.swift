@@ -70,13 +70,13 @@ final class MenuBarCombinedEntry: NSObject {
         button.sendAction(on: [.leftMouseDown, .rightMouseDown])
     }
 
-    func update(collectionVisible: Bool, presentation: MenuBarPresentation, ready: Bool, busy: Bool, menuStatus: String, collectionMessage: String? = nil) {
+    func update(collectionVisible: Bool, presentation: MenuBarPresentation, ready: Bool, busy: Bool, menuStatus: String, collectionMessage: String? = nil, needsSelection: Bool = false) {
         self.collectionVisible = collectionVisible
-        shouldCollapse = presentation != .collapsed && ready
+        shouldCollapse = needsSelection || (presentation != .collapsed && ready)
         collectionEnabled = !busy
         refreshImage()
         button.isEnabled = true // 收纳切换期间品牌区域仍可打开功能面板。
-        let action = L10n.string(busy ? .MenuBar.entryChanging : (shouldCollapse ? .MenuBar.entryHide : .MenuBar.entryShow))
+        let action = L10n.string(busy ? .MenuBar.entryChanging : (needsSelection ? .MenuBar.collectionChooseApplications : (shouldCollapse ? .MenuBar.entryHide : .MenuBar.entryShow)))
         button.toolTip = collectionVisible ? L10n.string(.MenuBar.combinedHelp(action, menuStatus)) : "Arc Kit：\(menuStatus)"
         // 面板不再重复展示收纳区，失败反馈保留在实际操作入口的提示中。
         if let collectionMessage, !collectionMessage.isEmpty {
@@ -85,7 +85,7 @@ final class MenuBarCombinedEntry: NSObject {
         button.setAccessibilityLabel("Arc Kit")
         button.setAccessibilityHelp(button.toolTip)
         button.setAccessibilityValue(collectionVisible ? L10n.string(busy ? .MenuBar.entryChanging :
-            (!ready ? .MenuBar.entryUnavailable : (presentation == .collapsed ? .MenuBar.entryHidden : .MenuBar.entryShown))) : nil)
+            (needsSelection ? .MenuBar.collectionNeedsSelection : (!ready ? .MenuBar.entryUnavailable : (presentation == .collapsed ? .MenuBar.entryHidden : .MenuBar.entryShown)))) : nil)
         button.setAccessibilityCustomActions(collectionVisible ? [
             NSAccessibilityCustomAction(name: action, target: self, selector: #selector(accessibilityToggle))
         ] : [])

@@ -31,6 +31,7 @@ final class MenuBarArrangementModel: ObservableObject {
     private let capture: @MainActor () async throws -> MenuBarInventory
     private let readPositions: () throws -> [String: Double]
     private let writePositions: ([String: Double], [String: Double]) throws -> Void
+    private let readCollectionRestrictions: (Set<String>) -> [String: MenuBarCollectionRestriction]
 
     init(collection: MenuBarCollectionAccess, isPreview: Bool = false,
          owner: String? = nil,
@@ -39,15 +40,20 @@ final class MenuBarArrangementModel: ObservableObject {
              let inventory = try await MenuBarInspector().captureForInteraction()
              return try MenuBarInputMenu.addingManagedItem(to: inventory)
          },
+         readCollectionRestrictions: ((Set<String>) -> [String: MenuBarCollectionRestriction])? = nil,
          readPositions: @escaping () throws -> [String: Double] = { try MenuBarSystemPositions().read() },
          writePositions: @escaping ([String: Double], [String: Double]) throws -> Void = { try MenuBarSystemPositions().write($0, expecting: $1) }) {
         self.collection = collection
         self.isPreview = isPreview
         self.owner = owner ?? (isPreview ? "preview" : (Bundle.main.bundleIdentifier ?? ProcessInfo.processInfo.processName))
         self.capture = capture; self.readPositions = readPositions; self.writePositions = writePositions
+        self.readCollectionRestrictions = readCollectionRestrictions ?? (isPreview ? { _ in [:] } : {
+            MenuBarVisibilityStore().collectionRestrictions(for: $0)
+        })
     }
 
     var hasChanges: Bool { snapshot.map { $0.layout != draft } ?? false }
+    var isChoosingFirstCollection: Bool { snapshot?.collectedApplications.isEmpty == true }
     var canEdit: Bool { snapshot != nil && !isLoading && !isApplying && !isStale }
     var canApply: Bool { canEdit && hasChanges }
     var readOnlyItems: [MenuBarArrangementItem] { items.filter { !$0.isEditable && matches($0) } }
@@ -84,9 +90,16 @@ final class MenuBarArrangementModel: ObservableObject {
     }
 
     func load(_ inventory: MenuBarInventory, positions: [String: Double]) throws {
-        let current = try MenuBarArrangementSnapshot(inventory: inventory, positions: positions, owner: owner, collectedApplications: try collection.read())
+        let current = try makeSnapshot(inventory, positions: positions)
         snapshot = current; items = current.items; draft = current.layout; moves = []
         isStale = false; error = nil; permissionRequired = false
+    }
+
+    private func makeSnapshot(_ inventory: MenuBarInventory, positions: [String: Double]) throws -> MenuBarArrangementSnapshot {
+        let bundles = Set(inventory.items.compactMap(\.bundleIdentifier))
+            .subtracting(MenuBarVisibilitySession.systemOwners).subtracting([owner])
+        return try MenuBarArrangementSnapshot(inventory: inventory, positions: positions, owner: owner,
+            collectedApplications: collection.read(), collectionRestrictions: readCollectionRestrictions(bundles))
     }
 
     func setZone(_ id: String, to zone: MenuBarArrangementZone) { move(id, to: zone, reorders: false) }
@@ -133,8 +146,7 @@ final class MenuBarArrangementModel: ObservableObject {
                 let inventory = try await (isPreview ? baseline.inventory : capture())
                 try Task.checkCancellation()
                 guard generation == request else { return }
-                let current = try MenuBarArrangementSnapshot(inventory: inventory,
-                    positions: isPreview ? baseline.positions : readPositions(), owner: owner, collectedApplications: try collection.read())
+                let current = try makeSnapshot(inventory, positions: isPreview ? baseline.positions : readPositions())
                 // 徽标宽度变化可以改变数值；原有归属、顺序与进程身份没变就继续采用最新数值。
                 guard current.collectedApplications == baseline.collectedApplications, current.layout == baseline.layout, current.hasSameTargets(as: baseline) else { throw MenuBarArrangementError.changed }
                 let plan = try current.applying(operations)
@@ -147,7 +159,7 @@ final class MenuBarArrangementModel: ObservableObject {
                 try Task.checkCancellation()
                 guard generation == request else { return }
                 let after = isPreview ? current.positions.merging(plan.patch) { _, new in new } : try readPositions()
-                let confirmed = try MenuBarArrangementSnapshot(inventory: inventory, positions: after, owner: owner, collectedApplications: try collection.read())
+                let confirmed = try makeSnapshot(inventory, positions: after)
                 guard confirmed.collectedApplications == plan.collectedApplications, confirmed.layout == plan.layout else { throw MenuBarArrangementError.unconfirmed }
                 undo = Undo(before: before, after: after.filter { before[$0.key] != nil }, collectionBefore: current.collectedApplications, collectionAfter: plan.collectedApplications)
                 try load(inventory, positions: after)
@@ -172,7 +184,7 @@ final class MenuBarArrangementModel: ObservableObject {
                 try Task.checkCancellation()
                 guard generation == request else { return }
                 let current = isPreview ? snapshot.positions : try readPositions()
-                let observed = try MenuBarArrangementSnapshot(inventory: inventory, positions: current, owner: owner, collectedApplications: try collection.read())
+                let observed = try makeSnapshot(inventory, positions: current)
                 for key in undo.before.keys {
                     guard let original = snapshot.items.first(where: { $0.id == key }),
                           let live = observed.items.first(where: { $0.id == key && $0.isEditable }),
@@ -191,6 +203,10 @@ final class MenuBarArrangementModel: ObservableObject {
     }
 
     private func commit(positions: [String: Double], expected: [String: Double], selection: Set<String>, expecting previous: Set<String>) async throws {
+        // 应用与撤销都重新检查新增目标；移出收纳及纯排序不依赖隐藏能力。
+        if let restriction = readCollectionRestrictions(selection.subtracting(previous)).sorted(by: { $0.key < $1.key }).first?.value {
+            throw MenuBarArrangementError.collectionRestricted(restriction)
+        }
         let changed = selection != previous
         if changed { try await collection.write(selection, previous) }
         do {

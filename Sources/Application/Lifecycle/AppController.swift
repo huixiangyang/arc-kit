@@ -111,6 +111,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
         runtime.windowService.userFeedbackHandler = { [weak self] message in
             self?.windowFailureHUD.show(message: message)
         }
+        runtime.menuBarService.requestCollectionSetup = { [weak self] in self?.showMainWindow(section: .menuBar) }
         observeSettingsChanges()
         observeAppActivation()
         observeScreenParameters()
@@ -292,6 +293,7 @@ public final class AppController: NSObject, NSMenuItemValidation {
         state.collectionPresentation = runtime.menuBarService.requestedPresentation
         state.collectionBusy = runtime.menuBarService.pendingPresentation != nil
         state.collectionReady = runtime.menuBarService.environmentState == .ready
+        state.collectionNeedsSelection = runtime.menuBarService.needsCollectionSelection
         state.collectionMessage = runtime.menuBarService.message
         if case let .failed(message) = settingsModel.persistenceState { state.saveFailure = message }
         else { state.saveFailure = nil }

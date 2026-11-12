@@ -22,6 +22,7 @@ final class MenuBarPanelState: ObservableObject {
     @Published var collectionPresentation: MenuBarPresentation = .all
     @Published var collectionBusy = false
     @Published var collectionReady = false
+    @Published var collectionNeedsSelection = false
     @Published var collectionMessage: String?
 }
 

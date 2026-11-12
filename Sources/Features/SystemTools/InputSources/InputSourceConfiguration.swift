@@ -12,6 +12,11 @@ struct InputSourceRecord: Equatable, Identifiable {
     var id: String { [kind, bundleID ?? "", modeID ?? "", String(describing: raw["KeyboardLayout ID"] ?? ""), raw["KeyboardLayout Name"] as? String ?? ""].joined(separator: "|") }
     static func == (lhs: Self, rhs: Self) -> Bool { NSDictionary(dictionary: lhs.raw).isEqual(to: rhs.raw) }
 
+    func resolvedDescriptor(in sources: [InputSourceDescriptor]) -> InputSourceDescriptor? {
+        let candidates = InputSourceDescriptor.uniqueRecords(sources.filter { matches($0) })
+        return candidates.count == 1 && candidates[0].selectable ? candidates[0] : nil
+    }
+
     func matches(_ source: InputSourceDescriptor) -> Bool {
         if kind == "Keyboard Layout", let name = raw["KeyboardLayout Name"] as? String {
             return source.layoutNames.contains(name) && (bundleID == nil || bundleID == source.bundleID)
@@ -23,7 +28,7 @@ struct InputSourceRecord: Equatable, Identifiable {
     }
 }
 
-struct InputSourceDescriptor: Equatable {
+struct InputSourceDescriptor: Hashable {
     let id: String
     let bundleID: String
     let modeID: String?
@@ -31,6 +36,12 @@ struct InputSourceDescriptor: Equatable {
     let enabled: Bool
     let selectable: Bool
     var layoutNames: Set<String> = []
+
+    static func uniqueRecords(_ sources: [Self]) -> [Self] {
+        // TIS 可重复返回同一输入源。只合并全部身份与状态一致的记录，冲突记录仍交给匹配门禁拒绝。
+        var seen = Set<Self>()
+        return sources.filter { seen.insert($0).inserted }
+    }
 
     func requiringEnabledParent(in bundles: Set<String>) -> Self {
         // TIS 的子模式标记可在父输入法停用后仍为 true，必须同时核对父项。

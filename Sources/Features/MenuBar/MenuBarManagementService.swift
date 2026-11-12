@@ -81,6 +81,8 @@ final class MenuBarManagementService: ObservableObject {
     private var autoCollapseNotBefore: TimeInterval = 0
 
     var canSearchAllIcons: Bool { !isPreview && isActive && !isSleeping }
+    var needsCollectionSelection: Bool { partitionMode == .systemVisibility && settings?.collectedApplications.isEmpty == true }
+    var requestCollectionSetup: (() -> Void)?
 
     init(isPreview: Bool = false, partitionMode: MenuBarPartitionMode = .current,
          arrangementModel: MenuBarArrangementModel? = nil, collectionAccess: MenuBarCollectionAccess? = nil,
@@ -161,12 +163,13 @@ final class MenuBarManagementService: ObservableObject {
             if let previous, previous.collectedApplications != settings.collectedApplications {
                 if requestedPresentation != .all { revealAllPreservingRecovery() }
                 if !arrangementModel.isApplying { arrangementModel.invalidate() }
+                message = nil
             }
             isEnabled = true
         } else if isEnabled || driver != nil {
             disableCollection()
         }
-        if previous?.autoCollapseEnabled != settings.autoCollapseEnabled || previous?.autoCollapseDelayMinutes != settings.autoCollapseDelayMinutes {
+        if previous?.autoCollapseEnabled != settings.autoCollapseEnabled || previous?.autoCollapseDelayMinutes != settings.autoCollapseDelayMinutes || previous?.collectedApplications != settings.collectedApplications {
             // 配置提交后取消旧的自动请求；手动收起不受这个开关影响。
             if autoCollapseRequestID == requestID {
                 cancelPresentation()
@@ -185,6 +188,12 @@ final class MenuBarManagementService: ObservableObject {
 
     func present(_ state: MenuBarPresentation) {
         guard !isPreview, isEnabled, let driver else { return }
+        if state == .collapsed, needsCollectionSelection {
+            // 空名单不启动系统隐藏事务；显式点击直接进入选择入口，自动计时不会走到这里。
+            message = L10n.string(.MenuBar.collectionEmpty)
+            requestCollectionSetup?()
+            return
+        }
         guard state == .all || environmentState == .ready else { return }
         if arrangementModel.isApplying { arrangementModel.invalidate() }
         invalidateItemInteraction()
@@ -238,7 +247,7 @@ final class MenuBarManagementService: ObservableObject {
     private func resetAutoCollapse() {
         autoCollapseObservation = nil
         guard let settings, settings.autoCollapseEnabled, !isPreview, isActive, isEnabled, !isSleeping,
-              environmentState == .ready, requestedPresentation != .collapsed else { return }
+              !needsCollectionSelection, environmentState == .ready, requestedPresentation != .collapsed else { return }
         // 展开和环境恢复都从此刻重新等待，不能沿用展开前或休眠前的空闲时间。
         autoCollapseNotBefore = uptime() + settings.autoCollapseInterval
         autoCollapseObservation = idleTicks().sink { [weak self] in self?.collapseIfIdle() }
@@ -246,7 +255,7 @@ final class MenuBarManagementService: ObservableObject {
 
     private func collapseIfIdle() {
         guard let settings, settings.autoCollapseEnabled, !isPreview, isActive, isEnabled, !isSleeping,
-              environmentState == .ready, requestedPresentation != .collapsed else { return }
+              !needsCollectionSelection, environmentState == .ready, requestedPresentation != .collapsed else { return }
         // 不抢占原生布局写入、图标取用或快捷键录制；操作结束后仍留出完整空闲期。
         guard pendingPresentation == nil, !arrangementModel.isApplying,
               itemTask == nil, !isActivatingItem, !isRecordingShortcut else {

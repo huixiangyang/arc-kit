@@ -36,9 +36,10 @@ public enum InputSourceDevelopment {
             guard arguments.count == 2 else { return 2 }
             let access = NativeInputSourceAccess(recoveryURL: ArcKitStoragePaths.current.runtime.appendingPathComponent("input-source-recovery.plist"))
             do {
-                let configuration = try access.read(), sources = access.inventory()
+                let configuration = try access.read(), sources = InputSourceDescriptor.uniqueRecords(access.inventory())
                 let names = configuration.keyboards.compactMap { record in
-                    sources.first { record.matches($0) && $0.enabled && $0.selectable }?.name
+                    let source = record.resolvedDescriptor(in: sources)
+                    return source?.enabled == true ? source?.name : nil
                 }
                 let result: [String: Any] = ["configuredKeyboards": configuration.keyboards.count,
                     "activeKeyboards": sources.filter { $0.enabled && $0.selectable }.count,
@@ -70,6 +71,13 @@ public enum InputSourceDevelopment {
             }
         }
         L10n.configure(.simplifiedChinese)
+        let duplicate = access.available[0]
+        access.available += [duplicate, duplicate]; model.refresh()
+        for row in model.rows { model.setKept(row.selectionID == InputSourcePreviewAccess.sogou.selectionID, record: row) }
+        try await image(model, size: CGSize(width: 620, height: 700), scheme: .light, to: directory.appendingPathComponent("duplicate-registration.png"))
+        access.available = InputSourcePreviewAccess().available
+        for row in model.rows { model.setKept(true, record: row) }
+        model.refresh()
         model.setKept(false, record: InputSourcePreviewAccess.pinyin)
         try await image(model, size: CGSize(width: 620, height: 700), scheme: .light, to: directory.appendingPathComponent("multiple-selected.png"))
         try await image(model, size: CGSize(width: 480, height: 560), scheme: .light, to: directory.appendingPathComponent("narrow.png"))

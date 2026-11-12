@@ -26,6 +26,9 @@ struct MenuBarSection: View {
     private var isEnabled: Bool { model.committedSettings?.isEnabled == true }
     private var isCollapsed: Bool { workflow.presentation == .collapsed }
     private var isChanging: Bool { workflow.isWorking || service.pendingPresentation != nil }
+    private var needsCollectionSelection: Bool {
+        service.partitionMode == .systemVisibility && model.committedSettings?.collectedApplications.isEmpty == true
+    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -104,11 +107,15 @@ struct MenuBarSection: View {
                     Text(L10n.string(.MenuBar.flowDragInstruction)).font(.system(size: 12)).foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
+                if needsCollectionSelection {
+                    Text(L10n.string(.MenuBar.collectionSetupHint)).font(.system(size: 13)).foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
             if let error = workflow.error {
                 notice(error, icon: .triangleAlert)
                 Button(L10n.string(.MenuBar.flowRetry)) { Task { await workflow.retry() } }.disabled(workflow.isWorking)
-            } else if let error = service.message, isEnabled {
+            } else if let error = service.message, isEnabled, !needsCollectionSelection {
                 notice(error, icon: .triangleAlert)
             }
             if let status = service.environmentState.status {
@@ -121,21 +128,30 @@ struct MenuBarSection: View {
     }
 
     @ViewBuilder private var collectionActions: some View {
-        Button(action: workflow.toggle) {
-            HStack(spacing: 5) {
-                ArcIcon(MenuBarControlAppearance.toggleIcon(for: workflow.presentation), size: 14)
-                Text(MenuBarControlAppearance.actionLabel(for: workflow.presentation))
-            }
-        }.buttonStyle(.bordered)
-            .help(MenuBarControlAppearance.actionLabel(for: workflow.presentation))
-            .accessibilityLabel(MenuBarControlAppearance.actionLabel(for: workflow.presentation))
-            .disabled(isChanging || arrangement.isApplying || model.hasUncommittedChanges || service.environmentState != .ready)
+        if needsCollectionSelection {
+            Button(L10n.string(.MenuBar.collectionChooseApplications)) {
+                arrangement.query = ""
+                if page == .arrange { arrangement.refresh(collectionEnabled: isEnabled) }
+                else { page = .arrange }
+            }.buttonStyle(.borderedProminent).tint(ArcPalette.orange)
+                .disabled(isChanging || arrangement.isApplying)
+        } else {
+            Button(action: workflow.toggle) {
+                HStack(spacing: 5) {
+                    ArcIcon(MenuBarControlAppearance.toggleIcon(for: workflow.presentation), size: 14)
+                    Text(MenuBarControlAppearance.actionLabel(for: workflow.presentation))
+                }
+            }.buttonStyle(.bordered)
+                .help(MenuBarControlAppearance.actionLabel(for: workflow.presentation))
+                .accessibilityLabel(MenuBarControlAppearance.actionLabel(for: workflow.presentation))
+                .disabled(isChanging || arrangement.isApplying || model.hasUncommittedChanges || service.environmentState != .ready)
+        }
         Button(L10n.string(.MenuBar.actionShowAll), action: workflow.showAll)
             .buttonStyle(.borderless).disabled(workflow.isWorking)
     }
 
     private var collectionStatus: some View {
-        Text(L10n.string(isEnabled ? (isCollapsed ? .MenuBar.flowHidden : .MenuBar.flowVisible) : .MenuBar.managementCollectionOff))
+        Text(L10n.string(isEnabled ? (needsCollectionSelection ? .MenuBar.collectionNeedsSelection : (isCollapsed ? .MenuBar.flowHidden : .MenuBar.flowVisible)) : .MenuBar.managementCollectionOff))
             .font(.system(size: 12)).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
     }
 

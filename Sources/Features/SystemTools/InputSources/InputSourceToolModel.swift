@@ -27,7 +27,7 @@ final class InputSourceToolModel: ObservableObject {
     var applied: Bool {
         guard configurationMatchesRecovery, let current = configuration else { return false }
         let active = sources.filter { $0.enabled && $0.selectable }
-        let mapped = active.compactMap { source in current.keyboards.first { $0.matches(source) }?.selectionID }
+        let mapped = active.compactMap { source in current.keyboards.first { descriptor(for: $0) == source }?.selectionID }
         return !active.isEmpty && mapped.count == active.count && Set(mapped) == Set(current.keyboards.map(\.selectionID))
     }
     func setKept(_ keep: Bool, record: InputSourceRecord) {
@@ -37,10 +37,9 @@ final class InputSourceToolModel: ObservableObject {
         restored = false; failure = nil
     }
     private func usableRetainedSource(in inventory: [InputSourceDescriptor]) -> InputSourceRecord? {
-        configuration?.keyboards.first { record in
+        return configuration?.keyboards.first { record in
             guard selectedIDs.contains(record.selectionID) else { return false }
-            let matches = inventory.filter { record.matches($0) && $0.selectable }
-            return matches.count == 1 && matches[0].enabled
+            return record.resolvedDescriptor(in: inventory)?.enabled == true
         }
     }
     var configurationMatchesRecovery: Bool {
@@ -52,8 +51,7 @@ final class InputSourceToolModel: ObservableObject {
         return configuration?.enabled == before.enabled || configuration?.enabled == after.enabled
     }
     func descriptor(for record: InputSourceRecord) -> InputSourceDescriptor? {
-        let matches = sources.filter { record.matches($0) && $0.selectable }
-        return matches.count == 1 ? matches[0] : nil
+        record.resolvedDescriptor(in: sources)
     }
     func sessionState(for record: InputSourceRecord) -> InputSourceSessionState {
         let group = (configuration?.keyboards ?? []).filter { $0.selectionID == record.selectionID }
@@ -80,7 +78,7 @@ final class InputSourceToolModel: ObservableObject {
             if configuration?.enabled != current.enabled || recovery != nil {
                 selectedIDs = Set(current.keyboards.map(\.selectionID))
             }
-            configuration = current; sources = access.inventory(); self.recovery = recovery; failure = nil
+            configuration = current; sources = InputSourceDescriptor.uniqueRecords(access.inventory()); self.recovery = recovery; failure = nil
         } catch { configuration = nil; failure = error.localizedDescription }
     }
 

@@ -9,9 +9,12 @@ struct MenuBarVisibilityTests {
         let location = ["bundle": ["_0": "test.app"]]
         let row: [String: Any] = ["location": location, "isAllowed": true, "menuItemLocations": [location]]
         #expect(try MenuBarVisibilityStore.allowed("test.app", in: [location, row]))
+        #expect(MenuBarVisibilityStore.collectionRestriction(for: "test.app", in: [location, row]) == nil)
         #expect(throws: MenuBarVisibilityError.self) { try MenuBarVisibilityStore.allowed("test.app", in: [location, row, location, row]) }
         var mixed = row; mixed["menuItemLocations"] = [location, ["bundle": ["_0": "other.app"]]]
         #expect(throws: MenuBarVisibilityError.self) { try MenuBarVisibilityStore.allowed("test.app", in: [location, mixed]) }
+        #expect(MenuBarVisibilityStore.collectionRestriction(for: "test.app", in: [location, mixed]) == .linkedApplications)
+        #expect(MenuBarVisibilityStore.collectionRestriction(for: "missing", in: [location, row]) == .unavailable)
     }
 
     @Test("只收纳整组、正在运行的应用；保留品牌与固定系统项，输入法菜单可参与")

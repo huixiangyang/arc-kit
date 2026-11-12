@@ -24,25 +24,63 @@ struct MenuBarArrangementTests {
               items: items ?? [item("app.a"), item("app.b"), item("app.c"), item("com.apple.MenuBarAgent", id: "clock")], issues: [])
     }
 
+    @Test("关联图标提前禁止加入收纳，但仍允许排序、移出；撤销不能重新加入失效目标")
+    @MainActor func linkedVisibilityDoesNotBlockOrderingOrRemoval() async throws {
+        let source = inventory(), access = MenuBarCollectionAccess.preview(["app.a", "app.c"])
+        let restrictions: [String: MenuBarCollectionRestriction] = ["app.a": .linkedApplications, "app.b": .unavailable]
+        let snapshot = try MenuBarArrangementSnapshot(inventory: source, positions: positions, owner: owner,
+            collectedApplications: [], collectionRestrictions: restrictions)
+        #expect(snapshot.items.first { $0.id == a }?.isEditable == true)
+        #expect(snapshot.items.first { $0.id == a }?.collectionRestriction == .linkedApplications)
+        #expect(throws: MenuBarArrangementError.self) { try snapshot.applying([.init(itemID: a, zone: .collected, beforeID: nil, reorders: false)]) }
+        #expect(try snapshot.applying([.init(itemID: b, zone: .resident, beforeID: a)]).patch[b] != nil)
+        var writes = 0
+        let model = MenuBarArrangementModel(collection: access, owner: owner, capture: { source },
+            readCollectionRestrictions: { bundles in restrictions.filter { bundles.contains($0.key) } },
+            readPositions: { positions }, writePositions: { _, _ in writes += 1 })
+        try model.load(source, positions: positions)
+        model.setZone(a, to: .resident); model.apply(); await model.finish()
+        #expect(model.error == nil && writes == 0 && model.canUndo)
+        #expect(try access.read() == ["app.c"])
+        model.undoLastApply(); await model.finish()
+        #expect(model.error != nil && writes == 0)
+        #expect(try access.read() == ["app.c"])
+    }
+
+    @Test("展示后系统收纳身份变化时，提交前拒绝且不写名单或顺序")
+    @MainActor func changedVisibilityRejectsCommit() async throws {
+        let source = inventory(), access = MenuBarCollectionAccess.preview(["app.c"])
+        var blocked = false, writes = 0
+        let model = MenuBarArrangementModel(collection: access, owner: owner, capture: { source },
+            readCollectionRestrictions: { bundles in blocked && bundles.contains("app.a") ? ["app.a": .linkedApplications] : [:] },
+            readPositions: { positions }, writePositions: { _, _ in writes += 1 })
+        try model.load(source, positions: positions)
+        model.setZone(a, to: .collected)
+        #expect(model.canApply)
+        blocked = true; model.apply(); await model.finish()
+        #expect(model.error != nil && writes == 0)
+        #expect(try access.read() == ["app.c"])
+    }
+
     @Test("只接受唯一身份；多图标精确键可编排，匿名冲突和系统项只读")
     func identityResolution() throws {
         var values = positions
         values["status:app.multi::primary"] = 100
         values["status:app.multi::secondary"] = 150
-        let known = try MenuBarArrangementSnapshot(inventory: inventory([item("app.multi", id: "primary"), item("app.multi", id: "secondary")]), positions: values, owner: owner, collectedApplications: ["app.c"])
+        let known = try MenuBarArrangementSnapshot(inventory: inventory([item("app.multi", id: "primary"), item("app.multi", id: "secondary")]), positions: values, owner: owner, collectedApplications: ["app.c"], collectionRestrictions: [:])
         #expect(known.items.allSatisfy { $0.isEditable })
-        let ambiguous = try MenuBarArrangementSnapshot(inventory: inventory([item("app.multi"), item("app.multi"), item("com.apple.MenuBarAgent")]), positions: values, owner: owner, collectedApplications: ["app.c"])
+        let ambiguous = try MenuBarArrangementSnapshot(inventory: inventory([item("app.multi"), item("app.multi"), item("com.apple.MenuBarAgent")]), positions: values, owner: owner, collectedApplications: ["app.c"], collectionRestrictions: [:])
         #expect(ambiguous.items.allSatisfy { !$0.isEditable })
-        let single = try MenuBarArrangementSnapshot(inventory: inventory(), positions: positions, owner: owner, collectedApplications: ["app.c"])
+        let single = try MenuBarArrangementSnapshot(inventory: inventory(), positions: positions, owner: owner, collectedApplications: ["app.c"], collectionRestrictions: [:])
         #expect(single.layout.resident == [a, b] && single.layout.collected == [c])
         values[b] = 300
-        let tied = try MenuBarArrangementSnapshot(inventory: inventory(), positions: values, owner: owner, collectedApplications: ["app.c"])
+        let tied = try MenuBarArrangementSnapshot(inventory: inventory(), positions: values, owner: owner, collectedApplications: ["app.c"], collectionRestrictions: [:])
         #expect(tied.layout.resident.isEmpty)
     }
 
     @Test("跨区和区内排序只写移动项，失效参照和外部变更不能静默覆盖")
     func planningAndConflict() throws {
-        let source = try MenuBarArrangementSnapshot(inventory: inventory(), positions: positions, owner: owner, collectedApplications: ["app.c"])
+        let source = try MenuBarArrangementSnapshot(inventory: inventory(), positions: positions, owner: owner, collectedApplications: ["app.c"], collectionRestrictions: [:])
         let plan = try source.applying([.init(itemID: b, zone: .collected, beforeID: c)])
         #expect(plan.layout.collected == [b, c] && plan.layout.resident == [a])
         #expect(Set(plan.patch.keys) == [b] && plan.patch[b]! > positions[c]!)
@@ -60,7 +98,7 @@ struct MenuBarArrangementTests {
         var storage = positions
         let source = inventory()
         var writes = 0
-        let model = MenuBarArrangementModel(collection: .preview(["app.c"]), owner: owner, capture: { MainActor.assertIsolated(); return source }, readPositions: { storage }, writePositions: { patch, expected in
+        let model = MenuBarArrangementModel(collection: .preview(["app.c"]), owner: owner, capture: { MainActor.assertIsolated(); return source }, readCollectionRestrictions: { _ in [:] }, readPositions: { storage }, writePositions: { patch, expected in
             storage = try MenuBarSystemPositions.merging(storage, replacements: patch, expected: expected); writes += 1
         })
         try model.load(source, positions: storage)
@@ -78,7 +116,7 @@ struct MenuBarArrangementTests {
         var storage = positions
         var source = inventory()
         var writes = 0
-        let model = MenuBarArrangementModel(collection: .preview(["app.c"]), owner: owner, capture: { MainActor.assertIsolated(); return source }, readPositions: { storage }, writePositions: { _, _ in writes += 1 })
+        let model = MenuBarArrangementModel(collection: .preview(["app.c"]), owner: owner, capture: { MainActor.assertIsolated(); return source }, readCollectionRestrictions: { _ in [:] }, readPositions: { storage }, writePositions: { _, _ in writes += 1 })
         try model.load(source, positions: storage)
         model.move(b, to: .collected)
         storage[b] = 350
@@ -114,13 +152,13 @@ struct MenuBarArrangementTests {
             bundleIdentifier: "app.root", applicationName: "Root App", accessibilityIdentifier: nil,
             frame: nil, displayID: nil, declaresPress: true, declaresShowMenu: false, positionSettable: false)
         let input = item("com.apple.TextInputMenuAgent", id: "Item-0")
-        let source = try MenuBarArrangementSnapshot(inventory: inventory([root, input]), positions: values, owner: owner, collectedApplications: ["app.c"])
+        let source = try MenuBarArrangementSnapshot(inventory: inventory([root, input]), positions: values, owner: owner, collectedApplications: ["app.c"], collectionRestrictions: [:])
         #expect(source.items.allSatisfy { $0.isEditable })
         #expect(!root.supportsActivation)
         let plan = try source.applying([.init(itemID: rootKey, zone: .collected, beforeID: nil)])
         #expect(plan.layout.collected == [rootKey] && plan.layout.resident == [inputKey])
         root.identityEligible = false
-        let incomplete = try MenuBarArrangementSnapshot(inventory: inventory([root, input]), positions: values, owner: owner, collectedApplications: ["app.c"])
+        let incomplete = try MenuBarArrangementSnapshot(inventory: inventory([root, input]), positions: values, owner: owner, collectedApplications: ["app.c"], collectionRestrictions: [:])
         #expect(incomplete.items.first { $0.observed.bundleIdentifier == "app.root" }?.isEditable == false)
     }
 
@@ -133,7 +171,7 @@ struct MenuBarArrangementTests {
         let source = inventory()
         let access = MenuBarCollectionAccess.preview(["app.c"])
         var writes = 0
-        let model = MenuBarArrangementModel(collection: access, owner: owner, capture: { source }, readPositions: { native }, writePositions: { _, _ in writes += 1 })
+        let model = MenuBarArrangementModel(collection: access, owner: owner, capture: { source }, readCollectionRestrictions: { _ in [:] }, readPositions: { native }, writePositions: { _, _ in writes += 1 })
         try model.load(source, positions: native)
         #expect(model.draft.collected == [c])
         model.setZone(a, to: .collected)
@@ -158,7 +196,7 @@ struct MenuBarArrangementTests {
             guard !failSave, selected == expected else { throw MenuBarArrangementError.unavailable }
             selected = next
         })
-        let model = MenuBarArrangementModel(collection: access, owner: owner, capture: { source }, readPositions: { native }, writePositions: { _, _ in
+        let model = MenuBarArrangementModel(collection: access, owner: owner, capture: { source }, readCollectionRestrictions: { _ in [:] }, readPositions: { native }, writePositions: { _, _ in
             positionWrites += 1; throw MenuBarArrangementError.changed
         })
         try model.load(source, positions: native); model.move(a, to: .collected, before: c)

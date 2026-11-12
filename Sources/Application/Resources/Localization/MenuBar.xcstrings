@@ -2600,13 +2600,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apply layout"
+            "value": "Apply changes"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "应用排列"
+            "value": "应用更改"
           }
         }
       }
@@ -3273,6 +3273,91 @@
           "stringUnit": {
             "state": "translated",
             "value": "设置保存后生效。"
+          }
+        }
+      }
+    },
+    "collection.linkedApplications": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shares a system visibility entry with other apps; cannot hide independently."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统将此图标与其他应用关联，无法单独收纳。"
+          }
+        }
+      }
+    },
+    "collection.identityUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System visibility identity is unavailable; refresh to check again."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂时无法确认系统收纳身份，请刷新重试。"
+          }
+        }
+      }
+    },
+    "collection.needsSelection": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No apps selected"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未选择收纳应用"
+          }
+        }
+      }
+    },
+    "collection.chooseApplications": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose apps"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择收纳应用"
+          }
+        }
+      }
+    },
+    "collection.setupHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move apps from Resident to Collected, then apply your changes."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将需要的应用从“常驻”加入“收纳”，再点击“应用更改”。"
           }
         }
       }

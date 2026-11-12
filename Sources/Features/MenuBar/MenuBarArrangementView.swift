@@ -73,7 +73,11 @@ struct MenuBarArrangementView: View {
                                     zone(.collected).frame(minWidth: 285)
                                     zone(.resident).frame(minWidth: 285)
                                 }
-                                VStack(spacing: 16) { zone(.collected); zone(.resident) }
+                                VStack(spacing: 16) {
+                                    // 首次选择时先露出可操作的应用，不让空收纳框占满窄窗口；草稿变化不颠倒分区。
+                                    if model.isChoosingFirstCollection { zone(.resident); zone(.collected) }
+                                    else { zone(.collected); zone(.resident) }
+                                }
                             }
                             if !model.readOnlyItems.isEmpty {
                                 VStack(alignment: .leading, spacing: 10) {
@@ -166,16 +170,20 @@ private struct MenuBarArrangementRow: View {
                 if let label = item.observed.label, !label.isEmpty, label != item.observed.displayTitle {
                     Text(label).font(.system(size: 12)).foregroundStyle(.secondary).lineLimit(1)
                 }
+                if let restriction = item.collectionRestriction {
+                    Text(restriction.message).font(.system(size: 12)).foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }.frame(maxWidth: .infinity, alignment: .leading)
             Button {
                 model.setZone(item.id, to: zone == .collected ? .resident : .collected)
             } label: {
                 ArcIcon(zone == .collected ? .eye : .archive, size: 14)
                     .frame(width: 24, height: 24)
-            }.buttonStyle(.borderless).disabled(!model.canEdit)
+            }.buttonStyle(.borderless).disabled(!model.canEdit || (zone == .resident && item.collectionRestriction != nil))
                 .help(L10n.string(zone == .collected ? .MenuBar.arrangeMakeResident : .MenuBar.arrangeCollect))
                 .accessibilityLabel(L10n.string(zone == .collected ? .MenuBar.arrangeResidentItem(item.actionTitle) : .MenuBar.arrangeCollectItem(item.actionTitle)))
-        }.padding(.horizontal, 10).frame(height: 54)
+        }.padding(.horizontal, 10).padding(.vertical, 10).frame(minHeight: 54)
             .contentShape(Rectangle())
             .overlay(alignment: .top) { if isDropTarget { Rectangle().fill(ArcPalette.orange).frame(height: 2) } }
             .opacity(model.canEdit ? 1 : 0.55)

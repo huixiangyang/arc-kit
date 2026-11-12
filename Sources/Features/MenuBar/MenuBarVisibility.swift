@@ -2,6 +2,17 @@ import AppKit
 import ArcKitPlatform
 import Darwin
 
+enum MenuBarCollectionRestriction: Equatable {
+    case linkedApplications, unavailable
+
+    var message: String {
+        switch self {
+        case .linkedApplications: L10n.string(.MenuBar.collectionLinkedApplications)
+        case .unavailable: L10n.string(.MenuBar.collectionIdentityUnavailable)
+        }
+    }
+}
+
 /// 直接修改系统的“允许在菜单栏显示”；不制造溢出，也不启用考试模式。
 /// 每次写入合并最新注册表，仅处理身份明确、所有图标均属于同一应用的条目。
 struct MenuBarVisibilityStore {
@@ -29,10 +40,35 @@ struct MenuBarVisibilityStore {
         guard matches.count == 1, let index = matches.first,
               let row = rows[index + 1] as? [String: Any], (row["location"] as? NSDictionary) == location,
               let locations = row["menuItemLocations"] as? [NSDictionary], !locations.isEmpty,
-              locations.allSatisfy({ $0 == location }), row["isAllowed"] is Bool else {
+              row["isAllowed"] is Bool else {
             throw MenuBarVisibilityError.identity(bundle)
         }
+        guard locations.allSatisfy({ $0 == location }) else { throw MenuBarVisibilityError.linkedApplications(bundle) }
         return index
+    }
+
+    static func collectionRestriction(for bundle: String, in rows: [Any]) -> MenuBarCollectionRestriction? {
+        do { _ = try index(of: bundle, in: rows); return nil }
+        catch MenuBarVisibilityError.linkedApplications { return .linkedApplications }
+        catch { return .unavailable }
+    }
+
+    func collectionRestrictions(for bundles: Set<String>) -> [String: MenuBarCollectionRestriction] {
+        let applications = bundles.subtracting([MenuBarInputMenu.bundleIdentifier])
+        var result: [String: MenuBarCollectionRestriction] = [:]
+        if !applications.isEmpty {
+            do {
+                let rows = try read()
+                for bundle in applications { result[bundle] = Self.collectionRestriction(for: bundle, in: rows) }
+            } catch {
+                for bundle in applications { result[bundle] = .unavailable }
+            }
+        }
+        if bundles.contains(MenuBarInputMenu.bundleIdentifier) {
+            do { _ = try inputMenu.isVisible() }
+            catch { result[MenuBarInputMenu.bundleIdentifier] = .unavailable }
+        }
+        return result
     }
 
     static func allowed(_ bundle: String, in rows: [Any]) throws -> Bool {
@@ -71,7 +107,7 @@ struct MenuBarVisibilityStore {
 }
 
 enum MenuBarVisibilityError: Error, LocalizedError {
-    case unavailable, unconfirmed, guardian, inputMenuUnavailable, emptyCollection, identity(String)
+    case unavailable, unconfirmed, guardian, inputMenuUnavailable, emptyCollection, identity(String), linkedApplications(String)
     var errorDescription: String? {
         switch self {
         case .unavailable: L10n.string(.MenuBar.visibilityUnavailable)
@@ -80,6 +116,7 @@ enum MenuBarVisibilityError: Error, LocalizedError {
         case .emptyCollection: L10n.string(.MenuBar.collectionEmpty)
         case .inputMenuUnavailable: L10n.string(.MenuBar.inputMenuUnavailable)
         case let .identity(bundle): L10n.string(.MenuBar.visibilityIdentity(bundle))
+        case .linkedApplications: L10n.string(.MenuBar.collectionLinkedApplications)
         }
     }
 }

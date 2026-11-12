@@ -4,6 +4,7 @@ import Foundation
 enum MenuBarArrangementError: Error, LocalizedError {
     case unsupported, collectionRequired, unavailable, changed, invalidOrder, unconfirmed
     case saveFailed(String)
+    case collectionRestricted(MenuBarCollectionRestriction)
     var errorDescription: String? {
         switch self {
         case .unsupported: L10n.string(.MenuBar.arrangeUnsupported)
@@ -13,6 +14,7 @@ enum MenuBarArrangementError: Error, LocalizedError {
         case .invalidOrder: L10n.string(.MenuBar.arrangeInvalidOrder)
         case .unconfirmed: L10n.string(.MenuBar.arrangeUnconfirmed)
         case .saveFailed(let message): message
+        case .collectionRestricted(let restriction): restriction.message
         }
     }
 }
@@ -62,6 +64,7 @@ struct MenuBarArrangementItem: Identifiable {
     let observed: MenuBarObservedItem
     let position: Double?
     let restriction: Restriction?
+    var collectionRestriction: MenuBarCollectionRestriction?
     var isEditable: Bool { restriction == nil }
     var actionTitle: String {
         guard let label = observed.label, !label.isEmpty, label != observed.displayTitle else { return observed.displayTitle }
@@ -101,7 +104,8 @@ struct MenuBarArrangementSnapshot {
     let items: [MenuBarArrangementItem]
     let layout: MenuBarArrangementLayout
 
-    init(inventory: MenuBarInventory, positions: [String: Double], owner: String, collectedApplications: Set<String>) throws {
+    init(inventory: MenuBarInventory, positions: [String: Double], owner: String, collectedApplications: Set<String>,
+         collectionRestrictions: [String: MenuBarCollectionRestriction]) throws {
         self.collectedApplications = collectedApplications
         guard inventory.accessibility == .granted else { throw MenuBarItemAccessError.permissionDenied }
         guard inventory.canUseGeometry else { throw MenuBarArrangementError.changed }
@@ -135,6 +139,12 @@ struct MenuBarArrangementSnapshot {
             if let position = item.position, positionCounts[position, default: 0] > 1 {
                 return .init(id: "unresolved:\(item.observed.id)", observed: item.observed, position: nil, restriction: .position)
             }
+            return item
+        }
+        // 收纳资格独立于原生排序；关联了其他应用的图标仍可排序，但不能新加入收纳。
+        resolved = resolved.map { item in
+            var item = item
+            item.collectionRestriction = item.observed.bundleIdentifier.flatMap { collectionRestrictions[$0] }
             return item
         }
         items = resolved
@@ -176,7 +186,12 @@ struct MenuBarArrangementSnapshot {
         for move in moves {
             guard let item = items.first(where: { $0.id == move.itemID && $0.isEditable }),
                   let bundle = item.observed.bundleIdentifier, move.beforeID != move.itemID else { throw MenuBarArrangementError.changed }
-            if move.zone == .collected { selected.insert(bundle) } else { selected.remove(bundle) }
+            if move.zone == .collected {
+                if !selected.contains(bundle), let restriction = item.collectionRestriction {
+                    throw MenuBarArrangementError.collectionRestricted(restriction)
+                }
+                selected.insert(bundle)
+            } else { selected.remove(bundle) }
             guard move.reorders else { continue } // 行内切换只改收纳名单，保留用户在系统中排好的顺序。
             let row = layout()[move.zone].filter { $0 != move.itemID }
             let others = updated.filter { $0.key != move.itemID }.values.filter { $0.isFinite && $0 >= 0 }
