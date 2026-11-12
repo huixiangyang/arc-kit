@@ -4,51 +4,51 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Arc Kit</title>
         <item>
-            <title>0.1.6</title>
-            <pubDate>Wed, 11 Nov 2026 06:39:50 +0000</pubDate>
-            <link>https://github.com/huixiangyang/arc-kit/releases/tag/v0.1.6</link>
-            <sparkle:version>88</sparkle:version>
-            <sparkle:shortVersionString>0.1.6</sparkle:shortVersionString>
+            <title>0.1.8</title>
+            <pubDate>Thu, 12 Nov 2026 07:30:54 +0000</pubDate>
+            <link>https://github.com/huixiangyang/arc-kit/releases/tag/v0.1.8</link>
+            <sparkle:version>91</sparkle:version>
+            <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Arc Kit 0.1.6
+            <description sparkle:format="markdown"><![CDATA[# Arc Kit 0.1.8
 
-本次新增“小工具／输入法管理”和本地剪贴板历史，iCloud 同步暂不开放。
+修复部分 Mac 上搜狗输入源被误判为不可用的问题，并为菜单栏收纳增加首次选择引导和逐项限制提示。
 
-## 输入法，由你选择保留
+## 输入法：准确区分配置与当前会话
 
-打开侧栏“小工具”（`⌘8`），勾选要保留的输入源，再点击“应用更改”。默认保留全部现有项，支持一个或多个输入法及英文键盘，不默认替用户选择搜狗或其他输入法。
+- 系统重复返回完全相同的输入源时，按一个输入源处理，避免重复登记导致“应用更改”不可用或名称重复。
+- 分别显示已配置的输入源和当前会话是否启用；勾选表示保留，不代表正在使用。同一输入法的多个已配置模式仍作为一组保留。
+- 显示、应用前复核与处理结果使用同一套匹配规则。身份或启用状态冲突时提示无法确认，不猜测为可用。
 
-- 至少保留一个当前会话可用的输入源；同一输入法的父项和已配置模式作为一组保留。
-- 修改前保存本机恢复点，写入后回读；可以一键恢复处理前配置。外部输入源列表已变化时，不覆盖新的配置。
-- 字符面板、长按选字、底层键盘布局及其他快捷键保持不变，不卸载输入法。
-- 分别反馈“配置已写入”和“当前会话与保留清单一致”，不自动注销、重启服务或后台反复覆盖系统。
+仍由用户决定保留哪些输入法，默认保留全部现有项。不自动注销、重启输入法或移除英文键盘。
 
-HIToolbox 偏好不是稳定公开的输入法管理契约；系统升级或重新登录可能重新整理输入源，必要时请在登录后刷新核对。详见[小工具指南](../小工具.md)。
+## 菜单栏：先选择，再收起
 
-## 本地剪贴板，把常用内容留下来
+- macOS 27 上，收纳名单为空时，页面显示“尚未选择收纳应用”；点击左侧三点会进入管理页，不再表现为点击后没有反应。
+- 空名单不启动自动收起计时。选好应用并点击“应用更改”后，按设定时长重新计时；默认仍为 5 分钟，可在设置中调整或关闭。
+- 系统将某个图标与其他应用关联登记、或无法确认收纳身份时，提前说明原因并禁止加入收纳；仍可排序或移回常驻。
+- 窄窗口首次设置优先显示可选的常驻应用；应用及撤销前重新核对新增收纳目标。
 
-进入“剪贴板”并主动开启“记录”，收集之后复制的文字、链接与图片。首次开启不导入系统剪贴板已有内容。
-
-- 搜索、来源筛选、收藏、内容预览，以及独立快捷面板。
-- 普通／纯文本复制；浮层可以粘贴到唤出前的应用，需要 Arc Kit 主应用的辅助功能权限。
-- 保存为文本、Markdown 或 PNG，可选目录或 Finder 当前目录；重名自动编号，不覆盖已有文件。
-- 默认保留 7 天，可选 1／7／30 天；最多保留 1000 条非收藏记录，收藏不自动过期。
-- 默认排除常见密码管理器及带隐私标记的内容，可以按应用排除；复制敏感内容前请暂停记录。
-
-**本次没有 iCloud 同步入口，不创建 CloudKit 容器，也不上传剪贴板历史。** 本地历史存于 SQLite，完整备份包含历史，请按敏感文件管理。详见[剪贴板指南](../剪贴板.md)。
+现有收纳名单、自动收起设置和系统图标顺序保留，不根据另一台 Mac 的设置替用户选择收纳对象。
 
 ## 下载与升级
 
-版本为 **0.1.6 / build 88**，支持 macOS 13 及以上的 Apple Silicon 和 Intel Mac。通过应用内“检查更新”，或下载 `ArcKit-universal.dmg` / `ArcKit-universal.zip`，正常退出后整包替换。
+版本为 **0.1.8 / build 91**，支持 macOS 13 及以上的 Apple Silicon 和 Intel Mac；菜单栏编排与上述直接收纳流程需要 macOS 27。通过应用内“检查更新”，或下载 `ArcKit-universal.dmg` / `ArcKit-universal.zip`，正常退出后整包替换。build 89 候选用户也可升级。
 
-旧 SQLite 自动增加剪贴板表，保留原有设置、素材和菜单栏配置；记录默认关闭。配置 JSON 契约升至 **33**，旧版本 JSON 不再导入，完整数据库备份通过迁移恢复。回退需使用与旧版匹配的数据备份。
+从 0.1.6 升级没有新增数据库迁移，配置 JSON 契约仍为 **33**。保留现有数据，本地剪贴板不变，iCloud 同步仍不开放。
 
-安装包由 GitHub Actions 构建，使用 ad-hoc 签名，没有 Apple Developer ID 签名或公证。macOS 可能要求确认打开、辅助功能或后台运行权限。安装包摘要见 `SHA256SUMS.txt`；Sparkle 更新包和订阅分别使用 Ed25519 签名。
+## 验证范围与已知情况
+
+同功能候选已在第二台 macOS 27.0.1 设备保留数据安装；只读诊断确认重复登记的搜狗模式被正确识别为一个可用目标。菜单栏空名单、限制提示、计时及撤销已通过隔离回归和页面检查；该设备上的实际收起／展开、自动收起，以及真实输入源写入和重新登录持久性尚未完成验收。
+
+候选首次启动曾遇到 macOS 的 `Launch Constraint Violation`，导致后台无法启动；正常退出并刷新已安装应用及后台组件的系统注册后恢复。更新时的注册／签名约束问题仍可能出现；若升级后窗口或鼠标后台不可用，请保留技术详情并反馈。
+
+安装包由 GitHub Actions 构建，使用 ad-hoc 签名，没有 Apple Developer ID 签名或公证。安装包摘要见 `SHA256SUMS.txt`；Sparkle 更新包和订阅使用 Ed25519 签名。
 ]]></description>
-            <enclosure url="https://github.com/huixiangyang/arc-kit/releases/download/v0.1.6/ArcKit-universal.zip" length="26667701" type="application/octet-stream" sparkle:edSignature="4cgis7Ps6pWz1E3hzQYUl9bS0yPvXwOuQaVEVAre7ljBtoE992azoOgEwutAqOW4OkA73mca1T8r86QCKejwAg=="></enclosure>
+            <enclosure url="https://github.com/huixiangyang/arc-kit/releases/download/v0.1.8/ArcKit-universal.zip" length="26711875" type="application/octet-stream" sparkle:edSignature="fjtQ2vg57yg3TmSRxwRzQcYsl3ws3Kvd+iMg5msLBZMb8BrG2VceL2H/lz9bXy+nK9by1HnxsOjAxXwPmYlACg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: Lj1OVRFi/uBw2wMQtY7WWcnj72tewmLbiXyV83ygC+sw2NfApbOwE4ltUeG4wW3y/ZANwSVAgWhXVGHDGRMKDw==
-length: 4070
+edSignature: YT8gDBugDsFnir7Dt28GL/2VyV+U/5OZefyas2xfBeQAb+6xSp4J3AwHeTIPIKWZTlN4rEW6kfKyUxOevcF6AQ==
+length: 4195
 -->

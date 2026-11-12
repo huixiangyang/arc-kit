@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.6",
-  "build": 88,
-  "tag": "v0.1.6",
-  "publishedAt": "2026-11-11T06:39:55Z",
+  "version": "0.1.8",
+  "build": 91,
+  "tag": "v0.1.8",
+  "publishedAt": "2026-11-12T07:31:01Z",
   "minimumSystemVersion": "13.0",
   "architectures": [
     "arm64",
@@ -11,19 +11,19 @@
   ],
   "signing": "ad-hoc",
   "notarized": false,
-  "releaseNotesURL": "https://github.com/huixiangyang/arc-kit/releases/tag/v0.1.6",
+  "releaseNotesURL": "https://github.com/huixiangyang/arc-kit/releases/tag/v0.1.8",
   "assets": {
     "dmg": {
       "name": "ArcKit-universal.dmg",
-      "url": "https://github.com/huixiangyang/arc-kit/releases/download/v0.1.6/ArcKit-universal.dmg",
-      "size": 33604033,
-      "sha256": "3ecd6fcd238b58c7fdbace60505a7110ab4be8aea1db6d8108ecaf4be1e939ec"
+      "url": "https://github.com/huixiangyang/arc-kit/releases/download/v0.1.8/ArcKit-universal.dmg",
+      "size": 34429540,
+      "sha256": "08e97c9bb5ce476cfffa47768e5bfaca8a86362540866b9916e9f85ffa415659"
     },
     "zip": {
       "name": "ArcKit-universal.zip",
-      "url": "https://github.com/huixiangyang/arc-kit/releases/download/v0.1.6/ArcKit-universal.zip",
-      "size": 26667701,
-      "sha256": "3d272b8831b63e5a2e9130337b11e894ba1e5d16f63410a6d8b5b81ef42ab3bf"
+      "url": "https://github.com/huixiangyang/arc-kit/releases/download/v0.1.8/ArcKit-universal.zip",
+      "size": 26711875,
+      "sha256": "ebaa673021bd7fa694bb37f46aef41907cfaa409c3d76f86d3fbb72047747bbc"
     }
   }
 }
