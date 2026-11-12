@@ -49,8 +49,8 @@ targets:
         CFBundleName: Arc Kit Runtime Host
         NSAppleEventsUsageDescription: Arc Kit accesses other apps when you save a clipboard item to the current Finder folder, create terminal windows or tabs, or run a script you choose.
         CFBundlePackageType: APPL
-        CFBundleShortVersionString: 0.1.7
-        CFBundleVersion: "90"
+        CFBundleShortVersionString: 0.1.8
+        CFBundleVersion: "91"
         LSMinimumSystemVersion: "13.0"
         LSUIElement: true
   ArcKit:
@@ -114,8 +114,8 @@ targets:
         CFBundleName: Arc Kit
         NSAppleEventsUsageDescription: Arc Kit accesses other apps when you save a clipboard item to the current Finder folder, create terminal windows or tabs, or run a script you choose.
         CFBundlePackageType: APPL
-        CFBundleShortVersionString: 0.1.7
-        CFBundleVersion: "90"
+        CFBundleShortVersionString: 0.1.8
+        CFBundleVersion: "91"
         LSMinimumSystemVersion: "13.0"
         NSPrincipalClass: NSApplication
         SUPublicEDKey: fOn/EhaCQV6kXWk6EP6jYaWugtSLxtPQ8NCPM7em7AY=
@@ -180,8 +180,8 @@ targets:
         CFBundleInfoDictionaryVersion: "6.0"
         CFBundleName: Arc Kit Finder Extension
         CFBundlePackageType: XPC!
-        CFBundleShortVersionString: 0.1.7
-        CFBundleVersion: "90"
+        CFBundleShortVersionString: 0.1.8
+        CFBundleVersion: "91"
         NSExtension:
           NSExtensionPointIdentifier: com.apple.FinderSync
           NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).FinderSync

@@ -3279,6 +3279,7 @@
     },
     "collection.linkedApplications": {
       "extractionState": "manual",
+      "comment": "菜单栏行内限制：系统将多个应用登记为同一个显示条目，无法只收纳当前应用。",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3296,6 +3297,7 @@
     },
     "collection.identityUnavailable": {
       "extractionState": "manual",
+      "comment": "菜单栏行内限制：无法确认系统显示登记身份，引导用户刷新，而非推断可以隐藏。",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3313,6 +3315,7 @@
     },
     "collection.needsSelection": {
       "extractionState": "manual",
+      "comment": "收纳已开启但名单为空时的状态说明，同时用于菜单栏入口的辅助功能值。",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3330,6 +3333,7 @@
     },
     "collection.chooseApplications": {
       "extractionState": "manual",
+      "comment": "空收纳名单的操作按钮及菜单栏三点入口提示，点击后进入应用选择流程。",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3347,6 +3351,7 @@
     },
     "collection.setupHint": {
       "extractionState": "manual",
+      "comment": "首次设置收纳名单时的行内操作指引；常驻和收纳是编排区域名称。",
       "localizations": {
         "en": {
           "stringUnit": {
